@@ -1,0 +1,32 @@
+unit: yotzer_or
+options:
+  threshold: 75          # 0-100, ez alatt a pont "örökölt" lesz (az előző horgonyra fűződik)
+  lookahead: 60          # hány szóval előre keressen az előző találattól
+  lemma_max_words: 6
+  divine_name: null      # pl. "יְיָ", ha a nikudos Tetragrammatont le akarod cserélni
+
+main:        # közép: a szidur szövege
+  url: https://www.sefaria.org/Siddur_Ashkenaz%2C_Weekday%2C_Shacharit%2C_Blessings_of_the_Shema%2C_First_Blessing_before_Shema
+  version: hebrew
+  file: samples/main.txt            # <- ha van 'file', az elsőbbséget élvez; törölve az API-t használja
+abudraham:   # oldalsó oszlop, szóhoz illesztve
+  label: 'אבודרהם'
+  url: https://www.sefaria.org/Abudarham%2C_Weekday_Prayers%2C_Blessings_on_the_Shema.3
+  file: samples/abudraham.txt
+rashi:       # alsó sáv, egységhez
+  label: 'רש"י'
+  url: https://www.sefaria.org/Siddur_Rashi.13.1
+  file: samples/rashi_long.txt
+  corrections: true                 # true = szögletes (javított) alak
+vitry:       # másik oldalsó oszlop: nusach-variánsok
+  label: 'מחזור ויטרי'    # vagy pl. 'וויטרי' – tetszés szerint
+  url: https://www.sefaria.org/Machzor_Vitry%2C_Order_of_Shacharit.88.14
+  file: samples/vitry.txt
+  cut_before: "אהבת עולם"            # a Yotzer-egységnél vágunk
+overrides:   # kézi javítás a matches.csv alapján: szegmens_index: szó_index
+  abudraham: {}
+
+layout:
+  side_size_pt: 9.5
+  page: {height_cm: 15.0}
+  main_size_pt: 17
