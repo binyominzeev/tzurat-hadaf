@@ -17,14 +17,34 @@ A jelenlegi **pilot**: *Siddur Ashkenaz – Birkot Kriát Smá, első brácha (Y
 ## Gyors kezdés
 
 ```bash
-pip install rapidfuzz pyyaml requests        # Python 3.9+
+pip install -r requirements.txt              # Python 3.9+
 # Typst >= 0.12 CLI: https://github.com/typst/typst  (vagy: pip install typst – ez a fallback)
 
 ./build.sh config.yaml        # mintaadatokból (samples/), hálózat nélkül
 ./build.sh                    # éles: Sefaria API (config.live.yaml)
+python app.py                 # webes kezelőfelület: http://127.0.0.1:8080
 ```
 
 Kimenet: `out/page.pdf`, valamint `out/matches.csv` (az illesztések ellenőrző listája).
+
+### Webes kezelőfelület
+
+A NiceGUI felület a főszöveg és a három kommentár Sefaria URL-jének felvételét,
+módosítását és törlését, az álló/fekvő tájolás váltását, a lapméret és hasábok,
+margók, betűméretek, térközök, alsó hasábok, valamint az illesztési küszöb
+beállítását támogatja. A tájolásváltó felcseréli az oldal szélességét és magasságát.
+A „Helyi mintaszövegek használata” kapcsolóval a `samples/` tartalma használható
+az alapértelmezett forrásokhoz API-hozzáférés nélkül; a kapcsoló kikapcsolásával
+a Sefaria URL-ek lépnek érvénybe. A kiválasztás a PDF-generálásra is vonatkozik.
+A Sefaria hivatkozás mentésekor a felület lekéri a szöveget. A tördelést
+befolyásoló változtatások után a felület automatikusan újraszámolja az
+oldalhatárokat, és a tényleges PDF-oldalak között az „Előző oldal” és
+„Következő oldal” gombokkal lehet lapozni. A hosszabb szövegek tördelése időigényes.
+A frissített tördelési beállításokat az automatikus újraszámolás a
+`config.ui.yaml` fájlba menti. A „Konfiguráció mentése” külön is használható.
+A „Mentés és PDF készítése” ezt a konfigurációt
+használja, és az elkészült PDF letölthető a felületről. Az előnézet tájékoztató
+jellege miatt az újratördelés alatt még az előző PDF-oldalt mutatja.
 
 Betűtípusok: a sablon a `Frank Ruhl Libre`, `David Libre`, `Noto Serif Hebrew`, `Noto Sans Hebrew` családokat keresi. Ha egy `fonts/` mappa létezik a projektben, a Typst automatikusan onnan is tölt (`--font-path fonts`). Ha a betű hiányzik, a Typst figyelmeztet, és tartalék betűre vált, a kimenet ettől még elkészül. **A mérés és a renderelés ugyanazt a betűkészletet látja, ezért az oldalbeosztás betűfüggő.**
 
