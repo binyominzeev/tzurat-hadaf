@@ -2,448 +2,63 @@
  "unit": "yotzer_or",
  "main": [
   {
-   "text": "בָּרוּךְ",
-   "norm": "ברכ",
-   "glue": false
-  },
-  {
-   "text": "אַתָּה",
-   "norm": "אתה",
-   "glue": false
-  },
-  {
-   "text": "יְהֹוָה",
-   "norm": "ה",
-   "glue": false
-  },
-  {
-   "text": "אֱלֹהֵֽינוּ",
-   "norm": "אלהנ",
-   "glue": false
-  },
-  {
-   "text": "מֶֽלֶךְ",
-   "norm": "מלכ",
-   "glue": false
-  },
-  {
-   "text": "הָעוֹלָם",
-   "norm": "העלמ",
-   "glue": false
-  },
-  {
-   "text": "יוֹצֵר",
-   "norm": "צר",
-   "glue": false
-  },
-  {
-   "text": "אוֹר",
-   "norm": "אר",
-   "glue": false
-  },
-  {
-   "text": "וּבוֹרֵא",
-   "norm": "ברא",
-   "glue": false
-  },
-  {
-   "text": "חֽשֶׁךְ",
-   "norm": "חשכ",
-   "glue": false
-  },
-  {
-   "text": "עֹשֶׂה",
-   "norm": "עשה",
-   "glue": false
-  },
-  {
-   "text": "שָׁלוֹם",
-   "norm": "שלמ",
-   "glue": false
-  },
-  {
-   "text": "וּבוֹרֵא",
-   "norm": "ברא",
-   "glue": false
-  },
-  {
-   "text": "אֶת־",
-   "norm": "את",
-   "glue": true
-  },
-  {
-   "text": "הַכֹּל:",
-   "norm": "הכל",
-   "glue": false
-  },
-  {
-   "text": "הַמֵּאִיר",
-   "norm": "המאר",
-   "glue": false
-  },
-  {
-   "text": "לָאָֽרֶץ",
-   "norm": "לארצ",
-   "glue": false
-  },
-  {
-   "text": "וְלַדָּרִים",
-   "norm": "לדרמ",
-   "glue": false
-  },
-  {
-   "text": "עָלֶֽיהָ",
-   "norm": "עלה",
-   "glue": false
-  },
-  {
-   "text": "בְּרַחֲמִים",
-   "norm": "ברחממ",
-   "glue": false
-  },
-  {
-   "text": "וּבְטוּבוֹ",
-   "norm": "בטב",
-   "glue": false
-  },
-  {
-   "text": "מְחַדֵּשׁ",
-   "norm": "מחדש",
-   "glue": false
-  },
-  {
-   "text": "בְּכָל־",
-   "norm": "בכל",
-   "glue": true
-  },
-  {
-   "text": "יוֹם",
-   "norm": "מ",
-   "glue": false
-  },
-  {
-   "text": "תָּמִיד",
-   "norm": "תמד",
-   "glue": false
-  },
-  {
-   "text": "מַעֲשֵׂה",
-   "norm": "מעשה",
-   "glue": false
-  },
-  {
-   "text": "בְרֵאשִׁית:",
+   "text": "בְּרֵאשִׁית",
    "norm": "בראשת",
    "glue": false
   },
   {
-   "text": "מָה־",
-   "norm": "מה",
-   "glue": true
-  },
-  {
-   "text": "רַבּוּ",
-   "norm": "רב",
+   "text": "בָּרָא",
+   "norm": "ברא",
    "glue": false
   },
   {
-   "text": "מַעֲשֶׂיךָ",
-   "norm": "מעשכ",
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
    "glue": false
   },
   {
-   "text": "יְהֹוָה",
-   "norm": "ה",
+   "text": "אֵת",
+   "norm": "את",
    "glue": false
   },
   {
-   "text": "כֻּלָּם",
-   "norm": "כלמ",
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
    "glue": false
   },
   {
-   "text": "בְּחָכְמָה",
-   "norm": "בחכמה",
+   "text": "וְאֵת",
+   "norm": "את",
    "glue": false
   },
   {
-   "text": "עָשִׂיתָ",
-   "norm": "עשת",
-   "glue": false
-  },
-  {
-   "text": "מָלְאָה",
-   "norm": "מלאה",
-   "glue": false
-  },
-  {
-   "text": "הָאָרֶץ",
+   "text": "הָאָֽרֶץ׃",
    "norm": "הארצ",
    "glue": false
   },
   {
-   "text": "קִנְיָנֶֽךָ:",
-   "norm": "קננכ",
+   "text": "וְהָאָרֶץ",
+   "norm": "הארצ",
    "glue": false
   },
   {
-   "text": "הַמֶּֽלֶךְ",
-   "norm": "המלכ",
+   "text": "הָיְתָה",
+   "norm": "התה",
    "glue": false
   },
   {
-   "text": "הַמְרוֹמָם",
-   "norm": "המרממ",
+   "text": "תֹהוּ",
+   "norm": "תה",
    "glue": false
   },
   {
-   "text": "לְבַדּוֹ",
-   "norm": "לבד",
+   "text": "וָבֹהוּ",
+   "norm": "בה",
    "glue": false
   },
   {
-   "text": "מֵאָז.",
-   "norm": "מאז",
-   "glue": false
-  },
-  {
-   "text": "הַמְשֻׁבָּח",
-   "norm": "המשבח",
-   "glue": false
-  },
-  {
-   "text": "וְהַמְפֹאָר",
-   "norm": "המפאר",
-   "glue": false
-  },
-  {
-   "text": "וְהַמִּתְנַשֵּׂא",
-   "norm": "המתנשא",
-   "glue": false
-  },
-  {
-   "text": "מִימוֹת",
-   "norm": "ממת",
-   "glue": false
-  },
-  {
-   "text": "עוֹלָם:",
-   "norm": "עלמ",
-   "glue": false
-  },
-  {
-   "text": "אֱלֹהֵי",
-   "norm": "אלה",
-   "glue": false
-  },
-  {
-   "text": "עוֹלָם",
-   "norm": "עלמ",
-   "glue": false
-  },
-  {
-   "text": "בְּרַחֲמֶֽיךָ",
-   "norm": "ברחמכ",
-   "glue": false
-  },
-  {
-   "text": "הָרַבִּים",
-   "norm": "הרבמ",
-   "glue": false
-  },
-  {
-   "text": "רַחֵם",
-   "norm": "רחמ",
-   "glue": false
-  },
-  {
-   "text": "עָלֵֽינוּ",
-   "norm": "עלנ",
-   "glue": false
-  },
-  {
-   "text": "אֲדוֹן",
-   "norm": "אדנ",
-   "glue": false
-  },
-  {
-   "text": "עֻזֵּֽנוּ",
-   "norm": "עזנ",
-   "glue": false
-  },
-  {
-   "text": "צוּר",
-   "norm": "צר",
-   "glue": false
-  },
-  {
-   "text": "מִשְׂגַּבֵּֽנוּ",
-   "norm": "משגבנ",
-   "glue": false
-  },
-  {
-   "text": "מָגֵן",
-   "norm": "מגנ",
-   "glue": false
-  },
-  {
-   "text": "יִשְׁעֵֽנוּ",
-   "norm": "שענ",
-   "glue": false
-  },
-  {
-   "text": "מִשְׂגָּב",
-   "norm": "משגב",
-   "glue": false
-  },
-  {
-   "text": "בַּעֲדֵֽנוּ:",
-   "norm": "בעדנ",
-   "glue": false
-  },
-  {
-   "text": "אֵל",
-   "norm": "אל",
-   "glue": false
-  },
-  {
-   "text": "בָּרוּךְ",
-   "norm": "ברכ",
-   "glue": false
-  },
-  {
-   "text": "גְּדוֹל",
-   "norm": "גדל",
-   "glue": false
-  },
-  {
-   "text": "דֵּעָה",
-   "norm": "דעה",
-   "glue": false
-  },
-  {
-   "text": "הֵכִין",
-   "norm": "הכנ",
-   "glue": false
-  },
-  {
-   "text": "וּפָעַל",
-   "norm": "פעל",
-   "glue": false
-  },
-  {
-   "text": "זָהֳרֵי",
-   "norm": "זהר",
-   "glue": false
-  },
-  {
-   "text": "חַמָּה:",
-   "norm": "חמה",
-   "glue": false
-  },
-  {
-   "text": "טוֹב",
-   "norm": "טב",
-   "glue": false
-  },
-  {
-   "text": "יָצַר",
-   "norm": "צר",
-   "glue": false
-  },
-  {
-   "text": "כָּבוֹד",
-   "norm": "כבד",
-   "glue": false
-  },
-  {
-   "text": "לִשְׁמוֹ",
-   "norm": "לשמ",
-   "glue": false
-  },
-  {
-   "text": "מְאוֹרוֹת",
-   "norm": "מארת",
-   "glue": false
-  },
-  {
-   "text": "נָתַן",
-   "norm": "נתנ",
-   "glue": false
-  },
-  {
-   "text": "סְבִיבוֹת",
-   "norm": "סבבת",
-   "glue": false
-  },
-  {
-   "text": "עֻזּוֹ:",
-   "norm": "עז",
-   "glue": false
-  },
-  {
-   "text": "פִּנּוֹת",
-   "norm": "פנת",
-   "glue": false
-  },
-  {
-   "text": "צְבָאָיו",
-   "norm": "צבא",
-   "glue": false
-  },
-  {
-   "text": "קְדוֹשִׁים",
-   "norm": "קדשמ",
-   "glue": false
-  },
-  {
-   "text": "רוֹמְמֵי",
-   "norm": "רממ",
-   "glue": false
-  },
-  {
-   "text": "שַׁדַּי",
-   "norm": "שד",
-   "glue": false
-  },
-  {
-   "text": "תָּמִיד",
-   "norm": "תמד",
-   "glue": false
-  },
-  {
-   "text": "מְסַפְּרִים",
-   "norm": "מספרמ",
-   "glue": false
-  },
-  {
-   "text": "כְּבוֹד־",
-   "norm": "כבד",
-   "glue": true
-  },
-  {
-   "text": "אֵל",
-   "norm": "אל",
-   "glue": false
-  },
-  {
-   "text": "וּקְדֻשָּׁתוֹ:",
-   "norm": "קדשת",
-   "glue": false
-  },
-  {
-   "text": "תִּתְבָּרַךְ",
-   "norm": "תתברכ",
-   "glue": false
-  },
-  {
-   "text": "יְהֹוָה",
-   "norm": "ה",
-   "glue": false
-  },
-  {
-   "text": "אֱלֹהֵֽינוּ",
-   "norm": "אלהנ",
+   "text": "וְחֹשֶׁךְ",
+   "norm": "חשכ",
    "glue": false
   },
   {
@@ -452,28 +67,58 @@
    "glue": true
   },
   {
-   "text": "שֶֽׁבַח",
-   "norm": "שבח",
+   "text": "פְּנֵי",
+   "norm": "פנ",
    "glue": false
   },
   {
-   "text": "מַעֲשֵׂה",
-   "norm": "מעשה",
+   "text": "תְהוֹם",
+   "norm": "תהמ",
    "glue": false
   },
   {
-   "text": "יָדֶֽיךָ",
-   "norm": "דכ",
+   "text": "וְרוּחַ",
+   "norm": "רח",
    "glue": false
   },
   {
-   "text": "וְעַל־",
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "מְרַחֶפֶת",
+   "norm": "מרחפת",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
    "norm": "על",
    "glue": true
   },
   {
-   "text": "מְאֽוֹרֵי",
-   "norm": "מאר",
+   "text": "פְּנֵי",
+   "norm": "פנ",
+   "glue": false
+  },
+  {
+   "text": "הַמָּֽיִם׃",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "יְהִי",
+   "norm": "ה",
    "glue": false
   },
   {
@@ -482,18 +127,4158 @@
    "glue": false
   },
   {
-   "text": "שֶׁעָשִֽׂיתָ",
-   "norm": "שעשת",
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "אֽוֹר׃",
+   "norm": "אר",
    "glue": false
   },
   {
-   "text": "יְפָאֲרֽוּךָ",
-   "norm": "פארכ",
+   "text": "וַיַּרְא",
+   "norm": "רא",
    "glue": false
   },
   {
-   "text": "סֶּֽלָה:",
-   "norm": "סלה",
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָאוֹר",
+   "norm": "האר",
+   "glue": false
+  },
+  {
+   "text": "כִּי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וַיַּבְדֵּל",
+   "norm": "בדל",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "בֵּין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הָאוֹר",
+   "norm": "האר",
+   "glue": false
+  },
+  {
+   "text": "וּבֵין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הַחֹֽשֶׁךְ׃",
+   "norm": "החשכ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּקְרָא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לָאוֹר",
+   "norm": "לאר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "וְלַחֹשֶׁךְ",
+   "norm": "לחשכ",
+   "glue": false
+  },
+  {
+   "text": "קָרָא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "לָיְלָה",
+   "norm": "ללה",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "עֶרֶב",
+   "norm": "ערב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "בֹקֶר",
+   "norm": "בקר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "אֶחָֽד׃",
+   "norm": "אחד",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "יְהִי",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "רָקִיעַ",
+   "norm": "רקע",
+   "glue": false
+  },
+  {
+   "text": "בְּתוֹךְ",
+   "norm": "בתכ",
+   "glue": false
+  },
+  {
+   "text": "הַמָּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "וִיהִי",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "מַבְדִּיל",
+   "norm": "מבדל",
+   "glue": false
+  },
+  {
+   "text": "בֵּין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "מַיִם",
+   "norm": "ממ",
+   "glue": false
+  },
+  {
+   "text": "לָמָֽיִם׃",
+   "norm": "לממ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּעַשׂ",
+   "norm": "עש",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָרָקִיעַ",
+   "norm": "הרקע",
+   "glue": false
+  },
+  {
+   "text": "וַיַּבְדֵּל",
+   "norm": "בדל",
+   "glue": false
+  },
+  {
+   "text": "בֵּין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "מִתַּחַת",
+   "norm": "מתחת",
+   "glue": false
+  },
+  {
+   "text": "לָרָקִיעַ",
+   "norm": "לרקע",
+   "glue": false
+  },
+  {
+   "text": "וּבֵין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "מֵעַל",
+   "norm": "מעל",
+   "glue": false
+  },
+  {
+   "text": "לָרָקִיעַ",
+   "norm": "לרקע",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "כֵֽן׃",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּקְרָא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לָֽרָקִיעַ",
+   "norm": "לרקע",
+   "glue": false
+  },
+  {
+   "text": "שָׁמָיִם",
+   "norm": "שממ",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "עֶרֶב",
+   "norm": "ערב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "בֹקֶר",
+   "norm": "בקר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "שֵׁנִֽי׃",
+   "norm": "שנ",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "יִקָּווּ",
+   "norm": "ק",
+   "glue": false
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "מִתַּחַת",
+   "norm": "מתחת",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "אֶל־",
+   "norm": "אל",
+   "glue": true
+  },
+  {
+   "text": "מָקוֹם",
+   "norm": "מקמ",
+   "glue": false
+  },
+  {
+   "text": "אֶחָד",
+   "norm": "אחד",
+   "glue": false
+  },
+  {
+   "text": "וְתֵרָאֶה",
+   "norm": "תראה",
+   "glue": false
+  },
+  {
+   "text": "הַיַּבָּשָׁה",
+   "norm": "הבשה",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "כֵֽן׃",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּקְרָא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לַיַּבָּשָׁה",
+   "norm": "לבשה",
+   "glue": false
+  },
+  {
+   "text": "אֶרֶץ",
+   "norm": "ארצ",
+   "glue": false
+  },
+  {
+   "text": "וּלְמִקְוֵה",
+   "norm": "למקה",
+   "glue": false
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "קָרָא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "יַמִּים",
+   "norm": "ממ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּרְא",
+   "norm": "רא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "כִּי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "טֽוֹב׃",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "תַּֽדְשֵׁא",
+   "norm": "תדשא",
+   "glue": false
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "דֶּשֶׁא",
+   "norm": "דשא",
+   "glue": false
+  },
+  {
+   "text": "עֵשֶׂב",
+   "norm": "עשב",
+   "glue": false
+  },
+  {
+   "text": "מַזְרִיעַ",
+   "norm": "מזרע",
+   "glue": false
+  },
+  {
+   "text": "זֶרַע",
+   "norm": "זרע",
+   "glue": false
+  },
+  {
+   "text": "עֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "פְּרִי",
+   "norm": "פר",
+   "glue": false
+  },
+  {
+   "text": "עֹשֶׂה",
+   "norm": "עשה",
+   "glue": false
+  },
+  {
+   "text": "פְּרִי",
+   "norm": "פר",
+   "glue": false
+  },
+  {
+   "text": "לְמִינוֹ",
+   "norm": "למנ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "זַרְעוֹ־",
+   "norm": "זרע",
+   "glue": true
+  },
+  {
+   "text": "בוֹ",
+   "norm": "ב",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "כֵֽן׃",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "וַתּוֹצֵא",
+   "norm": "תצא",
+   "glue": false
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "דֶּשֶׁא",
+   "norm": "דשא",
+   "glue": false
+  },
+  {
+   "text": "עֵשֶׂב",
+   "norm": "עשב",
+   "glue": false
+  },
+  {
+   "text": "מַזְרִיעַ",
+   "norm": "מזרע",
+   "glue": false
+  },
+  {
+   "text": "זֶרַע",
+   "norm": "זרע",
+   "glue": false
+  },
+  {
+   "text": "לְמִינֵהוּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וְעֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "עֹֽשֶׂה־",
+   "norm": "עשה",
+   "glue": true
+  },
+  {
+   "text": "פְּרִי",
+   "norm": "פר",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "זַרְעוֹ־",
+   "norm": "זרע",
+   "glue": true
+  },
+  {
+   "text": "בוֹ",
+   "norm": "ב",
+   "glue": false
+  },
+  {
+   "text": "לְמִינֵהוּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וַיַּרְא",
+   "norm": "רא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "כִּי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "טֽוֹב׃",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "עֶרֶב",
+   "norm": "ערב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "בֹקֶר",
+   "norm": "בקר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "שְׁלִישִֽׁי׃",
+   "norm": "שלש",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "יְהִי",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "מְאֹרֹת",
+   "norm": "מארת",
+   "glue": false
+  },
+  {
+   "text": "בִּרְקִיעַ",
+   "norm": "ברקע",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "לְהַבְדִּיל",
+   "norm": "להבדל",
+   "glue": false
+  },
+  {
+   "text": "בֵּין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הַיּוֹם",
+   "norm": "המ",
+   "glue": false
+  },
+  {
+   "text": "וּבֵין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הַלָּיְלָה",
+   "norm": "הללה",
+   "glue": false
+  },
+  {
+   "text": "וְהָיוּ",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "לְאֹתֹת",
+   "norm": "לאתת",
+   "glue": false
+  },
+  {
+   "text": "וּלְמוֹעֲדִים",
+   "norm": "למעדמ",
+   "glue": false
+  },
+  {
+   "text": "וּלְיָמִים",
+   "norm": "לממ",
+   "glue": false
+  },
+  {
+   "text": "וְשָׁנִֽים׃",
+   "norm": "שנמ",
+   "glue": false
+  },
+  {
+   "text": "וְהָיוּ",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "לִמְאוֹרֹת",
+   "norm": "למארת",
+   "glue": false
+  },
+  {
+   "text": "בִּרְקִיעַ",
+   "norm": "ברקע",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "לְהָאִיר",
+   "norm": "להאר",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "כֵֽן׃",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּעַשׂ",
+   "norm": "עש",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "שְׁנֵי",
+   "norm": "שנ",
+   "glue": false
+  },
+  {
+   "text": "הַמְּאֹרֹת",
+   "norm": "המארת",
+   "glue": false
+  },
+  {
+   "text": "הַגְּדֹלִים",
+   "norm": "הגדלמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַמָּאוֹר",
+   "norm": "המאר",
+   "glue": false
+  },
+  {
+   "text": "הַגָּדֹל",
+   "norm": "הגדל",
+   "glue": false
+  },
+  {
+   "text": "לְמֶמְשֶׁלֶת",
+   "norm": "לממשלת",
+   "glue": false
+  },
+  {
+   "text": "הַיּוֹם",
+   "norm": "המ",
+   "glue": false
+  },
+  {
+   "text": "וְאֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַמָּאוֹר",
+   "norm": "המאר",
+   "glue": false
+  },
+  {
+   "text": "הַקָּטֹן",
+   "norm": "הקטנ",
+   "glue": false
+  },
+  {
+   "text": "לְמֶמְשֶׁלֶת",
+   "norm": "לממשלת",
+   "glue": false
+  },
+  {
+   "text": "הַלַּיְלָה",
+   "norm": "הללה",
+   "glue": false
+  },
+  {
+   "text": "וְאֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "הַכּוֹכָבִֽים׃",
+   "norm": "הככבמ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּתֵּן",
+   "norm": "תנ",
+   "glue": false
+  },
+  {
+   "text": "אֹתָם",
+   "norm": "אתמ",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "בִּרְקִיעַ",
+   "norm": "ברקע",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמָיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "לְהָאִיר",
+   "norm": "להאר",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָֽרֶץ׃",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וְלִמְשֹׁל",
+   "norm": "למשל",
+   "glue": false
+  },
+  {
+   "text": "בַּיּוֹם",
+   "norm": "במ",
+   "glue": false
+  },
+  {
+   "text": "וּבַלַּיְלָה",
+   "norm": "בללה",
+   "glue": false
+  },
+  {
+   "text": "וּֽלְהַבְדִּיל",
+   "norm": "להבדל",
+   "glue": false
+  },
+  {
+   "text": "בֵּין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הָאוֹר",
+   "norm": "האר",
+   "glue": false
+  },
+  {
+   "text": "וּבֵין",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "הַחֹשֶׁךְ",
+   "norm": "החשכ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּרְא",
+   "norm": "רא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "כִּי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "טֽוֹב׃",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "עֶרֶב",
+   "norm": "ערב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "בֹקֶר",
+   "norm": "בקר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "רְבִיעִֽי׃",
+   "norm": "רבע",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "יִשְׁרְצוּ",
+   "norm": "שרצ",
+   "glue": false
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "שֶׁרֶץ",
+   "norm": "שרצ",
+   "glue": false
+  },
+  {
+   "text": "נֶפֶשׁ",
+   "norm": "נפש",
+   "glue": false
+  },
+  {
+   "text": "חַיָּה",
+   "norm": "חה",
+   "glue": false
+  },
+  {
+   "text": "וְעוֹף",
+   "norm": "עפ",
+   "glue": false
+  },
+  {
+   "text": "יְעוֹפֵף",
+   "norm": "עפפ",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "פְּנֵי",
+   "norm": "פנ",
+   "glue": false
+  },
+  {
+   "text": "רְקִיעַ",
+   "norm": "רקע",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמָֽיִם׃",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּבְרָא",
+   "norm": "ברא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַתַּנִּינִם",
+   "norm": "התננמ",
+   "glue": false
+  },
+  {
+   "text": "הַגְּדֹלִים",
+   "norm": "הגדלמ",
+   "glue": false
+  },
+  {
+   "text": "וְאֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "נֶפֶשׁ",
+   "norm": "נפש",
+   "glue": false
+  },
+  {
+   "text": "הַֽחַיָּה",
+   "norm": "החה",
+   "glue": false
+  },
+  {
+   "text": "הָֽרֹמֶשֶׂת",
+   "norm": "הרמשת",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "שָׁרְצוּ",
+   "norm": "שרצ",
+   "glue": false
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "לְמִֽינֵהֶם",
+   "norm": "למנהמ",
+   "glue": false
+  },
+  {
+   "text": "וְאֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "עוֹף",
+   "norm": "עפ",
+   "glue": false
+  },
+  {
+   "text": "כָּנָף",
+   "norm": "כנפ",
+   "glue": false
+  },
+  {
+   "text": "לְמִינֵהוּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וַיַּרְא",
+   "norm": "רא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "כִּי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "טֽוֹב׃",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וַיְבָרֶךְ",
+   "norm": "ברכ",
+   "glue": false
+  },
+  {
+   "text": "אֹתָם",
+   "norm": "אתמ",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לֵאמֹר",
+   "norm": "לאמר",
+   "glue": false
+  },
+  {
+   "text": "פְּרוּ",
+   "norm": "פר",
+   "glue": false
+  },
+  {
+   "text": "וּרְבוּ",
+   "norm": "רב",
+   "glue": false
+  },
+  {
+   "text": "וּמִלְאוּ",
+   "norm": "מלא",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַמַּיִם",
+   "norm": "הממ",
+   "glue": false
+  },
+  {
+   "text": "בַּיַּמִּים",
+   "norm": "בממ",
+   "glue": false
+  },
+  {
+   "text": "וְהָעוֹף",
+   "norm": "העפ",
+   "glue": false
+  },
+  {
+   "text": "יִרֶב",
+   "norm": "רב",
+   "glue": false
+  },
+  {
+   "text": "בָּאָֽרֶץ׃",
+   "norm": "בארצ",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "עֶרֶב",
+   "norm": "ערב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "בֹקֶר",
+   "norm": "בקר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "חֲמִישִֽׁי׃",
+   "norm": "חמש",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "תּוֹצֵא",
+   "norm": "תצא",
+   "glue": false
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "נֶפֶשׁ",
+   "norm": "נפש",
+   "glue": false
+  },
+  {
+   "text": "חַיָּה",
+   "norm": "חה",
+   "glue": false
+  },
+  {
+   "text": "לְמִינָהּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "בְּהֵמָה",
+   "norm": "בהמה",
+   "glue": false
+  },
+  {
+   "text": "וָרֶמֶשׂ",
+   "norm": "רמש",
+   "glue": false
+  },
+  {
+   "text": "וְחַֽיְתוֹ־",
+   "norm": "חת",
+   "glue": true
+  },
+  {
+   "text": "אֶרֶץ",
+   "norm": "ארצ",
+   "glue": false
+  },
+  {
+   "text": "לְמִינָהּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "כֵֽן׃",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּעַשׂ",
+   "norm": "עש",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "חַיַּת",
+   "norm": "חת",
+   "glue": false
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "לְמִינָהּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וְאֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַבְּהֵמָה",
+   "norm": "הבהמה",
+   "glue": false
+  },
+  {
+   "text": "לְמִינָהּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וְאֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "רֶמֶשׂ",
+   "norm": "רמש",
+   "glue": false
+  },
+  {
+   "text": "הָֽאֲדָמָה",
+   "norm": "האדמה",
+   "glue": false
+  },
+  {
+   "text": "לְמִינֵהוּ",
+   "norm": "למנה",
+   "glue": false
+  },
+  {
+   "text": "וַיַּרְא",
+   "norm": "רא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "כִּי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "טֽוֹב׃",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "נַֽעֲשֶׂה",
+   "norm": "נעשה",
+   "glue": false
+  },
+  {
+   "text": "אָדָם",
+   "norm": "אדמ",
+   "glue": false
+  },
+  {
+   "text": "בְּצַלְמֵנוּ",
+   "norm": "בצלמנ",
+   "glue": false
+  },
+  {
+   "text": "כִּדְמוּתֵנוּ",
+   "norm": "כדמתנ",
+   "glue": false
+  },
+  {
+   "text": "וְיִרְדּוּ",
+   "norm": "רד",
+   "glue": false
+  },
+  {
+   "text": "בִדְגַת",
+   "norm": "בדגת",
+   "glue": false
+  },
+  {
+   "text": "הַיָּם",
+   "norm": "המ",
+   "glue": false
+  },
+  {
+   "text": "וּבְעוֹף",
+   "norm": "בעפ",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וּבַבְּהֵמָה",
+   "norm": "בבהמה",
+   "glue": false
+  },
+  {
+   "text": "וּבְכׇל־",
+   "norm": "בכל",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וּבְכׇל־",
+   "norm": "בכל",
+   "glue": true
+  },
+  {
+   "text": "הָרֶמֶשׂ",
+   "norm": "הרמש",
+   "glue": false
+  },
+  {
+   "text": "הָֽרֹמֵשׂ",
+   "norm": "הרמש",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָֽרֶץ׃",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּבְרָא",
+   "norm": "ברא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "בְּצַלְמוֹ",
+   "norm": "בצלמ",
+   "glue": false
+  },
+  {
+   "text": "בְּצֶלֶם",
+   "norm": "בצלמ",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "בָּרָא",
+   "norm": "ברא",
+   "glue": false
+  },
+  {
+   "text": "אֹתוֹ",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "זָכָר",
+   "norm": "זכר",
+   "glue": false
+  },
+  {
+   "text": "וּנְקֵבָה",
+   "norm": "נקבה",
+   "glue": false
+  },
+  {
+   "text": "בָּרָא",
+   "norm": "ברא",
+   "glue": false
+  },
+  {
+   "text": "אֹתָֽם׃",
+   "norm": "אתמ",
+   "glue": false
+  },
+  {
+   "text": "וַיְבָרֶךְ",
+   "norm": "ברכ",
+   "glue": false
+  },
+  {
+   "text": "אֹתָם",
+   "norm": "אתמ",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "לָהֶם",
+   "norm": "להמ",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "פְּרוּ",
+   "norm": "פר",
+   "glue": false
+  },
+  {
+   "text": "וּרְבוּ",
+   "norm": "רב",
+   "glue": false
+  },
+  {
+   "text": "וּמִלְאוּ",
+   "norm": "מלא",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וְכִבְשֻׁהָ",
+   "norm": "כבשה",
+   "glue": false
+  },
+  {
+   "text": "וּרְדוּ",
+   "norm": "רד",
+   "glue": false
+  },
+  {
+   "text": "בִּדְגַת",
+   "norm": "בדגת",
+   "glue": false
+  },
+  {
+   "text": "הַיָּם",
+   "norm": "המ",
+   "glue": false
+  },
+  {
+   "text": "וּבְעוֹף",
+   "norm": "בעפ",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וּבְכׇל־",
+   "norm": "בכל",
+   "glue": true
+  },
+  {
+   "text": "חַיָּה",
+   "norm": "חה",
+   "glue": false
+  },
+  {
+   "text": "הָֽרֹמֶשֶׂת",
+   "norm": "הרמשת",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָֽרֶץ׃",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "הִנֵּה",
+   "norm": "הנה",
+   "glue": false
+  },
+  {
+   "text": "נָתַתִּי",
+   "norm": "נתת",
+   "glue": false
+  },
+  {
+   "text": "לָכֶם",
+   "norm": "לכמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "עֵשֶׂב",
+   "norm": "עשב",
+   "glue": false
+  },
+  {
+   "text": "זֹרֵעַ",
+   "norm": "זרע",
+   "glue": false
+  },
+  {
+   "text": "זֶרַע",
+   "norm": "זרע",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "פְּנֵי",
+   "norm": "פנ",
+   "glue": false
+  },
+  {
+   "text": "כׇל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וְאֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "הָעֵץ",
+   "norm": "העצ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר־",
+   "norm": "אשר",
+   "glue": true
+  },
+  {
+   "text": "בּוֹ",
+   "norm": "ב",
+   "glue": false
+  },
+  {
+   "text": "פְרִי־",
+   "norm": "פר",
+   "glue": true
+  },
+  {
+   "text": "עֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "זֹרֵעַ",
+   "norm": "זרע",
+   "glue": false
+  },
+  {
+   "text": "זָרַע",
+   "norm": "זרע",
+   "glue": false
+  },
+  {
+   "text": "לָכֶם",
+   "norm": "לכמ",
+   "glue": false
+  },
+  {
+   "text": "יִֽהְיֶה",
+   "norm": "הה",
+   "glue": false
+  },
+  {
+   "text": "לְאׇכְלָֽה׃",
+   "norm": "לאכלה",
+   "glue": false
+  },
+  {
+   "text": "וּֽלְכׇל־",
+   "norm": "לכל",
+   "glue": true
+  },
+  {
+   "text": "חַיַּת",
+   "norm": "חת",
+   "glue": false
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וּלְכׇל־",
+   "norm": "לכל",
+   "glue": true
+  },
+  {
+   "text": "עוֹף",
+   "norm": "עפ",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וּלְכֹל",
+   "norm": "לכל",
+   "glue": false
+  },
+  {
+   "text": "רוֹמֵשׂ",
+   "norm": "רמש",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר־",
+   "norm": "אשר",
+   "glue": true
+  },
+  {
+   "text": "בּוֹ",
+   "norm": "ב",
+   "glue": false
+  },
+  {
+   "text": "נֶפֶשׁ",
+   "norm": "נפש",
+   "glue": false
+  },
+  {
+   "text": "חַיָּה",
+   "norm": "חה",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "יֶרֶק",
+   "norm": "רק",
+   "glue": false
+  },
+  {
+   "text": "עֵשֶׂב",
+   "norm": "עשב",
+   "glue": false
+  },
+  {
+   "text": "לְאׇכְלָה",
+   "norm": "לאכלה",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "כֵֽן׃",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּרְא",
+   "norm": "רא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "עָשָׂה",
+   "norm": "עשה",
+   "glue": false
+  },
+  {
+   "text": "וְהִנֵּה־",
+   "norm": "הנה",
+   "glue": true
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "מְאֹד",
+   "norm": "מאד",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "עֶרֶב",
+   "norm": "ערב",
+   "glue": false
+  },
+  {
+   "text": "וַֽיְהִי־",
+   "norm": "ה",
+   "glue": true
+  },
+  {
+   "text": "בֹקֶר",
+   "norm": "בקר",
+   "glue": false
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "הַשִּׁשִּֽׁי׃",
+   "norm": "השש",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "וַיְכֻלּוּ",
+   "norm": "כל",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וְהָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וְכׇל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "צְבָאָֽם׃",
+   "norm": "צבאמ",
+   "glue": false
+  },
+  {
+   "text": "וַיְכַל",
+   "norm": "כל",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "בַּיּוֹם",
+   "norm": "במ",
+   "glue": false
+  },
+  {
+   "text": "הַשְּׁבִיעִי",
+   "norm": "השבע",
+   "glue": false
+  },
+  {
+   "text": "מְלַאכְתּוֹ",
+   "norm": "מלאכת",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "עָשָׂה",
+   "norm": "עשה",
+   "glue": false
+  },
+  {
+   "text": "וַיִּשְׁבֹּת",
+   "norm": "שבת",
+   "glue": false
+  },
+  {
+   "text": "בַּיּוֹם",
+   "norm": "במ",
+   "glue": false
+  },
+  {
+   "text": "הַשְּׁבִיעִי",
+   "norm": "השבע",
+   "glue": false
+  },
+  {
+   "text": "מִכׇּל־",
+   "norm": "מכל",
+   "glue": true
+  },
+  {
+   "text": "מְלַאכְתּוֹ",
+   "norm": "מלאכת",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "עָשָֽׂה׃",
+   "norm": "עשה",
+   "glue": false
+  },
+  {
+   "text": "וַיְבָרֶךְ",
+   "norm": "ברכ",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "יוֹם",
+   "norm": "מ",
+   "glue": false
+  },
+  {
+   "text": "הַשְּׁבִיעִי",
+   "norm": "השבע",
+   "glue": false
+  },
+  {
+   "text": "וַיְקַדֵּשׁ",
+   "norm": "קדש",
+   "glue": false
+  },
+  {
+   "text": "אֹתוֹ",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "בוֹ",
+   "norm": "ב",
+   "glue": false
+  },
+  {
+   "text": "שָׁבַת",
+   "norm": "שבת",
+   "glue": false
+  },
+  {
+   "text": "מִכׇּל־",
+   "norm": "מכל",
+   "glue": true
+  },
+  {
+   "text": "מְלַאכְתּוֹ",
+   "norm": "מלאכת",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר־",
+   "norm": "אשר",
+   "glue": true
+  },
+  {
+   "text": "בָּרָא",
+   "norm": "ברא",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לַעֲשֽׂוֹת׃",
+   "norm": "לעשת",
+   "glue": false
+  },
+  {
+   "text": "{פ}",
+   "norm": "פ",
+   "glue": false
+  },
+  {
+   "text": "אֵלֶּה",
+   "norm": "אלה",
+   "glue": false
+  },
+  {
+   "text": "תוֹלְדוֹת",
+   "norm": "תלדת",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וְהָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "בְּהִבָּֽרְאָם",
+   "norm": "בהבראמ",
+   "glue": false
+  },
+  {
+   "text": "בְּיוֹם",
+   "norm": "במ",
+   "glue": false
+  },
+  {
+   "text": "עֲשׂוֹת",
+   "norm": "עשת",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶרֶץ",
+   "norm": "ארצ",
+   "glue": false
+  },
+  {
+   "text": "וְשָׁמָֽיִם׃",
+   "norm": "שממ",
+   "glue": false
+  },
+  {
+   "text": "וְכֹל",
+   "norm": "כל",
+   "glue": false
+  },
+  {
+   "text": "שִׂיחַ",
+   "norm": "שח",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׂדֶה",
+   "norm": "השדה",
+   "glue": false
+  },
+  {
+   "text": "טֶרֶם",
+   "norm": "טרמ",
+   "glue": false
+  },
+  {
+   "text": "יִֽהְיֶה",
+   "norm": "הה",
+   "glue": false
+  },
+  {
+   "text": "בָאָרֶץ",
+   "norm": "בארצ",
+   "glue": false
+  },
+  {
+   "text": "וְכׇל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "עֵשֶׂב",
+   "norm": "עשב",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׂדֶה",
+   "norm": "השדה",
+   "glue": false
+  },
+  {
+   "text": "טֶרֶם",
+   "norm": "טרמ",
+   "glue": false
+  },
+  {
+   "text": "יִצְמָח",
+   "norm": "צמח",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "לֹא",
+   "norm": "לא",
+   "glue": false
+  },
+  {
+   "text": "הִמְטִיר",
+   "norm": "המטר",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וְאָדָם",
+   "norm": "אדמ",
+   "glue": false
+  },
+  {
+   "text": "אַיִן",
+   "norm": "אנ",
+   "glue": false
+  },
+  {
+   "text": "לַֽעֲבֹד",
+   "norm": "לעבד",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָֽאֲדָמָֽה׃",
+   "norm": "האדמה",
+   "glue": false
+  },
+  {
+   "text": "וְאֵד",
+   "norm": "אד",
+   "glue": false
+  },
+  {
+   "text": "יַֽעֲלֶה",
+   "norm": "עלה",
+   "glue": false
+  },
+  {
+   "text": "מִן־",
+   "norm": "מנ",
+   "glue": true
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "וְהִשְׁקָה",
+   "norm": "השקה",
+   "glue": false
+  },
+  {
+   "text": "אֶֽת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "פְּנֵי",
+   "norm": "פנ",
+   "glue": false
+  },
+  {
+   "text": "הָֽאֲדָמָֽה׃",
+   "norm": "האדמה",
+   "glue": false
+  },
+  {
+   "text": "וַיִּיצֶר",
+   "norm": "צר",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "עָפָר",
+   "norm": "עפר",
+   "glue": false
+  },
+  {
+   "text": "מִן־",
+   "norm": "מנ",
+   "glue": true
+  },
+  {
+   "text": "הָאֲדָמָה",
+   "norm": "האדמה",
+   "glue": false
+  },
+  {
+   "text": "וַיִּפַּח",
+   "norm": "פח",
+   "glue": false
+  },
+  {
+   "text": "בְּאַפָּיו",
+   "norm": "באפ",
+   "glue": false
+  },
+  {
+   "text": "נִשְׁמַת",
+   "norm": "נשמת",
+   "glue": false
+  },
+  {
+   "text": "חַיִּים",
+   "norm": "חמ",
+   "glue": false
+  },
+  {
+   "text": "וַיְהִי",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "לְנֶפֶשׁ",
+   "norm": "לנפש",
+   "glue": false
+  },
+  {
+   "text": "חַיָּֽה׃",
+   "norm": "חה",
+   "glue": false
+  },
+  {
+   "text": "וַיִּטַּע",
+   "norm": "טע",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "גַּן־",
+   "norm": "גנ",
+   "glue": true
+  },
+  {
+   "text": "בְּעֵדֶן",
+   "norm": "בעדנ",
+   "glue": false
+  },
+  {
+   "text": "מִקֶּדֶם",
+   "norm": "מקדמ",
+   "glue": false
+  },
+  {
+   "text": "וַיָּשֶׂם",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "שָׁם",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "יָצָֽר׃",
+   "norm": "צר",
+   "glue": false
+  },
+  {
+   "text": "וַיַּצְמַח",
+   "norm": "צמח",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "מִן־",
+   "norm": "מנ",
+   "glue": true
+  },
+  {
+   "text": "הָאֲדָמָה",
+   "norm": "האדמה",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "עֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "נֶחְמָד",
+   "norm": "נחמד",
+   "glue": false
+  },
+  {
+   "text": "לְמַרְאֶה",
+   "norm": "למראה",
+   "glue": false
+  },
+  {
+   "text": "וְטוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "לְמַאֲכָל",
+   "norm": "למאכל",
+   "glue": false
+  },
+  {
+   "text": "וְעֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "הַֽחַיִּים",
+   "norm": "החמ",
+   "glue": false
+  },
+  {
+   "text": "בְּתוֹךְ",
+   "norm": "בתכ",
+   "glue": false
+  },
+  {
+   "text": "הַגָּן",
+   "norm": "הגנ",
+   "glue": false
+  },
+  {
+   "text": "וְעֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "הַדַּעַת",
+   "norm": "הדעת",
+   "glue": false
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וָרָֽע׃",
+   "norm": "רע",
+   "glue": false
+  },
+  {
+   "text": "וְנָהָר",
+   "norm": "נהר",
+   "glue": false
+  },
+  {
+   "text": "יֹצֵא",
+   "norm": "צא",
+   "glue": false
+  },
+  {
+   "text": "מֵעֵדֶן",
+   "norm": "מעדנ",
+   "glue": false
+  },
+  {
+   "text": "לְהַשְׁקוֹת",
+   "norm": "להשקת",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַגָּן",
+   "norm": "הגנ",
+   "glue": false
+  },
+  {
+   "text": "וּמִשָּׁם",
+   "norm": "משמ",
+   "glue": false
+  },
+  {
+   "text": "יִפָּרֵד",
+   "norm": "פרד",
+   "glue": false
+  },
+  {
+   "text": "וְהָיָה",
+   "norm": "הה",
+   "glue": false
+  },
+  {
+   "text": "לְאַרְבָּעָה",
+   "norm": "לארבעה",
+   "glue": false
+  },
+  {
+   "text": "רָאשִֽׁים׃",
+   "norm": "ראשמ",
+   "glue": false
+  },
+  {
+   "text": "שֵׁם",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "הָֽאֶחָד",
+   "norm": "האחד",
+   "glue": false
+  },
+  {
+   "text": "פִּישׁוֹן",
+   "norm": "פשנ",
+   "glue": false
+  },
+  {
+   "text": "הוּא",
+   "norm": "הא",
+   "glue": false
+  },
+  {
+   "text": "הַסֹּבֵב",
+   "norm": "הסבב",
+   "glue": false
+  },
+  {
+   "text": "אֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "אֶרֶץ",
+   "norm": "ארצ",
+   "glue": false
+  },
+  {
+   "text": "הַֽחֲוִילָה",
+   "norm": "החלה",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר־",
+   "norm": "אשר",
+   "glue": true
+  },
+  {
+   "text": "שָׁם",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "הַזָּהָֽב׃",
+   "norm": "הזהב",
+   "glue": false
+  },
+  {
+   "text": "וּֽזְהַב",
+   "norm": "זהב",
+   "glue": false
+  },
+  {
+   "text": "הָאָרֶץ",
+   "norm": "הארצ",
+   "glue": false
+  },
+  {
+   "text": "הַהִוא",
+   "norm": "ההא",
+   "glue": false
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "שָׁם",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "הַבְּדֹלַח",
+   "norm": "הבדלח",
+   "glue": false
+  },
+  {
+   "text": "וְאֶבֶן",
+   "norm": "אבנ",
+   "glue": false
+  },
+  {
+   "text": "הַשֹּֽׁהַם׃",
+   "norm": "השהמ",
+   "glue": false
+  },
+  {
+   "text": "וְשֵֽׁם־",
+   "norm": "שמ",
+   "glue": true
+  },
+  {
+   "text": "הַנָּהָר",
+   "norm": "הנהר",
+   "glue": false
+  },
+  {
+   "text": "הַשֵּׁנִי",
+   "norm": "השנ",
+   "glue": false
+  },
+  {
+   "text": "גִּיחוֹן",
+   "norm": "גחנ",
+   "glue": false
+  },
+  {
+   "text": "הוּא",
+   "norm": "הא",
+   "glue": false
+  },
+  {
+   "text": "הַסּוֹבֵב",
+   "norm": "הסבב",
+   "glue": false
+  },
+  {
+   "text": "אֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "אֶרֶץ",
+   "norm": "ארצ",
+   "glue": false
+  },
+  {
+   "text": "כּֽוּשׁ׃",
+   "norm": "כש",
+   "glue": false
+  },
+  {
+   "text": "וְשֵׁם",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "הַנָּהָר",
+   "norm": "הנהר",
+   "glue": false
+  },
+  {
+   "text": "הַשְּׁלִישִׁי",
+   "norm": "השלש",
+   "glue": false
+  },
+  {
+   "text": "חִדֶּקֶל",
+   "norm": "חדקל",
+   "glue": false
+  },
+  {
+   "text": "הוּא",
+   "norm": "הא",
+   "glue": false
+  },
+  {
+   "text": "הַֽהֹלֵךְ",
+   "norm": "ההלכ",
+   "glue": false
+  },
+  {
+   "text": "קִדְמַת",
+   "norm": "קדמת",
+   "glue": false
+  },
+  {
+   "text": "אַשּׁוּר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "וְהַנָּהָר",
+   "norm": "הנהר",
+   "glue": false
+  },
+  {
+   "text": "הָֽרְבִיעִי",
+   "norm": "הרבע",
+   "glue": false
+  },
+  {
+   "text": "הוּא",
+   "norm": "הא",
+   "glue": false
+  },
+  {
+   "text": "פְרָֽת׃",
+   "norm": "פרת",
+   "glue": false
+  },
+  {
+   "text": "וַיִּקַּח",
+   "norm": "קח",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "וַיַּנִּחֵהוּ",
+   "norm": "נחה",
+   "glue": false
+  },
+  {
+   "text": "בְגַן־",
+   "norm": "בגנ",
+   "glue": true
+  },
+  {
+   "text": "עֵדֶן",
+   "norm": "עדנ",
+   "glue": false
+  },
+  {
+   "text": "לְעׇבְדָהּ",
+   "norm": "לעבדה",
+   "glue": false
+  },
+  {
+   "text": "וּלְשׇׁמְרָֽהּ׃",
+   "norm": "לשמרה",
+   "glue": false
+  },
+  {
+   "text": "וַיְצַו",
+   "norm": "צ",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "לֵאמֹר",
+   "norm": "לאמר",
+   "glue": false
+  },
+  {
+   "text": "מִכֹּל",
+   "norm": "מכל",
+   "glue": false
+  },
+  {
+   "text": "עֵֽץ־",
+   "norm": "עצ",
+   "glue": true
+  },
+  {
+   "text": "הַגָּן",
+   "norm": "הגנ",
+   "glue": false
+  },
+  {
+   "text": "אָכֹל",
+   "norm": "אכל",
+   "glue": false
+  },
+  {
+   "text": "תֹּאכֵֽל׃",
+   "norm": "תאכל",
+   "glue": false
+  },
+  {
+   "text": "וּמֵעֵץ",
+   "norm": "מעצ",
+   "glue": false
+  },
+  {
+   "text": "הַדַּעַת",
+   "norm": "הדעת",
+   "glue": false
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וָרָע",
+   "norm": "רע",
+   "glue": false
+  },
+  {
+   "text": "לֹא",
+   "norm": "לא",
+   "glue": false
+  },
+  {
+   "text": "תֹאכַל",
+   "norm": "תאכל",
+   "glue": false
+  },
+  {
+   "text": "מִמֶּנּוּ",
+   "norm": "ממנ",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "בְּיוֹם",
+   "norm": "במ",
+   "glue": false
+  },
+  {
+   "text": "אֲכׇלְךָ",
+   "norm": "אכלכ",
+   "glue": false
+  },
+  {
+   "text": "מִמֶּנּוּ",
+   "norm": "ממנ",
+   "glue": false
+  },
+  {
+   "text": "מוֹת",
+   "norm": "מת",
+   "glue": false
+  },
+  {
+   "text": "תָּמֽוּת׃",
+   "norm": "תמת",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לֹא־",
+   "norm": "לא",
+   "glue": true
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "הֱיוֹת",
+   "norm": "הת",
+   "glue": false
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "לְבַדּוֹ",
+   "norm": "לבד",
+   "glue": false
+  },
+  {
+   "text": "אֶֽעֱשֶׂה־",
+   "norm": "אעשה",
+   "glue": true
+  },
+  {
+   "text": "לּוֹ",
+   "norm": "ל",
+   "glue": false
+  },
+  {
+   "text": "עֵזֶר",
+   "norm": "עזר",
+   "glue": false
+  },
+  {
+   "text": "כְּנֶגְדּֽוֹ׃",
+   "norm": "כנגד",
+   "glue": false
+  },
+  {
+   "text": "וַיִּצֶר",
+   "norm": "צר",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "מִן־",
+   "norm": "מנ",
+   "glue": true
+  },
+  {
+   "text": "הָֽאֲדָמָה",
+   "norm": "האדמה",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "חַיַּת",
+   "norm": "חת",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׂדֶה",
+   "norm": "השדה",
+   "glue": false
+  },
+  {
+   "text": "וְאֵת",
+   "norm": "את",
+   "glue": false
+  },
+  {
+   "text": "כׇּל־",
+   "norm": "כל",
+   "glue": true
+  },
+  {
+   "text": "עוֹף",
+   "norm": "עפ",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וַיָּבֵא",
+   "norm": "בא",
+   "glue": false
+  },
+  {
+   "text": "אֶל־",
+   "norm": "אל",
+   "glue": true
+  },
+  {
+   "text": "הָאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "לִרְאוֹת",
+   "norm": "לראת",
+   "glue": false
+  },
+  {
+   "text": "מַה־",
+   "norm": "מה",
+   "glue": true
+  },
+  {
+   "text": "יִּקְרָא־",
+   "norm": "קרא",
+   "glue": true
+  },
+  {
+   "text": "לוֹ",
+   "norm": "ל",
+   "glue": false
+  },
+  {
+   "text": "וְכֹל",
+   "norm": "כל",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "יִקְרָא־",
+   "norm": "קרא",
+   "glue": true
+  },
+  {
+   "text": "לוֹ",
+   "norm": "ל",
+   "glue": false
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "נֶפֶשׁ",
+   "norm": "נפש",
+   "glue": false
+  },
+  {
+   "text": "חַיָּה",
+   "norm": "חה",
+   "glue": false
+  },
+  {
+   "text": "הוּא",
+   "norm": "הא",
+   "glue": false
+  },
+  {
+   "text": "שְׁמֽוֹ׃",
+   "norm": "שמ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּקְרָא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "שֵׁמוֹת",
+   "norm": "שמת",
+   "glue": false
+  },
+  {
+   "text": "לְכׇל־",
+   "norm": "לכל",
+   "glue": true
+  },
+  {
+   "text": "הַבְּהֵמָה",
+   "norm": "הבהמה",
+   "glue": false
+  },
+  {
+   "text": "וּלְעוֹף",
+   "norm": "לעפ",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׁמַיִם",
+   "norm": "השממ",
+   "glue": false
+  },
+  {
+   "text": "וּלְכֹל",
+   "norm": "לכל",
+   "glue": false
+  },
+  {
+   "text": "חַיַּת",
+   "norm": "חת",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׂדֶה",
+   "norm": "השדה",
+   "glue": false
+  },
+  {
+   "text": "וּלְאָדָם",
+   "norm": "לאדמ",
+   "glue": false
+  },
+  {
+   "text": "לֹֽא־",
+   "norm": "לא",
+   "glue": true
+  },
+  {
+   "text": "מָצָא",
+   "norm": "מצא",
+   "glue": false
+  },
+  {
+   "text": "עֵזֶר",
+   "norm": "עזר",
+   "glue": false
+  },
+  {
+   "text": "כְּנֶגְדּֽוֹ׃",
+   "norm": "כנגד",
+   "glue": false
+  },
+  {
+   "text": "וַיַּפֵּל",
+   "norm": "פל",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "תַּרְדֵּמָה",
+   "norm": "תרדמה",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "הָאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּישָׁן",
+   "norm": "שנ",
+   "glue": false
+  },
+  {
+   "text": "וַיִּקַּח",
+   "norm": "קח",
+   "glue": false
+  },
+  {
+   "text": "אַחַת",
+   "norm": "אחת",
+   "glue": false
+  },
+  {
+   "text": "מִצַּלְעֹתָיו",
+   "norm": "מצלעת",
+   "glue": false
+  },
+  {
+   "text": "וַיִּסְגֹּר",
+   "norm": "סגר",
+   "glue": false
+  },
+  {
+   "text": "בָּשָׂר",
+   "norm": "בשר",
+   "glue": false
+  },
+  {
+   "text": "תַּחְתֶּֽנָּה׃",
+   "norm": "תחתנה",
+   "glue": false
+  },
+  {
+   "text": "וַיִּבֶן",
+   "norm": "בנ",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "אֶֽת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "הַצֵּלָע",
+   "norm": "הצלע",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר־",
+   "norm": "אשר",
+   "glue": true
+  },
+  {
+   "text": "לָקַח",
+   "norm": "לקח",
+   "glue": false
+  },
+  {
+   "text": "מִן־",
+   "norm": "מנ",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "לְאִשָּׁה",
+   "norm": "לאשה",
+   "glue": false
+  },
+  {
+   "text": "וַיְבִאֶהָ",
+   "norm": "באה",
+   "glue": false
+  },
+  {
+   "text": "אֶל־",
+   "norm": "אל",
+   "glue": true
+  },
+  {
+   "text": "הָֽאָדָֽם׃",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "זֹאת",
+   "norm": "זאת",
+   "glue": false
+  },
+  {
+   "text": "הַפַּעַם",
+   "norm": "הפעמ",
+   "glue": false
+  },
+  {
+   "text": "עֶצֶם",
+   "norm": "עצמ",
+   "glue": false
+  },
+  {
+   "text": "מֵֽעֲצָמַי",
+   "norm": "מעצמ",
+   "glue": false
+  },
+  {
+   "text": "וּבָשָׂר",
+   "norm": "בשר",
+   "glue": false
+  },
+  {
+   "text": "מִבְּשָׂרִי",
+   "norm": "מבשר",
+   "glue": false
+  },
+  {
+   "text": "לְזֹאת",
+   "norm": "לזאת",
+   "glue": false
+  },
+  {
+   "text": "יִקָּרֵא",
+   "norm": "קרא",
+   "glue": false
+  },
+  {
+   "text": "אִשָּׁה",
+   "norm": "אשה",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "מֵאִישׁ",
+   "norm": "מאש",
+   "glue": false
+  },
+  {
+   "text": "לֻֽקְחָה־",
+   "norm": "לקחה",
+   "glue": true
+  },
+  {
+   "text": "זֹּֽאת׃",
+   "norm": "זאת",
+   "glue": false
+  },
+  {
+   "text": "עַל־",
+   "norm": "על",
+   "glue": true
+  },
+  {
+   "text": "כֵּן",
+   "norm": "כנ",
+   "glue": false
+  },
+  {
+   "text": "יַֽעֲזׇב־",
+   "norm": "עזב",
+   "glue": true
+  },
+  {
+   "text": "אִישׁ",
+   "norm": "אש",
+   "glue": false
+  },
+  {
+   "text": "אֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "אָבִיו",
+   "norm": "אב",
+   "glue": false
+  },
+  {
+   "text": "וְאֶת־",
+   "norm": "את",
+   "glue": true
+  },
+  {
+   "text": "אִמּוֹ",
+   "norm": "אמ",
+   "glue": false
+  },
+  {
+   "text": "וְדָבַק",
+   "norm": "דבק",
+   "glue": false
+  },
+  {
+   "text": "בְּאִשְׁתּוֹ",
+   "norm": "באשת",
+   "glue": false
+  },
+  {
+   "text": "וְהָיוּ",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "לְבָשָׂר",
+   "norm": "לבשר",
+   "glue": false
+  },
+  {
+   "text": "אֶחָֽד׃",
+   "norm": "אחד",
+   "glue": false
+  },
+  {
+   "text": "וַיִּֽהְיוּ",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "שְׁנֵיהֶם",
+   "norm": "שנהמ",
+   "glue": false
+  },
+  {
+   "text": "עֲרוּמִּים",
+   "norm": "ערממ",
+   "glue": false
+  },
+  {
+   "text": "הָֽאָדָם",
+   "norm": "האדמ",
+   "glue": false
+  },
+  {
+   "text": "וְאִשְׁתּוֹ",
+   "norm": "אשת",
+   "glue": false
+  },
+  {
+   "text": "וְלֹא",
+   "norm": "לא",
+   "glue": false
+  },
+  {
+   "text": "יִתְבֹּשָֽׁשׁוּ׃",
+   "norm": "תבשש",
+   "glue": false
+  },
+  {
+   "text": "וְהַנָּחָשׁ",
+   "norm": "הנחש",
+   "glue": false
+  },
+  {
+   "text": "הָיָה",
+   "norm": "הה",
+   "glue": false
+  },
+  {
+   "text": "עָרוּם",
+   "norm": "ערמ",
+   "glue": false
+  },
+  {
+   "text": "מִכֹּל",
+   "norm": "מכל",
+   "glue": false
+  },
+  {
+   "text": "חַיַּת",
+   "norm": "חת",
+   "glue": false
+  },
+  {
+   "text": "הַשָּׂדֶה",
+   "norm": "השדה",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "עָשָׂה",
+   "norm": "עשה",
+   "glue": false
+  },
+  {
+   "text": "יְהֹוָה",
+   "norm": "ה",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֶל־",
+   "norm": "אל",
+   "glue": true
+  },
+  {
+   "text": "הָאִשָּׁה",
+   "norm": "האשה",
+   "glue": false
+  },
+  {
+   "text": "אַף",
+   "norm": "אפ",
+   "glue": false
+  },
+  {
+   "text": "כִּֽי־",
+   "norm": "כ",
+   "glue": true
+  },
+  {
+   "text": "אָמַר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לֹא",
+   "norm": "לא",
+   "glue": false
+  },
+  {
+   "text": "תֹֽאכְלוּ",
+   "norm": "תאכל",
+   "glue": false
+  },
+  {
+   "text": "מִכֹּל",
+   "norm": "מכל",
+   "glue": false
+  },
+  {
+   "text": "עֵץ",
+   "norm": "עצ",
+   "glue": false
+  },
+  {
+   "text": "הַגָּֽן׃",
+   "norm": "הגנ",
+   "glue": false
+  },
+  {
+   "text": "וַתֹּאמֶר",
+   "norm": "תאמר",
+   "glue": false
+  },
+  {
+   "text": "הָֽאִשָּׁה",
+   "norm": "האשה",
+   "glue": false
+  },
+  {
+   "text": "אֶל־",
+   "norm": "אל",
+   "glue": true
+  },
+  {
+   "text": "הַנָּחָשׁ",
+   "norm": "הנחש",
+   "glue": false
+  },
+  {
+   "text": "מִפְּרִי",
+   "norm": "מפר",
+   "glue": false
+  },
+  {
+   "text": "עֵֽץ־",
+   "norm": "עצ",
+   "glue": true
+  },
+  {
+   "text": "הַגָּן",
+   "norm": "הגנ",
+   "glue": false
+  },
+  {
+   "text": "נֹאכֵֽל׃",
+   "norm": "נאכל",
+   "glue": false
+  },
+  {
+   "text": "וּמִפְּרִי",
+   "norm": "מפר",
+   "glue": false
+  },
+  {
+   "text": "הָעֵץ",
+   "norm": "העצ",
+   "glue": false
+  },
+  {
+   "text": "אֲשֶׁר",
+   "norm": "אשר",
+   "glue": false
+  },
+  {
+   "text": "בְּתוֹךְ־",
+   "norm": "בתכ",
+   "glue": true
+  },
+  {
+   "text": "הַגָּן",
+   "norm": "הגנ",
+   "glue": false
+  },
+  {
+   "text": "אָמַר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "לֹא",
+   "norm": "לא",
+   "glue": false
+  },
+  {
+   "text": "תֹֽאכְלוּ",
+   "norm": "תאכל",
+   "glue": false
+  },
+  {
+   "text": "מִמֶּנּוּ",
+   "norm": "ממנ",
+   "glue": false
+  },
+  {
+   "text": "וְלֹא",
+   "norm": "לא",
+   "glue": false
+  },
+  {
+   "text": "תִגְּעוּ",
+   "norm": "תגע",
+   "glue": false
+  },
+  {
+   "text": "בּוֹ",
+   "norm": "ב",
+   "glue": false
+  },
+  {
+   "text": "פֶּן־",
+   "norm": "פנ",
+   "glue": true
+  },
+  {
+   "text": "תְּמֻתֽוּן׃",
+   "norm": "תמתנ",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאמֶר",
+   "norm": "אמר",
+   "glue": false
+  },
+  {
+   "text": "הַנָּחָשׁ",
+   "norm": "הנחש",
+   "glue": false
+  },
+  {
+   "text": "אֶל־",
+   "norm": "אל",
+   "glue": true
+  },
+  {
+   "text": "הָֽאִשָּׁה",
+   "norm": "האשה",
+   "glue": false
+  },
+  {
+   "text": "לֹֽא־",
+   "norm": "לא",
+   "glue": true
+  },
+  {
+   "text": "מוֹת",
+   "norm": "מת",
+   "glue": false
+  },
+  {
+   "text": "תְּמֻתֽוּן׃",
+   "norm": "תמתנ",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "יֹדֵעַ",
+   "norm": "דע",
+   "glue": false
+  },
+  {
+   "text": "אֱלֹהִים",
+   "norm": "אלהמ",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "בְּיוֹם",
+   "norm": "במ",
+   "glue": false
+  },
+  {
+   "text": "אֲכׇלְכֶם",
+   "norm": "אכלכמ",
+   "glue": false
+  },
+  {
+   "text": "מִמֶּנּוּ",
+   "norm": "ממנ",
+   "glue": false
+  },
+  {
+   "text": "וְנִפְקְחוּ",
+   "norm": "נפקח",
+   "glue": false
+  },
+  {
+   "text": "עֵֽינֵיכֶם",
+   "norm": "ענכמ",
+   "glue": false
+  },
+  {
+   "text": "וִהְיִיתֶם",
+   "norm": "התמ",
+   "glue": false
+  },
+  {
+   "text": "כֵּֽאלֹהִים",
+   "norm": "כאלהמ",
+   "glue": false
+  },
+  {
+   "text": "יֹדְעֵי",
+   "norm": "דע",
+   "glue": false
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "וָרָֽע׃",
+   "norm": "רע",
+   "glue": false
+  },
+  {
+   "text": "וַתֵּרֶא",
+   "norm": "תרא",
+   "glue": false
+  },
+  {
+   "text": "הָֽאִשָּׁה",
+   "norm": "האשה",
+   "glue": false
+  },
+  {
+   "text": "כִּי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "טוֹב",
+   "norm": "טב",
+   "glue": false
+  },
+  {
+   "text": "הָעֵץ",
+   "norm": "העצ",
+   "glue": false
+  },
+  {
+   "text": "לְמַאֲכָל",
+   "norm": "למאכל",
+   "glue": false
+  },
+  {
+   "text": "וְכִי",
+   "norm": "כ",
+   "glue": false
+  },
+  {
+   "text": "תַֽאֲוָה־",
+   "norm": "תאה",
+   "glue": true
+  },
+  {
+   "text": "הוּא",
+   "norm": "הא",
+   "glue": false
+  },
+  {
+   "text": "לָעֵינַיִם",
+   "norm": "לענמ",
+   "glue": false
+  },
+  {
+   "text": "וְנֶחְמָד",
+   "norm": "נחמד",
+   "glue": false
+  },
+  {
+   "text": "הָעֵץ",
+   "norm": "העצ",
+   "glue": false
+  },
+  {
+   "text": "לְהַשְׂכִּיל",
+   "norm": "להשכל",
+   "glue": false
+  },
+  {
+   "text": "וַתִּקַּח",
+   "norm": "תקח",
+   "glue": false
+  },
+  {
+   "text": "מִפִּרְיוֹ",
+   "norm": "מפר",
+   "glue": false
+  },
+  {
+   "text": "וַתֹּאכַל",
+   "norm": "תאכל",
+   "glue": false
+  },
+  {
+   "text": "וַתִּתֵּן",
+   "norm": "תתנ",
+   "glue": false
+  },
+  {
+   "text": "גַּם־",
+   "norm": "גמ",
+   "glue": true
+  },
+  {
+   "text": "לְאִישָׁהּ",
+   "norm": "לאשה",
+   "glue": false
+  },
+  {
+   "text": "עִמָּהּ",
+   "norm": "עמה",
+   "glue": false
+  },
+  {
+   "text": "וַיֹּאכַֽל׃",
+   "norm": "אכל",
    "glue": false
   }
  ],
@@ -502,319 +4287,4818 @@
    "src": "abudraham",
    "anchor_w": [
     0,
-    5
+    0
    ],
-   "lemma": "ברוך אתה ה' אלקינו מלך העולם",
-   "text": "ברוך אתה ה' אלקינו מלך העולם יוצר אור ובורא חושך עושה שלום ובורא את הכל, פסוק הוא. ובמקום ובורא את הכל כתוב ובורא רע.",
+   "lemma": "בראשית.",
+   "text": "בראשית. מה שפתח הקב\"‎ה את התורה בבי\"‎ת ולא באל\"‎ף אע\"‎ג שהיא ראשונה לכל האותיות, לומר לך מה בי\"‎ת זו יש לה גדר ומסובבת היא מג'‎ רוחות מזרח מערב דרום, ופרוצה מצפון כך ברא הקב\"‎ה את העולם גדור משלש רוחות אלו ופרוץ לצפונו ומשם באות רוחות רעות ומזיקות בעולם, וכן מצינו ששמו של הקב\"‎ה כתוב באל\"‎ף דל\"‎ת במקרא קל\"‎ד פעמים כנגד ראשי וסופי אותיות תיבות של מזרח דרום מערב שעולים כך לומר שהם סגורים בשמו, שכן קל\"‎ד לשון סגירה כמו קלידא. אבל צפון אינו בכלל עד שיבוא הקב\"‎ה ויסגירנו בשמו. והניחו פרוץ לדון בו לעתיד עובדי פסילים שיאמר להם תבא יראתכם אם תוכל לסגור רוח צפוני שהוא פתוח. כי שארי רוחות סגורים בשמי. וכשתמנה כל האלפא ביתא תמצא חמש מאות למזרח וכן למערב וכן לדרום כנגד חמש מאות שנה מהלך שיש על פני רוחב כל אחד ואחד.",
    "quality": 1.0
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    15,
-    19
+    0,
+    0
    ],
-   "lemma": "המאיר לארץ ולדרים עליה ברחמים",
-   "text": "המאיר לארץ ולדרים עליה ברחמים על שם ועל מי לא יקום אורהו. ואם תאמר ומה מועלת האורה לארץ דבשלמא לדרים עליה יש תועלת גדולה שיוצאים לעסקיהם. ואמר ברחמים כי הוא מביא לנו האורה בדרך רחמנות מעט מעט לא בפעם אחת כלה.",
+   "lemma": "בראשית.",
+   "text": "בראשית. פרש\"‎י, אמר רבי יצחק לא היה צריך וכו'‎ לפי שהיא מצוה ראשונה שנצטוו ישראל. וא\"‎ת הרי שבע מצוות מצות מילה וגיד הנשה קדמו למצות החדש מצוה ראשונה, אלא י\"‎ל הא דקרי לה בפרש\"‎י למצות החדש מצוה ראשונה לפי שהיא ראשונה למצוות שנצטוו ישראל עליהם במעמד כולם. פירש רש\"‎י למה פתח בבראשית משום כח מעשיו וכו'. וא\"‎ת היאך יכולין הכנענים לומר לישראל גזולה מז'‎ אומות חדא דאין זו גזולה שמה שקנה עבד קנה רבו וקים לן דכנען לזרעו של שם עבד הוה כדכתיב ויהי כנען עבד למו. ועוד אדרבה הם גזלוה מישראל כמו שפירש\"‎י בפ'‎ לך והכנעני אז בארץ היה הולך וכובש את הארץ מזרעו של שם שבחלקו של שם נפלה כשחלק נח את הארץ לבניו. אלא י\"‎ל כמה מלכים היו בארץ כגון מלך חצור וחביריו שלא היו ממשפחות כנען וכן בפ'‎ ברכה גבי אפסי ארץ, ושמא הם מזרעו של שם היו ולא היה לישראל שום רבנות עליהם ליטלה מהם בחזקה ומהם היה הכנעני הולך וכובש כמו שפרש\"‎י. ד\"‎א מה טעם פתח בבראשית להודיע סדר הבריאה ונתינת הארץ כמו שפירש\"‎י, היינו טעמא שלא יהא פתחון פה לכנענים לומר להם לישראל אין אתם מן היורש הראוי לירש שהוא עילם אלא אתם מארפכשד הצעיר בבנים כדכתיב בני שם עילם ואשור וארפכשד א\"‎כ כבשתם את הארץ שלא כמשפט. ד\"‎א לכך פתח בענין יצירה שאלמלא כן יאמרו קטני אמנה העולם על מנהגו הוא עומד ועמד תמיד. פרש\"‎י ברצונו נתנה להם וכו'‎ צ\"‎ל לא נתנה להם לחלוטין דאל\"‎כ היך חוזר ממתנתו. פירש\"‎י שאין לך ראשית במקרא שאין דבוק לתיבה שלאחריו. חז\"‎ק הרי מצינו דוגמא כי אחרית לאיש שלום ואין דבוק לתיבה שלאחריו.",
    "quality": 1.0
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    20,
-    25
+    0,
+    1
    ],
-   "lemma": "וטובו מחדש בכל יום תמיד מעשה",
-   "text": "וטובו מחדש בכל יום תמיד מעשה בראשית ר\"ל על זריחת האור בכל יום שנאמר בו כי טוב.",
-   "quality": 0.98
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    23,
-    24
-   ],
-   "lemma": "ואמר תמיד",
-   "text": "ואמר תמיד על שם ויום ולילה לא ישבותו.",
-   "quality": 0.83
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    27,
-    30
-   ],
-   "lemma": "מה רבו מעשיך ה',",
-   "text": "מה רבו מעשיך ה', פסוק הוא.",
+   "lemma": "בראשית ברא.",
+   "text": "בראשית ברא. קודם כל ברא הבורא את השמים ואת הארץ כמו בראשית ממלכות יהויקים, וכן ת\"‎א: \"‎בקדמין ברא\"‎.",
    "quality": 1.0
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    37,
+    2,
+    2
+   ],
+   "lemma": "אלקים.",
+   "text": "אלקים.",
+   "quality": 1.0
+  },
+  {
+   "src": "abudraham",
+   "anchor_w": [
+    31,
+    31
+   ],
+   "lemma": "וכו'.",
+   "text": "וכו'. אם יש איש אשר יעלה על לבבו להפלא בעיניו על מלת שפת לשון אלקי אלקים אלקיך אלקינו וכיוצא בהם הרבה המבוארים בלשון רבים איכה נכתבו על הקב\"‎ה שהוא אחד כגון אלקי אברהם יצחק ויעקב וכן עוד הרבה יתבונן האיש וישיב אל לבו פן יהיה בו שרש פורה ראש ולענה כי דברות אלהות ואדנות ובעלות יכתבו ליחיד בלשון רבים כגון כי שם נגלו אליו האלקים. דבר האיש אדוני הארץ אם בעליו עמו ואל תשיבני מקדושת תיבת אדני הוא הנקרא בלשון רבים אצל הקדוש ברוך הוא שהוא אחד כי הוא אינו מגזרתם אלא ממשקל שדי זכאי בנאי כשדאי ארמאי דוי אשמאי. ואמת הוא כי אלהות יתבאר בלשון רבים גם אצל הקב\"‎ה שהוא אחד ויחיד כי מלת אלהות לשון שלטון הוא, וכן פירש אחד מהם וממנו יתבררו ויתלבנו האחרים ויבעו מצפוניהם. אנכי ה'‎ אלקיך אנכי כל מילי אדונותיך ושולטנותיך וממשלותיך שלא כן מדת בשר ודם אינו מושל על כל בני מלכותו כל ימי חייהם כי הוא מת ויבוא בנו אחריו או אחר קם תחתיו או מושל עליהם ממשלה אחרת. הנה אחרי הדברים האלה האמת נודע כי יש הרבה בני אדם שיש עליהם בחייהם כמה מיני אדנות ומרות מכמה בני אדם זה אחר זה כי האדונים בשר ודם הם מתים וכלים והקב\"‎ה מלך ומלך וימלוך, ומלכותו בכל משלה ובידו לגדל ולחזק לכל. את השמים. שאל רבי ישמעאל את רבי עקיבא את הדין דכתיב הכא את השמים ואת הארץ מהו, אמר ליה אילו נאמר ברא אלקים השמים הייתי אומר מן השמים וארץ אלהות הן עכשיו שכתב את השמים ואת הארץ בידוע שהשמים והארץ הם הנבראים. השמים על המבוררים הנבראים הידועים והנראים לנו דבר הכתוב שמים לשון רבים ולא יתפרדו דוגמת מים חיים פנים מלקחיים רחיים. וסתם שמים לשון גובה הוא וארץ לשון שפלות ותחתית וכמו בהנשא החיות מעל הארץ, פירוש מעל הרקיע התחתון. והארץ היתה תהו. הארץ הבנויה עכשיו כבר היתה תוהו. כשנבראת בתחלה היתה תהו ובהו כלומר שממה וריקנית שלא היה בה עשב אדם חיה ובהמה עוף ודגים רמש חשך אור ורוח כתרגום ירושלמי וארעא הות צדיא מבני אנשא וריקניא מן בעירא שהרי היו מים על פני כל הארץ. תהו. כמו ויתעם בתהו לא דרך ראיתי את הארץ והנה תהו. ואין לפרש קודם בריאתה היתה תהו ובהו דא\"‎כ היה לו לכתוב והארץ היה תהו ובהו כלומר מה שעכשיו ארץ היה כבר תהו ובהו אבל מדקאמר היתה אארץ קאי. ד\"‎א והארץ היתה תהו ובהו דבר הכתוב על העתיד פי'‎ קודם שברא הקב\"‎ה את השמים ואת הארץ היתה תהו ובהו אותו מקום שהארץ עתידה לעמוד בה וכן על פני תהום על פני מקום שהיה התהום עתיד לעמוד בו. וכן מרחפת על פני המים שהרי ענינים אלו עדיין לא נבראו ויש כמה ענינים שלא נתפרסמה כאן יצירתם כגון מלאכים ומעשה מרכבה וגיהנם אלא רק דברים שאנו רואים בעולם, ואפילו ויטע גן בעדן לא נכתב אלא מפני סרחונו של אדם שנתגרש משם, אך הכתוב כולל יצירתם בבת אחת כדכתיב ויכולו השמים והארץ וכל צבאם ואומר אתה עשית את השמים שמי השמים וכל צבאם. ואומר כי ששת ימים עשה ה'‎ את השמים ואת הארץ את הים ואת כל אשר בם כלומר הימים וכל אשר בהם. ואל תתמה על תיבת היתה שהיא לשון נקבה ומדבר על ענין זכר שכן דוגמתה מצינו ויראו את העם אשר בקרבה יושבת לבטח וארון האלקים נלקחה ואם ככה את עושה לי ותכל דוד המלך. וי\"‎ו דוהארץ יתירה היא כמו וא\"‎ו דולא נחם אלקים וכמוהו רבות. והארץ היתה תהו ובהו. לא נאמר לשון זה גבי שמים אלא מפני כבוד שכינה ששורה בהם ולפי סברת התלמוד משמע שגם הם תהו ובהו נבראו וצריך לפרש וסביבות קצות הארץ ברא תהו ובהו. וחשך על פני תהום אברא קאי הקב\"‎ה ברא חשך על פני תהום שהחשך בריאה היא כדכתיב יוצר אור ובורא חשך אבל קודם לכן לא היה חושך ואור ועין לא ראתה זולתי הקב\"‎ה ואין לדרוש ולהרהר אחריו כמו שאמרו רבותינו ז\"‎ל שאין לדרוש ולשאול מה לפנים ומה לאחור.",
+   "quality": 1.0
+  },
+  {
+   "src": "abudraham",
+   "anchor_w": [
+    39,
     40
    ],
-   "lemma": "המלך המרומם לבדו מאז",
-   "text": "המלך המרומם לבדו מאז על שם אתה הוא ה' לבדך.",
-   "quality": 1.0
+   "lemma": "ורוח אלקים.",
+   "text": "ורוח אלקים. אברא קאי, כמו כן פי'‎ בראשית ברא הקב\"‎ה שמים וארץ וחשך, ורוח הקדש שהיתה מרחפת על פני המים. ורוח. ארבע רוחות מנשבות בכל יום. מן הבקר עד חצי היום רוח מזרחי והוא חם ולח משם עד הערב רוח דרומית והוא חם ויבש ומשם עד חצי הלילה רוח מערבי והוא קר ולח משם עד הבקר רוח צפוני קר ויבש.",
+   "quality": 0.8
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    41,
-    46
+    39,
+    40
    ],
-   "lemma": "המשובח והמפואר והמתנשא כבר זכרנוה למעלה.",
-   "text": "המשובח והמפואר והמתנשא כבר זכרנוה למעלה.",
-   "quality": 0.75
+   "lemma": "ורוח אלקים.",
+   "text": "ורוח אלקים. הוצרך אותו רוח להקוות המים דכתיב יקוו המים כמה דאת אמר ויולך ה'‎ את הים ברוח קדים עזה וגו'. ויאמר אלקים אל לבו ואל מחשבתו אמר, שהרי באותו הזמן אין בעלי חיים רק הקב\"‎ה לבדו וכן דרך ארץ אדם מוציא מפיו מה שהוא עושה וכן כתוב ויתעצב אל לבו ויאמר אמחה את האדם. יהי אור קודם נטיית שמים היה אורו של הקב\"‎ה מלא כל העולם וכשנטה השמים כיריעה אז היו השמים חוצצים בין האור ובין התהום לפיכך וחושך על פני תהום על כן צוה יהי אור והקדימו תחלה לפי שהוא חביב וטוב לכל מעשה. יהי אור ששלשה דברים נבראים ביום ראשון, שמים ארץ אור, ועיברו שלשתם וילדו כל תולדותיהם כל אחד ואחד בזמנו, שמים הוציאוהו תולדותיהם ביום שני הוא רקיע. ארץ ביום ג'‎ דשאים ואילנות. אור ביום רביעי חמה ולבנה וכוכבים. וראיה לדבר תוצא הארץ אין לומר תוצא אלא על דבר המוכן כמו צא מן התיבה. ויהי אור מה שכתוב ויהי כן בשאר בריאות לפי שהוא לשון קצרה וכן שנינו לעולם ישנה אדם לתלמידיו דרך קצרה שאלו כתב ויהי רקיע ותדשא הארץ היה מאריך בלשונו אבל הכא אין מאריך בלשון ויהי אור מבלשון ויהי כן. וירא אלקים את האור פירוש ויחשוב, כי ראיה זו בלב היא כמו וראיתי את הדם, ראה אתה אומר אלי וראיתי אני דקהלת. ואעפ\"‎י שהכל גלוי לפניו מה שהיה והוה ויהיה. ולא יתכן לפרש ולהסביר לעולם ראיה זו כשאר ראיות. ויבדל אלקים בזמנו ביום רביעי דוגמא זכר ונקבה בראם שפירושו אחרי כן, אלא על ידי שהתחיל בו פירש לך מגמר מלאכתו. ויש מפרשים ויבדל אלקים הוא בקריאת שמות כמו שמפרש והולך.",
+   "quality": 0.8
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    44,
-    45
+    39,
+    44
    ],
-   "lemma": "מימות עולם",
-   "text": "מימות עולם על שם מעולם ועד עולם אתה אל.",
-   "quality": 1.0
+   "lemma": "ויקרא אלקים לאור יום ששה דברים",
+   "text": "ויקרא אלקים לאור יום ששה דברים קרא הקב\"‎ה שם כי אין אדם לקרוא להם והן: אור חשך שמים ארץ ימים אדם. א\"‎ר אלעזר אין הקב\"‎ה מיחד שמו על הרעה אלא על הטובה שהרי כתוב ויקרא אלקים לאור יום אבל ולחשך קרא אלקים לילה אין כתיב. ולחשך שהזכיר למעלה כבר.",
+   "quality": 0.78
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    46,
-    47
+    85,
+    90
    ],
-   "lemma": "אלקי עולם",
-   "text": "אלקי עולם על שם אלקי עולם ה'.",
-   "quality": 1.0
+   "lemma": "ויהי ערב ויהי בקר אעפ\"‎י שהחשך",
+   "text": "ויהי ערב ויהי בקר אעפ\"‎י שהחשך נברא משעה ראשונה של לילה חוזר הוא ואומר סמוך לחשיכה ויהי ערב ויהי בקר כלומר חוזר וכולל בבת אחת כל מלאכת יום ראשון וכן בשאר ימים אחרים. יום אחד פרש\"‎י לפי סדר לשון הפרשה וכו'‎ כלומר יומו של יחידו של עולם שנקרא אחד יום שלא היה בעולם אלא הוא כלומר היום היה לו לבדו ולא לאחר. ד\"‎א לפי פשוטו לא היה לו לכתוב יום ראשון אלא יום אחד לפי שאין דרך לקרוא ראשון לשום ענין יחידי ובגמר בריאת יום זה עדיין לא נבראו שאר ימים. יהי רקיע בתוך המים השמים שנבראו ביום הראשון יהיו נרקעים להיות באמצע עובי המים שעל פני כל הארץ ופרשה זו דבוקה למעלה. והראיה מדכתיב ביום עשות ה'‎ אלקים ארץ ושמים אלמא ביום אחד נבראו וכן פי'‎ וכבר אמר אלקים יהי רקיע. ויהי מבדיל שיהא הרקיע מגביה את עצמו משעה שיהא נתון בתוך המים להיות אויר בינו ובין הארץ. ד\"‎א יהי רקיע השמים נבראו ביום ראשון שנא'‎ בראשית ברא אלקים את השמים ואת הארץ, ואי זה רקיע ברא ביום שני הוי אומר אותו שעל ראשי החיות שנאמר ודמות על ראשי החיה רקיע וגו'. ויהי כן פירושו כן היה כמו שהוא עכשיו מעל לרקיע. ויהי כן היה להיות נכתב תיכף אחר בין מים למים. אלא אילו כן הייתי אומר על ההבדלה שהיא היתה גמר מלאכת המים והיא לא היתה עד יום שלישי כשנקוו המים אל מקום אחד. פרש\"‎י למה לא נאמר בשני כי טוב לפי שלא נגמרה עדיין מלאכת המים וכו'‎ ואעפ\"‎כ הואיל ונגמרה בו מלאכת הבדלת המים ע\"‎י הרקיע ונראה כאילו נגמרה בו מלאכתו כותב בו ויהי ערב ויהי בקר. אמרו רבותינו אין מתחילים בב'‎ והטעם כשם שמעשה בראשית דבר שהותחל בו נשתהתה גמירתו עד למחרתו כך כל דבר שמתחילין אותו בו מאחרים לגמרו. וכמו כן אומרים אין מסיימים בד'‎ והטעם לפי שבו נגמרו כל עניני עולם, אלא שמשם ואילך נבראו כל בע\"‎ח ומשסיים הקב\"‎ה בנייני עולם שוב לא התחיל בו אחר. מה שלא נאמר כי טוב בשני לפי שבו נברא אורו של גיהנם כדאיתא בפרק מקום שנהגו ואין הקב\"‎ה שמח במפלת בריותיו כדכתיב ובצאתו לפני החלוץ אומר הודו לה'‎ כי לעולם חסדו. ואמרו רבותינו לא נאמר כי טוב בהודאה זו לפי שאין הקב\"‎ה שמח במפלתם של רשעים. ואמר רבי אלעזר חזר וכללו בששי שנאמר והנה טוב מאד. יקוו המים זהו גמר מלאכת יום שני. והרקיע לא נעשה עד יבשת הארץ. ואל תתמה על ויהי ערב ויהי בקר יום שני. כי כן הפי'‎ של יקוו המים קודם שיהיה ערב ובוקר של יום שני אמר אלקים יקוו המים ויש דוגמא לפי'‎ זה בתורה לרוב. והקוות דבר מפוזר והראות דבר נסתר אין זה בריאה. תדשא הארץ כאן מתחיל לספר מלאכת יום שלישי והלביש את הארץ עשבים ואילנות ביום שהקווה את המים קודם שנתייבש ע\"‎י המאורות שנתן ביום רביעי. ד\"‎א יקוו המים כבר נגמרה מלאכת יום שני על ידי הרקיע שהבדיל ועכשיו מתחיל מלאכת יום שלישי שאם לא יקוו המים מעל פני הארץ איך תראה היבשה בדשא עשב ואילנות. עץ פרי והיא לא עשתה כן ובדשאים הוציאה למיניהם יותר משנצטותה, מכאן יש ללמוד שלטובה נתכוונה לפי שכמה אילנות יחסרו אם העץ עצמו כפרי ואעפ\"‎כ כשנתקלל אדם על עונו נפקדה גם היא ונתקללה דבהדי כבשי דרחמנא למה לה. יד ה'‎ לא תקצר. פרי מהענינים הנכתבים בלשון יחיד דוגמא שמש, טף, שכר, כר, בצק, בטן, דגן, תירוש ויצהר ועוד הרבה. ועץ עשה פרי ואם תאמר הרי כמה אילני סרק יש אלא י\"‎ל הכי קאמר ועץ עשה פרי יהיה למינהו. כי טוב לכך הוכפל כי טוב ביום שלישי שבו נברא גן עדן. יהי מארת דרך מקראות לדבר בלשון יחיד אצל רבים כמו ויהי אנשים אשר היו טמאים וכן פי'‎ יהי מעשה, ומהו המאורות. מארת האור שיולד מן האור שנברא ביום ראשון יחלק לב'‎ חתיכות האחת גדולה מחברתה הם שמש וירח ומה שכתב ואת הכוכבים נאמר בעשיה ולא נאמר בצוואה ללמד שמאליהם כשנחלק האור האחד לב'‎ ניתזו ממנו ניצוצות ומהם היו הכוכבים. מארת חסר לפי שלא נברא להאיר אלא גלגל חמה בלבד והלבנה נבראת למנות זמנים. ברקיע השמים, ברקיע הנרקע ופרוס תחת השמים העליונים. להבדיל בין היום ובין הלילה השמש מבדיל ממנו הלילה שעבר והירח מבדיל ממנו היום שעבר. והיו לאתת שבהם אעשה אותות כגון למשה ליהושע ולחזקיה וכתיב מאותות השמים אל תחתו. דבר אחר והיו לאתת על העתידות כי החוזים אומרים עתידות על מה שחוזים בהם. ולמועדים שמחשבים ללבנה ר\"‎ח חמשה עשר בניסן ששה בסיון אחד בתשרי עשרה בתשרי ט\"‎ו בתשרי וכן אמר דוד עשה ירח למועדים. ברקיע השמים להאיר על הארץ שכן דרך לתלות הנר במקום גבוה. ולפי פשוטו הוצרכו חמה ולבנה להאיר על הארץ. והאור הנברא ביום ראשון להאיר על השמים לפי שהרקיע שנברא ביום שני נעשה חוצץ בין האור הראשון ובין הארץ. אי נמי מה שכתוב ויהי אור היינו אור היום וכאן היינו אור השמש והירח. ואעפ\"‎י שעדיין לא היו בריות שיצטרכו לאורה מכל מקום הרי היו עשבים ופירות שהם צריכים להתבשל בשמש ובלבנה כמה דאת אמר וממגד תבואות שמש ועוד מפני שרץ נפש חיה ועופות שנבראו ביום חמישי לפיכך הקדים להם אורה. המארת הגדלים פירש רש\"‎י שוין נבראו. י\"‎מ להיות מאותו זמן ואילך שוין במדת עוגל אע\"‎פ שלא היה אורם שוה. עוד פירש רש\"‎י ונתמעטה הלבנה. י\"‎מ הוא שמתמעטת מהמלוי עד החדש. ועוד פירש\"‎י אי אפשר לב'‎ מלכים שישתמשו בכתר אחד, פי'‎ אין הדעת סובלת שנהיה אני והחמה מתבהקין בשוה במדת עוגל שלנו, כסבורה הלבנה שתתמעט החמה. הגדלים על שם הכוכבים הקטנים מכלם. לממשלת היום על הפירות כדי לבשלם. לממשלת הלילה כדי לצנן שלא יתליעו אבל באור שנברא ביום ראשון אין לשון ממשלה נופל בו שהרי אינו מושל לעשות פירות. ולמשל וגו'‎ זה ימשול ביום וזה בלילה כי ראות הלבנה ביום אין זה ממשלה אלא כשרגא בטיהרא. ולהבדיל בין האור ובין החשך לא לשמש וירח קאי שהרי אמרנו למעלה שהם מבדילים בין היום ובין הלילה, אלא קאי הוא אכוכבים שנראים כשהאור יוצא והחשך נכנס. ישרצו המים. לאחר שנתלו המאורות ברא כל בעלי חיים.",
+   "quality": 0.76
   },
   {
    "src": "abudraham",
    "anchor_w": [
-    48,
-    51
-   ],
-   "lemma": "ברחמיך הרבים רחם עלנו",
-   "text": "ברחמיך הרבים רחם עלנו על שם וברחמיך הרבים לא עשיתם כלה.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    52,
-    53
-   ],
-   "lemma": "אדון עזנו",
-   "text": "אדון עזנו על שם ה' עזי ומעזי.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    54,
-    55
-   ],
-   "lemma": "צור משגבנו",
-   "text": "צור משגבנו על שם אלקי צורי אחסה בו מגני וקרן ישעי משגבי.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    56,
-    57
-   ],
-   "lemma": "מגן ישענו",
-   "text": "מגן ישענו על שם ותתן לי מגן ישעך.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    58,
-    59
-   ],
-   "lemma": "משגב בעדנו",
-   "text": "משגב בעדנו על שם ואתה ה' מגן בעדי. וכתב בעל המנהגות יש לתמוה למה נתקן בברכת המאורות אלקי עולם ברחמיך הרבים רחם עלנו.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    60,
-    63
-   ],
-   "lemma": "אל ברוך גדול דעה",
-   "text": "אל ברוך גדול דעה על שם ברוך ה' לעולם. ומה שתקנו לומר אלפא ביתא ביוצר של חול ושל שבת להודיע כי לא נתקיימו שמים וארץ.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    62,
-    63
-   ],
-   "lemma": "גדול דעה",
-   "text": "גדול דעה עם שם גדול העצה.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    64,
-    67
-   ],
-   "lemma": "הכין ופעל זהרי חמה",
-   "text": "הכין ופעל זהרי חמה על שם אתה הכינות מאור ושמש.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    65,
-    65
-   ],
-   "lemma": "ופעל",
-   "text": "ופעל על שם מי פעל ועשה.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    68,
-    68
-   ],
-   "lemma": "טוב",
-   "text": "טוב על שם וירא אלהים כי טוב ועל שם הודו לה' כי טוב.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    69,
-    71
-   ],
-   "lemma": "יצר כבוד לשמו",
-   "text": "יצר כבוד לשמו על שם כל הנקרא בשמי ולכבודי ברתיו.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    72,
-    75
-   ],
-   "lemma": "מאורות נתן סביבות עזו",
-   "text": "מאורות נתן סביבות עזו על שם ונהורא עמיה שרי.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    76,
-    78
-   ],
-   "lemma": "פנות צבאות קדושים",
-   "text": "פנות צבאות קדושים כלומר שרי צבאיו שנקראו קדושים.",
-   "quality": 0.96
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    79,
-    84
-   ],
-   "lemma": "רוממי שדי תמיד מספרים כבוד אל",
-   "text": "רוממי שדי תמיד מספרים כבוד אל וקדושתו כך עושין המלאכים.",
-   "quality": 1.0
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    86,
-    88
-   ],
-   "lemma": "תתברך ה' אלהי",
-   "text": "תתברך ה' אלהי על שם אברך את ה'. בשמים ממעל ועל הארץ מתחת פסוק הוא.",
-   "quality": 0.96
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    88,
-    92
-   ],
-   "lemma": "על כל שבח מעשה ידיך",
-   "text": "על כל שבח מעשה ידיך על שם כי אראה שמיך מעשה אצבעותיך.",
-   "quality": 0.83
-  },
-  {
-   "src": "abudraham",
-   "anchor_w": [
-    93,
+    95,
     95
    ],
-   "lemma": "ועל מאורי אור,",
-   "text": "ועל מאורי אור, על שם כל מאורי אור בשמים. שיצרת יפארוך סלה על שהשמים מספרים כבוד אל.",
+   "lemma": "המים.",
+   "text": "המים. כל המים אף שבכלים משריצים תולעים לפי תולדותם על כן לא כתב הימים.",
    "quality": 1.0
+  },
+  {
+   "src": "abudraham",
+   "anchor_w": [
+    94,
+    95
+   ],
+   "lemma": "רקיע השמים.",
+   "text": "רקיע השמים. בהרבה מקומות נקרא האויר שמים, אשר תעוף בשמים נטה ידך על השמים וראשו בשמים ערים גדולות ובצורות בשמים, ובלשון משנה מצינו מן הארץ עד שמי קורה, מה שלא נכתב ויהי כן במעשה יום חמישי לפי שבו נבראו הדגים ולא היתה בריאה נוכחת נראית לעינים כבריאות שאר הימים. פרו ורבו וגו'‎ בימים והעוף ירב בארץ מה שלא ברך בהמה וחיה כן פן תרבה על האדם חית השדה ולא יוכל לעמוד כנגדם אבל עופות ודגים אלו פורחים באויר ואלו פורחים במים. [תוצא הארץ לשון תוצא מורה שהדבר היה כבר מוכן]. תוצא הארץ בבריאות נפשות אתה מוצא ד'‎ כדכתיב תוצא הארץ נפש חיה, בהמה ורמש וחיתו ארץ ובעשיית גופים אין אתה מוצא אלא שלש, כדכתיב - ויעש אלקים את חית הארץ למינה ואת הבהמה למינה ואת כל רמש האדמה. אלא האדם היא בריאה רביעית והיינו דכתיב לקמן ויהי האדם לנפש חיה. [חיתו ארץ - וי\"‎ו יתרה]. נעשה אדם ולא כתיב נברא אדם כי הבריאה היא לבדו ברא ה'‎ כדכתיב ויברא את האדם ואומר האדם אשר בראתי אבל העשיה וההכנה חברם אתו שכולם נעשו לו שם חברים. ד\"‎א נעשה אדם במקום אחר מצינו יחיד מדבר בלשון רבים את מי אשלח ומי ילך לנו, דנא חלמא ופשריה נאמר קדם מלכא. נעשה אדם אומינ\"‎א בלע\"‎ז. כלומר נעשה איש ואשה וראיה לדבר ויקרא את שמם אדם ביום הבראם. ועוד מצינו אמר רב הונא היכן מצינו שחוה נקראת אדם. שנאמר כתפארת אדם לשבת בית. ומתרגמינן כתושבחתא דאיתתא דיתבא בביתה ועוד כתיב ונפש אדם מן הנשים. בצלמנו בצלם המלאכים. כדמותנו כדמות המלאכים ויועיל לו מה שנברא בדמות, לרדות בדגת הים ובעוף וגו'. ד\"‎א כדמותנו כדמות הקב\"‎ה א\"‎א לומר שהרי כתוב ומה דמות תערכו לו. וא\"‎ת בצלמנו כדמותנו כדמותו בצלם שהוא צר בריותיו א\"‎כ מה ת\"‎ל שופך דם האדם וגו'‎ כי בצלם אלקים עשה את האדם מה רבותיה כמו כן בצלם אלקים עשה את הבהמה אלא על כרחנו בצלמנו כדמותנו פי'‎ בגוונינו כמו שאני שליט עליכם, כן יהיה הוא שליט על כל התחתונים. ובכל הארץ מה הניח הכתוב להזכיר אלא בא להוסיף כל דבר כגון רוחות שדים מלאכים מזלות מאורות. בצלמו שהוא צלם אלקים ואל תתמה אם לא נתפרשה יצירת המלאכים כי לא כתב משה רבינו כאן לא מלאכים ולא גיהנם ולא מעשה מרכבה אלא רק דברים שאנו רואים בעולם כמו שפירשתי למעלה. ד\"‎א בצלמו בצלם שלו שלא הוצרך שישאילו לו אחרים שום צלם. בצלם אלהים בדמות מלאכים שהרי דיוקן מלאכים ואדם שוה וכן תפרש גבי והייתם כאלהים. וראיה לדבר שהרי בבראשית רבה מונה מבראשית עד ולאדם אמר ע\"‎א אזכרות ואם תימצי לומר דבצלם אלהים והייתם כאלהים מנויין בסכום האזכרות הרי לך מבראשית עד ולאדם אמר שבעים ושלש אזכרות אלא ודאי לשון מלאכים הם ולכך לא שני התרגום מן המקרא לתרגמו כבמקומות אחרים. דבר אחר בצלם דיין ושופט ברא אותו. ד\"‎א סרסהו אלקים ברא אותו בצלם, אע\"‎פ ששאר בריות נבראו במאמר האדם נברא בצלם כמו שפירש\"‎י כדי להחשיבו. זכר ונקבה ברא אתם כמו שפירש הכתוב ויקח אחת מצלעותיו. פרו ורבו י\"‎מ לאחר שסרחו ונקנסה עליהם מיתה נאמר להם פרו ורבו לפי שהוצרכה לפריה ורביה מדקאמר ומלאו את הארץ, דאם קודם שסרחו נאמר עליהם היה לו לכתוב ומלאו את הגן שהרי דירתם היתה שם קודם שסרחו אלא ע\"‎י שפריה ורביה דוגמת יצירה היא נכתבה כאן עם היצירה. וכבשה רפי, שהרי לשון צווי הוא אבל אם היה דגש פי'‎ לשעבר כמו קבצו פארור. הנה נתתי לכם נותן אני עתה לכם ובלע\"‎ז דונאץ וכן הרימתי ידי מרים אני, נתתי כסף השדה נותן אני. את כל עשב זרע זרע כגון תבואה וקטנית ופירות האילן אלו הן למאכל אדם אבל לכל חית השדה נתתי את כל ירק עשב כגון כרוב תרדין וכיוצא בהן וכשחטא אדם נגזר עליו לאכול עשב שנאמר וקוץ ודרדר וגו'‎ ואכלת את עשב השדה הוא שנאמר נמשל כבהמות נדמו שאם הותר לו בשר אם כן מצינו חוטא נשכר. לכם יהיה לאכלה...ולכל חית הארץ פרש\"‎י השוה להם הבהמות והחיות ולא הרשם לאכול בשר והיא דבפרק ארבע מיתות דמלאכי השרת מסננין לו יין וצולין לו בשר ההוא בשר היורד מן השמים ומה שכתוב ורדו בדגת הים היינו למלאכה כדבעי רחבה הנהיג בעיזא ושבוטא מאי, ובעוף השמים היינו למלאכה כדבעי רבה בר רב הונא דש באווזא ותרנגולא מאי. ובכל החיה הרומשת על הארץ היינו נחש לשליחות, כדאיתא פרק ארבע מיתות. וירא אלקים את כל אשר עשה וגו'‎ אפי'‎ יצר הרע. והנה טוב מאד שאלמלא יצר הרע לא ישא אדם אשה ולא יוליד בנים ונמצא שאין העולם מתקיים. ביום הששי נאמר שתי פעמים כי טוב אחד לבריאת בהמה ואחד לבריאת אדם. יום הששי יום המבואר והידוע בין הימים האחרים שבו לבדו כלתה כל מעשה בראשית מה שלא היה כן בשאר הימים. וכן כתיב כי ששת ימים עשה ה'‎ את השמים ואת הארץ את הים וגו'. [השמים והארץ וכל צבאם כאן כלול כל היצירות בבת אחת כגון מלאכים מעשה מרכבה וגיהנם].",
+   "quality": 0.77
   }
  ],
  "unit_notes": [
   {
    "src": "siddur_rashi",
    "anchor_w": 0,
-   "text": "ואומר ברכו ועוד שהוא מאריך בקולו הצבור אומר' בלחש יתברך וישתבח, והם דתנן בית שמאי אומרים בערב כל אדם יטו ויקראו (דברים ו' ז') ובבוקר כל אדם יעמדו, אלא ואי גני אמידי כגון אינש דאניס, ובכמה דוכתי גרסינן בגמרא בית שמאי, ולא מיגני אפרקיד, אבל כי מסגי לא, דקיימא לן עד על לבבך."
+   "text": "בראשית. אָמַר רַבִּי יִצְחָק לֹֹֹֹֹא הָיָה צָרִיךְ לְהַתְחִיל אֶת הַתּוֹרָה אֶלָּא מֵהַחֹדֶשׁ הַזֶּה לָכֶם, שֶׁהִיא מִצְוָה רִאשׁוֹנָה שֶׁנִּצְטַוּוּ בָּהּ יִשׂרָאֵל, וּמַה טַּעַם פָּתַח בִּבְרֵאשִׁית? מִשׁוּם כֹּחַ מַעֲשָׂיו הִגִּיד לְעַמּוֹ לָתֵת לָהֶם נַחֲלַת גּוֹיִם (תהילים קי\"א), שֶׁאִם יֹאמְרוּ אֻמּוֹת הָעוֹלָם לְיִשְׁרָאֵל לִסְטִים אַתֶּם, שֶׁכְּבַשְׁתֶּם אַרְצוֹת שִׁבְעָה גוֹיִם, הֵם אוֹמְרִים לָהֶם כָּל הָאָרֶץ שֶׁל הַקָּבָּ\"ה הִיא, הוּא בְרָאָהּ וּנְתָנָהּ לַאֲשֶׁר יָשַׁר בְּעֵינָיו, בִּרְצוֹנוֹ נְתָנָהּ לָהֶם, וּבִרְצוֹנוֹ נְטָלָהּ מֵהֶם וּנְתָנָהּ לָנוּ: בראשית ברא אֵין הַמִּקְרָא הַזֶּה אוֹמֵר אֶלָּא דָּרְשֵׁנִי, כְּמוֹ שֶׁדְּרָשׁוּהוּ רַבּוֹתֵינוּ בִּשְׁבִיל הַתּוֹרָה שֶׁנִקְרֵאת רֵאשִׁית דַּרְכּוֹ (משלי ח'), וּבִשְׁבִיל יִשְׂרָאֵל שֶׁנִקְרְאוּ רֵאשִׁית תְּבוּאָתוֹ (ירמיה ב'); וְאִם בָּאתָ לְפָרְשׁוֹ כִּפְשׁוּטוֹ, כָּךְ פָּרְשֵׁהוּ בְּרֵאשִׁית בְּרִיאַת שָׁמַיִם וָאָרֶץ, וְהָאָרֶץ הָיְתָה תֹהוּ וָבֹהוּ וְחֹשֶׁךְ וַיֹּאמֶר אֱלֹהִים יְהִי אוֹר וְלֹא בָא הַמִּקְרָא לְהוֹרוֹת סֵדֶר הַבְּרִיאָה לוֹמַר שֶׁאֵלּוּ קָדְמוּ, שֶׁאִם בָּא לְהוֹרוֹת כָּךְ, הָיָה לוֹ לִכְתֹּב בָּרִאשׁוֹנָה בָּרָא אֶת הַשָּׁמַיִם וְגוֹ' שֶׁאֵין לְךָ רֵאשִׁית בַּמִּקְרָא שֶׁאֵינוֹ דָבוּק לַתֵּבָה שֶׁלְּאַחֲרָיו, כְּמוֹ בְּרֵאשִׁית מַמְלֶכֶת יְהוֹיָקִים (שׁם כ\"ז), רֵאשִׁית מַמְלַכְתּוֹ (בראשית י'), רֵאשִׁית דְּגָנְךָ (דברים י\"ח, ד'), – אַף כָּאן אַתָּה אוֹמֵר בְּרֵאשִׁית בָּרָא אֱלֹהִים וְגוֹ', כְּמוֹ בְּרֵאשִׁית בְּרֹא; וְדוֹמֶה לוֹ תְּחִלַּת דִּבֶּר ה' בְּהוֹשֵׁעַ (הושע א'), כְּלוֹמַר תְּחִלַת דִּבּוּרוֹ שֶׁל הַקָּבָּ\"ה בְּהוֹשֵׁעַ, וַיֹּאמֶר ה' אֶל הוֹשֵׁעַ וְגוֹ'. וְאִ\"תֹּ לְהוֹרוֹת בָּא שֶׁאֵלּוּ תְּחִלָּה נִבְרְאוּ, וּפֵרוּשׁוֹ בְּרֵאשִׁית הַכֹּל בָּרָא אֵלוּ – וְֵישׁ לְךָ מִקְרָאוֹת שֶׁמְּקַצְּרִים לְשׁוֹנָם וּמְמַעֲטִים תֵּבָה אַחַת, כְּמוֹ כִּי לֹא סָגַר דַּלְתֵי בִטְנִי (איוב ג'), וְלֹא פֵּרֵשׁ מִי הַסּוֹגֵר וּכְמוֹ יִשָּׂא אֶת חֵיל דַּמֶּשֶׂק (ישעיהו ח'), וְלֹא פֵּרֵשׁ מִי יִשָּׂאֶנּוּ; וּכְמוֹ אִם יַחֲרוֹשׁ בַּבְּקָרִים (עמוס ו'), וְלֹא פֵּרֵשׁ אִם יַחֲרוֹשׁ אָדָם בַּבְּקָרִים, וּכְמוֹ מַגִּיד מֵרֵאשִׁית אַחֲרִית (ישעיהו מ\"ו), וְלֹא פֵּרֵשׁ מַגִּיד מֵרֵאשִׁית דָּבָר אַחֲרִית דָּבָר – אִ\"כֵּ, תְּמַהּ עַל עַצְמְךָ, שֶׁהֲרֵי הַמַּיִם קָדְמוּ, שֶׁהֲרֵי כְתִיב וְרוּחַ אֱלֹהִים מְרַחֶפֶת עַל פְּנֵי הַמָּיִם, וְעַדַיִין לֹא גִלָּה הַמִּקְרָא, בְּרִיאַת הַמַּיִם מָתַי הָיְתָה, הָא לָמַדְתָּ, שֶׁקָּדְמוּ הַמַּיִם לָאָרֶץ, וְעוֹד, שֶׁהַשָּׁמַיִם מֵאֵשׁ וּמַיִם נִבְרְאוּ, עַל כָּרְחֲךָ לֹא לִמֵּד הַמִּקְרָא סֵדֶר הַמֻּקְדָמִים וְהַמְאֻחָרִים כְּלוּם: ברא אלהים וְלֹא נֶאֱמַר בָּרָא ה', שֶׁבַּתְּחִלָּה עָלָה בְמַחֲשָׁבָה לִבְרֹאתוֹ בְּמִדַּת הַדִּין, רָאָה שֶׁאֵין הָעוֹלָם מִתְקַיֵּם, הִקְדִּים מִדַּת רַחֲמִים וְשִׁתְּפָהּ לְמִהַ\"דִּ, וְהַיְינוּ דִּכְתִיב בְּיוֹם עֲשׂוֹת ה' אֱלֹהִים אֶרֶץ וְשָׁמָיִם: תהו ובהו. תֹּהוּ לְשׁוֹן תֵּמַהּ וְשִׁמָּמוֹן, שֶׁאָדָם תּוֹהֵא וּמִשְׁתּוֹמֵם עַל בֹּהוּ שֶׁבָּהּ: תהו. אשטורדי\"שון בְּלַעַ\"ז: בהו. לְשׁוֹן רֵקוּת וְצָדוּ: על פני תהום. עַל פְּנֵי הַמַּיִם שֶׁעַל הָאָרֶץ: ורוח אלהים מרחפת. כִּסֵא הַכָּבוֹד עוֹמֵד בָּאֲוִיר וּמְרַחֵף עַל פְּנֵי הַמַּיִם בְּרוּחַ פִּיו שֶׁל הַקָּבָּ\"ה וּבְמַאֲמָרוֹ, כְּיוֹנָה הַמְרַחֶפֶת עַל הַקֵּן, אקוב\"טיר בְּלַעַ\"ז: וירא אלהים את האור כי טוב ויבדל. אַף בָּזֶה אָנוּ צְרִיכִין לְדִבְרֵי אַגַּדָה, רָאָהוּ שֶׁאֵינוֹ כְדַאי לְהִשְׁתַּמֵשׁ בּוֹ רְשָׁעִים, וְהִבְדִּילוֹ לַצַּדִּיקִים לֶעָתִיד לָבֹא. וּלְפִי פְּשׁוּטוֹ כָּךְ פָּרְשֵׁהוּ, רָאָהוּ כִּי טוֹב, וְאֵין נָאֶה לוֹ וְלַחֹשֶׁךְ שֶׁיִּהְיוּ מִשְׁתַּמְּשִׁים בְּעִרְבּוּבְיָא, וְקָבַע לָזֶה תְחוּמוֹ בַּיּוֹם, וְלָזֶה תְחוּמוֹ בַּלַּיְלָה: יום אחד. לְפִי סֵדֶר לְשׁוֹן הַפָּרָשָׁה הָיָה לוֹ לִכְתֹּב יוֹם רִאשׁוֹן, כְּמוֹ שֶׁכָּתוּב בִּשְׁאָר הַיָּמִים שֵׁנִי, שְׁלִישִׁי, רְבִיעִי, לָמָּה כָתַב אֶחָד? לְפִי שֶׁהָיָה הַקָּבָּ\"ה יָחִיד בְּעוֹלָמוֹ, שֶׁלֹא נִבְרְאוּ הַמַּלְאָכִים עַד יוֹם שֵׁנִי, כָּךְ מְפֹרָשׁ בּבְ\"רַ: יהי רקיע. יֶחֱזַק הָרָקִיעַ, שֶׁאַף עַל פִּי שֶׁנִּבְרְאוּ שָׁמַיִם בְּיוֹם א' עֲדַיִן לַחִים הָיוּ וְקָרְשׁוּ בַשֵּׁנִי מִגַּעֲרַת הַקָּבָּ\"ה בְּאָמְרוֹ יְהִי רָקִיעַ, וְזֶהוּ שֶׁכָּתַב (איוב כ\"ו) עַמּוּדֵי שָׁמַיִם יְרוֹפָפוּ – כָּל יוֹם רִאשׁוֹן, וּבַשֵּׁנִי יִתְמְהוּ מִגַּעֲרָתוֹ, כְּאָדָם שֶׁמִּשְׁתּוֹמֵם וְעוֹמֵד מִגַּעֲרַת הַמְאַיֵּם עָלָיו: בתוך המים. בְּאֶמְצַע הַמַּיִם, שֶׁיֵּש הֶפְרֵשׁ בֵּין מַיִם הָעֶליוֹנִים לָרָקִיעַ כְּמוֹ בֵין הָרָקִיעַ לַמַּיִם שֶׁעַל הָאָרֶץ, הָא לָמַדְתָּ, שֶׁהֵם תְּלוּיִים בְּמַאֲמָרוֹ שֶׁל מֶלֶךְ: ויעש אלהים את הרקיע. תִּקְּנוֹ עַל עָמְדוֹ, וְהִיא עֲשִׂיָּתוֹ, כְּמוֹ וְעָשְׂתָה אֶת צִפָּרְנֶיהָ (דברים כ\"א): מעל לרקיע. עַל הָרָקִיעַ לֹא נֶאֱמַר אֶלָּא מֵעַל לָרָקִיעַ, לְפִי שֶׁהֵן תְּלוּיִין בָּאֲוִיר. וּמִפְּנֵי מָה לֹא נֶאֱמַר כִּי טוֹב בְּיוֹם שֵׁנִי? לְפִי שֶׁלֹא הָיָה נִגְמָר מְלֶאכֶת הַמַּיִם עַד יוֹם שְׁלִישִׁי, וַהֲרֵי הִתְחִיל בָּהּ בְּשֵׁנִי, וְדָבָר שֶׁלֹּא נִגְמַר אֵינוֹ בִּמְלוֹאוֹ וְטוּבוֹ; וּבַשְּׁלִישִׁי שֶׁנִּגְמַר מְלֶאכֶת הַמַּיִם וְהִתְחִיל וְגָמַר מְלָאכָה אֲחֶרֶת, כָּפַל בּוֹ כִּי טוֹב שְׁתֵּי פְּעָמִים, אַחַת לִגְמַר מְלֶאכֶת הַשֵּׁנִי וְאַחַת לִגְמַר מְלֶאכֶת הַיּוֹם: ויקרא אלהים לרקיע שמים. שָׂא מַיִם, שָׁם מַיִם, אֵשׁ וּמַיִם, שֶׁעֵרְבָן זֶה בָזֶה וְעָשָׂה מֵהֶם שָׁמַיִם: יקוו המים. שֶׁהָיוּ שְׁטוּחִין עַל פְּנֵי כָל הָאָרֶץ וְהִקְוָם בָּאוֹקְיָנוֹס הוּא הַיָּם הַגָּדוֹל שֶׁבְּכָל הַיַּמִּים: קרא ימים. וַהֲלֹא יָם אֶחָד הוּא? אֶלָּא אֵינוֹ דוֹמֶה טַעַם דָּג הָעוֹלֶה מִן הַיָּם בְּעַכּוֹ לְטַעַם דָּג הָעוֹלֶה מִן הַיָּם בְּאַסְפַּמְיָא: תדשא הארץ דשא עשב. לֹא דֶּשֶׁא לְשׁוֹן עֵשֶׂב וְלֹא עֵשֶׂב לְשׁוֹן דֶּשֶׁא, וְלֹא הָיָה לְשׁוֹן הַמִּקְרָא לוֹמַר תַּעֲשִׂיב הָאָרֶץ, שֶׁמִינֵי דְּשָׁאִים מְחֻלָּקִין, כָּל אֶחָד לְעַצְמוֹ נִקְרָא עֵשֶׂב פְּלוֹנִי, וְאֵין לָשׁוֹן לַמְדַבֵּר לוֹמַר דֶּשֶׁא פְּלוֹנִי, שֶׁלְּשׁוֹן דֶּשֶׁא הוּא לְבִישַׁת הָאָרֶץ כְּשֶׁהִיא מִתְמַלֵּאת בִּדְשָׁאִים: תדשא הארץ. תִּתְמַלֵּא וְתִתְכַּסֶּה לְבוּשׁ עֲשָׂבִים. בִּלְשׁוֹן לַעַז נִקְרָא דֶּשֶׁא ארבריץ, כֻּלָן בְּעִרְבּוּבְיָא, וְכָל שֹׁרֶשׁ לְעַצְמוֹ נִקְרָא עֵשֶׂב: מזריע זרע. שֶׁיְּגַדֵּל בּוֹ זַרְעוֹ לִזְרֹעַ מִמֶּנוּ בְּמָקוֹם אַחֵר: עץ פרי. שֶׁיְּהֵא טַעַם הָעֵץ כְּטַעַם הַפְּרִי, וְהִיא לֹא עָשְׂתָה כֵן, אֶלָּא וַתּוֹצֵא הָאָרֶץ עֵץ עוֹשֶׂה פְּרִי וְלֹא הָעֵץ פְּרִי, לְפִיכָךְ כְּשֶׁנִּתְקַלֵּל אָדָם עַל עֲוֹנוֹ נִפְקְדָה גַם הִיא עַל עֲוֹנָהּ וְנִתְקַלְּלָה: אשר זרעו בו. הֵן גַרְעִינֵי כָל פְּרִי שֶׁמֵּהֶן הָאִילָן צוֹמֵחַ כְּשֶׁנּוֹטְעִין אוֹתוֹ: ותוצא הארץ וגו'. אַעַ\"פִּ שֶׁלֹּא נֶאֱמַר לְמִינֵהוּ בַּדְּשָׁאִין בְּצִוּוּיֵיהֶן, שָׁמְעוּ שֶׁנִּצְטַוּוּ הָאִילָנוֹת עַל כָּךְ, נָשְׂאוּ קַ\"וָ בְּעַצְמָן, כַּמְּפֹרָשׁ בָּאַגָּדָה בִּשְׁחִיטַת חֻלִּין: יהי מארת וגו'. מִיֹּום רִאשׁוֹן נִבְרְאוּ וּבָרְבִיעִי צִוָּה עֲלֵיהֶם לְהִתָּלוֹת בָּרָקִיעַ, וְכֵן כָּל תּוֹלְדוֹת שָׁמַיִם וָאָרֶץ נִבְרְאוּ מִיּוֹם רִאשׁוֹן, וְכָל אֶחָד וְאֶחָד נִקְבַּע בַּיוֹם שֶׁנִּגְזַר עָלָיו, הוּא שֶׁכָּתוּב אֵת הַשָּׁמַיִם, לְרַבּוֹת תּוֹלְדוֹתֵיהֶם, וְאֵת הָאָרֶץ, לְרַבּוֹת תּוֹלְדוֹתֶיהָ: יהי מארת. חָסֵר וָי\"ו כְּתִיב, עַל שֶׁהוּא יוֹם מְאֵרָה לִפֹּל אַסְכָּרָה בַּתִּינוֹקוֹת, הוּא שֶׁשָּׁנִינוּ בְּד' הָיוּ מִתְעַנִּים עַל אַסְכָּרָה שֶׁלֹּא תִפֹּל בַּתִּינוֹקוֹת: להבדיל בין היום ובין הלילה. מִשֶּׁנִּגְנַז הָאוֹר הָרִאשׁוֹן, אֲבָל בְּשִׁבְעַת יְמֵי בְרֵאשִׁית שִׁמְּשׁוּ הָאוֹר וְהַחֹשֶׁךְ הָרִאשׁוֹנִים יַחַד בֵּין בַּיּוֹם וּבֵין בַּלַּיְלָה: והיו לאותות. כְּשֶׁהַמְּאוֹרוֹת לוֹקִין, סִימָן רַע הוּא לָעוֹלָם, שֶׁנֶּאֱמַר מֵאֹתוֹת הַשָּׁמַיִם אַל תֵּחָתּוּ (ירמיה י'), בַּעֲשׂוֹתְכֶם רְצוֹן הַקָּבָּ\"ה אֵין אַתֶּם צְרִיכִין לִדְאֹג מִן הַפֻּרְעָנוּת: ולמועדים. עַל שֵׁם הֶעָתִיד, שֶׁעֲתִידִים יִשְׂרָאֵל לְהִצְטַוּוֹת עַל הַמּוֹעֲדוֹת וְהֵם נִמְנִים לְמוֹלַד הַלְּבָנָה: ולימים. שִׁמּוּשׁ הַחַמָּה חֲצִי יוֹם וְשִׁמּוּשׁ הַלְּבָנָה חֶצְיוֹ, הֲרֵי יוֹם שָׁלֵם: ושנים. לְסוֹף שס\"ה יָמִים (ס\"א וּרְבִיעַ יוֹם), יִגְמְרוּ מַהֲלָכָתָם בְּי\"ב מַזָּלוֹת הַמְשָׁרְתִים אוֹתָם, וְהִיא שָׁנָה, וְחוֹזְרִים וּמַתְחִילִים פַּעַם שְׁנִיָּה לְסַבֵּב בַּגַּלְגַּל כְּמַהֲלָכָן הָרִאשׁוֹן: והיו למאורת. עוֹד זֹאת יְשַׁמְּשׁוּ, שֶׁיָּאִירוּ לָעוֹלָם: המארת הגדולים. שָׁוִים נִבְרְאוּ וְנִתְמַעֲטָה הַלְּבָנָה עַל שֶׁקִּטְרְגָה וְאָמְרָה אִ\"אֶ לִשְׁנֵי מְלָכִים שֶׁיִשְׁתַּמְּשׁוּ בְכֶתֶר אֶחָד: ואת הכוכבים. עַל יְדֵי שֶׁמִּעֵט אֶת הַלְּבָנָה הִרְבָּה צְבָאָיהָ לְהָפִיס דַּעְתָּהּ: נפש חיה. שֶׁיְּהֵא בָהּ חַיּוּת: שרץ. כָּל דָּבָר חַי שֶׁאֵינוֹ גָבוֹהַּ מִן הָאָרֶץ קָרוּי שֶׁרֶץ: בָּעוֹף, כְּגוֹן זְבוּבִים, בַּשְּׁקָצִים, כְּגוֹן נְמָלִים וְחִפּוּשִׁים וְתוֹלָעִים, בַּבְּרִיּוֹת, כְּגוֹן חֹלֶד וְעַכְבָּר וְחֹמֶט וְכַיּוֹצֵא בָהֶם, וְכָל הַדָּגִים: התנינם. דָּגִים גְּדוֹלִים שֶׁבַּיָּם, וּבְדִבְרֵי אַגָּדָה הוּא לִוְיָתָן וּבֶן זוּגוֹ שֶׁבְּרָאָם זָכָר וּנְקֵבָה וְהָרַג אֶת הַנְּקֵבָה וּמְלָחָהּ לַצַּדִּיקִים לֶעָתִיד לָבֹא, שֶׁאִם יִפְרוּ וְיִרְבּוּ לֹא יִתְקַיֵּם הָעוֹלָם בִּפְנֵיהֶם: נפש החיה. שֶׁיֵּש בָּהּ חַיּוּת: ויברך אותם. לְפִי שֶׁמְּחַסְּרִים אוֹתָם וְצָדִין מֵהֶם וְאוֹכְלִין אוֹתָם, הֻצְרְכוּ לִבְרָכָה, וְאַף הַחַיּוֹת הֻצְרְכוּ לִבְרָכָה, אֶלָּא מִפְּנֵי הַנָּחָשׁ שֶׁעָתִיד לִקְלָלָה, לְכָךְ לֹא בֵרְכָן, שֶׁלֹּא יְהֵא הוּא בִכְלָל: פרו. לְ' פְּרִי כְּלוֹ' עֲשׁוּ פֵּרוֹת: ורבו. אִם לֹא אָמַר אֶלָּא פְּרוּ, הָיָה אֶחָד מוֹלִיד אֶחָד וְלֹא יוֹתֵר, וּבָא וּרְבוּ שֶׁאֶחָד מוֹלִיד הַרְבֵּה: תוצא הארץ. הוּא שֶׁפֵּרַשְׁתִּי שֶׁהַכֹּל נִבְרָא מִיּוֹם רִאשׁוֹן, וְלֹא הֻצְרְכוּ אֶלָּא לְהוֹצִיאָם: נפש חיה. שֶׁיֵּשׁ בָּהּ חַיּוּת: ורמש. הֵם שְׁרָצִים, שֶׁהֵם נְמוּכִים וְרוֹמְשִׂים עַל הָאָרֶץ וְנִרְאִים כְּאִלּוּ נִגְרָרִים שֶׁאֵין הִלוּכָן נִכָּר. כָּל לְשׁוֹן רֶמֶשׂ וְשֶׁרֶץ בִּלְשׁוֹנֵנוּ קונמו\"בריש בלע\"ז: ויעש. תִּקְּנָם בְּצִבְיוֹנָם וּבְקוֹמָתָן: נעשה אדם. עַנְוְתָנוּתוֹ שֶׁל הַקָּבָּ\"ה לָמַדְנוּ מִכָּאן, לְפִי שֶׁאָדָם הוּא בִּדְמוּת הַמַּלְאָכִים וְיִתְקַנְּאוּ בוֹ, לְפִיכָךְ נִמְלַךְ בָּהֶם, וּכְשֶׁהוּא דָן אֶת הַמְּלָכִים הוּא נִמְלָךְ בְּפָמַלְיָא שֶׁלּוֹ, שֶׁכֵּן מָצִינוּ בְאַחְאָב, שֶׁאָמַר לוֹ מִיכָה רָאִיתִי אֶת ה' יֹשֵׁב עַל כִּסְאוֹ וְכָל צְבָא הַשָּׁמַיִם עוֹמְדִים עָלָיו מִימִינוֹ וּמִשְּׂמֹאלוֹ (מלכים א כ\"ב), וְכִי יֵש יָמִין וּשְׂמֹאל לְפָנָיו? אֶלָּא אֵלּוּ מַיְמִינִים לִזְכוּת וְאֵלוּ מַשְׂמְאִילִים לְחוֹבָה, וְכֵן בִּגְזֵרַת עִירִין פִּתְגָמָא וּבְמֵאמַר קַדִּישִׁין שְׁאֵלְתָא (דניאל ד'), אַף כָּאן בְּפָמַלְיָא שֶׁלוֹ נָטַל רְשׁוּת, אָמַר לָהֶם יֵשׁ בָּעֶלְיוֹנִים כִּדְמוּתִי; אִם אֵין כִּדְמוּתִי בַתַּחְתּוֹנִים הֲרֵי יֵשׁ קִנְאָה בְמַעֲשֵׂה בְרֵאשִׁית: נעשה אדם. אַעַ\"פִּ שֶׁלֹּא סִיְּעוּהוּ בִיצִירָתוֹ וְיֵשׁ מָקוֹם לַמִּינִים לִרְדּוֹת, לֹא נִמְנַע הַכָּתוּב מִלְּלַמֵּד דֶרֶך אֶרֶץ וּמִדַּת עֲנָוָה שֶׁיְּהֵא הַגָּדוֹל נִמְלָךְ וְנוֹטֵל רְשׁוּת מִן הַקָּטָן; וְאִם כָּתַב אֶעֱשֶׂה אָדָם, לֹא לָמַדְנוּ שֶׁיְּהֵא מְדַבֵּר עִם בֵּית דִינוֹ, אֶלָּא עִם עַצְמוֹ, וּתְשׁוּבַת הַמִּינִים כָּתַב בְּצִדּוֹ, וַיִּבְרָא אֶת הָאָדָם, וְלֹא כָתַב וַיִּבְרְאוּ: בצלמנו. בִּדְפוּס שֶׁלָּנוּ: כדמותנו. לְהָבִין וּלְהַשְׂכִּיל: וירדו בדגת הים. יֵשׁ בַּלָּשׁוֹן הַזֶּה לְשׁוֹן רִדּוּי וּלְשׁוֹן יְרִידָה; זָכָה, רוֹדֶה בַחַיּוֹת וּבַבְּהֵמוֹת, לֹא זָכָה, נַעֲשֶׂה יָרוּד לִפְנֵיהֶם וְהַחַיָּה מוֹשֶׁלֶת בּוֹ: ויברא אלהים את האדם בצלמו. בִּדְפוּס הֶעָשׂוּי לוֹ, שֶׁהַכֹּל נִבְרָא בְּמַאֲמָר וְהוּא נִבְרָא בַּיָּדַיִם, שֶׁנֶּאֱמַר וַתָּשֶׁת עָלַי כַּפֶּכָה (תהילים קל\"ט); נַעֲשָׂה בְחוֹתָם כְּמַטְבֵּעַ הָעֲשׂוּיָה עַל יְדֵי רֹשֶׁם שֶׁקּוֹרִין קוי\"ן בלע\"ז וְכֵן הוּא אוֹמֵר תִּתְהַפֵּךְ כְּחֹמֶר חוֹתָם (איוב ל\"ח): בצלם אלהים ברא אותו. פֵּרֵשׁ לְךָ שֶׁאוֹתוֹ צֶלֶם הַמְתֻקָּן לוֹ, צֶלֶם דְּיוֹקַן יוֹצְרוֹ הוּא: זכר ונקבה ברא אותם. וּלְהַלָּן הוּא אוֹמֵר וַיִּקַּח אַחַת מִצַּלְעֹתָיו וגו' (בראשית ב')? מִדְרַשׁ אַגָּדָה שֶׁבְּרָאוֹ שְׁנֵי פַרְצוּפִים בִּבְרִיאָה רִאשׁוֹנָה, וְאַחַר כָּךְ חֲלָקוֹ. וּפְשׁוּטוֹ שֶׁל מִקְרָא, כָּאן הוֹדִיעֲךָ שֶׁנִּבְרְאוּ שְׁנֵיהֶם בַּשִּׁשִּׁי וְלֹא פֵי' לְךָ כֵּיצַד בְּרִיָּתָן, וּפֵרֵשׁ לְךָ בְּמָקוֹם אַחֵר: וכבשה. חָסֵר וָי\"ו לְלַמֶּדְךָ שֶׁהַזָּכָר כּוֹבֵשׁ אֶת הַנְּקֵבָה, שֶׁלֹּא תְהֵא יַצְאָנִית, וְעוֹד לְלַמֶּדְךָ שֶׁהָאִישׁ שֶׁדַּרְכּוֹ לִכְבֹּשׁ מְצֻוֶּה עַל פְּרִיָּה וּרְבִיָּה וְלֹא הָאִשָּׁה: לכם יהיה לאכלה ולכל חית הארץ. הִשְׁוָה לָהֶם בְּהֵמוֹת וְחַיּוֹת לְמַאֲכָל, וְלֹא הִרְשָׁה לְאָדָם וּלְאִשְׁתּוֹ לְהָמִית בְּרִיָּה וְלֶאֱכֹל בָּשָׂר, אַךְ כָּל יֶרֶק עֵשֶׂב יֹאכְלוּ יַחַד כֻּלָם, וּכְשֶׁבָּאוּ בְנֵי נֹחַ הִתִּיר לָהֶם בָּשָׂר, שֶׁנֶאֱמַר כָּל רֶמֶשׂ אֲשֶׁר הוּא חַי וְגוֹ' כְּיֶרֶק עֵשֶׂב שֶׁהִתַּרְתִּי לְאָדָם הָרִאשׁוֹן נָתַתִּי לָכֶם אֶת כֹּל: יום הששי. הוֹסִיף ה' בַּשִּׁשִּׁי בִגְמַר מַעֲשֵׂה בְרֵאשִׁית, לוֹמַר שֶׁהִתְנָה עִמָּהֶם, עַל מְנָת שֶׁיְּקַבְּלוּ עֲלֵיהֶם יִשְׂרָאֵל חֲמִשָּׁה חֻמְּשֵׁי תוֹרָה. דָּבָר אַחֵר יוֹם הַשִּׁשִּׁי, כֻּלָּם תְּלוּיִם וְעוֹמְדִים עַד יוֹם הַשִּׁשִּׁי, הוּא ו' בְּסִיוָן הַמּוּכָן לְמַתַּן תּוֹרָה: ויכל אלהים ביום השביעי. ר' שִׁמְעוֹן אוֹמֵר בָּשָׂר וָדָם, שֶׁאֵינוֹ יוֹדֵעַ עִתָּיו וּרְגָעָיו צָרִיך לְהוֹסִיף מֵחֹל עַל הַקֹּדֶשׁ, הַקָּבָּ\"ה שֶׁיּוֹדֵעַ עִתָּיו וּרְגָעָיו, נִכְנָס בֹּו כְּחוּט הַשַּׂעֲרָה, וְנִרְאֶה כְאִלּוּ כִלָּה בוֹ בַיֹּום. דָּ\"אַ מֶה הָיָה הָעוֹלָם חָסֵר? מְנוּחָה, בָּאת שַׁבָּת בָּאת מְנוּחָה, כָּלְתָה וְנִגְמְרָה הַמְּלָאכָה: ויברך, ויקדש. בֵּרְכוֹ בַּמָּן, שֶׁכָּל יְמוֹת הַשָּׁבוּעַ יוֹרֵד לָהֶם עֹמֶר לַגֻּלְגֹּלֶת, וּבַשִּׁשִּׁי לֶחֶם מִשְׁנֶה, וְקִדְּשׁוֹ בַּמָּן, שֶׁלֹּא יָרַד כְּלָל בְּשַׁבָּת, וְהַמִּקְרָא כָּתוּב עַל הֶעָתִיד: אשר ברא אלהים לעשות. הַמְּלָאכָה שֶׁהָיְתָה רְאוּיָה לֵעָשׂוֹת בַּשַּׁבָּת, כָּפַל וַעֲשָׂאָהּ בַּשִּׁשִּׁי כְּמוֹ שֶׁמְּפֹרָשׁ בְּב\"ר: אלה. הָאֲמוּרִים לְמַעְלָה: תולדות השמים והארץ בהבראם ביום עשות ה'. לִמֶּדְךָ שֶׁכֻּלָּם נִבְרְאוּ בָרִאשׁוֹן. דָּבָר אַחֵר בְּהִבָּרְאָם, בְּה' בְרָאָם, שֶׁנ' בְיָהּ ה' צוּר עוֹלָמִים (ישעיהו כ\"ו), בְּב' אוֹתִיוֹת הַלָּלוּ שֶׁל הַשֵּׁם יָצַר שְׁנֵי עוֹלָמִים, וְלִמֶּדְךָ כָאן שֶׁהָעוֹלָם הַזֶּה נִבְרָא בְהֵ\"א, רֶמֶז שֶׁיָּרְדוּ לְמַטָּה לִרְאוֹת שַׁחַת כְּהֵ\"א זֹאת שֶׁסְּתוּמָה מִכָּל צְדָדִים וּפְתוּחָה לְמַטָּה לָרֶדֶת דֶּרֶךְ שָׁם: טרם יהיה בארץ. כָּל טֶרֶם שֶׁבַּמִּקְרָא לְשׁוֹן עַד לֹא הוּא, וְאֵינוֹ לְשׁוֹן קֹדֶם, וְאֵינוֹ נִפְעָל לוֹמַר הִטְרִים, כַּאֲשֶׁר יֹאמַר הִקְדִים וְזֶה מוֹכִיחַ, וְעוֹד אַחֵר כִּי טֶרֶם תִּירְאוּן (שמות ט) עֲדַיִן לֹא תִירְאוּן, וְאַף זֶה תְפָרֵשׁ עֲדַיִן לֹא הָיָה בָאָרֶץ, כְּשֶׁנִּגְמְרָה בְרִיאַת הָעוֹלָם בַּשִּׁשִּׁי קֹדֶם שֶׁנִבְרָא אָדָם, וְכָל עֵשֶׂב הַשָּׂדֶה טֶרֶם יִצְמַח, עֲדַיִן לֹא צָמַח, וּבְג' שֶׁכָּתוּב תּוֹצֵא הָאָרֶץ, לֹא יָצְאוּ, אֶלָּא עַל פֶּתַח קַרְקַע עָמְדוּ עַד יוֹם שִׁשִּׁי: כי לא המטיר. וּמַ\"טַ לֹא הִמְטִיר? לְפִי שֶׁאָדָם אַיִן לַעֲבֹד אֶת הָאֲדָמָה, וְאֵין מַכִּיר בְּטוֹבָתָם שֶׁל גְּשָׁמִים, וּכְשֶׁבָּא אָדָם וְיָדַע שֶׁהֵם צֹרֶךְ לָעוֹלָם, הִתְפַּלֵּל עֲלֵיהֶם וְיָרְדוּ וְצָמְחוּ הָאִילָנוֹת וְהַדְּשָׁאִים: ה' אלהים. ה' הוּא שְׁמוֹ, אֱלֹהִים שֶׁהוּא שַׁלִּיט וְשׁוֹפֵט עַל כֹּל, וְכֵן פֵּרוּש זֶה בְּכָל מָקוֹם לְפִי פְּשׁוּטוֹ, ה' שֶׁהוּא אֱלֹהִים: ואד יעלה. לְעִנְיַן בְּרִיאָתוֹ שֶׁל אָדָם, הֶעֱלָה הַתְּהוֹם וְהִשְׁקָה עֲנָנִים לִשְׁרוֹת הֶעָפָר וְנִבְרָא אָדָם, כְּגַבָּל זֶה, שֶׁנּוֹתֵן מַיִם וְאַחַ\"כַּ לָשׁ אֶת הָעִסָּה, אַף כָּאן, וְהִשְׁקָה, וְאַחַ\"כַּ וַיִּיצֶר: וייצר. שְׁתֵּי יְצִירוֹת, יְצִירָה לָעוֹלָם הַזֶּה וִיצִירָה לִתְחִיַּת הַמֵּתִים, אֲבָל בַּבְּהֵמָה שֶׁאֵינָהּ עוֹמֶדֶת לַדִּין לֹא נִכְתַּב בִּיצִירָתָהּ שְׁנֵי יוֹדִי\"ן: עפר מן האדמה. צָבַר עֲפְרוֹ מִכָּל הָאֲדָמָה מֵאַרְבַּע רוּחוֹת, שֶׁכָּל מָקוֹם שֶׁיָּמוּת שָׁם תְּהֵא קוֹלַטְתּוֹ לִקְבוּרָה. דָּ\"אַ נָטַל עֲפָרוֹ מִמָּקוֹם שֶׁנֶּאֱמַר בּוֹ מִזְבַּח אֲדָמָה תַּעֲשֶׂה לִּי (שמות כ'), הַלְוַאי תִּהְיֶה לוֹ כַפָּרָה וְיוּכַל לַעֲמֹד: ויפח באפיו. עֲשָׂאוֹ מִן הַתַּחְתּוֹנִים וּמִן הָעֶלְיוֹנִים, גוּף מִן הַתַּחְתּוֹנִים וּנְשָׁמָה מִן הָעֶלְיוֹנִים, לְפִי שֶׁבְּיוֹם רִאשׁוֹן נִבְרְאוּ שָׁמַיִם וָאָרֶץ, בַּשֵּׁנִי בָּרָא רָקִיעַ לָעֶלְיוֹנִים, בַּשְּׁלִישִׁי תֵּרָאֶה הַיַּבָּשָׁה לַתַּחְתּוֹנִים, בָּרְבִיעִי בָּרָא מְאוֹרוֹת לָעֶלְיוֹנִים, בַּחֲמִישִׁי יִשְׁרְצוּ הַמַּיִם לַתַּחְתּוֹנִים, הֻזְקַק בַּשִּׁשִּׁי לִבְראוֹת בּוֹ בָעֶלְיוֹנִים וּבַתַּחְתּוֹנִים, וְאִם לָאו יֵשׁ קִנְאָה בְמַעֲשֵׂה בְרֵאשִׁית, שֶׁיִּהְיוּ אֵלּוּ רַבִּים עַל אֵלּוּ בִּבְרִיאַת יוֹם אֶחָד: לנפש חיה. אַף בְּהֵמָה וְחַיָּה נִקְרְאוּ נֶפֶשׁ חַיָּה, אַךְ זוֹ שֶׁל אָדָם חַיָּה שֶׁבְּכֻלָּן, שֶׁנִתּוֹסֵף בּוֹ דֵּעָה וְדִבּוּר: מקדם. בְּמִזְרָחוֹ שֶׁל עֵדֶן נָטַע אֶת הַגָּן. וְאִם תֹּאמַר, הֲרֵי כְבָר כָּתַב וַיִּבְרְָא אֶת הָאָדָם וְגוֹ', רָאִיתִי בִּבְרַיְתָא שֶׁל ר\"א בְּנוֹ שֶׁל רַ' יוֹסֵי הַגְּלִילִי מל\"ב מִדּוֹת שֶׁהַתּוֹרָה נִדְרֶשֶׁת, וְזוֹ אַחַת מֵהֶן, כְּלָל שֶׁלְּאַחֲרָיו מַעֲשֶׂה הוּא פְרָטוֹ שֶׁל רִאשׁוֹן, וַיִּבְרָא אֶת הָאָדָם זֶהוּ כְּלָל, סָתַם בְּרִיאָתוֹ מֵהֵיכָן וְסָתַם מַעֲשָׂיו, חָזַר וּפֵרֵשׁ וַיִּיצֶר ה' אֱלֹהִים וְגוֹ', וַיַּצְמַח לוֹ גַּן עֵדֶן וַיַּנִּיחֵהוּ בְּגַן עֵדֶן וַיַּפֵּל עָלָיו תַּרְדֵּמָה, הַשּׁוֹמֵעַ סָבוּר שֶׁהוּא מַעֲשֶׂה אַחֵר, וְאֵינוֹ אֶלָּא פְרָטוֹ שֶׁל רִאשׁוֹן; וְכֵן אֵצֶל הַבְּהֵמָה חָזַר וְכָתַב וַיִּצֶר ה' וגו' מִן הָאֲדָמָה כָּל חַיַּת הַשָּׂדֶה, כְּדֵי לְפָרֵשׁ וַיָּבֵא אֶל הָאָדָם לִקְרוֹת שֵׁם וּלְלַמֵּד עַל הָעוֹפוֹת שֶׁנִּבְרְאוּ מִן הָרְקָק: ויצמח. לְעִנְיַן הַגַּן הַכָּתוּב מְדַבֵּר: בתוך הגן. בָּאֶמְצַע: פישון. הוּא נִילוּס נְהַר מִצְרַיִם, וְעַל שֵׁם שֶׁמֵּימָיו מִתְבָּרְכִין וְעוֹלִין וּמַשְׁקִין אֶת הָאָרֶץ נִקְרָא פִישׁוֹן כְּמוֹ וּפָשׁוּ פָּרָשָׁיו (חבקוק א') דָּ\"אַ פִּישׁוֹן, שֶׁהוּא מְגַדֵּל פִּשְׁתָּן, שֶׁנֶּאֱמַר עַל מִצְרַיִם (ישעיהו י\"ט) וּבֹשׁוּ עֹבְדֵי פִשְׁתִּים: גיחון. שֶׁהָיָה הוֹלֵךְ וְהוֹמֶה, וְהֶמְיָתוֹ גְדוֹלָה מְאֹד, כְּמוֹ כִי יִגַּח (שמות כ\"א), שֶׁמְּנַגֵּחַ וְהוֹלֵךְ וְהוֹמֶה: חדקל. שֶׁמֵּימָיו חַדִּין וְקַלִּין: פרת. שֶׁמֵּימָיו פָּרִין וְרָבִין וְמַבְרִין אֶת הָאָדָם: כוש ואשור. עֲדַיִן לֹא הָיוּ, וְכָתַב הַמִּקְרָא עַל שֵׁם הֶעָתִיד: קדמת אשור. לְמִזְרָחָהּ שֶׁל אַשּׁוּר: הוא פרת. הֶחָשׁוּב עַל כֻּלָּם, הַנִּזְכָּר עַל שֵׁם א\"י: ויקח. לְקָחוֹ בִדְבָרִים נָאִים וּפִתָּהוּ לִכָּנֵס (בראשית רבה): לא טוב היות וגו'. שֶׁלֹּא יֹאמְרוּ שְׁתֵּי רָשׁוּיוֹת הֵן, הַקָּבָּ\"ה יָחִיד בָעֶלְיוֹנִים וְאֵין לוֹ זוּג, וְזֶה יָחִיד בַתַּחְתּוֹנִים וְאֵין לוֹ זוּג (בראשית רבה): עזר כנגדו. זָכָה – עֵזֶר; לֹא זָכָה – כְּנֶגְדּוֹ לְהִלָּחֵם: וייצר מן האדמה. הִיא יְצִירָה הִיא עֲשִׂיָּה הָאֲמוּרָה לְמַעְלָה וַיַּעַשׂ אֱלֹהִים אֶת חַיַּת הָאָרֶץ וְגוֹ', אֶלָּא בָא וּפֵרֵשׁ שֶׁהָעוֹפוֹת נִבְרְאוּ מִן הָרְקָק, לְפִי שֶׁאָמַר לְמַעְלָה מִן הַמַּיִּם נִבְרְאוּ וְכָאן אָמַר מִן הָאָרֶץ נִבְרְאוּ (חולין כ\"ז), וְעוֹד לִמֶּדְךָ כָּאן שֶׁבִּשְׁעַת יְצִירָתָן מִיָּד בּוֹ בַיּוֹם הֱבִיאָם אֶל הָאָדָם לִקְרוֹת לָהֶם שֵׁם. וּבְדִבְרֵי אַגָּדָה יְצִירָה זוֹ לְשׁוֹן רִדּוּי וְכִבּוּשׁ, כְּמוֹ כִּי תָצוּר אֶל עִיר (דברים כ\"ד), שֶׁכְּבָשָׁן תַּחַת יָדוֹ שֶׁל אָדָם (בראשית רבה): וכל אשר יקרא לו האדם נפש חיה וגו'. סָרְסֵהוּ וּפָרְשֵׁהוּ, כֹּל נֶפֶשׁ חַיָּה אֲשֶׁר יִקְרָא לוֹ הָאָדָם שֵׁם, הוּא שְׁמוֹ לְעוֹלָם: ולאדם לא מצא עזר. ויפל ה' אלהים תרדמה. כְּשֶׁהֱבִיאָן הֱבִיאָן לְפָנָיו כָּל מִין וָמִין זָכָר וּנְקֵבָה, אָמַר לְכֻלָּם יֵשׁ בֶּן זוּג וְלִי אֵין בֶּן זוּג, מִיָּד וַיַּפֵּל (בראשית רבה): מצלעותיו. מִסְּטָרָיו, כְּמוֹ וּלְצֶלַע הַמִּשְׁכָּן (שמות כ\"ו), זֶהוּ שֶׁאָמְרוּ שְׁנֵי פַרְצוּפִים נִבְרְאוּ (עירובין י\"ז): ויסגור. מְקוֹם הַחֲתָךְ: ויישן ויקח. שֶׁלֹּא יִרְאֶה חֲתִיכַת הַבָּשָׂר שֶׁמִּמֶּנוּ נִבְרֵאת וְתִתְבַּזֶּה עָלָיו: ויבן. כְּבִִנְיָן, רְחָבָה מִלְּמַטָּה וּקְצָרָה מִלְּמַעְלָה לְקַבֵּל הַוָּלָד כְּאוֹצָר שֶׁל חִטִּים, שֶׁהוּא רָחָב מִלְּמַטָה וְקָצָר מִלְּמַעְלָה שֶׁלֹּא יַכְבִּיד מַשָּׂאוֹ עַל קִירוֹתָיו: ויבן את הצלע לאשה. לִהְיוֹת אִשָּׁה, כְּמוֹ וַיַּעַשׂ אוֹתוֹ גִדְעוֹן לְאֵפוֹד (שופטים ח'), לִהְיוֹת אֵפוֹד: זאת הפעם. מְלַמֵּד שֶׁבָּא אָדָם עַל כָּל בְּהֵמָה וְחַיָּה, וְלֹא נִתְקָרְרָה דַעְתּוֹ בָּהֶם (יבמות ס\"ג): לזאת יקרא אשה כי מאיש וגו'. לָשׁוֹן נוֹפֵל עַל לָשׁוֹן מִכָּאן שֶׁנִּבְרָא הָעוֹלָם בִּלְשׁוֹן הַקֹּדֶשׁ (בראשית רבה): על כן יעזב איש. רוּחַ הַקֹּדֶשׁ אוֹמְרָה כֵן לֶאֱסֹר עַל בְּנֵי נֹחַ הָעֲרָיוֹת (סנהדרין נ\"ז): לבשר אחד. הַוָּלָד נוֹצָר עַל יְדֵי שְׁנֵיהֶם וְשָׁם נַעֲשֶׁה בְשָׂרָם אֶחָד (שם נ\"ח): ולא יתבוששו. שֶׁלֹּא הָיוּ יוֹדְעִים דֶרֶךְ צְנִיעוּת לְהַבְחִין בֵּין טוֹב לָרָע, וְאַעַ\"פִּ שֶׁנִּתְּנָה בוֹ דֵּעָה לִקְרוֹת לוֹ שֵׁמוֹת, לֹא נִתַּן בּוֹ יֵצֶר הָרָע עַד אָכְלוֹ מִן הָעֵץ וְנִכְנַס בּוֹ יֵצֶר הָרָע וְיָדַע מַה בֵּין טוֹב לָרָע (בראשית רבה): והנחש היה ערום. מָה עִנְיָן זֶה לְכָאן? הָיָה לוֹ לִסְמֹךְ וַיַּעַשׂ לְאָדָם וּלְאִשְׁתּוֹ כָּתְנוֹת עוֹר וַיַּלְבִּשֵׁם, אֶלָּא לִמֶּדְךָ מֵאֵיזוֹ עֵצָה קָפַץ הַנָּחַשׁ עֲלֵיהֶם, רָאָה אוֹתָם עֲרֻמִּים וְעוֹסְקִים בְּתַשְׁמִישׁ לְעֵין כֹּל וְנִתְאַוָּה לָהּ: ערום מכל. לְפִי עָרְמָתוֹ וּגְדֻלָּתוֹ הָיְתָה מַפָּלָתוֹ, עָרוּם מִכֹּל, אָרוּר מִכֹּל (בראשית רבה): אף כי אמר וגו'. שֶׁמָּא אָמַר לָכֶם לֹא תֹאכְלוּ מִכֹּל וְגוֹ', וְאַעַ\"פִּ שֶׁרָאָה אוֹתָם אוֹכְלִים מִשְּׁאָר פֵּרוֹת, הִרְבָּה עָלֶיהָ דְבָרִים כְּדֵי שֶׁתְּשִׁיבֶנּוּ וְיָבֹא לְדַבֵּר בְּאוֹתוֹ הָעֵץ: ולא תגעו בו. הוֹסִיפָה עַל הַצִּוּוּי, לְפִיכָךְ בָּאָה לִידֵי גֵרָעוֹן, הוּא שֶׁנֶּאֱמַר אַל תּוֹסְףְּ עַל דְּבָרָיו (משלי ל'): לא מות תמותון. דְּחָפָהּ עַד שֶׁנָּגְעָה בוֹ, אָמַר לָהּ כְּשֵׁם שֶׁאֵין מִיתָה בִנְגִיעָה, כָּךְ אֵין מִיתָה בַאֲכִילָה (בראשית רבה): כי ידע. כָּל אֻמָּן שׂוֹנֵא אֶת בְּנֵי אֻמָּנוּתוֹ, מִן הָעֵץ אָכַל וּבָרָא אֶת הָעוֹלָם (בראשית רבה): והייתם כאלהים. יוֹצְרֵי עוֹלָמוֹת (בראשית רבה): ותרא האשה. רָאֲתָה דְבָרָיו שֶׁל נָחָשׁ וְהֶנְאוּ לָהּ וְהֶאֱמִינַתּוּ (בראשית רבה): כי טוב העץ. לִהְיוֹת כֵּאלֹהִים: וכי תאוה הוא לעינים. כְּמוֹ שֶׁאָמַר לָהּ וְנִפְקְחוּ עֵינֵיכֶם: ונחמד להשכיל. כְּמוֹ שֶׁאָמַר לָהּ יוֹדְעֵי טוֹב וָרָע: ותתן גם לאישה. שֶׁלֹּא תָמוּת הִיא וְיִחְיֶה הוּא, וְיִשָּׂא אַחֶרֶת: גם. לְרַבּוֹת בְּהֵמָה וְחַיָּה:"
   }
  ],
  "variants": [
   {
    "src": "machzor_vitry",
-   "op": "replace",
-   "anchor_w": 41,
-   "main": [
-    "הַמְשֻׁבָּח",
-    "וְהַמְפֹאָר",
-    "וְהַמִּתְנַשֵּׂא"
-   ],
+   "op": "insert",
+   "anchor_w": 3,
+   "main": [],
    "vitry": [
-    "משובח",
-    "ומפואר",
-    "ומתנשא"
+    "אלהים",
+    "משמעו",
+    "דיין.",
+    "אמנם",
+    "כמו",
+    "חקות",
+    "התורה",
+    "נקרא",
+    "דין.",
+    "כמו",
+    "כן",
+    "נקרא",
+    "דין",
+    "גם",
+    "חקות",
+    "הטבע",
+    "שהטביע",
+    "הקב\"ה",
+    "את",
+    "עולמו.",
+    "כמבואר",
+    "בשבת",
+    "דף",
+    "קנ\"ה",
+    "יודע",
+    "צדיק",
+    "דין",
+    "דלים.",
+    "יודע",
+    "הקב\"ה",
+    "בכלב",
+    "שמזונותיו",
+    "מועטין",
+    "כו'",
+    "ואין",
+    "הדבר",
+    "בתורת",
+    "עונש.",
+    "אלא",
+    "הטבע",
+    "כך",
+    "הוא",
+    "והוא",
+    "נקרא",
+    "דין",
+    "והנה",
+    "שם",
+    "אלהים",
+    "אף",
+    "על",
+    "גב",
+    "שמשמעו",
+    "הפשוט",
+    "מנהיג",
+    "עולמו",
+    "בדין",
+    "מ\"מ",
+    "כאן",
+    "פירושו",
+    "בורא",
+    "עולמו",
+    "בדין",
+    "והכי",
+    "פי'",
+    "הספרי",
+    "ריש",
+    "פ'",
+    "ואתחנן",
+    "בתפלת",
+    "משה",
+    "ה'",
+    "אלהים",
+    "בדין",
+    "בראת",
+    "את",
+    "העולם.",
+    "ושם",
+    "פירשנו",
+    "בעזרו",
+    "ית'",
+    "למאי",
+    "פירשו",
+    "חז\"ל",
+    "הכי",
+    "כונת",
+    "משה",
+    "שם.",
+    "וע\"ע",
+    "מש\"כ",
+    "להלן",
+    "ט'",
+    "ט\"ז",
+    "ובס'",
+    "שמות",
+    "ו'",
+    "ב':"
    ]
   },
   {
    "src": "machzor_vitry",
    "op": "insert",
-   "anchor_w": 89,
+   "anchor_w": 7,
    "main": [],
    "vitry": [
-    "בשמים",
-    "ממעל",
+    "הפשט",
+    "הברור",
+    "הוא",
+    "מש\"כ",
+    "הרמב\"ן",
+    "בפסוק",
+    "ח'",
+    "שאינו",
+    "מדבר",
+    "בזה",
+    "המקרא",
+    "ברקיע",
+    "שנקראו",
+    "ביום",
+    "השני",
+    "שמים.",
+    "וביבשה",
+    "שנקרא",
+    "ביום",
+    "השלישי",
+    "ארץ",
+    "מוכח",
+    "מזה",
+    "דרקיע",
+    "אינו",
+    "בעצם",
+    "וביחוד",
+    "שמים",
+    "וכן",
+    "היבשה",
+    "אינו",
+    "ביחוד",
+    "ארץ",
+    "אלא",
+    "הקב\"ה",
+    "קרא",
+    "לרקיע",
+    "שמים",
+    "וליבשה",
+    "ארץ.",
+    "משא\"כ",
+    "בזה",
+    "הפסוק",
+    "משמע",
+    "דבעצם",
+    "וראשונה",
+    "מורה",
+    "ענינם",
+    "ששמם",
+    "שמים",
+    "וארץ",
+    "בלא",
+    "קריאת",
+    "שם.",
+    "כמו",
+    "שם",
+    "יבשה",
+    "אינו",
+    "בקריאת",
+    "שם.",
+    "אלא",
+    "מובן",
+    "מאליו",
+    "דעפר",
+    "ואדמה",
+    "יבשה",
+    "נקרא",
+    "יבשה",
+    "ע\"ש",
+    "תכונתם.",
+    "[וכן",
+    "יבואר",
+    "להלן",
+    "בשם",
+    "אדם].",
+    "אלא",
+    "נראה",
+    "דשמים",
+    "וארץ",
+    "היינו",
+    "בכלל",
+    "משפיע",
+    "ומקבל",
+    "השפעה.",
+    "והפי'",
+    "בתחלת",
+    "הבריאה",
+    "עלה",
+    "על",
+    "רצונו",
+    "ית'",
+    "להיות",
+    "הליכות",
+    "העולם",
+    "כולו",
+    "משפיע",
+    "ומושפע.",
+    "דגם",
+    "החמה",
+    "וז'",
+    "כוכבי",
+    "לכת",
+    "המשפיעים",
+    "לנו.",
+    "מ\"מ",
+    "המה",
+    "מקבלים",
+    "השפעה",
+    "מגבוה",
+    "עליהם.",
     "ועל",
-    "הארץ",
+    "הגבוה",
+    "עליהם",
+    "אנו",
+    "אומרים",
+    "בנוסח",
+    "התפלה",
+    "מוציא",
+    "חמה",
+    "ממקומה",
+    "ולבנה",
+    "ממכון",
+    "שבתה.",
+    "וידוע",
+    "שאין",
+    "הליכות",
+    "חמה",
+    "ולבנה",
+    "בזה",
+    "האופן.",
+    "אלא",
+    "הכוונה",
+    "מניעי",
+    "חמה",
+    "ולבנה.",
+    "ונקראים",
+    "ע\"ש",
+    "פעולתם",
+    "וכפי'",
+    "הרמב\"ם",
+    "ז\"ל",
+    "במס'",
+    "ע\"ז.",
+    "צורת",
+    "חמה",
+    "מזל",
+    "חמה.",
+    "והנה",
+    "כל",
+    "המשפיעים",
+    "מכונים",
+    "בשם",
+    "שמים.",
+    "משום",
+    "אותיות",
+    "שם",
+    "ים.",
+    "משמעות",
+    "שם",
+    "מונח",
+    "בכח",
+    "דבר",
+    "ההשפעה.",
+    "וים",
+    "הוא",
+    "מספר",
+    "זוגי",
+    "לרבים",
+    "כמו",
+    "ידים",
+    "ורגלים.",
+    "וארץ",
+    "מורה",
+    "על",
+    "המושפע",
+    "שהוא",
+    "בטבע",
+    "רץ",
+    "לקבל",
+    "ההשפעה",
+    "(ועי'",
+    "מש\"כ",
+    "בס'",
+    "דברים",
+    "בפ'",
+    "האזינו",
+    "השמים.",
+    "ובפ'",
+    "ברכה",
+    "בפסוק",
+    "אף",
+    "שמיו",
+    "יערפו",
+    "טל).",
+    "ולא",
+    "ביאר",
+    "הכתוב",
+    "מאומה",
+    "במשפיעים",
+    "העליונים",
+    "באשר",
+    "אינם",
+    "מושגים",
+    "כי",
+    "אם",
+    "לגדולי",
+    "הדעת.",
+    "ומי",
+    "שדעתו",
+    "יפה",
+    "ימצא",
+    "ברמז",
+    "הכל",
+    "כאשר",
+    "לכל."
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 8,
+   "main": [
+    "הָיְתָה"
+   ],
+   "vitry": [
+    "מתחיל",
+    "מן",
+    "המים",
+    "העליונים",
+    "אשר",
+    "אח\"כ",
+    "עשה",
+    "אלהים",
+    "רקיע",
+    "בתוכם.",
+    "ונשתנה",
+    "כח",
+    "המים",
+    "שעל",
+    "הרקיע",
+    "וצורתם",
+    "ממים",
+    "התחתונים",
+    "כאשר",
+    "יבואר:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 10,
+   "main": [],
+   "vitry": [
+    "זה",
+    "השם",
+    "מונח",
+    "על",
+    "דבר",
+    "שאין",
+    "לו",
+    "גדר",
+    "והבדל",
+    "זה",
+    "מזה.",
+    "כמו",
+    "מדבר",
+    "שאין",
+    "שם",
+    "היכר",
+    "שנוי",
+    "מקומות",
+    "מקרי",
+    "בשירת",
+    "האזינו",
+    "ובתהו.",
+    "ובעבודת",
+    "כוכבים",
+    "ד\"ח",
+    "איתא",
+    "שני",
+    "אלפים",
+    "תהו.",
+    "והפי'",
+    "מעשה",
+    "נערות",
+    "בלי",
+    "תורה",
+    "הי'",
+    "כל",
+    "מעשה",
+    "האדם",
+    "בגדר",
+    "א'",
+    "בלי",
+    "חלוק.",
+    "והכי",
+    "כונת",
+    "ת\"א",
+    "רקניא.",
+    "דמקום",
+    "ריק",
+    "אין",
+    "שנוי",
+    "חלק",
+    "זה",
+    "מזה:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 11,
+   "main": [],
+   "vitry": [
+    "זה",
+    "השם",
+    "מונח",
+    "על",
+    "שבו",
+    "היה",
+    "נכלל",
+    "הרבה.",
+    "היינו",
+    "מיבשה",
+    "אשר",
     "מתחת",
-    "תתברך",
-    "מושיענו"
+    "המים",
+    "עד",
+    "קצה",
+    "המים",
+    "היה",
+    "נכלל",
+    "כל",
+    "טבע",
+    "הבריאה",
+    "וכל",
+    "כח",
+    "הברואים",
+    "אח\"כ:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 15,
+   "main": [],
+   "vitry": [
+    "זה",
+    "יסוד",
+    "האש",
+    "שהיה",
+    "בתוך",
+    "האדמה",
+    "כמו",
+    "שעוד",
+    "היום",
+    "יש",
+    "הרבה",
+    "יסודות",
+    "אש.",
+    "ואם",
+    "תקיאם",
+    "תרעש",
+    "הארץ:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 21,
+   "main": [
+    "וַיֹּאמֶר"
+   ],
+   "vitry": [
+    "לא",
+    "מנשף",
+    "בכח",
+    "כדי",
+    "לייבש",
+    "כדרך",
+    "שאר",
+    "רוח",
+    "חזק",
+    "שמכונה",
+    "בשם",
+    "רוח"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 23,
+   "main": [],
+   "vitry": [
+    "אלא",
+    "אז",
+    "היה",
+    "מרחף",
+    "בנחת:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 25,
+   "main": [],
+   "vitry": [
+    "ידוע",
+    "שזה",
+    "האור",
+    "אינו",
+    "אור",
+    "המאיר",
+    "לדורות.",
+    "וכמו",
+    "שאר",
+    "דברים",
+    "שבפרשה.",
+    "ומש\"ה",
+    "לא",
+    "כתיב",
+    "גביה",
+    "ויהי",
+    "כן.",
+    "כי",
+    "גם",
+    "מתחלה",
+    "לא",
+    "נוצר",
+    "זה",
+    "האור.",
+    "כי",
+    "אם",
+    "שיהא",
+    "גנוז",
+    "לצדיקים",
+    "אח\"כ.",
+    "אלא",
+    "כדי",
+    "שלא",
+    "יהיה",
+    "אח\"כ",
+    "בריאה",
+    "חדשה",
+    "מה",
+    "שלא",
+    "היה",
+    "בשבעת",
+    "הימים.",
+    "אמר",
+    "ה'"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 27,
+   "main": [],
+   "vitry": [
+    "ומלת",
+    "כן",
+    "משמעו",
+    "גם",
+    "לשון",
+    "יסוד",
+    "ובסיס",
+    "כמו",
+    "כן",
+    "צדקה",
+    "לחיים.",
+    "ומש\"ה",
+    "לא",
+    "כתיב",
+    "כאן",
+    "כמו",
+    "בכל",
+    "הבריאה",
+    "ויהי",
+    "כן:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 29,
+   "main": [],
+   "vitry": [
+    "וגו'.",
+    "לא",
+    "שלא",
+    "ידע",
+    "טרם",
+    "היותו:",
+    "כי",
+    "יהיה",
+    "טוב",
+    "כמו",
+    "שראה",
+    "אחר",
+    "שנהיה.",
+    "אלא",
+    "בא",
+    "גם",
+    "בזה",
+    "לעשות",
+    "טבע",
+    "שיהא",
+    "הראיה",
+    "טובה",
+    "מהאמנה",
+    "בדעת",
+    "והבין",
+    "בדבר",
+    "עד",
+    "שאמרו",
+    "בשמות",
+    "רבה",
+    "שלא",
+    "נתפעל",
+    "משה",
+    "רבינו",
+    "בשעה",
+    "שאמר",
+    "הקב\"ה",
+    "שעשו",
+    "ישראל",
+    "עגל.",
+    "כמו",
+    "אח\"כ",
+    "שראה",
+    "בעיניו.",
+    "אע\"ג",
+    "שלא",
+    "הי'",
+    "בגדר",
+    "ספק",
+    "אצלו",
+    "גם",
+    "עד",
+    "שלא",
+    "ראה.",
+    "אבל",
+    "כך",
+    "הוא",
+    "הטבע",
+    "דמראה",
+    "עינים",
+    "פועל",
+    "יותר",
+    "מהלך",
+    "נפש.",
+    "וכאן",
+    "הטביע",
+    "המקום",
+    "ב\"ה",
+    "במעשה",
+    "בראשית",
+    "שראה",
+    "אח\"כ",
+    "שכך",
+    "הוא:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 31,
+   "main": [],
+   "vitry": [
+    "ולא",
+    "כתיב",
+    "כמו",
+    "בכל",
+    "הפרשה",
+    "וירא",
+    "אלהים"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 32,
+   "main": [],
+   "vitry": [
+    "טוב.",
+    "משום",
+    "שיש",
+    "שני",
+    "משמעות",
+    "ללשון",
+    "כי",
+    "טוב.",
+    "א'",
+    "כי",
+    "טוב",
+    "הדבר",
+    "לתכלית",
+    "הנרצה",
+    "בו.",
+    "אע\"ג",
+    "שעיקר",
+    "התכלית",
+    "אינו",
+    "בא",
+    "לתכלית",
+    "טוב",
+    "מ\"מ",
+    "לפי",
+    "מה",
+    "שנרצה",
+    "מזה",
+    "החפץ",
+    "הוא",
+    "טוב.",
+    "ב'",
+    "הוא",
+    "טוב",
+    "באמת.",
+    "והנה",
+    "בכל",
+    "הבריאה",
+    "יש",
+    "כמה",
+    "דברים",
+    "שאינם",
+    "טובים.",
+    "כמו",
+    "מיני",
+    "מזיקים.",
+    "אלא",
+    "שראה",
+    "הקב\"ה",
+    "דלתכלית",
+    "הבריאה",
+    "נצרך",
+    "להיות",
+    "כך",
+    "ולא",
+    "באופן",
+    "אחר.",
+    "אבל",
+    "אור",
+    "הוא",
+    "טוב",
+    "בהחלט.",
+    "עד",
+    "שמכנים",
+    "לכל",
+    "דבר",
+    "טוב",
+    "ומועיל",
+    "שהוא",
+    "אור.",
+    "כמו",
+    "שנקרא",
+    "גשם",
+    "אור",
+    "כדאי'",
+    "(בתענית",
+    "דף",
+    "ז')",
+    "(ובב\"ר",
+    "פ'",
+    "כ\"ו)",
+    "כל",
+    "אור",
+    "האמור",
+    "באליהו",
+    "בגשם",
+    "הכ\"מ.",
+    "והיינו",
+    "משום",
+    "דמביא",
+    "טוב",
+    "לעולם.",
+    "(והרמב\"ן",
+    "ר\"פ",
+    "מקץ",
+    "נדחק",
+    "בטעם",
+    "הדבר)",
+    "וכן",
+    "מכונה",
+    "כל",
+    "הצלחה",
+    "ליום",
+    "המאיר.",
+    "והעדר",
+    "הצלחה",
+    "לחשכת",
+    "לילה.",
+    "עד",
+    "שהמשיל",
+    "המשורר",
+    "ואמר",
+    "יומם",
+    "השמש",
+    "לא",
+    "יככה",
+    "וירח",
+    "בלילה.",
+    "וביארנו",
+    "להלן",
+    "(כ\"ח",
+    "ט\"ו)",
+    "דהכונה",
+    "על",
+    "שעת",
+    "הצלחה",
+    "והעדרו.",
+    "וזהו",
+    "לשון",
+    "המקרא",
+    "שראה",
+    "המקום",
+    "דאור",
+    "ביחוד",
+    "הוא"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 39,
+   "main": [
+    "וַיִּקְרָא",
+    "אֱלֹהִים"
+   ],
+   "vitry": [
+    "הוראת",
+    "הבדל",
+    "הוא",
+    "בשני",
+    "משמעות.",
+    "א'",
+    "מסך",
+    "מבדיל",
+    "בין",
+    "שני",
+    "דברים",
+    "שוים",
+    "או",
+    "אינם",
+    "שוים.",
+    "ב'",
+    "הבדל",
+    "רוחני",
+    "בין",
+    "שני",
+    "דברים",
+    "שנראין",
+    "לחוש",
+    "העין",
+    "שהם",
+    "שוים.",
+    "כמו",
+    "הבדלה",
+    "בין",
+    "יום",
+    "קודש",
+    "לחול.",
+    "דלפי",
+    "שנראה",
+    "מה",
+    "יום",
+    "מיומים.",
+    "וכן",
+    "הבדל",
+    "בין",
+    "טהור",
+    "לטמא",
+    "ועוד",
+    "הרבה.",
+    "וכאן",
+    "אין",
+    "לפרש",
+    "באופן",
+    "הב'.",
+    "שהרי",
+    "אור",
+    "וחשך",
+    "מובדלים",
+    "ממילא",
+    "לעין",
+    "החוש",
+    "והפכים",
+    "זמ\"ז.",
+    "אלא",
+    "פי'",
+    "הא'",
+    "שעשה",
+    "מסך",
+    "מבדיל.",
+    "והיינו",
+    "באיזה",
+    "שעה",
+    "שאינו",
+    "לא",
+    "אור",
+    "ולא",
+    "חשך.",
+    "וכך",
+    "הטביע",
+    "המקום",
+    "ב\"ה",
+    "שלא",
+    "יהא",
+    "החשך",
+    "תכף",
+    "אחר",
+    "האור.",
+    "אלא",
+    "יהא",
+    "האור",
+    "מתמעט",
+    "והולך",
+    "עד",
+    "שנעשה",
+    "חשך:",
+    "והנה",
+    "מצינו",
+    "בלשון",
+    "המקרא",
+    "פעם",
+    "כתיב",
+    "על",
+    "המבדיל",
+    "בין",
+    "זה",
+    "לזה.",
+    "ופעם",
+    "כתיב",
+    "על",
+    "המבדיל",
+    "בין",
+    "זה",
+    "ובין",
+    "זה.",
+    "והיינו",
+    "היכן",
+    "שאין",
+    "בענין",
+    "המבדיל",
+    "מעין",
+    "זה",
+    "ומעין",
+    "זה.",
+    "כתיב",
+    "בל'.",
+    "והיכן",
+    "שבענין",
+    "המבדיל",
+    "יש",
+    "מעין",
+    "זה",
+    "ומעין",
+    "זה",
+    "כתיב",
+    "בין",
+    "זה",
+    "ובין",
+    "זה.",
+    "(ועי'",
+    "ס'",
+    "שמות",
+    "ח'",
+    "י\"ט",
+    "וכ\"ו",
+    "ל\"ג",
+    "ובכ\"מ)",
+    "(וכן",
+    "בכל",
+    "מקום",
+    "ברצות",
+    "עליון",
+    "ית')",
+    "וכאן",
+    "הוא",
+    "כדברינו.",
+    "דשעה",
+    "המפסקת",
+    "ביניהם.",
+    "הוא",
+    "פעם",
+    "קרוב",
+    "יותר"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 42,
+   "main": [
+    "יוֹם"
+   ],
+   "vitry": [
+    "ופעם",
+    "קרוב",
+    "לחשך.",
+    "וכך",
+    "טבע",
+    "הבריאה",
+    "בכל",
+    "דבר",
+    "המכונה",
+    "אור",
+    "וחשך",
+    "להיות",
+    "מפסיק",
+    "ביניהם",
+    "ובזה",
+    "האופן",
+    "יהיה",
+    "האדם",
+    "יכול",
+    "לסבול",
+    "השנוי",
+    "בדרך",
+    "הטבע:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 46,
+   "main": [],
+   "vitry": [
+    "פי'",
+    "חז\"ל",
+    "ריש",
+    "מס'",
+    "פסחים",
+    "קרא",
+    "הקב\"ה",
+    "לחשכה",
+    "ופקדה",
+    "אלילה.",
+    "למדונו",
+    "רבותינו",
+    "שלא",
+    "נימא",
+    "דחשך",
+    "הוא",
+    "העדר",
+    "האור",
+    "לבד.",
+    "כמו",
+    "בעצם",
+    "היום",
+    "כשסותמים",
+    "החלונות",
+    "נעשה",
+    "חשך.",
+    "וא\"כ",
+    "אינו",
+    "בריאה.",
+    "אבל",
+    "באמת",
+    "חשך",
+    "הוא",
+    "בריאה",
+    "בפ\"ע",
+    "ג\"כ",
+    "כדכתיב",
+    "ובורא",
+    "חשך",
+    "וטעות",
+    "גדול",
+    "לומר",
+    "שחשך",
+    "אינו",
+    "אלא",
+    "העדר",
+    "האור.",
+    "אלא",
+    "ה'",
+    "עושה",
+    "שניהם",
+    "כמו",
+    "כחות",
+    "הקדושה",
+    "והטומאה.",
+    "(ועי'",
+    "מש\"כ",
+    "להלן",
+    "כ\"ז",
+    "ט')",
+    "ואל",
+    "תקשה",
+    "מאי",
+    "מועיל",
+    "בריאה",
+    "זו.",
+    "הרי",
+    "בלא",
+    "בריאה",
+    "יהי'",
+    "חשך",
+    "בהעדר",
+    "אור.",
+    "אבל",
+    "כבר",
+    "הורונו",
+    "חז\"ל",
+    "(בפ'",
+    "חלק",
+    "ובב\"ר",
+    "פ'",
+    "נח",
+    "ובירושלמי",
+    "פסחים",
+    "פ'",
+    "א')",
+    "דאור",
+    "האש",
+    "אינו",
+    "מנהיר",
+    "ביום",
+    "במקום",
+    "חשך",
+    "כמו",
+    "בלילה",
+    "שבו",
+    "החשך",
+    "מושל.",
+    "ומזה",
+    "הבינו",
+    "אנשי",
+    "מעלה",
+    "בישיבתם",
+    "בחשך",
+    "מתי",
+    "יום",
+    "ומתי",
+    "לילה.",
+    "וכמו",
+    "באור",
+    "וחשך",
+    "של",
+    "יום",
+    "ולילה.",
+    "כך",
+    "בכ\"ד",
+    "שנמשל",
+    "לאור",
+    "וחשך",
+    "כך",
+    "הוא.",
+    "דיש",
+    "כמה",
+    "טובות",
+    "שאין",
+    "האדם",
+    "מרגיש",
+    "כ\"כ",
+    "בעת",
+    "שהוא",
+    "מוצלח",
+    "עד",
+    "שנעשה",
+    "עני",
+    "ומכיר",
+    "הטובה.",
+    "וכך",
+    "הטביע",
+    "ית'",
+    "בעולמו."
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 50,
+   "main": [],
+   "vitry": [
+    "פי'",
+    "בשעה",
+    "שהיה",
+    "ערב",
+    "כאן",
+    "היה",
+    "בקר",
+    "במק\"א",
+    "על",
+    "פני",
+    "ארך",
+    "התבל.",
+    "(בעל",
+    "המאור",
+    "מס'",
+    "ר\"ה",
+    "פ\"א):",
+    "ויהי",
+    "מבדיל.",
+    "היינו",
+    "מסך",
+    "מבדיל.",
+    "בין",
+    "מים",
+    "למים.",
+    "עוד",
+    "יבואר",
+    "במקרא",
+    "הסמוך:",
+    "ויעש",
+    "אלהים",
+    "את",
+    "הרקיע",
+    "ויבדל",
+    "וגו'.",
+    "זה",
+    "המקרא",
+    "אומר",
+    "פרשוני",
+    "לפי",
+    "הפשט.",
+    "שהרי",
+    "הכתוב",
+    "מסיים",
+    "ויהי",
+    "כן.",
+    "ומה",
+    "מקרא",
+    "חסר.",
+    "ותו",
+    "למאי",
+    "כתיב",
+    "ויבדל",
+    "וגו'",
+    "הרי",
+    "הרקיע",
+    "ממילא",
+    "מבדיל.",
+    "וגם",
+    "השנוי",
+    "דכתיב",
+    "בין",
+    "המים",
+    "וגו'",
+    "ובין",
+    "המים",
+    "וגו'",
+    "ולא",
+    "בין",
+    "המים",
+    "וגו'",
+    "למים",
+    "כמו",
+    "במקרא",
+    "הקודם.",
+    "וגם",
+    "הכי",
+    "מיבעי",
+    "בין",
+    "המים",
+    "אשר",
+    "על",
+    "הרקיע",
+    "ובין",
+    "המים",
+    "אשר",
+    "תחת",
+    "לרקיע.",
+    "אבל",
+    "מתחלה",
+    "יש",
+    "להבין",
+    "הלא",
+    "עיקר",
+    "המסך",
+    "בין",
+    "מים",
+    "למים",
+    "לפי",
+    "המובן",
+    "מפשוטו",
+    "לא",
+    "היה",
+    "נצרך",
+    "אלא",
+    "לאותו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 51,
+   "main": [
+    "אֶחָֽד׃"
+   ],
+   "vitry": [
+    "שהרי",
+    "למחר",
+    "אמר",
+    "ה'",
+    "יקוו",
+    "המים",
+    "וגו'",
+    "והושפלו",
+    "המים",
+    "התחתונים",
+    "מאד.",
+    "וא\"כ",
+    "לא",
+    "היה",
+    "נצרך",
+    "מסך",
+    "מבדיל",
+    "ביניהם",
+    "וזה",
+    "פלא.",
+    "אבל",
+    "עוד",
+    "יותר",
+    "קשה",
+    "הא",
+    "דאיתא",
+    "בחגיגה",
+    "(דף",
+    "ט\"ו)",
+    "דבן",
+    "זומא",
+    "הציץ",
+    "וראה",
+    "שאין",
+    "בין",
+    "מים",
+    "העליונים",
+    "למים",
+    "התחתונים",
+    "אלא",
+    "ב'",
+    "וג'",
+    "אצבעות",
+    "שנא'",
+    "ורוח",
+    "אלהים",
+    "מרחפת",
+    "על",
+    "פני",
+    "המים.",
+    "ותמוה",
+    "שהרי",
+    "רחוקים",
+    "זה",
+    "מזה",
+    "כגבוה",
+    "שמים",
+    "על",
+    "הארץ.",
+    "אלא",
+    "כ\"ז",
+    "מתבאר",
+    "ע\"פ",
+    "מדרש",
+    "קהלת",
+    "דרקיע",
+    "אינו",
+    "שמים",
+    "התחתונים",
+    "שעל",
+    "הארץ",
+    "אלא",
+    "הוא",
+    "רקיע",
+    "השני",
+    "ובו",
+    "נתלו",
+    "אח\"כ",
+    "המאורות",
+    "ונקרא",
+    "רקיע",
+    "השמים",
+    "ולא",
+    "סתם",
+    "שמים",
+    "והביאו",
+    "חז\"ל",
+    "מקרא",
+    "מלא",
+    "השמים",
+    "ושמי",
+    "השמים",
+    "וכל",
+    "צבאם.",
+    "לפ\"ז",
+    "מובן"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "delete",
+   "anchor_w": 53,
+   "main": [
+    "וַיֹּאמֶר",
+    "אֱלֹהִים"
+   ],
+   "vitry": []
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 64,
+   "main": [
+    "וַיַּעַשׂ"
+   ],
+   "vitry": [
+    "היינו",
+    "בין",
+    "מים",
+    "שעל",
+    "התחתונים",
+    "למים",
+    "שעל",
+    "השמים",
+    "העליונים",
+    "שהוא",
+    "הרקיע.",
+    "[ומעין",
+    "זה",
+    "אי'",
+    "במורה",
+    "ח\"ב",
+    "פ\"ל]",
+    "(והיינו",
+    "דאי'",
+    "בשמות",
+    "רבה",
+    "פל\"ג",
+    "למעלן",
+    "יהי",
+    "רקיע",
+    "בתוך",
+    "המים",
+    "למטה",
+    "והבדילה",
+    "הפרכת",
+    "לכם",
+    "בין",
+    "הקדש",
+    "ובין",
+    "קה\"ק.",
+    "הרי",
+    "שהמשיל",
+    "הבדל",
+    "בין",
+    "שני",
+    "המימות",
+    "להבדל",
+    "שבין",
+    "קדש",
+    "לקה\"ק",
+    "וזהו",
+    "כמש\"כ)",
+    "מעתה",
+    "משמעות",
+    "הבדלה",
+    "דהאי",
+    "קרא",
+    "אינו",
+    "מסך",
+    "מבדיל",
+    "אלא",
+    "ערך",
+    "משונה",
+    "בין",
+    "מימות",
+    "אלו.",
+    "והדבר",
+    "ברור",
+    "שגם",
+    "שניהם",
+    "אינו",
+    "בצורת",
+    "מים",
+    "הנראים",
+    "לנו",
+    "בעולם",
+    "התחתון.",
+    "אלא",
+    "שנזדכך",
+    "המים",
+    "שהוא",
+    "משפיע",
+    "טוב",
+    "וחסד",
+    "בצורה",
+    "אחרת",
+    "המכונה",
+    "בזה",
+    "השם",
+    "מים.",
+    "והוא",
+    "הנהגה",
+    "משפיע",
+    "רב",
+    "טוב",
+    "וחסד.",
+    "וע\"ז",
+    "כתיב",
+    "תהום",
+    "אל",
+    "תהום",
+    "קורא.",
+    "וכתיב",
+    "פלג"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 66,
+   "main": [
+    "אֶת־"
+   ],
+   "vitry": [
+    "מלא",
+    "מים",
+    "ועוד",
+    "הרבה",
+    "מקראות",
+    "ומדרשים",
+    "ונקרא",
+    "אצלנו",
+    "מים",
+    "העליונים.",
+    "ובאמת",
+    "כל",
+    "מה",
+    "שתחת"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 68,
+   "main": [
+    "וַיַּבְדֵּל"
+   ],
+   "vitry": [
+    "השני",
+    "הוא",
+    "הנהגת",
+    "הטבע",
+    "ממש",
+    "והמאורות",
+    "ומזלות",
+    "מושלים",
+    "בהם",
+    "ונקרא",
+    "תחתונים",
+    "והודיע",
+    "הכתוב",
+    "שהבדיל",
+    "ה'",
+    "בין",
+    "הנהגת",
+    "החסד",
+    "ומשפיע",
+    "שהוא",
+    "מעל",
+    "לרקיע",
+    "היינו",
+    "למעלה",
+    "מהנהגת",
+    "המזלות"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 74,
+   "main": [
+    "וּבֵין",
+    "הַמַּיִם",
+    "אֲשֶׁר"
+   ],
+   "vitry": [
+    "שהוא",
+    "הנהגת",
+    "המזלות",
+    "ממש.",
+    "ומש\"ה",
+    "כתיב"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 79,
+   "main": [
+    "וַֽיְהִי־"
+   ],
+   "vitry": [
+    "כמשמעו",
+    "ולא",
+    "מעל",
+    "דמעל.",
+    "כדאי'",
+    "בפ'",
+    "מצות",
+    "חליצה",
+    "על",
+    "לשון",
+    "המקרא",
+    "מעל",
+    "רגלו."
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 81,
+   "main": [
+    "וַיִּקְרָא"
+   ],
+   "vitry": [
+    "פי'",
+    "מתחת",
+    "לרקיע",
+    "שמשמעו",
+    "סמוך",
+    "לרקיע",
+    "ולא",
+    "הרחק.",
+    "ובא",
+    "להביננו",
+    "שאין",
+    "הכונה",
+    "במים",
+    "העליונים",
+    "חסד",
+    "שמגיע",
+    "ע\"פ",
+    "נס",
+    "גמור",
+    "ומוחלט.",
+    "שא\"כ",
+    "א\"צ",
+    "הבדלה",
+    "לחסד",
+    "שבטבע",
+    "שמובדל",
+    "ממילא",
+    "הוא.",
+    "וכן",
+    "א\"צ",
+    "לומר",
+    "דמים",
+    "שתחת",
+    "לרקיע",
+    "היינו",
+    "מים",
+    "המוחשים",
+    "ונראים",
+    "אלינו.",
+    "דא\"כ",
+    "ודאי",
+    "אינו",
+    "בערך",
+    "מים",
+    "העליונים.",
+    "אלא",
+    "נצרך",
+    "להבדיל",
+    "בין",
+    "הנהגה",
+    "בהשגחה",
+    "פרטית",
+    "ובסתר",
+    "הטבע",
+    "ישים.",
+    "בין",
+    "הנהגת",
+    "המזלות",
+    "ע\"פ",
+    "הטבע",
+    "ממש.",
+    "וע\"ז",
+    "הציץ",
+    "ב\"ז",
+    "ואמר",
+    "שאין",
+    "ביניהם",
+    "אלא",
+    "ב'",
+    "וג'",
+    "אצבעות",
+    "ומרומז",
+    "במקרא",
+    "הקודם",
+    "ורוח"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 83,
+   "main": [
+    "לָֽרָקִיעַ",
+    "שָׁמָיִם",
+    "וַֽיְהִי־",
+    "עֶרֶב",
+    "וַֽיְהִי־",
+    "בֹקֶר",
+    "יוֹם"
+   ],
+   "vitry": [
+    "היינו",
+    "השגחתו",
+    "ית'",
+    "מרחפת",
+    "על",
+    "פני",
+    "המים.",
+    "שהוא",
+    "סדרי",
+    "חסד",
+    "שבטבע.",
+    "ומשמעות",
+    "ויעש",
+    "אלהים",
+    "את",
+    "הרקיע",
+    "תקן",
+    "והעמיד",
+    "על",
+    "מתכונתו",
+    "העיקרית",
+    "(כמש\"כ",
+    "בפ'",
+    "האזינו",
+    "עה\"פ",
+    "הוא",
+    "עשך.",
+    "ובכ\"מ)",
+    "היינו",
+    "שתחתית",
+    "פני",
+    "הרקיע",
+    "היה",
+    "נוטה",
+    "יותר",
+    "למים",
+    "התחתונים",
+    "שהוא",
+    "טבעי",
+    "ממש.",
+    "ופנים",
+    "העליון",
+    "נוטה",
+    "יותר",
+    "למים",
+    "עליונים",
+    "כמו",
+    "כ\"ד",
+    "המבדיל",
+    "בין"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 91,
+   "main": [
+    "{פ}",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים",
+    "יִקָּווּ",
+    "הַמַּיִם"
+   ],
+   "vitry": [
+    "ערכין.",
+    "וכתיב",
+    "בלשון",
+    "בין",
+    "ובין",
+    "כמ\"ש",
+    "לעיל",
+    "ד'.",
+    "והרקיע",
+    "הלז",
+    "הוא",
+    "מפלאות",
+    "תמים",
+    "דעים",
+    "ית'",
+    "שיהא",
+    "השגחתו",
+    "ית'",
+    "מעורב",
+    "עם",
+    "הטבע",
+    "יחד",
+    "לכל",
+    "א'",
+    "לפי",
+    "מעשיו.",
+    "וע\"ז",
+    "כתיב",
+    "ומעשה",
+    "ידיו",
+    "מגיד",
+    "הרקיע.",
+    "שהקב\"ה",
+    "עושה",
+    "תמיד",
+    "פלא.",
+    "משגיח",
+    "לפי",
+    "המעשים",
+    "ומ\"מ",
+    "ממשיל",
+    "הנהגת",
+    "הטבע",
+    "יחד:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 98,
+   "main": [],
+   "vitry": [
+    "היינו",
+    "סתם",
+    "שמים",
+    "שהוא",
+    "נראה",
+    "לנו",
+    "ולא",
+    "מתחת",
+    "רקיע",
+    "השמים",
+    "כמו",
+    "להלן",
+    "ביום",
+    "הרביעי:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 101,
+   "main": [
+    "וְתֵרָאֶה",
+    "הַיַּבָּשָׁה",
+    "וַֽיְהִי־",
+    "כֵֽן׃",
+    "וַיִּקְרָא",
+    "אֱלֹהִים",
+    "לַיַּבָּשָׁה",
+    "אֶרֶץ",
+    "וּלְמִקְוֵה",
+    "הַמַּיִם"
+   ],
+   "vitry": [
+    "אינו",
+    "מקום",
+    "אחד",
+    "ממש",
+    "אלא",
+    "כמה",
+    "מקומות",
+    "מיוחדים",
+    "אשר",
+    "משם",
+    "נתקבצו",
+    "המימות",
+    "שסביביו:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 113,
+   "main": [
+    "וַיַּרְא",
+    "אֱלֹהִים",
+    "כִּי־",
+    "טֽוֹב׃",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים",
+    "תַּֽדְשֵׁא",
+    "הָאָרֶץ"
+   ],
+   "vitry": [
+    "לכל",
+    "מקוה",
+    "נקרא",
+    "ים",
+    "ולהרבה",
+    "מקואות",
+    "נקרא",
+    "ימים.",
+    "זהו",
+    "פשוטו",
+    "ש\"ד.",
+    "והדרשה",
+    "ידוע:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 122,
+   "main": [],
+   "vitry": [
+    "הוא",
+    "מין",
+    "שכל",
+    "תכליתו",
+    "הוא",
+    "העשב",
+    "ולא",
+    "הגרעין.",
+    "וא\"כ",
+    "עיקר",
+    "תכליתו",
+    "מה",
+    "שגדול",
+    "העלה",
+    "יותר",
+    "וזהו",
+    "משמעות",
+    "דשא",
+    "כמ\"ש",
+    "בשירת",
+    "האזינו:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 125,
+   "main": [
+    "עֵץ",
+    "פְּרִי",
+    "עֹשֶׂה",
+    "פְּרִי"
+   ],
+   "vitry": [
+    "שתכליתו",
+    "הוא",
+    "הגרעין",
+    "אם",
+    "קטן",
+    "או",
+    "גדול.",
+    "והנה",
+    "לא",
+    "אמר",
+    "עתה"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 130,
+   "main": [
+    "אֲשֶׁר",
+    "זַרְעוֹ־",
+    "בוֹ",
+    "עַל־",
+    "הָאָרֶץ",
+    "וַֽיְהִי־",
+    "כֵֽן׃"
+   ],
+   "vitry": [
+    "כמו",
+    "שאמר",
+    "בפרי",
+    "העץ.",
+    "וכמו",
+    "דכתיב",
+    "במקרא",
+    "הסמוך"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 144,
+   "main": [],
+   "vitry": [
+    "וגם",
+    "עיקר",
+    "מקרא",
+    "הסמוך",
+    "נראה",
+    "מיותר.",
+    "ומתחלה",
+    "יש",
+    "לבאר",
+    "משמעות",
+    "למינו",
+    "או",
+    "למינהו",
+    "דכתיב",
+    "בגידולי",
+    "ארץ",
+    "ובברואי",
+    "נפש",
+    "חיה.",
+    "והוא",
+    "באשר",
+    "אין",
+    "בכל",
+    "מין",
+    "כמעט",
+    "אשר",
+    "לא",
+    "נכללו",
+    "בו",
+    "כמה",
+    "פרטי",
+    "מינים.",
+    "כמו",
+    "חטה",
+    "אית'",
+    "באיכה",
+    "רבה",
+    "שיש",
+    "מינים",
+    "כמו",
+    "מספר",
+    "חטי",
+    "מנית.",
+    "וכן",
+    "יש",
+    "הרבה",
+    "בכל",
+    "מין.",
+    "ובשעת",
+    "הבריאה",
+    "לא",
+    "יצא",
+    "כי",
+    "אם",
+    "חטה",
+    "אחת",
+    "המובחר",
+    "שבזה",
+    "הזרע.",
+    "והי'",
+    "בו",
+    "כח",
+    "כמה",
+    "מינים.",
+    "וע\"ז",
+    "אמרו",
+    "במס'",
+    "ר\"ה",
+    "דף",
+    "י\"א",
+    "כל",
+    "הבריות",
+    "בצביונן",
+    "נבראו.",
+    "והעיקר",
+    "כמ\"ש",
+    "התוס'",
+    "שהוא",
+    "מלשון",
+    "צבי",
+    "הארץ.",
+    "היינו",
+    "בהדור",
+    "היותר",
+    "אפשר.",
+    "אבל",
+    "לא",
+    "כמ\"ש",
+    "התוס'",
+    "שנגמרו",
+    "כ\"צ.",
+    "דזה",
+    "משמעות",
+    "דאית'",
+    "שם",
+    "בקומתן",
+    "נבראו",
+    "אלא",
+    "כמ\"ש",
+    "באופן",
+    "היותר",
+    "משובח.",
+    "עוד",
+    "נכלל",
+    "במשמעות",
+    "בצביונן.",
+    "דכל",
+    "פרי",
+    "יש",
+    "בו",
+    "עתים",
+    "משתנים",
+    "מתי",
+    "נראה",
+    "גדל",
+    "בהידור.",
+    "ובפרי",
+    "האדמה",
+    "עיקר",
+    "ההידור",
+    "בשעה",
+    "שלא",
+    "נגמר",
+    "כ\"צ",
+    "והעלה",
+    "נראה",
+    "ירוק.",
+    "משא\"כ",
+    "כשגדל",
+    "כ\"צ",
+    "הרי",
+    "העשב",
+    "נבל",
+    "ואינו",
+    "בהידורו.",
+    "אבל",
+    "אילן",
+    "אינו",
+    "כן.",
+    "אפי'",
+    "כשהפרי",
+    "נגמר",
+    "כ\"צ",
+    "עומד",
+    "העלה",
+    "בהידורו.",
+    "ונכלל",
+    "במשמעות",
+    "צביונן.",
+    "בשעה",
+    "שהמה",
+    "נראים",
+    "מהודרים",
+    "ביותר.",
+    "מעתה",
+    "הזרעים",
+    "לא",
+    "שייך",
+    "לומר",
+    "אז",
+    "למינהו.",
+    "שהרי",
+    "ביציאה",
+    "הראשונה",
+    "לא",
+    "הי'",
+    "אלא",
+    "עלים.",
+    "וכל",
+    "המינים",
+    "שוים",
+    "באותו",
+    "זרע.",
+    "מש\"ה",
+    "לא",
+    "כתיב",
+    "במאמר",
+    "למינהו.",
+    "משא\"כ",
+    "באילנות",
+    "כתיב",
+    "במאמר",
+    "למינהו.",
+    "דבשעה",
+    "שיצא",
+    "מראש",
+    "נכלל",
+    "בו",
+    "הרבה",
+    "מינים",
+    "וכלם",
+    "מין",
+    "אחד",
+    "ומש\"ה",
+    "אין",
+    "בו",
+    "כלאים",
+    "כידוע",
+    "בפ'",
+    "אלו",
+    "טרפות:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 145,
+   "main": [],
+   "vitry": [
+    "פרי.",
+    "טבע",
+    "העץ",
+    "משונה",
+    "מזרעים",
+    "שאינו",
+    "צומח",
+    "אלא",
+    "מזריעה",
+    "ולא",
+    "מהקנה",
+    "שלו.",
+    "משא\"כ",
+    "אילן",
+    "מרכיבין",
+    "ענף",
+    "וצומח",
+    "אילן.",
+    "וזהו",
+    "עץ",
+    "פרי",
+    "בעצו",
+    "נכלל",
+    "הכח",
+    "של",
+    "הפרי:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 150,
+   "main": [],
+   "vitry": [
+    "היינו",
+    "הגרעין",
+    "שהוא",
+    "הזרע",
+    "המונח",
+    "בפרי.",
+    "וגם",
+    "בו",
+    "כלול",
+    "כח",
+    "האילן:",
+    "ויהי",
+    "כן.",
+    "שנוצרו",
+    "כמו",
+    "בשעה",
+    "שהיו",
+    "בצביונן.",
+    "ואח\"כ",
+    "ותוצא",
+    "הארץ",
+    "וגו'.",
+    "נגמר",
+    "גידולי",
+    "זרעים",
+    "עד",
+    "שהי'",
+    "שייך",
+    "לומר"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 151,
+   "main": [],
+   "vitry": [
+    "גם",
+    "בהם.",
+    "ובאשר",
+    "גם",
+    "במינים",
+    "שאינם",
+    "נאכלים",
+    "יש",
+    "איזה",
+    "זרע.",
+    "(כדאיתא",
+    "בב\"מ",
+    "דף",
+    "ק\"ה",
+    "א'",
+    "לענין",
+    "עשבים",
+    "בזרא",
+    "דנפל",
+    "נפל)",
+    "מש\"ה",
+    "כתיב",
+    "בדשא",
+    "ג\"כ",
+    "למינהו",
+    "והוצאה",
+    "שנית:",
+    "ועץ",
+    "עשה",
+    "פרי.",
+    "באשר",
+    "יש",
+    "אילנות",
+    "שאע\"ג",
+    "שמתקיים",
+    "משנה",
+    "לשנה.",
+    "מ\"מ",
+    "אין",
+    "העץ",
+    "קיים",
+    "בימי",
+    "החורף.",
+    "ורק",
+    "השורש",
+    "בארץ",
+    "גזעו.",
+    "ומינים",
+    "אלו",
+    "צביונם",
+    "כמו",
+    "בפרי",
+    "האדמה.",
+    "שהעלה",
+    "נבל",
+    "בגמר",
+    "הפרי.",
+    "מש\"ה",
+    "חזר",
+    "וכתב",
+    "הוצאה."
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 152,
+   "main": [],
+   "vitry": [
+    "לדעת",
+    "שלמינו",
+    "כולל",
+    "הרבה",
+    "מינים",
+    "יותר",
+    "מלשון",
+    "למינהו.",
+    "כמ\"ש",
+    "בס'",
+    "ויקרא",
+    "י\"א",
+    "י\"ד",
+    "ע\"ש:",
+    "להבדיל",
+    "וגו'.",
+    "ע\"פ",
+    "הילוכם",
+    "נעשה",
+    "הבדל",
+    "בין",
+    "היום",
+    "ובין",
+    "לילה.",
+    "וגם",
+    "יש",
+    "שחר",
+    "וערב",
+    "מבדילי",
+    "הקצוות.",
+    "וזהו",
+    "בין",
+    "ובין",
+    "(ועי'",
+    "בסמוך",
+    "מקרא",
+    "י\"ז):",
+    "והיו",
+    "לאתת.",
+    "ביארנו",
+    "בס'",
+    "שמות",
+    "ז'",
+    "ט'",
+    "ובכ\"מ",
+    "שמשמעו",
+    "התולה",
+    "דבר",
+    "טבעי",
+    "שיהא",
+    "בצמצום",
+    "השעה.",
+    "וזה",
+    "א\"א",
+    "אלא",
+    "ע\"י",
+    "מאורות:",
+    "ולמועדים.",
+    "שנוי",
+    "התקופות",
+    "קור",
+    "וחום",
+    "וכדומה",
+    "הכל",
+    "ע\"י",
+    "המאורות:",
+    "ולימים",
+    "ושנים.",
+    "לדעת",
+    "חלוקי",
+    "הימים",
+    "זמ\"ז",
+    "וכן",
+    "השנים.",
+    "הכל",
+    "רק",
+    "ע\"י",
+    "הילוך",
+    "המאורות:",
+    "והיו",
+    "וגו'",
+    "להאיר",
+    "על",
+    "הארץ.",
+    "שאפשר",
+    "שיהא",
+    "ניכר",
+    "זהרם",
+    "ע\"י",
+    "שיהיו",
+    "תלוים",
+    "ברקיע",
+    "והזוהר",
+    "למעלה.",
+    "כמו",
+    "אור",
+    "הנר.",
+    "מש\"ה",
+    "מפרש",
+    "להאיר",
+    "על",
+    "הארץ.",
+    "שהאור",
+    "יהי",
+    "מביט",
+    "אך",
+    "על",
+    "הארץ:",
+    "ויהי",
+    "כן.",
+    "נעשו",
+    "שני",
+    "המאורות",
+    "בדבר",
+    "ה'.",
+    "והיו",
+    "מונחים",
+    "לפניו.",
+    "ועוד",
+    "לא",
+    "נתלו",
+    "ברקיע.",
+    "אז",
+    "ויעש"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 153,
+   "main": [
+    "כִּי־",
+    "טֽוֹב׃",
+    "וַֽיְהִי־",
+    "עֶרֶב",
+    "וַֽיְהִי־",
+    "בֹקֶר",
+    "יוֹם",
+    "שְׁלִישִֽׁי׃",
+    "{פ}",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים",
+    "יְהִי",
+    "מְאֹרֹת"
+   ],
+   "vitry": [
+    "וגו'.",
+    "תיקן",
+    "אותם",
+    "שיהיו",
+    "מושלים",
+    "בקרב",
+    "תבל:",
+    "את",
+    "המאור",
+    "הגדול",
+    "לממשלת",
+    "היום.",
+    "עשה",
+    "אותו",
+    "ממונה",
+    "על",
+    "גידולים",
+    "שבטבעם",
+    "ביום.",
+    "וכן",
+    "הרבה",
+    "מיני",
+    "אבנים",
+    "טובות",
+    "ומתכיות",
+    "שנעשים",
+    "ביום:",
+    "ואת",
+    "המאור",
+    "הקטן",
+    "לממשלת",
+    "הלילה.",
+    "על",
+    "גידולים",
+    "ומתכיות",
+    "ואבנים",
+    "שבטבעם",
+    "להעשות",
+    "בלילה:",
+    "ואת",
+    "הכוכבים.",
+    "גם",
+    "המה",
+    "מושלים",
+    "כל",
+    "א'",
+    "על",
+    "איזה",
+    "פרט",
+    "כידוע:",
+    "ויתן",
+    "וגו'.",
+    "בשעת",
+    "המעשה",
+    "נתהפך",
+    "הסדר",
+    "משעת",
+    "האמירה.",
+    "בתחלה",
+    "באו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 168,
+   "main": [],
+   "vitry": [
+    "להאיר",
+    "על",
+    "הארץ.",
+    "ואח\"כ",
+    "למשול.",
+    "ואח\"כ",
+    "להבדיל.",
+    "והטעם",
+    "פשוט.",
+    "דברגע",
+    "הראשון",
+    "שתלה",
+    "הקב\"ה",
+    "אותם",
+    "ברקיע",
+    "האירו",
+    "על",
+    "הארץ.",
+    "אבל",
+    "עוד",
+    "לא",
+    "פעלו",
+    "בממשלתם",
+    "עד",
+    "שהלכו.",
+    "ובהליכתם",
+    "פעלו",
+    "בארץ.",
+    "ועדיין",
+    "לא",
+    "הבדילו",
+    "עד",
+    "הערב:",
+    "ולהבדיל",
+    "בין",
+    "האור",
+    "ובין",
+    "החשך.",
+    "הוסיף",
+    "בזה",
+    "המקרא",
+    "שלבד",
+    "שבאו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 173,
+   "main": [
+    "וְהָיוּ",
+    "לְאֹתֹת",
+    "וּלְמוֹעֲדִים",
+    "וּלְיָמִים",
+    "וְשָׁנִֽים׃",
+    "וְהָיוּ",
+    "לִמְאוֹרֹת",
+    "בִּרְקִיעַ",
+    "הַשָּׁמַיִם",
+    "לְהָאִיר",
+    "עַל־",
+    "הָאָרֶץ",
+    "וַֽיְהִי־",
+    "כֵֽן׃",
+    "וַיַּעַשׂ",
+    "אֱלֹהִים",
+    "אֶת־",
+    "שְׁנֵי",
+    "הַמְּאֹרֹת",
+    "הַגְּדֹלִים",
+    "אֶת־",
+    "הַמָּאוֹר",
+    "הַגָּדֹל",
+    "לְמֶמְשֶׁלֶת",
+    "הַיּוֹם",
+    "וְאֶת־",
+    "הַמָּאוֹר",
+    "הַקָּטֹן",
+    "לְמֶמְשֶׁלֶת",
+    "הַלַּיְלָה",
+    "וְאֵת",
+    "הַכּוֹכָבִֽים׃",
+    "וַיִּתֵּן",
+    "אֹתָם",
+    "אֱלֹהִים",
+    "בִּרְקִיעַ",
+    "הַשָּׁמָיִם",
+    "לְהָאִיר",
+    "עַל־",
+    "הָאָֽרֶץ׃",
+    "וְלִמְשֹׁל",
+    "בַּיּוֹם",
+    "וּבַלַּיְלָה"
+   ],
+   "vitry": [
+    "עוד",
+    "באו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 221,
+   "main": [
+    "וַיַּרְא",
+    "אֱלֹהִים",
+    "כִּי־",
+    "טֽוֹב׃"
+   ],
+   "vitry": [
+    "דבאמת",
+    "אפי'",
+    "אם"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 226,
+   "main": [
+    "עֶרֶב"
+   ],
+   "vitry": [
+    "שני",
+    "המאורות",
+    "שוים",
+    "באורם.",
+    "מ\"מ"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 228,
+   "main": [
+    "בֹקֶר",
+    "יוֹם",
+    "רְבִיעִֽי׃",
+    "{פ}",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים",
+    "יִשְׁרְצוּ",
+    "הַמַּיִם",
+    "שֶׁרֶץ",
+    "נֶפֶשׁ",
+    "חַיָּה",
+    "וְעוֹף",
+    "יְעוֹפֵף"
+   ],
+   "vitry": [
+    "משונים",
+    "בתואר",
+    "האור.",
+    "והיה",
+    "ניכר",
+    "ומובדל",
+    "בין",
+    "היום",
+    "ובין",
+    "הלילה.",
+    "אבל",
+    "עוד",
+    "באו",
+    "להבדיל",
+    "בין",
+    "האור",
+    "ובין",
+    "החשך.",
+    "דאור",
+    "השמש",
+    "חזק",
+    "כ\"כ",
+    "עד",
+    "שאפי'",
+    "ביום",
+    "המעונן",
+    "ואור",
+    "השמש",
+    "מכוסה",
+    "בעבים.",
+    "מ\"מ",
+    "היום",
+    "אור.",
+    "וביומא",
+    "דעיבא",
+    "כולא",
+    "שמשא.",
+    "משא\"כ",
+    "אור",
+    "הלבנה",
+    "אם",
+    "העבים",
+    "מכסים",
+    "את",
+    "האור",
+    "הרי",
+    "החשך.",
+    "וכ\"ז",
+    "הוא",
+    "באור",
+    "המאורות.",
+    "אבל",
+    "בג'",
+    "ימים",
+    "הראשונים",
+    "שהיה",
+    "האור",
+    "הראשון",
+    "משמש.",
+    "בא",
+    "אותו",
+    "ההבדל",
+    "בין",
+    "היום",
+    "ובין",
+    "הלילה.",
+    "להבדיל",
+    "בין",
+    "האור",
+    "ובין",
+    "החשך.",
+    "דבהעדר",
+    "האור",
+    "בא",
+    "הלילה",
+    "והחשך",
+    "יחד:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 247,
+   "main": [],
+   "vitry": [
+    "שני",
+    "מיני",
+    "עופות.",
+    "יש",
+    "מהם",
+    "שמעופפים",
+    "על",
+    "הארץ",
+    "דוקא",
+    "סמוך",
+    "לה.",
+    "ויש",
+    "מהם",
+    "מגביהים",
+    "עוף",
+    "על",
+    "פני",
+    "רקיע",
+    "השמים.",
+    "ומש\"ה",
+    "כתיב",
+    "יעופף",
+    "בבנין",
+    "פיעל.",
+    "ואין",
+    "זה",
+    "בא",
+    "להקטין",
+    "המעופה",
+    "כדרך",
+    "השרשים",
+    "מנע\"ו",
+    "ומכפולים",
+    "וכמ\"ש",
+    "כן",
+    "בפרחון",
+    "בערך",
+    "עוף.",
+    "אבל",
+    "כאן",
+    "אאל\"כ",
+    "שהרי",
+    "כתיב",
+    "על",
+    "פני",
+    "רקיע.",
+    "אלא",
+    "משמעותו",
+    "של",
+    "הכפל",
+    "על",
+    "שני",
+    "מיני",
+    "עיפה.",
+    "ובב\"ר",
+    "פ\"א",
+    "יש",
+    "דורש",
+    "מזה",
+    "שמלאכים",
+    "נבראו",
+    "ג\"כ",
+    "בחמישי",
+    "והיינו",
+    "מדכתיב",
+    "רקיע",
+    "השמים.",
+    "והוא",
+    "שמי",
+    "השמים",
+    "כמ\"ש",
+    "לעיל",
+    "ז'.",
+    "וע\"כ",
+    "דרשו",
+    "דמיירי",
+    "במלאכים",
+    "ג\"כ.",
+    "וה\"ז",
+    "כמו",
+    "דכתיב",
+    "על",
+    "פני",
+    "השמים.",
+    "על",
+    "פני",
+    "רקיע",
+    "השמים.",
+    "וזהו",
+    "דרך",
+    "המקרא",
+    "הרבה:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 248,
+   "main": [
+    "אֱלֹהִים",
+    "אֶת־",
+    "הַתַּנִּינִם",
+    "הַגְּדֹלִים",
+    "וְאֵת",
+    "כׇּל־",
+    "נֶפֶשׁ",
+    "הַֽחַיָּה",
+    "הָֽרֹמֶשֶׂת"
+   ],
+   "vitry": [
+    "וגו'",
+    "למינהם.",
+    "הודיע",
+    "הכתוב",
+    "דאע\"ג",
+    "דבשעת",
+    "מאמר",
+    "הקב\"ה.",
+    "יצאו",
+    "כמה",
+    "מיני",
+    "בריות",
+    "במים",
+    "ובעוף.",
+    "מ\"מ",
+    "גם",
+    "אח\"כ",
+    "הוסיף",
+    "הקב\"ה",
+    "לברוא",
+    "מאלו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 258,
+   "main": [
+    "שָׁרְצוּ",
+    "הַמַּיִם",
+    "לְמִֽינֵהֶם",
+    "וְאֵת",
+    "כׇּל־",
+    "עוֹף",
+    "כָּנָף",
+    "לְמִינֵהוּ",
+    "וַיַּרְא",
+    "אֱלֹהִים",
+    "כִּי־",
+    "טֽוֹב׃",
+    "וַיְבָרֶךְ",
+    "אֹתָם",
+    "אֱלֹהִים",
+    "לֵאמֹר",
+    "פְּרוּ",
+    "וּרְבוּ",
+    "וּמִלְאוּ",
+    "אֶת־",
+    "הַמַּיִם",
+    "בַּיַּמִּים",
+    "וְהָעוֹף",
+    "יִרֶב",
+    "בָּאָֽרֶץ׃"
+   ],
+   "vitry": [
+    "יצאו",
+    "כבר",
+    "במאמר",
+    "כמה",
+    "מינים.",
+    "כגון",
+    "תרנגול",
+    "שיצא",
+    "במאמר",
+    "ברא",
+    "בו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 284,
+   "main": [
+    "עֶרֶב",
+    "וַֽיְהִי־",
+    "בֹקֶר",
+    "יוֹם",
+    "חֲמִישִֽׁי׃",
+    "{פ}",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים",
+    "תּוֹצֵא",
+    "הָאָרֶץ"
+   ],
+   "vitry": [
+    "כמה",
+    "מינים",
+    "באותו",
+    "תכונה",
+    "של",
+    "תרנגול",
+    "וכולם",
+    "מין",
+    "א'",
+    "לענין",
+    "הרכבה",
+    "כידוע.",
+    "וכן",
+    "בכל",
+    "הנזכרים",
+    "בזה",
+    "המקרא",
+    "הוא",
+    "כן:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 297,
+   "main": [],
+   "vitry": [
+    "בשעת",
+    "המאמר",
+    "היה",
+    "הצווי",
+    "שיצא",
+    "נפש",
+    "חיה",
+    "שיש",
+    "בה",
+    "כמה",
+    "מינים",
+    "בצורת",
+    "גידולן",
+    "כמו",
+    "אריה.",
+    "יש",
+    "כמה",
+    "מינים",
+    "נבדלים",
+    "בצורה",
+    "ובם",
+    "נפש",
+    "אחת",
+    "של",
+    "אריה:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 298,
+   "main": [
+    "וָרֶמֶשׂ",
+    "וְחַֽיְתוֹ־",
+    "אֶרֶץ",
+    "לְמִינָהּ"
+   ],
+   "vitry": [
+    "הבדל",
+    "חיה",
+    "מבהמה",
+    "אינו",
+    "כמ\"ש",
+    "הרמב\"ן",
+    "ז\"ל.",
+    "דחיה",
+    "אוכל",
+    "בשר",
+    "ולא",
+    "בהמה.",
+    "דאאל\"כ",
+    "שהרי",
+    "צבי",
+    "אינו",
+    "אוכל",
+    "בשר",
+    "כדאי'",
+    "פ\"ב",
+    "דב\"ק",
+    "(דף",
+    "י\"ט",
+    "ב')",
+    "ואבע\"א",
+    "בטביא.",
+    "ומין",
+    "כלב",
+    "פליגי",
+    "תנאי",
+    "במס'",
+    "כלאים",
+    "אם",
+    "הוא",
+    "מין",
+    "חיה",
+    "או",
+    "בהמה",
+    "ואין",
+    "אוכל",
+    "בשר",
+    "יותר",
+    "ממנו.",
+    "אלא",
+    "ההבדל",
+    "הוא",
+    "שהחיה",
+    "בטבע",
+    "פראי",
+    "אם",
+    "לא",
+    "שעושים",
+    "אותו",
+    "לבן",
+    "תרבות",
+    "בגידולו",
+    "והרגלו",
+    "לשנות",
+    "טבעו.",
+    "ובהמה",
+    "להיפך",
+    "בטבע",
+    "היא",
+    "בייתי.",
+    "אם",
+    "לא",
+    "שגדילה",
+    "ביער",
+    "והרגלה",
+    "שינה",
+    "טבעה",
+    "להיות",
+    "פראי.",
+    "(ועי'",
+    "מ\"ש",
+    "להלן",
+    "ב'",
+    "י\"ט.",
+    "וג'",
+    "י\"ג.",
+    "ובפ\"ו",
+    "כ'.",
+    "ובס'",
+    "ויקרא",
+    "י\"ז",
+    "י\"ג):",
+    "ויעש"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 303,
+   "main": [],
+   "vitry": [
+    "וגו'.",
+    "עשיה",
+    "הוא",
+    "כ\"פ",
+    "גמר",
+    "תיקון",
+    "הענין",
+    "וצורה",
+    "הפנימית",
+    "של",
+    "אותו",
+    "דבר",
+    "כמ\"ש",
+    "לעיל",
+    "ובכ\"מ.",
+    "וביאר",
+    "הכתוב",
+    "דמלבד",
+    "שבשעת",
+    "מאמר",
+    "ה'",
+    "יצא",
+    "האריה",
+    "ובו",
+    "נכללו",
+    "כמה",
+    "מיני",
+    "אריות",
+    "בצורתם",
+    "החיצונה.",
+    "עוד",
+    "עשה",
+    "ה'",
+    "את",
+    "צורתם",
+    "הפנימית",
+    "למינם.",
+    "שאין",
+    "טבע",
+    "כל",
+    "מין",
+    "אריה",
+    "שוה",
+    "בשלימות",
+    "למין",
+    "אריה",
+    "השני.",
+    "ומ\"מ",
+    "כולם",
+    "מין",
+    "אריה",
+    "בפרט",
+    "אחד",
+    "השוה",
+    "בכולם.",
+    "אשר",
+    "ע\"ז",
+    "הפרט",
+    "נקראים",
+    "בשם",
+    "אריה."
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 304,
+   "main": [
+    "וַיַּעַשׂ",
+    "אֱלֹהִים",
+    "אֶת־",
+    "חַיַּת",
+    "הָאָרֶץ",
+    "לְמִינָהּ",
+    "וְאֶת־",
+    "הַבְּהֵמָה",
+    "לְמִינָהּ",
+    "וְאֵת"
+   ],
+   "vitry": [
+    "הוא",
+    "בשור",
+    "וכדומה.",
+    "כ\"ז",
+    "הוא",
+    "בברואי",
+    "היבשה.",
+    "משא\"כ",
+    "בברואי",
+    "המים",
+    "לא",
+    "היה",
+    "כן."
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 315,
+   "main": [],
+   "vitry": [
+    "מיני",
+    "תרנגולים",
+    "שוה",
+    "תכונתם",
+    "בשלימות",
+    "ואין",
+    "ביניהם",
+    "אלא",
+    "צורה",
+    "החיצונה",
+    "שנראו",
+    "כשני",
+    "מיני",
+    "תרנגולים.",
+    "והבורא",
+    "ית'",
+    "יודע",
+    "טעמי",
+    "הבריאה",
+    "מדוע",
+    "נשתנו",
+    "בריאת",
+    "בריות",
+    "היבשה",
+    "בא\"א",
+    "מבריות",
+    "המים:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 317,
+   "main": [
+    "לְמִינֵהוּ",
+    "וַיַּרְא",
+    "אֱלֹהִים",
+    "כִּי־",
+    "טֽוֹב׃",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים"
+   ],
+   "vitry": [
+    "שהבדל",
+    "בין",
+    "ארץ",
+    "לאדמה.",
+    "דארץ",
+    "הוא",
+    "כלל",
+    "שבו",
+    "נכלל",
+    "גם",
+    "מקום",
+    "ישוב",
+    "היבשה",
+    "גם",
+    "מקום",
+    "נהרות",
+    "ואגמים.",
+    "משא\"כ",
+    "אדמה",
+    "הוא",
+    "דוקא",
+    "יבשה",
+    "דוק",
+    "ותשכח.",
+    "ובאשר",
+    "יש",
+    "כמה",
+    "רמשי",
+    "המים",
+    "דזה",
+    "נכלל",
+    "בבריאת",
+    "שרץ",
+    "המים",
+    "אשר",
+    "בימים",
+    "ג\"כ",
+    "מש\"ה",
+    "דייק",
+    "הכתוב",
+    "דבזה",
+    "המאמר",
+    "נבראו",
+    "רק",
+    "רמש",
+    "האדמה:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 326,
+   "main": [],
+   "vitry": [
+    "לא",
+    "אמר",
+    "ה'",
+    "נעשה",
+    "נפש",
+    "חיה",
+    "כדמותנו.",
+    "ואחר",
+    "כך",
+    "יקרא",
+    "אדם.",
+    "וכמו",
+    "שכתוב",
+    "באמת",
+    "להלן",
+    "ה'",
+    "ב'",
+    "ויקרא",
+    "את",
+    "שמם",
+    "אדם.",
+    "אבל",
+    "לשון",
+    "נעשה",
+    "אדם",
+    "הוא",
+    "שא\"צ",
+    "לקריאת",
+    "השם.",
+    "אלא",
+    "תכונתו",
+    "מורה",
+    "כי",
+    "הוא",
+    "אדם.",
+    "אבל",
+    "א\"כ",
+    "קשה",
+    "על",
+    "מה",
+    "כתיב",
+    "אח\"כ",
+    "שקרא",
+    "הקב\"ה",
+    "שמם",
+    "אדם.",
+    "משמע",
+    "שנצרך",
+    "לקריאת",
+    "שם",
+    "וכמ\"ש",
+    "בשם",
+    "שמים",
+    "וארץ.",
+    "אלא",
+    "כך",
+    "הדבר.",
+    "דמשונה",
+    "האדם",
+    "מכל",
+    "המינים.",
+    "דכל",
+    "המינים",
+    "נבראו",
+    "באופן",
+    "שכל",
+    "מין",
+    "שוה",
+    "בתכליתו",
+    "ובתכונתו.",
+    "משא\"כ",
+    "האדם",
+    "עלה",
+    "במחשבה",
+    "שיהא",
+    "בשתי",
+    "תכונות.",
+    "האחת",
+    "יהא",
+    "דבוק",
+    "באלהיו",
+    "עומד",
+    "ומשמש",
+    "בארץ",
+    "כמלאך",
+    "בשמים.",
+    "והשני'",
+    "שיהא",
+    "מדיני",
+    "ועושה",
+    "צרכיו.",
+    "אע\"ג",
+    "שמ\"מ",
+    "יעשה",
+    "רצון",
+    "ה'.",
+    "אבל",
+    "אינו",
+    "במעלה",
+    "הראשון.",
+    "והנה",
+    "בתכונה",
+    "הראשונה",
+    "הוא",
+    "אדם",
+    "ממילא",
+    "מלשון",
+    "אדמה",
+    "לעליון.",
+    "באשר",
+    "הוא",
+    "בדמות",
+    "אלהים.",
+    "והיינו",
+    "שבו",
+    "כלול",
+    "כל",
+    "כחות",
+    "הבריאה",
+    "והוא",
+    "מושל",
+    "בכל.",
+    "והרי",
+    "הוא",
+    "כמו",
+    "בן",
+    "הבכור",
+    "של",
+    "מלך",
+    "שמושל",
+    "כמו",
+    "המלך.",
+    "ומשום",
+    "זה",
+    "הכל",
+    "מבינים",
+    "שהוא",
+    "בן",
+    "המלך",
+    "באשר",
+    "רואים",
+    "אותו",
+    "מושל",
+    "בכל",
+    "פרט.",
+    "משא\"כ",
+    "בן",
+    "מלך",
+    "שאינו",
+    "בכור.",
+    "והמלך",
+    "עושה",
+    "אותו",
+    "למושל",
+    "באיזה",
+    "פרט.",
+    "ואת",
+    "חבירו",
+    "על",
+    "פרט",
+    "אחר.",
+    "וכן",
+    "לכל",
+    "מושלי",
+    "המלוכה.",
+    "נמצא",
+    "כולם",
+    "ביחד",
+    "דומים",
+    "למלך",
+    "אבל",
+    "כל",
+    "א'",
+    "בפ\"ע",
+    "אינו",
+    "אלא",
+    "בקריאת",
+    "שם",
+    "דומה",
+    "למלך",
+    "בזה",
+    "הפרט",
+    "שהוא",
+    "מושל.",
+    "וכך",
+    "האדם",
+    "משונה",
+    "איש",
+    "המעלה",
+    "מאיש",
+    "הפשוט.",
+    "ובגמ'",
+    "שבת",
+    "דף",
+    "קי\"ב",
+    "ב'",
+    "רמזו",
+    "על",
+    "שני",
+    "מיני",
+    "אדם.",
+    "ואמר",
+    "בל\"א",
+    "לית",
+    "דין",
+    "בר",
+    "אינש.",
+    "ובל\"ב",
+    "כגון",
+    "דין",
+    "בר",
+    "אינש.",
+    "פי'",
+    "האדם",
+    "המעלה.",
+    "אבל",
+    "כלל",
+    "מין",
+    "אנושי",
+    "נקראים",
+    "אדם",
+    "בטבע",
+    "הענין.",
+    "באשר",
+    "המה",
+    "בכלל",
+    "מושלים",
+    "על",
+    "כל",
+    "הבריאה.",
+    "והוא",
+    "התכליתי",
+    "[וכן",
+    "בשם",
+    "ישראל",
+    "שהוראתו",
+    "הוא",
+    "למעלה",
+    "מטבע",
+    "הבריאה",
+    "וההנהגה.",
+    "יבואר",
+    "להלן",
+    "פ'",
+    "וישלח.",
+    "דכלל",
+    "האומה",
+    "נקרא",
+    "ישראל.",
+    "אבל",
+    "כל",
+    "יחיד",
+    "מהם",
+    "יש",
+    "שנקרא",
+    "שמו",
+    "ישראל",
+    "ויש",
+    "שלא",
+    "הגיע",
+    "לכך]",
+    "וא\"כ",
+    "במאמר",
+    "נעשה",
+    "אדם",
+    "ביאורו",
+    "מין",
+    "האדם",
+    "בכלל",
+    "ונקרא",
+    "ודאי",
+    "אדם",
+    "גם",
+    "בלא",
+    "קריאת",
+    "שם.",
+    "אחר",
+    "שבכלל",
+    "בזה",
+    "המין",
+    "תלוי",
+    "הבריאה",
+    "ודומים",
+    "בזה",
+    "הפרט",
+    "להבורא",
+    "ית\"ש.",
+    "ואדם",
+    "הראשון",
+    "בפרט",
+    "קודם",
+    "שחטא",
+    "הי'",
+    "ראוי",
+    "להקרא",
+    "אדם",
+    "גם",
+    "בלי",
+    "קריאת",
+    "שם.",
+    "אבל",
+    "אחר",
+    "שחטא",
+    "נקרא",
+    "שמו",
+    "אדם",
+    "ויבואר",
+    "עוד:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 327,
+   "main": [],
+   "vitry": [
+    "הב'",
+    "כמו",
+    "בתוך",
+    "או",
+    "כמו",
+    "עם.",
+    "שהאדם",
+    "יש",
+    "לו",
+    "מזל.",
+    "ופרש\"י",
+    "שבת",
+    "ס\"א",
+    "ב'",
+    "שהוא",
+    "מלאך",
+    "וזהו",
+    "צלם",
+    "אלהים",
+    "המסבבו",
+    "ומגין",
+    "עליו",
+    "מנזק",
+    "(ועיין",
+    "להלן",
+    "א",
+    "י\"ד.",
+    "ובס'",
+    "במדבר",
+    "י\"ד",
+    "ט'):"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 328,
+   "main": [],
+   "vitry": [
+    "הצלם",
+    "הוא",
+    "כדמותנו.",
+    "וממילא",
+    "האדם",
+    "שמלובש",
+    "בו",
+    "הוא",
+    "בדמות",
+    "אלהים.",
+    "ובזה",
+    "הכח:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 329,
+   "main": [
+    "בִדְגַת",
+    "הַיָּם",
+    "וּבְעוֹף",
+    "הַשָּׁמַיִם",
+    "וּבַבְּהֵמָה"
+   ],
+   "vitry": [
+    "וגו'.",
+    "שאין",
+    "שאר",
+    "בריות",
+    "מזיקתו",
+    "מהרה:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 336,
+   "main": [],
+   "vitry": [
+    "הבהמה",
+    "שבכל",
+    "חלקת",
+    "התבל.",
+    "ולא",
+    "כדגת",
+    "הים",
+    "ועוף",
+    "השמים",
+    "שא\"א",
+    "לאדם",
+    "לרדות",
+    "בהם",
+    "אלא",
+    "במקום",
+    "שיכול",
+    "להגיע",
+    "וזה",
+    "אינו",
+    "בכ\"מ.",
+    "משא\"כ",
+    "בבהמה",
+    "הוא"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "delete",
+   "anchor_w": 337,
+   "main": [
+    "הָרֶמֶשׂ",
+    "הָֽרֹמֵשׂ",
+    "עַל־"
+   ],
+   "vitry": []
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 341,
+   "main": [
+    "וַיִּבְרָא",
+    "אֱלֹהִים",
+    "אֶת־",
+    "הָֽאָדָם",
+    "בְּצַלְמוֹ"
+   ],
+   "vitry": [
+    "(ועי'",
+    "מקרא",
+    "כ\"ח):"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 348,
+   "main": [
+    "בָּרָא",
+    "אֹתוֹ"
+   ],
+   "vitry": [
+    "הטבע",
+    "כולה",
+    "נכלל",
+    "בו.",
+    "ומשעה",
+    "שעלה",
+    "במחשבה",
+    "ובדבור",
+    "שיהיה",
+    "הטבע",
+    "אז",
+    "נקרא",
+    "המקום",
+    "ב\"ה",
+    "בשם",
+    "אלהים.",
+    "ואחר",
+    "שכל",
+    "הטבע",
+    "נכלל",
+    "באדם.",
+    "הרי",
+    "הוא",
+    "בצלם",
+    "אלהים.",
+    "אבל",
+    "זה",
+    "אינו",
+    "אלא",
+    "באדם",
+    "המעלה",
+    "וכמו",
+    "שהיה",
+    "לפני",
+    "החטא.",
+    "אח\"כ"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 354,
+   "main": [],
+   "vitry": [
+    "לא",
+    "בא",
+    "הכתוב",
+    "לפרש",
+    "בזה",
+    "המין",
+    "שהיה",
+    "זכר",
+    "ונקבה",
+    "יותר",
+    "מכל",
+    "הברואים.",
+    "אלא",
+    "ללמדנו",
+    "שהמה",
+    "שני",
+    "בריות",
+    "כאשר",
+    "מבואר",
+    "להלן.",
+    "ומשום",
+    "שהזכר",
+    "מזה",
+    "המין",
+    "אינו",
+    "דומה",
+    "כלל",
+    "בתכונתו",
+    "לנקבה",
+    "מזה",
+    "המין",
+    "וכמו",
+    "שאמר",
+    "קהלת",
+    "אדם",
+    "אחד",
+    "מאלף",
+    "מצאתי",
+    "ואשה",
+    "וגו'.",
+    "היינו",
+    "שיהא",
+    "אדם",
+    "המעלה",
+    "דומה",
+    "לבוראו",
+    "בצלם",
+    "אלהים",
+    "נמצא",
+    "אחד",
+    "מאלף.",
+    "משא\"כ",
+    "אשה",
+    "אינה",
+    "אלא",
+    "בתורת",
+    "אדם",
+    "השני",
+    "המכונה",
+    "בשם",
+    "אדם:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "delete",
+   "anchor_w": 355,
+   "main": [
+    "אֹתָם",
+    "אֱלֹהִים"
+   ],
+   "vitry": []
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 358,
+   "main": [
+    "לָהֶם",
+    "אֱלֹהִים",
+    "פְּרוּ",
+    "וּרְבוּ",
+    "וּמִלְאוּ",
+    "אֶת־",
+    "הָאָרֶץ",
+    "וְכִבְשֻׁהָ",
+    "וּרְדוּ",
+    "בִּדְגַת",
+    "הַיָּם",
+    "וּבְעוֹף",
+    "הַשָּׁמַיִם"
+   ],
+   "vitry": [
+    "גם",
+    "הוא",
+    "לברכה.",
+    "גם",
+    "הוא",
+    "צווי",
+    "אזהרה",
+    "שיעסקו",
+    "בפו\"ר",
+    "כדי",
+    "שיקוים",
+    "בהם",
+    "הברכה.",
+    "ומשא\"כ",
+    "בדגים",
+    "שאינן",
+    "בני",
+    "צווי",
+    "לא",
+    "כתיב",
+    "אלא",
+    "ויברך:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 373,
+   "main": [
+    "הָֽרֹמֶשֶׂת",
+    "עַל־",
+    "הָאָֽרֶץ׃",
+    "וַיֹּאמֶר",
+    "אֱלֹהִים",
+    "הִנֵּה",
+    "נָתַתִּי",
+    "לָכֶם",
+    "אֶת־",
+    "כׇּל־",
+    "עֵשֶׂב",
+    "זֹרֵעַ",
+    "זֶרַע",
+    "אֲשֶׁר",
+    "עַל־",
+    "פְּנֵי",
+    "כׇל־",
+    "הָאָרֶץ",
+    "וְאֶת־",
+    "כׇּל־",
+    "הָעֵץ",
+    "אֲשֶׁר־",
+    "בּוֹ",
+    "פְרִי־",
+    "עֵץ",
+    "זֹרֵעַ",
+    "זָרַע",
+    "לָכֶם",
+    "יִֽהְיֶה",
+    "לְאׇכְלָֽה׃",
+    "וּֽלְכׇל־",
+    "חַיַּת",
+    "הָאָרֶץ",
+    "וּלְכׇל־",
+    "עוֹף",
+    "הַשָּׁמַיִם",
+    "וּלְכֹל",
+    "רוֹמֵשׂ",
+    "עַל־",
+    "הָאָרֶץ",
+    "אֲשֶׁר־",
+    "בּוֹ",
+    "נֶפֶשׁ"
+   ],
+   "vitry": [
+    "משא\"כ",
+    "בדגה",
+    "ובעוף",
+    "יש",
+    "הרבה",
+    "שאין",
+    "האדם",
+    "מגיע",
+    "להם",
+    "כמ\"ש",
+    "משא\"כ"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 417,
+   "main": [
+    "אֶת־",
+    "כׇּל־",
+    "יֶרֶק",
+    "עֵשֶׂב",
+    "לְאׇכְלָה",
+    "וַֽיְהִי־",
+    "כֵֽן׃",
+    "וַיַּרְא",
+    "אֱלֹהִים",
+    "אֶת־",
+    "כׇּל־",
+    "אֲשֶׁר",
+    "עָשָׂה"
+   ],
+   "vitry": [
+    "הכל",
+    "בכלל",
+    "רדיה:"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 433,
+   "main": [
+    "וַֽיְהִי־",
+    "עֶרֶב",
+    "וַֽיְהִי־",
+    "בֹקֶר",
+    "יוֹם",
+    "הַשִּׁשִּֽׁי׃",
+    "{פ}"
+   ],
+   "vitry": [
+    "לבד",
+    "אשר"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 441,
+   "main": [
+    "הַשָּׁמַיִם"
+   ],
+   "vitry": [
+    "פרט",
+    "טוב",
+    "בפ\"ע",
+    "לפי",
+    "רצון",
+    "הקב\"ה",
+    "עוד",
+    "המה",
+    "בכלל",
+    "בצרוף",
+    "כל",
+    "הנבראים",
+    "יחד",
+    "טוב",
+    "מאד",
+    "שכל",
+    "א'",
+    "משלים",
+    "החסרון",
+    "של",
+    "השני",
+    "ובזה",
+    "הלשון",
+    "טוב",
+    "מאד.",
+    "נכלל",
+    "מה",
+    "שיש",
+    "מזיקים",
+    "בעולם",
+    "אע\"ג",
+    "שבפ\"ע",
+    "אינם",
+    "טוב",
+    "מ\"מ",
+    "הכרחים",
+    "המה",
+    "לטובת",
+    "כל",
+    "הברואים",
+    "(ועי'",
+    "ביאורי",
+    "הגר\"א",
+    "זצ\"ל",
+    "ועי'",
+    "מ\"ש",
+    "בס'",
+    "במדבר",
+    "י\"ז",
+    "ז'",
+    "עה\"פ",
+    "טובה"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 443,
+   "main": [],
+   "vitry": [
+    "מאד",
+    "מאד):"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 444,
+   "main": [
+    "צְבָאָֽם׃",
+    "וַיְכַל",
+    "אֱלֹהִים",
+    "בַּיּוֹם",
+    "הַשְּׁבִיעִי",
+    "מְלַאכְתּוֹ",
+    "אֲשֶׁר",
+    "עָשָׂה",
+    "וַיִּשְׁבֹּת",
+    "בַּיּוֹם",
+    "הַשְּׁבִיעִי",
+    "מִכׇּל־",
+    "מְלַאכְתּוֹ",
+    "אֲשֶׁר",
+    "עָשָֽׂה׃"
+   ],
+   "vitry": [
+    "ת\"א",
+    "ואשתכללו.",
+    "שהי'",
+    "הבריאה",
+    "ביפיה",
+    "ובהידורה",
+    "מה",
+    "שאין",
+    "למעלה",
+    "ממנו.",
+    "וזה",
+    "הפסוק",
+    "הוא",
+    "הקדמה",
+    "וטעם",
+    "למ\"ש",
+    "בפסוק",
+    "ג'"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 464,
+   "main": [
+    "וַיְקַדֵּשׁ"
+   ],
+   "vitry": [
+    "דמש\"ה",
+    "ברך"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "insert",
+   "anchor_w": 466,
+   "main": [],
+   "vitry": [
+    "יום",
+    "משום",
+    "שמצא",
+    "הקב\"ה"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 467,
+   "main": [
+    "בוֹ",
+    "שָׁבַת",
+    "מִכׇּל־",
+    "מְלַאכְתּוֹ",
+    "אֲשֶׁר־",
+    "בָּרָא",
+    "אֱלֹהִים",
+    "לַעֲשֽׂוֹת׃",
+    "{פ}",
+    "אֵלֶּה",
+    "תוֹלְדוֹת",
+    "הַשָּׁמַיִם",
+    "וְהָאָרֶץ",
+    "בְּהִבָּֽרְאָם"
+   ],
+   "vitry": [
+    "נ\"ר",
+    "בעולמו"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 482,
+   "main": [
+    "עֲשׂוֹת"
+   ],
+   "vitry": [
+    "השביעי",
+    "ע\"כ",
+    "ברכו",
+    "כמו",
+    "שדרך",
+    "אדם",
+    "ביום",
+    "שרואה",
+    "בנין",
+    "מפואר",
+    "ושמח",
+    "באותו",
+    "יום",
+    "עושהו",
+    "יום",
+    "טובה",
+    "תמיד",
+    "בכל",
+    "שנה.",
+    "כך",
+    "מצא",
+    "העולם",
+    "חן",
+    "בעיני"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 484,
+   "main": [
+    "אֱלֹהִים",
+    "אֶרֶץ",
+    "וְשָׁמָֽיִם׃"
+   ],
+   "vitry": [
+    "ביום",
+    "השביעי",
+    "מש\"ה",
+    "ויברך",
+    "אותו.",
+    "והיינו",
+    "דכתיב"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 488,
+   "main": [
+    "שִׂיחַ",
+    "הַשָּׂדֶה",
+    "טֶרֶם"
+   ],
+   "vitry": [
+    "צבאם.",
+    "ודרשו",
+    "במס'",
+    "ר\"ה",
+    "די\"א",
+    "וכל",
+    "צביונם.",
+    "דבאותה",
+    "שעה"
+   ]
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "delete",
+   "anchor_w": 492,
+   "main": [
+    "בָאָרֶץ"
+   ],
+   "vitry": []
+  },
+  {
+   "src": "machzor_vitry",
+   "op": "replace",
+   "anchor_w": 494,
+   "main": [
+    "עֵשֶׂב",
+    "הַשָּׂדֶה",
+    "טֶרֶם",
+    "יִצְמָח",
+    "כִּי",
+    "לֹא",
+    "הִמְטִיר",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "עַל־",
+    "הָאָרֶץ",
+    "וְאָדָם",
+    "אַיִן",
+    "לַֽעֲבֹד",
+    "אֶת־",
+    "הָֽאֲדָמָֽה׃",
+    "וְאֵד",
+    "יַֽעֲלֶה",
+    "מִן־",
+    "הָאָרֶץ",
+    "וְהִשְׁקָה",
+    "אֶֽת־",
+    "כׇּל־",
+    "פְּנֵי",
+    "הָֽאֲדָמָֽה׃",
+    "וַיִּיצֶר",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "אֶת־",
+    "הָֽאָדָם",
+    "עָפָר",
+    "מִן־",
+    "הָאֲדָמָה",
+    "וַיִּפַּח",
+    "בְּאַפָּיו",
+    "נִשְׁמַת",
+    "חַיִּים",
+    "וַיְהִי",
+    "הָֽאָדָם",
+    "לְנֶפֶשׁ",
+    "חַיָּֽה׃",
+    "וַיִּטַּע",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "גַּן־",
+    "בְּעֵדֶן",
+    "מִקֶּדֶם",
+    "וַיָּשֶׂם",
+    "שָׁם",
+    "אֶת־",
+    "הָֽאָדָם",
+    "אֲשֶׁר",
+    "יָצָֽר׃",
+    "וַיַּצְמַח",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "מִן־",
+    "הָאֲדָמָה",
+    "כׇּל־",
+    "עֵץ",
+    "נֶחְמָד",
+    "לְמַרְאֶה",
+    "וְטוֹב",
+    "לְמַאֲכָל",
+    "וְעֵץ",
+    "הַֽחַיִּים",
+    "בְּתוֹךְ",
+    "הַגָּן",
+    "וְעֵץ",
+    "הַדַּעַת",
+    "טוֹב",
+    "וָרָֽע׃",
+    "וְנָהָר",
+    "יֹצֵא",
+    "מֵעֵדֶן",
+    "לְהַשְׁקוֹת",
+    "אֶת־",
+    "הַגָּן",
+    "וּמִשָּׁם",
+    "יִפָּרֵד",
+    "וְהָיָה",
+    "לְאַרְבָּעָה",
+    "רָאשִֽׁים׃",
+    "שֵׁם",
+    "הָֽאֶחָד",
+    "פִּישׁוֹן",
+    "הוּא",
+    "הַסֹּבֵב",
+    "אֵת",
+    "כׇּל־",
+    "אֶרֶץ",
+    "הַֽחֲוִילָה",
+    "אֲשֶׁר־",
+    "שָׁם",
+    "הַזָּהָֽב׃",
+    "וּֽזְהַב",
+    "הָאָרֶץ",
+    "הַהִוא",
+    "טוֹב",
+    "שָׁם",
+    "הַבְּדֹלַח",
+    "וְאֶבֶן",
+    "הַשֹּֽׁהַם׃",
+    "וְשֵֽׁם־",
+    "הַנָּהָר",
+    "הַשֵּׁנִי",
+    "גִּיחוֹן",
+    "הוּא",
+    "הַסּוֹבֵב",
+    "אֵת",
+    "כׇּל־",
+    "אֶרֶץ",
+    "כּֽוּשׁ׃",
+    "וְשֵׁם",
+    "הַנָּהָר",
+    "הַשְּׁלִישִׁי",
+    "חִדֶּקֶל",
+    "הוּא",
+    "הַֽהֹלֵךְ",
+    "קִדְמַת",
+    "אַשּׁוּר",
+    "וְהַנָּהָר",
+    "הָֽרְבִיעִי",
+    "הוּא",
+    "פְרָֽת׃",
+    "וַיִּקַּח",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "אֶת־",
+    "הָֽאָדָם",
+    "וַיַּנִּחֵהוּ",
+    "בְגַן־",
+    "עֵדֶן",
+    "לְעׇבְדָהּ",
+    "וּלְשׇׁמְרָֽהּ׃",
+    "וַיְצַו",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "עַל־",
+    "הָֽאָדָם",
+    "לֵאמֹר",
+    "מִכֹּל",
+    "עֵֽץ־",
+    "הַגָּן",
+    "אָכֹל",
+    "תֹּאכֵֽל׃",
+    "וּמֵעֵץ",
+    "הַדַּעַת",
+    "טוֹב",
+    "וָרָע",
+    "לֹא",
+    "תֹאכַל",
+    "מִמֶּנּוּ",
+    "כִּי",
+    "בְּיוֹם",
+    "אֲכׇלְךָ",
+    "מִמֶּנּוּ",
+    "מוֹת",
+    "תָּמֽוּת׃",
+    "וַיֹּאמֶר",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "לֹא־",
+    "טוֹב",
+    "הֱיוֹת",
+    "הָֽאָדָם",
+    "לְבַדּוֹ",
+    "אֶֽעֱשֶׂה־",
+    "לּוֹ",
+    "עֵזֶר",
+    "כְּנֶגְדּֽוֹ׃",
+    "וַיִּצֶר",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "מִן־",
+    "הָֽאֲדָמָה",
+    "כׇּל־",
+    "חַיַּת",
+    "הַשָּׂדֶה",
+    "וְאֵת",
+    "כׇּל־",
+    "עוֹף",
+    "הַשָּׁמַיִם",
+    "וַיָּבֵא",
+    "אֶל־",
+    "הָאָדָם",
+    "לִרְאוֹת",
+    "מַה־",
+    "יִּקְרָא־",
+    "לוֹ",
+    "וְכֹל",
+    "אֲשֶׁר",
+    "יִקְרָא־",
+    "לוֹ",
+    "הָֽאָדָם",
+    "נֶפֶשׁ",
+    "חַיָּה",
+    "הוּא",
+    "שְׁמֽוֹ׃",
+    "וַיִּקְרָא",
+    "הָֽאָדָם",
+    "שֵׁמוֹת",
+    "לְכׇל־",
+    "הַבְּהֵמָה",
+    "וּלְעוֹף",
+    "הַשָּׁמַיִם",
+    "וּלְכֹל",
+    "חַיַּת",
+    "הַשָּׂדֶה",
+    "וּלְאָדָם",
+    "לֹֽא־",
+    "מָצָא",
+    "עֵזֶר",
+    "כְּנֶגְדּֽוֹ׃",
+    "וַיַּפֵּל",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "תַּרְדֵּמָה",
+    "עַל־",
+    "הָאָדָם",
+    "וַיִּישָׁן",
+    "וַיִּקַּח",
+    "אַחַת",
+    "מִצַּלְעֹתָיו",
+    "וַיִּסְגֹּר",
+    "בָּשָׂר",
+    "תַּחְתֶּֽנָּה׃",
+    "וַיִּבֶן",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "אֶֽת־",
+    "הַצֵּלָע",
+    "אֲשֶׁר־",
+    "לָקַח",
+    "מִן־",
+    "הָֽאָדָם",
+    "לְאִשָּׁה",
+    "וַיְבִאֶהָ",
+    "אֶל־",
+    "הָֽאָדָֽם׃",
+    "וַיֹּאמֶר",
+    "הָֽאָדָם",
+    "זֹאת",
+    "הַפַּעַם",
+    "עֶצֶם",
+    "מֵֽעֲצָמַי",
+    "וּבָשָׂר",
+    "מִבְּשָׂרִי",
+    "לְזֹאת",
+    "יִקָּרֵא",
+    "אִשָּׁה",
+    "כִּי",
+    "מֵאִישׁ",
+    "לֻֽקְחָה־",
+    "זֹּֽאת׃",
+    "עַל־",
+    "כֵּן",
+    "יַֽעֲזׇב־",
+    "אִישׁ",
+    "אֶת־",
+    "אָבִיו",
+    "וְאֶת־",
+    "אִמּוֹ",
+    "וְדָבַק",
+    "בְּאִשְׁתּוֹ",
+    "וְהָיוּ",
+    "לְבָשָׂר",
+    "אֶחָֽד׃",
+    "וַיִּֽהְיוּ",
+    "שְׁנֵיהֶם",
+    "עֲרוּמִּים",
+    "הָֽאָדָם",
+    "וְאִשְׁתּוֹ",
+    "וְלֹא",
+    "יִתְבֹּשָֽׁשׁוּ׃",
+    "וְהַנָּחָשׁ",
+    "הָיָה",
+    "עָרוּם",
+    "מִכֹּל",
+    "חַיַּת",
+    "הַשָּׂדֶה",
+    "אֲשֶׁר",
+    "עָשָׂה",
+    "יְהֹוָה",
+    "אֱלֹהִים",
+    "וַיֹּאמֶר",
+    "אֶל־",
+    "הָאִשָּׁה",
+    "אַף",
+    "כִּֽי־",
+    "אָמַר",
+    "אֱלֹהִים",
+    "לֹא",
+    "תֹֽאכְלוּ",
+    "מִכֹּל",
+    "עֵץ",
+    "הַגָּֽן׃",
+    "וַתֹּאמֶר",
+    "הָֽאִשָּׁה",
+    "אֶל־",
+    "הַנָּחָשׁ",
+    "מִפְּרִי",
+    "עֵֽץ־",
+    "הַגָּן",
+    "נֹאכֵֽל׃",
+    "וּמִפְּרִי",
+    "הָעֵץ",
+    "אֲשֶׁר",
+    "בְּתוֹךְ־",
+    "הַגָּן",
+    "אָמַר",
+    "אֱלֹהִים",
+    "לֹא",
+    "תֹֽאכְלוּ",
+    "מִמֶּנּוּ",
+    "וְלֹא",
+    "תִגְּעוּ",
+    "בּוֹ",
+    "פֶּן־",
+    "תְּמֻתֽוּן׃",
+    "וַיֹּאמֶר",
+    "הַנָּחָשׁ",
+    "אֶל־",
+    "הָֽאִשָּׁה",
+    "לֹֽא־",
+    "מוֹת",
+    "תְּמֻתֽוּן׃",
+    "כִּי",
+    "יֹדֵעַ",
+    "אֱלֹהִים",
+    "כִּי",
+    "בְּיוֹם",
+    "אֲכׇלְכֶם",
+    "מִמֶּנּוּ",
+    "וְנִפְקְחוּ",
+    "עֵֽינֵיכֶם",
+    "וִהְיִיתֶם",
+    "כֵּֽאלֹהִים",
+    "יֹדְעֵי",
+    "טוֹב",
+    "וָרָֽע׃",
+    "וַתֵּרֶא",
+    "הָֽאִשָּׁה",
+    "כִּי",
+    "טוֹב",
+    "הָעֵץ",
+    "לְמַאֲכָל",
+    "וְכִי",
+    "תַֽאֲוָה־",
+    "הוּא",
+    "לָעֵינַיִם",
+    "וְנֶחְמָד",
+    "הָעֵץ",
+    "לְהַשְׂכִּיל",
+    "וַתִּקַּח",
+    "מִפִּרְיוֹ",
+    "וַתֹּאכַל",
+    "וַתִּתֵּן",
+    "גַּם־",
+    "לְאִישָׁהּ",
+    "עִמָּהּ",
+    "וַיֹּאכַֽל׃"
+   ],
+   "vitry": [
+    "המינים",
+    "באופן",
+    "היותר",
+    "משובח",
+    "שאפשר:"
    ]
   }
  ],
- "vitry_tail": [
-  "תתברך",
-  "צורינו",
-  "מלכינו",
-  "וגואלינו",
-  "בורא",
-  "קדושים",
-  "ישתבח",
-  "שמך",
-  "לעד",
-  "מלכינו",
-  "יוצר",
-  "משרתים"
- ],
+ "vitry_tail": [],
  "labels": {
-  "abudraham": "אבודרהם",
+  "abudraham": "חזקוני",
   "rashi": "רש\"י",
-  "vitry": "מחזור ויטרי"
+  "vitry": "העמק דבר"
  }
 }

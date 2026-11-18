@@ -46,6 +46,19 @@ A „Mentés és PDF készítése” ezt a konfigurációt
 használja, és az elkészült PDF letölthető a felületről. Az előnézet tájékoztató
 jellege miatt az újratördelés alatt még az előző PDF-oldalt mutatja.
 
+Az új kommentár automatikusan szabad hasábba vagy az alsó sávba kerül, ha van
+szabad hely. Az elhelyezetlen forrás nem szerepel a PDF-ben; ezt a felület jelzi,
+és szabad hely esetén az „Elhelyezés szabad helyre” gombbal helyezhető el.
+A hely az oldalbeállításoknál bármikor módosítható.
+
+A forrásszerkesztőben a mű kiválasztása után a Sefaria szakaszszerkezete alapján
+csempéken választható ki a kezdő és a záró fejezet és vers, külön a főszöveghez
+és minden kommentárhoz. Összetett mű esetén előbb a műrész vagy könyv is
+kiválasztandó a Sefaria indexe alapján (például Chizkuni → Genesis).
+Üres szakasz esetén a teljes kiválasztott műrész kerül lekérésre.
+Ha a szerkezet nem érhető el vagy nem támogatott, kézi szakaszmegadás használható;
+ha az index sem tölthető be, a műválasztást törölve közvetlen Sefaria URL is megadható.
+
 Betűtípusok: a sablon a `Frank Ruhl Libre`, `David Libre`, `Noto Serif Hebrew`, `Noto Sans Hebrew` családokat keresi. Ha egy `fonts/` mappa létezik a projektben, a Typst automatikusan onnan is tölt (`--font-path fonts`). Ha a betű hiányzik, a Typst figyelmeztet, és tartalék betűre vált, a kimenet ettől még elkészül. **A mérés és a renderelés ugyanazt a betűkészletet látja, ezért az oldalbeosztás betűfüggő.**
 
 ---

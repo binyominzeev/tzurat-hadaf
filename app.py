@@ -9,7 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 import requests
 import yaml
@@ -75,6 +75,7 @@ LAYOUT_FIELDS = {
     "side_leading_em": (0.1, 3.0, 0.05, "Kommentár sortávja (em)"),
 }
 SLOT_LABELS = {"right": "Jobb hasáb", "left": "Bal hasáb", "bottom": "Alsó sáv"}
+PREFERRED_SLOTS = {"abudraham": "right", "rashi": "left", "vitry": "bottom"}
 
 
 def load_config() -> dict:
@@ -172,9 +173,35 @@ sample_mode = (config.get("ui") or {}).get("sample_mode", default_sample_mode)
 settings = initial_settings(config)
 previews = sample_previews()
 slot_values = copy.deepcopy(settings["slots"])
+DEFAULT_STACK = "Szidur"
+TORAH_STACK = {
+    "sources": {
+        "main": {"title": "Genesis", "from": "1:1", "to": "1:5", "version": "hebrew",
+                 "url": "https://www.sefaria.org/Genesis.1.1-5", "label": "תורה"},
+        "rashi": {"title": "Rashi on Genesis", "from": "1:1", "to": "1:5", "version": "hebrew",
+                  "url": "https://www.sefaria.org/Rashi_on_Genesis.1.1-5", "label": 'רש"י',
+                  "corrections": True},
+    },
+    "slots": {"right": "", "left": "rashi", "bottom": ""},
+}
+stacks = {
+    name: copy.deepcopy(stack)
+    for name, stack in (config.get("stacks") or {}).items()
+    if isinstance(stack, dict)
+}
+stacks.setdefault(DEFAULT_STACK, {})
+if "Tóra" not in stacks:
+    stacks["Tóra"] = copy.deepcopy(TORAH_STACK)
+active_stack = (config.get("ui") or {}).get("active_stack")
+if active_stack not in stacks:
+    active_stack = DEFAULT_STACK
+stack_tabs = None
+sefaria_titles = []
 slot_controls = {}
+source_assignment_controls = {}
 numeric_controls = {}
 source_area = None
+stack_area = None
 preview_area = None
 status_label = None
 build_log = None
@@ -198,6 +225,165 @@ preview_pdf_version = 0
 
 def source_label(key: str) -> str:
     return sources.get(key, {}).get("label", ROLE_LABELS.get(key, key))
+
+
+def build_sefaria_url(title: str, start: str = "", end: str = "") -> str:
+    ref = title.strip().replace(" ", "_")
+    start = start.strip().replace(":", ".").replace(" ", "")
+    end = end.strip().replace(":", ".").replace(" ", "")
+    if start:
+        ref += "." + start
+        head, _, _ = start.rpartition(".")
+        if head and end.startswith(head + "."):
+            end = end[len(head) + 1:]
+        if end:
+            ref += "-" + end
+    return "https://www.sefaria.org/" + quote(ref, safe="._-")
+
+
+def load_text_refs(title: str) -> list:
+    response = requests.get(
+        "https://www.sefaria.org/api/v2/raw/index/" + quote(title, safe=""),
+        headers={"User-Agent": "tzurat-hadaf"},
+        timeout=30,
+    )
+    response.raise_for_status()
+    data = response.json()
+    if data.get("error"):
+        raise ValueError(str(data["error"]))
+    root = data.get("title")
+    schema = data.get("schema")
+    if not isinstance(root, str) or not isinstance(schema, dict):
+        raise ValueError("A Sefaria indexében nincs érvényes műszerkezet.")
+    refs = []
+
+    def walk(node: dict, ref: str) -> None:
+        children = node.get("nodes") or []
+        if not children:
+            if not node.get("depth"):
+                raise ValueError(f"A műrész szerkezete nem támogatott: {ref}")
+            refs.append(ref)
+            return
+        for child in children:
+            if child.get("default"):
+                child_ref = ref
+            else:
+                primary = next(
+                    (entry for entry in child.get("titles", [])
+                     if entry.get("lang") == "en" and entry.get("primary")),
+                    None,
+                )
+                name = primary["text"] if primary else child.get("sharedTitle")
+                if not name:
+                    raise ValueError(f"A mű egyik részének nincs angol neve: {ref}")
+                child_ref = name if primary and primary.get("presentation") == "alone" else f"{ref}, {name}"
+            walk(child, child_ref)
+
+    walk(schema, root)
+    if not refs:
+        raise ValueError("A Sefaria indexében nincs választható műrész.")
+    return list(dict.fromkeys(refs))
+
+
+def load_section_shape(title: str, version: str) -> dict:
+    response = requests.get(
+        "https://www.sefaria.org/api/v3/texts/" + quote(title, safe=""),
+        params={"version": version},
+        headers={"User-Agent": "tzurat-hadaf"},
+        timeout=30,
+    )
+    response.raise_for_status()
+    data = response.json()
+    versions = data.get("versions") or []
+    if data.get("error"):
+        raise ValueError(str(data["error"]))
+    if not versions:
+        raise ValueError("A kiválasztott verzióhoz nincs elérhető szöveg.")
+    text = versions[0].get("text")
+    names = data.get("sectionNames") or []
+    address_types = data.get("addressTypes") or []
+    if (
+        not isinstance(text, list)
+        or not text
+        or not names
+        or not address_types
+        or address_types[0] not in ("Integer", "Perek", "Talmud")
+        or (len(names) > 1 and (len(address_types) < 2 or address_types[1] not in ("Integer", "Pasuk")))
+    ):
+        raise ValueError("Ehhez a műhöz nem áll rendelkezésre támogatott számozott szerkezet.")
+    if len(names) > 1 and any(not isinstance(chapter, list) for chapter in text):
+        raise ValueError("A mű szakaszainak szerkezete nem támogatott.")
+    return {
+        "names": names[:2],
+        "talmud": address_types[0] == "Talmud",
+        "counts": [len(chapter) if isinstance(chapter, list) else 1 for chapter in text],
+    }
+
+
+def section_label(index: int, talmud: bool) -> str:
+    if talmud:
+        return f"{index // 2 + 1}{'a' if index % 2 == 0 else 'b'}"
+    return str(index + 1)
+
+
+def validate_section_range(start: str, end: str, shape: dict) -> None:
+    if end and not start:
+        raise ValueError("A szakasz végéhez kezdőpontot is válassz.")
+    if not start or not end:
+        return
+
+    def position(value: str, is_end: bool) -> tuple:
+        parts = value.replace(".", ":").split(":")
+        labels = [section_label(i, shape["talmud"]) for i in range(len(shape["counts"]))]
+        if len(parts) > 2 or parts[0] not in labels:
+            raise ValueError("A szakasz nem szerepel a kiválasztott műben.")
+        chapter = labels.index(parts[0])
+        if len(parts) == 1:
+            return chapter, shape["counts"][chapter] if is_end else 1
+        if len(shape["names"]) < 2 or not parts[1].isdigit():
+            raise ValueError("Érvénytelen szakaszszám.")
+        verse = int(parts[1])
+        if not 1 <= verse <= shape["counts"][chapter]:
+            raise ValueError("A szakasz nem szerepel a kiválasztott műben.")
+        return chapter, verse
+
+    if position(start, False) > position(end, True):
+        raise ValueError("A szakasz vége nem lehet a kezdete előtt.")
+
+
+def load_sefaria_titles() -> list:
+    path = ROOT / "sefaria_titles.json"
+    try:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+        response = requests.get(
+            "https://www.sefaria.org/api/index",
+            headers={"User-Agent": "tzurat-hadaf"},
+            timeout=60,
+        )
+        response.raise_for_status()
+        titles = []
+
+        def walk(nodes) -> None:
+            for node in nodes:
+                if node.get("title"):
+                    titles.append(node["title"])
+                walk(node.get("contents", []))
+
+        walk(response.json())
+        titles = sorted(set(titles))
+        path.write_text(json.dumps(titles, ensure_ascii=False), encoding="utf-8")
+        return titles
+    except (OSError, ValueError, requests.RequestException) as error:
+        print(f"A Sefaria-címlista nem érhető el: {error}")
+        return []
+
+
+def snapshot_stack() -> None:
+    stacks[active_stack] = {
+        "sources": copy.deepcopy(sources),
+        "slots": copy.deepcopy(slot_values),
+    }
 
 
 def make_config() -> dict:
@@ -229,7 +415,20 @@ def make_config() -> dict:
         layout.pop(key, None)
     layout["slots"] = copy.deepcopy(slot_values)
     result["layout"] = layout
-    result["ui"] = {**(config.get("ui") or {}), "sample_mode": sample_mode}
+    result["ui"] = {
+        **(config.get("ui") or {}),
+        "sample_mode": sample_mode,
+        "active_stack": active_stack,
+    }
+    result["stacks"] = {
+        name: {"sources": copy.deepcopy(sources), "slots": copy.deepcopy(slot_values)}
+        if name == active_stack
+        else copy.deepcopy(stack)
+        for name, stack in stacks.items()
+    }
+    for stack in result["stacks"].values():
+        for source in stack.get("sources", {}).values():
+            source.pop("file", None)
     result["options"] = {
         key: settings["options"][key]
         for key in ("threshold", "lookahead", "lemma_max_words", "divine_name")
@@ -246,7 +445,7 @@ def persist_config() -> None:
 
 
 def refresh_slot_options() -> None:
-    options = {"": "— nincs —", **{key: source_label(key) for key in sources}}
+    options = {"": "— nincs —", **{key: source_label(key) for key in sources if key != "main"}}
     for slot, control in slot_controls.items():
         control.options = options
         if control.value not in options:
@@ -492,6 +691,7 @@ def schedule_preview_reflow() -> None:
 
 def refresh_sources() -> None:
     source_area.clear()
+    source_assignment_controls.clear()
     with source_area:
         for key, source in sources.items():
             with ui.card().classes("w-full bg-white"):
@@ -499,17 +699,135 @@ def refresh_sources() -> None:
                     with ui.column().classes("gap-0"):
                         ui.label(ROLE_LABELS[key]).classes("text-xs text-gray-500")
                         ui.label(source.get("label", ROLE_LABELS[key])).classes("text-lg font-semibold")
+                        if source.get("title"):
+                            span = f"{source.get('from', '')}–{source.get('to', '')}" if source.get("from") else "teljes"
+                            ui.label(f"{source.get('section_ref', source['title'])} · {span}").classes("text-sm")
                         ui.label(source.get("url", "")).classes("text-xs text-gray-500 break-all")
+                        if key != "main":
+                            assignment_label = ui.label().classes("text-xs text-amber-800")
                     with ui.row():
                         ui.button("Módosítás", icon="edit", on_click=lambda k=key: edit_source(k)).props(
                             "flat dense"
                         )
                         if key != "main":
+                            place_button = ui.button(
+                                "Elhelyezés szabad helyre", icon="add_location",
+                                on_click=lambda k=key: place_source(k),
+                            ).props("flat dense")
                             ui.button("Törlés", icon="delete", on_click=lambda k=key: delete_source(k)).props(
                                 "flat dense color=negative"
                             )
+                            source_assignment_controls[key] = (assignment_label, place_button)
     refresh_slot_options()
+    refresh_source_assignments()
     render_preview()
+
+
+def available_slot(key: str, slots: dict) -> Optional[str]:
+    if key == "main" or key in slots.values():
+        return None
+    preferred = PREFERRED_SLOTS.get(key)
+    if preferred and not slots.get(preferred):
+        return preferred
+    return next((slot for slot in SLOT_LABELS if not slots.get(slot)), None)
+
+
+def refresh_source_assignments() -> None:
+    for key, (label, button) in source_assignment_controls.items():
+        assigned = [SLOT_LABELS[slot] for slot, selected in slot_values.items()
+                    if selected == key and slot in SLOT_LABELS]
+        if assigned:
+            label.text = "Elhelyezve: " + ", ".join(assigned)
+        else:
+            label.text = "Nincs elhelyezve – nem jelenik meg a PDF-ben."
+        button.set_visibility(not assigned and available_slot(key, slot_values) is not None)
+
+
+def place_source(key: str) -> Optional[str]:
+    slot = available_slot(key, slot_values)
+    if slot is None:
+        ui.notify("Nincs szabad hasáb vagy alsó sáv; válassz helyet az oldalbeállításoknál.", type="warning")
+        return None
+    slot_controls[slot].value = key
+    ui.notify(f"{source_label(key)} elhelyezve: {SLOT_LABELS[slot]}.", type="positive")
+    return slot
+
+
+def stack_matches_samples(stack_sources: dict) -> bool:
+    return bool(stack_sources) and all(
+        key in sample_sources and source.get("url") == sample_sources[key].get("url")
+        for key, source in stack_sources.items()
+    )
+
+
+def render_stack_tabs() -> None:
+    stack_area.clear()
+    with stack_area:
+        with ui.row().classes("w-full items-center gap-1"):
+            with ui.tabs(value=active_stack, on_change=lambda e: switch_stack(e.value)).props(
+                "dense"
+            ):
+                for name in stacks:
+                    ui.tab(name)
+            ui.button(icon="add", on_click=add_stack).props("flat dense round").tooltip(
+                "Új forráskészlet"
+            )
+            if len(stacks) > 1:
+                ui.button(icon="delete", on_click=delete_stack).props(
+                    "flat dense round color=negative"
+                ).tooltip("Aktuális készlet törlése")
+
+
+def switch_stack(name: Optional[str]) -> None:
+    if not name or name == active_stack or name not in stacks:
+        return
+    snapshot_stack()
+    load_stack(name)
+
+
+def load_stack(name: str) -> None:
+    global sources, slot_values, previews, active_stack
+    active_stack = name
+    sources = copy.deepcopy(stacks[name].get("sources", {}))
+    slot_values = {**{slot: "" for slot in SLOT_LABELS}, **copy.deepcopy(stacks[name].get("slots", {}))}
+    previews = {}
+    for slot, control in slot_controls.items():
+        control.value = slot_values.get(slot, "")
+    if sample_mode and not stack_matches_samples(sources):
+        sample_switch.value = False
+    refresh_sources()
+    schedule_preview_reflow()
+
+
+def add_stack() -> None:
+    with ui.dialog() as dialog, ui.card():
+        ui.label("Új forráskészlet").classes("text-xl font-bold")
+        name_input = ui.input("Név (pl. Tóra, Talmud)").classes("w-full")
+
+        def create() -> None:
+            name = (name_input.value or "").strip()
+            if not name or name in stacks:
+                ui.notify("Adj meg egy új, egyedi nevet.", type="warning")
+                return
+            snapshot_stack()
+            stacks[name] = {"sources": {}, "slots": {slot: "" for slot in SLOT_LABELS}}
+            dialog.close()
+            load_stack(name)
+            render_stack_tabs()
+
+        with ui.row().classes("w-full justify-end"):
+            ui.button("Mégse", on_click=dialog.close).props("flat")
+            ui.button("Létrehozás", on_click=create).props("color=primary")
+    dialog.open()
+
+
+def delete_stack() -> None:
+    if len(stacks) < 2:
+        return
+    stacks.pop(active_stack, None)
+    load_stack(next(iter(stacks)))
+    render_stack_tabs()
+    ui.notify("A készlet törölve. A véglegesítéshez mentsd a konfigurációt.", type="warning")
 
 
 def delete_source(key: str) -> None:
@@ -541,8 +859,198 @@ def edit_source(key: Optional[str] = None) -> None:
             "Megjelenített név",
             value=existing.get("label", ROLE_DEFAULTS.get(role or "main", {}).get("label", "")),
         ).classes("w-full")
-        url_input = ui.input("Sefaria URL", value=existing.get("url", "")).classes("w-full")
+        title_input = ui.select(
+            list(dict.fromkeys([*filter(None, [existing.get("title")]), *sefaria_titles])),
+            label="Mű címe (kezdj gépelni, pl. Genesis)",
+            value=existing.get("title") or None,
+            with_input=True,
+            new_value_mode="add-unique",
+            clearable=True,
+        ).classes("w-full")
+        shape_state = {"shape": None, "revision": 0, "index_revision": 0, "refs": None, "updating": False}
+        section_select = ui.select(
+            [], label="Műrész / könyv", clearable=True, with_input=True
+        ).classes("w-full")
+        section_select.set_visibility(False)
+        with ui.row().classes("w-full items-center"):
+            from_button = ui.button("Kezdet: teljes mű", icon="grid_view").props("outline")
+            to_button = ui.button("Vég: nincs", icon="grid_view").props("outline")
+            ui.button("Szakasz törlése", icon="clear", on_click=lambda: clear_range()).props("flat dense")
+            ui.button("Szerkezet újratöltése", icon="refresh", on_click=lambda: refresh_index()).props("flat dense")
+        shape_status = ui.label("Válassz művet a szakaszok betöltéséhez.").classes("text-xs text-gray-500")
+        with ui.row().classes("w-full no-wrap"):
+            from_input = ui.input("Szakasz kezdete", value=existing.get("from", "")).classes("flex-1")
+            to_input = ui.input("Szakasz vége", value=existing.get("to", "")).classes("flex-1")
+        from_input.set_visibility(False)
+        to_input.set_visibility(False)
+
+        def update_range_buttons() -> None:
+            from_button.text = f"Kezdet: {from_input.value or 'teljes mű'}"
+            to_button.text = f"Vég: {to_input.value or 'nincs'}"
+
+        def clear_range() -> None:
+            from_input.value = ""
+            to_input.value = ""
+            update_range_buttons()
+
+        from_input.on_value_change(update_range_buttons)
+        to_input.on_value_change(update_range_buttons)
+
+        def choose_section(target) -> None:
+            shape = shape_state["shape"]
+            if not shape:
+                ui.notify("A szakaszlista még nem érhető el.", type="warning")
+                return
+            with ui.dialog() as picker, ui.card().classes("w-[min(90vw,600px)]"):
+                heading = ui.label().classes("text-lg font-bold")
+                tiles = ui.column().classes("w-full max-h-[60vh] overflow-auto")
+
+                def select_chapter(index: int) -> None:
+                    chapter = section_label(index, shape["talmud"])
+                    if len(shape["names"]) == 1:
+                        target.value = chapter
+                        update_range_buttons()
+                        picker.close()
+                        return
+                    heading.text = f"{shape['names'][1]} · {chapter}"
+                    tiles.clear()
+                    with tiles:
+                        with ui.row().classes("w-full gap-1"):
+                            for number in range(1, shape["counts"][index] + 1):
+                                ui.button(
+                                    str(number),
+                                    on_click=lambda n=number: select_verse(chapter, n),
+                                ).props("outline dense").classes("min-w-10")
+                        ui.button("Vissza", on_click=show_chapters).props("flat")
+
+                def select_verse(chapter: str, number: int) -> None:
+                    target.value = f"{chapter}:{number}"
+                    update_range_buttons()
+                    picker.close()
+
+                def show_chapters() -> None:
+                    heading.text = shape["names"][0]
+                    tiles.clear()
+                    with tiles, ui.row().classes("w-full gap-1"):
+                        for index, count in enumerate(shape["counts"]):
+                            if count:
+                                ui.button(
+                                    section_label(index, shape["talmud"]),
+                                    on_click=lambda i=index: select_chapter(i),
+                                ).props("outline dense").classes("min-w-10")
+
+                show_chapters()
+                ui.button("Mégse", on_click=picker.close).props("flat")
+            picker.open()
+
+        from_button.on_click(lambda: choose_section(from_input))
+        to_button.on_click(lambda: choose_section(to_input))
+        url_input = ui.input(
+            "Sefaria URL (ha nincs cím kiválasztva)", value=existing.get("url", "")
+        ).classes("w-full")
         version_input = ui.input("Verzió", value=existing.get("version", "hebrew")).classes("w-full")
+
+        async def refresh_shape(clear: bool = False) -> None:
+            shape_state["revision"] += 1
+            revision = shape_state["revision"]
+            shape_state["shape"] = None
+            if clear:
+                clear_range()
+            ref = section_select.value
+            from_button.disable()
+            to_button.disable()
+            from_input.set_visibility(False)
+            to_input.set_visibility(False)
+            if not ref:
+                shape_status.text = "Válaszd ki a mű megfelelő részét."
+                return
+            shape_status.text = "Szakaszok betöltése a Sefariáról…"
+            try:
+                shape = await asyncio.to_thread(
+                    load_section_shape, ref, (version_input.value or "hebrew").strip()
+                )
+            except (requests.RequestException, ValueError, KeyError, TypeError) as error:
+                if revision != shape_state["revision"]:
+                    return
+                shape_status.text = f"A csempés választó nem érhető el: {error}. Kézi megadás:"
+                from_input.set_visibility(True)
+                to_input.set_visibility(True)
+                return
+            if revision != shape_state["revision"]:
+                return
+            shape_state["shape"] = shape
+            deeper_range = any(
+                len((value or "").replace(".", ":").split(":")) > 2
+                for value in (from_input.value, to_input.value)
+            )
+            if deeper_range:
+                shape_status.text = "A meglévő részletesebb hivatkozás kézzel szerkeszthető, vagy válassz csempét."
+                from_input.set_visibility(True)
+                to_input.set_visibility(True)
+            else:
+                shape_status.text = "Válaszd ki a szakasz elejét és végét; üresen a teljes mű marad."
+            from_button.enable()
+            to_button.enable()
+
+        async def refresh_index(clear: bool = False) -> None:
+            shape_state["index_revision"] += 1
+            revision = shape_state["index_revision"]
+            previous = (section_select.value or existing.get("section_ref")) if not clear else None
+            shape_state["revision"] += 1
+            shape_state["shape"] = None
+            shape_state["refs"] = None
+            from_button.disable()
+            to_button.disable()
+            from_input.set_visibility(False)
+            to_input.set_visibility(False)
+            section_select.set_visibility(False)
+            shape_state["updating"] = True
+            section_select.value = None
+            shape_state["updating"] = False
+            if clear:
+                clear_range()
+            title = (title_input.value or "").strip()
+            if not title:
+                shape_status.text = "Válassz művet a szakaszok betöltéséhez."
+                return
+            shape_status.text = "A mű szerkezetének betöltése a Sefariáról…"
+            try:
+                refs = await asyncio.to_thread(load_text_refs, title)
+            except (requests.RequestException, ValueError, KeyError, TypeError) as error:
+                if revision == shape_state["index_revision"]:
+                    shape_status.text = f"A mű szerkezete nem érhető el: {error}. Próbáld újra, vagy használj URL-t."
+                return
+            if revision != shape_state["index_revision"]:
+                return
+            shape_state["refs"] = refs
+            selected = previous if previous in refs else next(
+                (ref for ref in refs if ref.casefold() == title.casefold()), None
+            )
+            if selected is None and len(refs) == 1:
+                selected = refs[0]
+            shape_state["updating"] = True
+            section_select.options = refs
+            section_select.value = selected
+            section_select.update()
+            shape_state["updating"] = False
+            section_select.set_visibility(len(refs) > 1)
+            if selected:
+                await refresh_shape()
+            else:
+                shape_status.text = "Válaszd ki a mű megfelelő részét."
+
+        def section_changed() -> None:
+            if not shape_state["updating"]:
+                asyncio.create_task(refresh_shape(clear=True))
+
+        title_input.on_value_change(lambda: refresh_index(clear=True))
+        section_select.on_value_change(section_changed)
+        version_input.on_value_change(lambda: refresh_shape())
+        update_range_buttons()
+        from_button.disable()
+        to_button.disable()
+        if title_input.value:
+            ui.timer(0.1, refresh_index, once=True)
         corrections = None
         if role in (None, "rashi"):
             corrections = ui.checkbox(
@@ -561,7 +1069,25 @@ def edit_source(key: Optional[str] = None) -> None:
                 nonlocal role
                 role = role or role_select.value
                 try:
-                    url = validate_sefaria_url(url_input.value or "")
+                    title = (title_input.value or "").strip()
+                    if title:
+                        ref = section_select.value
+                        if not shape_state["refs"]:
+                            raise ValueError("A mű indexe még nem érhető el; próbáld újra, vagy adj meg URL-t.")
+                        if ref not in shape_state["refs"]:
+                            raise ValueError("Válaszd ki a mű megfelelő részét.")
+                        start = (from_input.value or "").strip()
+                        end = (to_input.value or "").strip()
+                        if end and not start:
+                            raise ValueError("A szakasz végéhez kezdőpontot is válassz.")
+                        if shape_state["shape"] and all(
+                            len(value.replace(".", ":").split(":")) <= 2 for value in (start, end)
+                        ):
+                            validate_section_range(start, end, shape_state["shape"])
+                        url = build_sefaria_url(ref, from_input.value or "", to_input.value or "")
+                    else:
+                        url = url_input.value or ""
+                    url = validate_sefaria_url(url)
                     source = {
                         **ROLE_DEFAULTS.get(role, {}),
                         **existing,
@@ -569,6 +1095,16 @@ def edit_source(key: Optional[str] = None) -> None:
                         "version": (version_input.value or "hebrew").strip(),
                     }
                     source.pop("file", None)
+                    for field in ("title", "section_ref", "from", "to"):
+                        source.pop(field, None)
+                    if title:
+                        source["title"] = title
+                        if ref != title:
+                            source["section_ref"] = ref
+                        if (from_input.value or "").strip():
+                            source["from"] = from_input.value.strip()
+                            if (to_input.value or "").strip():
+                                source["to"] = to_input.value.strip()
                     if label_input.value and label_input.value.strip():
                         source["label"] = label_input.value.strip()
                     else:
@@ -589,6 +1125,8 @@ def edit_source(key: Optional[str] = None) -> None:
                     if sample_mode:
                         sample_switch.value = False
                     refresh_sources()
+                    if key is None and role != "main":
+                        place_source(role)
                     dialog.close()
                     ui.notify("A Sefaria-szöveg lekérve; az oldalbeosztás újraszámolódik.", type="positive")
                     schedule_preview_reflow()
@@ -652,6 +1190,7 @@ def set_fonts(value) -> None:
 
 def set_slot(slot: str, value) -> None:
     slot_values[slot] = value or ""
+    refresh_source_assignments()
     render_preview()
     schedule_preview_reflow()
 
@@ -750,6 +1289,7 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                     ui.label("Szövegforrások").classes("text-xl font-bold")
                     ui.button("Új szöveg", icon="add", on_click=lambda: edit_source()).props("color=primary")
                 ui.label("Szerepként egy-egy főszöveg és három kommentár adható meg.")
+                stack_area = ui.column().classes("w-full")
                 sample_switch = ui.switch(
                     "Helyi mintaszövegek használata (API nélkül)",
                     value=sample_mode,
@@ -781,7 +1321,7 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 with ui.row().classes("w-full"):
                     for slot, label in SLOT_LABELS.items():
                         control = ui.select(
-                            {"": "— nincs —", **{key: source_label(key) for key in sources}},
+                            {"": "— nincs —", **{key: source_label(key) for key in sources if key != "main"}},
                             label=label,
                             value=slot_values.get(slot, ""),
                         ).classes("flex-1").on_value_change(
@@ -857,6 +1397,10 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 ).classes("text-xs text-stone-500")
 
 
+async def _init_titles() -> None:
+    sefaria_titles[:] = await asyncio.to_thread(load_sefaria_titles)
+
+
 def save_config_action() -> None:
     try:
         persist_config()
@@ -868,7 +1412,9 @@ def save_config_action() -> None:
 
 
 load_preview_pages()
+render_stack_tabs()
 refresh_sources()
+app.on_startup(lambda: asyncio.create_task(_init_titles()))
 
 if __name__ == "__main__":
     ui.run(title="Tzurat HaDaf", host="127.0.0.1", port=8080, reload=False, show=False)

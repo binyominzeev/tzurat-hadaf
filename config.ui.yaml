@@ -8,8 +8,8 @@ overrides:
   abudraham: {}
 layout:
   page:
-    width_cm: 29.7
-    height_cm: 21.0
+    width_cm: 21.0
+    height_cm: 29.7
     margin_x_cm: 1.4
     margin_top_cm: 1.4
     margin_bottom_cm: 1.7
@@ -34,26 +34,96 @@ layout:
     right: abudraham
     left: rashi
     bottom: vitry
+ui:
+  sample_mode: false
+  active_stack: Tóra
+stacks:
+  Szidur:
+    sources:
+      main:
+        url: https://www.sefaria.org/Siddur_Ashkenaz%2C_Weekday%2C_Shacharit%2C_Blessings_of_the_Shema%2C_First_Blessing_before_Shema
+        version: hebrew
+      abudraham:
+        label: אבודרהם
+        url: https://www.sefaria.org/Abudarham%2C_Weekday_Prayers%2C_Blessings_on_the_Shema.3
+        version: hebrew
+      rashi:
+        label: רש"י
+        url: https://www.sefaria.org/Siddur_Rashi.13.1
+        corrections: true
+        version: hebrew
+      vitry:
+        label: מחזור ויטרי
+        url: https://www.sefaria.org/Machzor_Vitry%2C_Order_of_Shacharit.88.14
+        cut_before: אהבת עולם
+        version: hebrew
+    slots:
+      right: ''
+      left: rashi
+      bottom: ''
+  Tóra:
+    sources:
+      main:
+        version: hebrew
+        url: https://www.sefaria.org/Genesis.1.1-3.6
+        label: תורה
+        title: Genesis
+        from: '1:1'
+        to: '3:6'
+      abudraham:
+        label: חזקוני
+        version: hebrew
+        url: https://www.sefaria.org/Chizkuni%2C_Genesis.1.1-2.1
+        title: Chizkuni
+        section_ref: Chizkuni, Genesis
+        from: '1:1'
+        to: '2:1'
+      rashi:
+        label: רש"י
+        version: hebrew
+        corrections: true
+        url: https://www.sefaria.org/Rashi_on_Genesis.1.1-3.6
+        title: Rashi on Genesis
+        from: '1:1'
+        to: '3:6'
+      vitry:
+        label: העמק דבר
+        version: hebrew
+        url: https://www.sefaria.org/Haamek_Davar_on_Genesis.1.1-2.1
+        title: Haamek Davar on Genesis
+        from: '1:1'
+        to: '2:1'
+    slots:
+      right: abudraham
+      left: rashi
+      bottom: vitry
 main:
-  url: https://www.sefaria.org/Siddur_Ashkenaz%2C_Weekday%2C_Shacharit%2C_Blessings_of_the_Shema%2C_First_Blessing_before_Shema
   version: hebrew
-  file: samples/main.txt
+  url: https://www.sefaria.org/Genesis.1.1-3.6
+  label: תורה
+  title: Genesis
+  from: '1:1'
+  to: '3:6'
 abudraham:
-  label: אבודרהם
-  url: https://www.sefaria.org/Abudarham%2C_Weekday_Prayers%2C_Blessings_on_the_Shema.3
+  label: חזקוני
   version: hebrew
-  file: samples/abudraham.txt
+  url: https://www.sefaria.org/Chizkuni%2C_Genesis.1.1-2.1
+  title: Chizkuni
+  section_ref: Chizkuni, Genesis
+  from: '1:1'
+  to: '2:1'
 rashi:
   label: רש"י
-  url: https://www.sefaria.org/Siddur_Rashi.13.1
+  version: hebrew
   corrections: true
-  version: hebrew
-  file: samples/rashi.txt
+  url: https://www.sefaria.org/Rashi_on_Genesis.1.1-3.6
+  title: Rashi on Genesis
+  from: '1:1'
+  to: '3:6'
 vitry:
-  label: מחזור ויטרי
-  url: https://www.sefaria.org/Machzor_Vitry%2C_Order_of_Shacharit.88.14
-  cut_before: אהבת עולם
+  label: העמק דבר
   version: hebrew
-  file: samples/vitry.txt
-ui:
-  sample_mode: true
+  url: https://www.sefaria.org/Haamek_Davar_on_Genesis.1.1-2.1
+  title: Haamek Davar on Genesis
+  from: '1:1'
+  to: '2:1'

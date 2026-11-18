@@ -39,7 +39,12 @@ def fetch(cfg, cache=Path("cache")):
     if cf.exists():
         data = json.loads(cf.read_text(encoding="utf-8"))
     else:
-        r = requests.get(API.format(ref=quote(ref, safe="")), params={"version": version}, timeout=30)
+        r = requests.get(
+            API.format(ref=quote(ref, safe="")),
+            params={"version": version},
+            headers={"User-Agent": "tzurat-hadaf"},
+            timeout=30,
+        )
         r.raise_for_status()
         data = r.json()
         cf.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
