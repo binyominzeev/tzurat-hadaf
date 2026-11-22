@@ -1467,6 +1467,17 @@ ui.add_head_html(
         font-size:clamp(7px, 1vw, 10px); line-height:1.45; }
       .preview-footer { border:0; border-top:1px solid #ded8d0; padding:6px 0 0; }
       .break-all { overflow-wrap:anywhere; }
+      .preview-panel .preview-restore { display: none; }
+      .preview-panel.preview-maximized {
+        position: fixed; inset: 0; z-index: 2000; width: 100vw; height: 100dvh;
+        max-width: none; overflow: auto; display: flex; flex-direction: column;
+      }
+      .preview-panel.preview-maximized .preview-expand { display: none; }
+      .preview-panel.preview-maximized .preview-restore { display: inline-flex; }
+      .preview-panel.preview-maximized .preview-area { flex: 1; min-height: 120px; align-items: stretch; }
+      .preview-panel.preview-maximized .preview-area > div { height: 100%; }
+      .preview-panel.preview-maximized .preview-area iframe { height: 100% !important; }
+      .preview-panel.preview-maximized .preview-paper { max-width: none; }
     </style>
     """
 )
@@ -1582,10 +1593,25 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                     download_button.set_visibility((ROOT / "out" / "page.pdf").exists())
 
         with ui.column().classes("w-full flex-1 gap-3"):
-            with ui.card().classes("w-full"):
+            with ui.card().classes("w-full preview-panel"):
                 with ui.row().classes("w-full items-center justify-between"):
                     ui.label("Élő előnézet").classes("text-xl font-bold")
-                    ui.label("A beállítások módosításával azonnal frissül").classes("text-sm text-stone-500")
+                    with ui.row().classes("items-center"):
+                        ui.label("A beállítások módosításával azonnal frissül").classes("text-sm text-stone-500")
+                        ui.button("Teljes ablak", icon="open_in_full").props("outline").classes(
+                            "preview-expand"
+                        ).on("click", js_handler="""(event) => {
+                            const panel = event.currentTarget.closest('.preview-panel');
+                            panel.classList.add('preview-maximized');
+                            panel.querySelector('.preview-restore').focus();
+                        }""")
+                        ui.button("Visszaállítás", icon="close_fullscreen").props("outline").classes(
+                            "preview-restore"
+                        ).on("click", js_handler="""(event) => {
+                            const panel = event.currentTarget.closest('.preview-panel');
+                            panel.classList.remove('preview-maximized');
+                            panel.querySelector('.preview-expand').focus();
+                        }""")
                 with ui.row().classes("w-full items-center justify-center"):
                     previous_page_button = ui.button(
                         "Előző oldal", icon="chevron_right", on_click=lambda: change_preview_page(-1)
@@ -1599,7 +1625,7 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 preview_status_label = ui.label(
                     "Az oldalbeosztás a legutóbbi tördelésből származik."
                 ).classes("text-xs text-stone-500")
-                preview_area = ui.column().classes("w-full items-center")
+                preview_area = ui.column().classes("w-full items-center preview-area")
                 ui.label(
                     "A tördelést befolyásoló módosítások után az oldalbeosztás automatikusan újraszámolódik. "
                     "A PDF letöltéséhez indítsd el a teljes generálást."

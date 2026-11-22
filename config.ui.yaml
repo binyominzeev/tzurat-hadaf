@@ -66,82 +66,82 @@ stacks:
     sources:
       main:
         version: hebrew
-        url: https://www.sefaria.org/Genesis.29.13-35
+        url: https://www.sefaria.org/Genesis.32.4-36.43
         label: תורה
         title: Genesis
-        from: '29:13'
-        to: '29:35'
+        from: '32:4'
+        to: '36:43'
       abudraham:
         label: חזקוני
         version: hebrew
-        url: https://www.sefaria.org/Chizkuni%2C_Genesis.29.13-35
+        url: https://www.sefaria.org/Chizkuni%2C_Genesis.32.4-36.43
         title: Chizkuni
         section_ref: Chizkuni, Genesis
-        from: '29:13'
-        to: '29:35'
+        from: '32:4'
+        to: '36:43'
       rashi:
         label: רש"י
         version: hebrew
         corrections: true
-        url: https://www.sefaria.org/Rashi_on_Genesis.29.13-35
+        url: https://www.sefaria.org/Rashi_on_Genesis.32.4-36.43
         title: Rashi on Genesis
-        from: '29:13'
-        to: '29:35'
+        from: '32:4'
+        to: '36:43'
       vitry:
         label: העמק דבר
         version: hebrew
-        url: https://www.sefaria.org/Haamek_Davar_on_Genesis.29.13-35
+        url: https://www.sefaria.org/Haamek_Davar_on_Genesis.32.4-36.43
         title: Haamek Davar on Genesis
-        from: '29:13'
-        to: '29:35'
+        from: '32:4'
+        to: '36:43'
       extra_1:
-        url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.29.13-35
+        url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.32.4-36.43
         version: hebrew
         label: טור הארוך
         title: Tur HaArokh
         section_ref: Tur HaArokh, Genesis
-        from: '29:13'
-        to: '29:35'
+        from: '32:4'
+        to: '36:43'
     slots:
       right: abudraham
       left: rashi
       bottom: vitry
 additional_commentaries:
   extra_1:
-    url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.29.13-35
+    url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.32.4-36.43
     version: hebrew
     label: טור הארוך
     title: Tur HaArokh
     section_ref: Tur HaArokh, Genesis
-    from: '29:13'
-    to: '29:35'
+    from: '32:4'
+    to: '36:43'
 main:
   version: hebrew
-  url: https://www.sefaria.org/Genesis.29.13-35
+  url: https://www.sefaria.org/Genesis.32.4-36.43
   label: תורה
   title: Genesis
-  from: '29:13'
-  to: '29:35'
+  from: '32:4'
+  to: '36:43'
 abudraham:
   label: חזקוני
   version: hebrew
-  url: https://www.sefaria.org/Chizkuni%2C_Genesis.29.13-35
+  url: https://www.sefaria.org/Chizkuni%2C_Genesis.32.4-36.43
   title: Chizkuni
   section_ref: Chizkuni, Genesis
-  from: '29:13'
-  to: '29:35'
+  from: '32:4'
+  to: '36:43'
 rashi:
   label: רש"י
   version: hebrew
   corrections: true
-  url: https://www.sefaria.org/Rashi_on_Genesis.29.13-35
+  url: https://www.sefaria.org/Rashi_on_Genesis.32.4-36.43
   title: Rashi on Genesis
-  from: '29:13'
-  to: '29:35'
+  from: '32:4'
+  to: '36:43'
 vitry:
   label: העמק דבר
   version: hebrew
-  url: https://www.sefaria.org/Haamek_Davar_on_Genesis.29.13-35
+  url: https://www.sefaria.org/Haamek_Davar_on_Genesis.32.4-36.43
   title: Haamek Davar on Genesis
-  from: '29:13'
-  to: '29:35'
+  from: '32:4'
+  to: '36:43'

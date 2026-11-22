@@ -40,6 +40,8 @@ A Sefaria hivatkozás mentésekor a felület lekéri a szöveget. A tördelést
 befolyásoló változtatások után a felület automatikusan újraszámolja az
 oldalhatárokat, és a tényleges PDF-oldalak között az „Előző oldal” és
 „Következő oldal” gombokkal lehet lapozni. A hosszabb szövegek tördelése időigényes.
+Az előnézetnél a „Teljes ablak” gomb nagyítja ki a nézetet, a
+„Visszaállítás” gomb pedig visszavisz a szerkesztőhöz.
 A frissített tördelési beállításokat az automatikus újraszámolás a
 `config.ui.yaml` fájlba menti. A „Konfiguráció mentése” külön is használható.
 A „Mentés és PDF készítése” ezt a konfigurációt
