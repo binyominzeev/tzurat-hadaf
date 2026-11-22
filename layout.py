@@ -18,6 +18,8 @@ DEFAULTS = {
     "max_stretch": 0.30,             # a főszöveg legfeljebb ennyivel nyúlhat (a magasság arányában)
     "fonts": ["Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Noto Sans Hebrew"],
     "main_font": None,
+    "tablet_mode": False,
+    "tablet_commentary": None,
 }
 
 
@@ -99,10 +101,13 @@ def build_layout(page, cfg, out):
                     for role, words in page.get("additional_commentaries", {}).items()})
     slotkey = {"right": "R", "left": "L", "bottom": "B"}
     streams = {}
+    role_stream = {}
     for slot, key in slotkey.items():
         sid = L["slots"].get(slot)
         atoms = sorted(src.get(sid, []), key=lambda x: x["a"])      # stabil: eredeti sorrend marad
         streams[key] = {"label": labels.get(sid, ""), "atoms": atoms}
+        if sid:
+            role_stream[sid] = key
     bottom_streams = ["B"]
     for i, role in enumerate(additional, 1):
         if role not in src:
@@ -110,6 +115,14 @@ def build_layout(page, cfg, out):
         key = f"B{i}"
         bottom_streams.append(key)
         streams[key] = {"label": labels[role], "atoms": src[role]}
+        role_stream[role] = key
+    tablet_commentary = L.get("tablet_commentary")
+    if tablet_commentary not in src:
+        tablet_commentary = next(
+            (L["slots"].get(slot) for slot in ("left", "right", "bottom")
+             if L["slots"].get(slot) in src),
+            None,
+        )
     # főszöveg + jegyzetszám-jelek (az Abudraham-pontok horgonyán)
     marks = {}
     for n, note in enumerate(page["notes"], 1):
@@ -128,7 +141,10 @@ def build_layout(page, cfg, out):
     }
     data = {"geometry": geometry, "fonts": L["fonts"], "main_font": L["main_font"],
             "bottom_streams": bottom_streams,
-            "labels": labels, "main": main, "streams": streams}
+            "labels": labels, "main": main, "streams": streams,
+            "tablet_mode": bool(L["tablet_mode"]),
+            "tablet_commentary": tablet_commentary,
+            "tablet_stream": role_stream.get(tablet_commentary)}
     (out / "layout.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     return data
 

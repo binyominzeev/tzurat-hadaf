@@ -5,6 +5,7 @@ import asyncio
 import copy
 import html
 import json
+import os
 import re
 import subprocess
 import sys
@@ -55,6 +56,8 @@ LAYOUT_DEFAULTS = {
     "side_leading_em": 0.45,
     "fonts": ["Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Noto Sans Hebrew"],
     "main_font": None,
+    "tablet_mode": False,
+    "tablet_commentary": None,
     "slots": {"right": "abudraham", "left": "rashi", "bottom": "vitry"},
 }
 NUMERIC_FIELDS = {
@@ -76,6 +79,22 @@ LAYOUT_FIELDS = {
     "max_stretch": (0.0, 1.0, 0.05, "Max. sortávolság-nyújtás"),
     "main_leading_em": (0.1, 3.0, 0.05, "Főszöveg sortávja (em)"),
     "side_leading_em": (0.1, 3.0, 0.05, "Kommentár sortávja (em)"),
+}
+LAYOUT_PRESETS = {
+    "print": {
+        "page_width": 21.0,
+        "page_height": 29.7,
+        "main_size_pt": 13,
+        "side_size_pt": 8,
+        "tablet_mode": False,
+    },
+    "tablet": {
+        "page_width": 29.7,
+        "page_height": 21.0,
+        "main_size_pt": 30,
+        "side_size_pt": 20,
+        "tablet_mode": True,
+    },
 }
 SLOT_LABELS = {"right": "Jobb hasáb", "left": "Bal hasáb", "bottom": "Alsó sáv"}
 PREFERRED_SLOTS = {"abudraham": "right", "rashi": "left", "vitry": "bottom"}
@@ -175,6 +194,12 @@ default_sample_mode = all(
 )
 sample_mode = (config.get("ui") or {}).get("sample_mode", default_sample_mode)
 settings = initial_settings(config)
+settings["tablet_commentary"] = (
+    settings["tablet_commentary"]
+    or settings["slots"].get("left")
+    or settings["slots"].get("right")
+    or settings["slots"].get("bottom")
+)
 previews = sample_previews()
 slot_values = copy.deepcopy(settings["slots"])
 DEFAULT_STACK = "Szidur"
@@ -204,6 +229,7 @@ sefaria_titles = []
 slot_controls = {}
 source_assignment_controls = {}
 numeric_controls = {}
+layout_controls = {}
 source_area = None
 stack_area = None
 preview_area = None
@@ -211,7 +237,10 @@ status_label = None
 build_log = None
 build_button = None
 download_button = None
+build_progress = None
 orientation_switch = None
+preset_control = None
+tablet_commentary_control = None
 sample_switch = None
 page_nav_label = None
 previous_page_button = None
@@ -670,15 +699,19 @@ def render_preview() -> None:
         label = page_content[f"{slot}_label"]
         text = page_content[slot]
         columns.append(
-            f'<section class="preview-column" style="font-size:clamp(7px, '
-            f'{1.1 * float(settings["side_size_pt"]) / 8:g}vw, 11px);'
+            f'<section class="preview-column" style="font-size:clamp('
+            f'{7 * float(settings["side_size_pt"]) / 8:g}px, '
+            f'{1.1 * float(settings["side_size_pt"]) / 8:g}vw, '
+            f'{11 * float(settings["side_size_pt"]) / 8:g}px);'
             f'line-height:{side_line_height:g}"><b>{html.escape(label)}</b>'
             f'<p>{html.escape(" ".join(text.split())[:520]) or "—"}</p></section>'
         )
     main_font = html.escape(f'"{settings["main_font"]}"', quote=True) if settings["main_font"] else "inherit"
     main_column = (
-        f'<section class="preview-main" style="font-size:clamp(9px, '
-        f'{1.35 * float(settings["main_size_pt"]) / 13:g}vw, 14px);'
+        f'<section class="preview-main" style="font-size:clamp('
+        f'{9 * float(settings["main_size_pt"]) / 13:g}px, '
+        f'{1.35 * float(settings["main_size_pt"]) / 13:g}vw, '
+        f'{14 * float(settings["main_size_pt"]) / 13:g}px);'
         f'font-family:{main_font};'
         f'line-height:{1.8 * float(settings["main_leading_em"]) / 0.55:g}"><b>פנים · '
         f'{html.escape(source_label("main")) if "main" in sources else "ראשי"}</b>'
@@ -805,6 +838,27 @@ def schedule_preview_reflow() -> None:
     preview_debounce_task = asyncio.create_task(debounce_preview_reflow(preview_revision))
 
 
+def refresh_tablet_commentary_options() -> None:
+    if tablet_commentary_control is None:
+        return
+    options = {
+        key: source_label(key)
+        for key in sources
+        if key != "main"
+    }
+    selected = settings.get("tablet_commentary")
+    if selected not in options:
+        selected = next(
+            (slot_values.get(slot) for slot in ("left", "right", "bottom")
+             if slot_values.get(slot) in options),
+            next(iter(options), None),
+        )
+        settings["tablet_commentary"] = selected
+    tablet_commentary_control.options = options
+    tablet_commentary_control.value = selected
+    tablet_commentary_control.update()
+
+
 def refresh_sources() -> None:
     source_area.clear()
     source_assignment_controls.clear()
@@ -836,6 +890,7 @@ def refresh_sources() -> None:
                             source_assignment_controls[key] = (assignment_label, place_button)
     refresh_slot_options()
     refresh_source_assignments()
+    refresh_tablet_commentary_options()
     render_preview()
 
 
@@ -1365,6 +1420,30 @@ def set_orientation(is_landscape: bool) -> None:
     schedule_preview_reflow()
 
 
+def set_layout_preset(preset: str | None) -> None:
+    if preset is None:
+        return
+    for key, value in LAYOUT_PRESETS[preset].items():
+        settings[key] = value
+        control = numeric_controls.get(key)
+        if control is None:
+            control = layout_controls.get(key)
+        if control is not None:
+            control.value = value
+            control.update()
+    orientation_switch.value = settings["page_width"] > settings["page_height"]
+    orientation_switch.update()
+    render_preview()
+    schedule_preview_reflow()
+    preset_control.value = None
+    preset_control.update()
+
+
+def set_tablet_commentary(key: str | None) -> None:
+    settings["tablet_commentary"] = key
+    schedule_preview_reflow()
+
+
 def set_option(key: str, value) -> None:
     if value is not None:
         settings["options"][key] = int(value)
@@ -1397,22 +1476,66 @@ def set_sample_mode(value: bool) -> None:
     schedule_preview_reflow()
 
 
+async def run_build_process() -> int:
+    process = await asyncio.create_subprocess_exec(
+        "bash",
+        "build.sh",
+        CONFIG_PATH.name,
+        cwd=ROOT,
+        env={**os.environ, "PYTHONUNBUFFERED": "1"},
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
+    )
+    page_count = None
+
+    async def show_output() -> int:
+        nonlocal page_count
+        async for raw_line in process.stdout:
+            line = raw_line.decode("utf-8", errors="replace").rstrip()
+            build_log.text = (build_log.text + line + "\n")[-6000:]
+            build_log.update()
+            if line.startswith("==> 1/2"):
+                status_label.text = "1/2 · Adatok letöltése és illesztése…"
+                status_label.update()
+            elif line.startswith("==> 2/2"):
+                status_label.text = "2/2 · Tördelés és PDF készítése…"
+                status_label.update()
+            elif line.startswith("==> Mérés és oldalbeosztás"):
+                status_label.text = "Oldalméretezés és tördelés folyamatban…"
+                status_label.update()
+            elif line.startswith("==> PDF renderelése"):
+                if page_count is None:
+                    status_label.text = "Oldalbeosztás kész; a PDF renderelése folyamatban…"
+                else:
+                    status_label.text = (
+                        f"Oldalbeosztás kész ({page_count} oldal); "
+                        "a PDF renderelése folyamatban…"
+                    )
+                status_label.update()
+            elif re.match(r"\s+\d+ oldal,", line):
+                page_count = line.strip().split(maxsplit=1)[0]
+                status_label.text = (
+                    f"Oldalbeosztás kész ({page_count} oldal); a PDF renderelése folyamatban…"
+                )
+                status_label.update()
+        return await process.wait()
+
+    try:
+        return await asyncio.wait_for(show_output(), timeout=3600)
+    except asyncio.TimeoutError:
+        process.kill()
+        await process.wait()
+        raise
+
+
 async def save_and_build() -> None:
     global preview_page_index
-    status_label.text = "PDF készül… a hosszú szövegeknél a tördelés eltarthat."
+    status_label.text = "PDF-generálás indítása…"
+    status_label.update()
     build_log.text = ""
+    build_log.update()
+    build_progress.set_visibility(True)
     build_button.disable()
-
-    def build():
-        return subprocess.run(
-            ["bash", "build.sh", CONFIG_PATH.name],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            timeout=3600,
-            check=False,
-        )
-
     try:
         async with pipeline_lock:
             try:
@@ -1421,10 +1544,10 @@ async def save_and_build() -> None:
                 ui.notify(f"A konfiguráció nem menthető: {error}", type="negative", timeout=7000)
                 return
             build_revision = preview_revision
-            result = await run.io_bound(build)
-            build_log.text = (result.stdout + ("\n" + result.stderr if result.stderr else ""))[-6000:]
-            if result.returncode:
+            returncode = await run_build_process()
+            if returncode:
                 status_label.text = "A PDF-generálás hibával leállt."
+                status_label.update()
                 ui.notify("A PDF nem készült el; a részletek a naplóban olvashatók.", type="negative")
             else:
                 load_preview_pages()
@@ -1438,10 +1561,16 @@ async def save_and_build() -> None:
                 else:
                     status_label.text = "Azóta változtak a beállítások; az előnézet újratördelése folyamatban."
                     download_button.set_visibility(False)
-    except (subprocess.TimeoutExpired, OSError) as error:
-        status_label.text = f"A generálás nem fejeződött be: {error}"
-        ui.notify("A PDF-generálás hibával leállt.", type="negative")
+    except asyncio.TimeoutError:
+        status_label.text = "A PDF-generálás túllépte az 1 órás időkorlátot."
+        status_label.update()
+        ui.notify("A PDF-generálás időkorlátja lejárt.", type="negative")
+    except OSError as error:
+        status_label.text = f"A generálás nem indítható el: {error}"
+        status_label.update()
+        ui.notify("A PDF-generálás nem indítható el.", type="negative")
     finally:
+        build_progress.set_visibility(False)
         build_button.enable()
 
 
@@ -1508,6 +1637,16 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
 
             with ui.card().classes("w-full"):
                 ui.label("Oldal és tipográfia").classes("text-xl font-bold")
+                preset_control = ui.select(
+                    {
+                        "print": "Nyomtatási nézet",
+                        "tablet": "Tablet · fekvő, nagy betűk",
+                    },
+                    label="Előbeállítás alkalmazása",
+                    value=None,
+                ).classes("w-full").on_value_change(
+                    lambda event: set_layout_preset(event.value)
+                )
                 orientation_switch = ui.switch(
                     "Fekvő oldalnézet",
                     value=settings["page_width"] > settings["page_height"],
@@ -1524,9 +1663,12 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                         numeric_controls[key] = control
                     for key, (minimum, maximum, step, label) in LAYOUT_FIELDS.items():
                         value = settings[key]
-                        ui.number(label, value=value, min=minimum, max=maximum, step=step).classes(
-                            "w-full"
-                        ).on_value_change(lambda event, k=key: set_numeric(k, event.value))
+                        control = ui.number(
+                            label, value=value, min=minimum, max=maximum, step=step
+                        ).classes("w-full").on_value_change(
+                            lambda event, k=key: set_numeric(k, event.value)
+                        )
+                        layout_controls[key] = control
                 with ui.row().classes("w-full"):
                     for slot, label in SLOT_LABELS.items():
                         control = ui.select(
@@ -1538,6 +1680,20 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                             lambda event, s=slot: set_slot(s, event.value)
                         )
                         slot_controls[slot] = control
+                tablet_commentary_control = ui.select(
+                    {
+                        key: source_label(key)
+                        for key in sources
+                        if key != "main"
+                    },
+                    label="Tablet nézet kommentárja",
+                    value=settings["tablet_commentary"],
+                ).classes("w-full").on_value_change(
+                    lambda event: set_tablet_commentary(event.value)
+                )
+                ui.label(
+                    "Tablet nézetben csak ez a kommentár jelenik meg; külön oldalakon folytatódhat."
+                ).classes("text-xs text-stone-500")
                 ui.select(
                     MAIN_FONTS,
                     label="Főszöveg betűtípusa",
@@ -1580,6 +1736,10 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
             with ui.card().classes("w-full"):
                 ui.label("PDF-generálás").classes("text-xl font-bold")
                 status_label = ui.label(f"Mentés: {CONFIG_PATH.name} · forrás: config.live.yaml")
+                build_progress = ui.linear_progress(show_value=False).props(
+                    "indeterminate"
+                ).classes("w-full")
+                build_progress.set_visibility(False)
                 build_log = ui.label("").classes(
                     "w-full whitespace-pre-wrap break-all font-mono text-xs text-stone-700"
                 )

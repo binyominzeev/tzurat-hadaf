@@ -15,7 +15,14 @@
 
 #let render-page(p) = {
   let T = p.T * 1pt
-  if p.mode == "3" or p.mode == "flow" {
+  if p.mode == "tablet-main" {
+    block(width: 100%, height: T,
+      render-main(MAIN.slice(p.a, p.b), p.extra * 1pt, p.b < MAIN.len()))
+  } else if p.mode == "tablet-comment" {
+    let e = p.top.at(0)
+    block(width: 100%, height: Hbody, clip: true,
+      col-body(S.at(e.k).label, sl(e), cont-of(e)))
+  } else if p.mode == "3" or p.mode == "flow" {
     let col(e) = block(width: 100%, height: T, clip: true, col-body(S.at(e.k).label, sl(e), cont-of(e)))
     block(width: 100%, height: T, grid(
       columns: (w-right, w-main, w-left), column-gutter: gut,

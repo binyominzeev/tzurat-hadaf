@@ -144,6 +144,56 @@ class PaginationTests(unittest.TestCase):
             self.assertEqual(text.count("word"), 1600)
             self.assertNotIn("(…)", text)
 
+    @unittest.skipUnless(shutil.which("typst"), "Typst szükséges")
+    def test_tablet_commentary_gets_own_pages_before_main_text_resumes(self):
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            for name in ("lib.typ", "measure.typ", "render.typ"):
+                shutil.copy(root / name, work / name)
+            out = work / "out"
+            out.mkdir()
+            page = {
+                "main": [{"text": f"main{i}", "glue": False} for i in range(400)],
+                "notes": [],
+                "unit_notes": [],
+                "variants": [],
+                "commentary": {
+                    "extra_1": [{
+                        "anchor_w": 0,
+                        "number": "1",
+                        "words": [("comment", False)] * 1600,
+                    }]
+                },
+            }
+            cfg = {
+                "layout": {
+                    "tablet_mode": True,
+                    "tablet_commentary": "extra_1",
+                    "slots": {"right": "", "left": "", "bottom": ""},
+                    "page": {"width_cm": 29.7, "height_cm": 21.0},
+                    "main_size_pt": 30,
+                    "side_size_pt": 20,
+                },
+                "additional_commentaries": {"extra_1": {"label": "Extra"}},
+            }
+            data = build_layout(page, cfg, out)
+            self.assertTrue(data["tablet_mode"])
+            self.assertEqual(data["tablet_stream"], "B1")
+
+            result = subprocess.run(
+                ["typst", "query", "measure.typ", "<pages>", "--field", "value", "--one"],
+                cwd=work, capture_output=True, text=True, check=True,
+            )
+            pages = json.loads(result.stdout)
+            modes = [entry["mode"] for entry in pages]
+            self.assertEqual(modes[0], "tablet-main")
+            next_main = modes.index("tablet-main", 1)
+            self.assertGreater(next_main, 1)
+            self.assertTrue(all(mode == "tablet-comment" for mode in modes[1:next_main]))
+            self.assertEqual(pages[next_main]["a"], pages[0]["b"])
+            self.assertEqual(pages[-1]["b"], 400)
+
 
 if __name__ == "__main__":
     unittest.main()

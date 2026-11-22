@@ -6,7 +6,9 @@
 #let atoms-of(k) = S.at(k).atoms
 #let nstream(k) = S.at(k).atoms.len()
 #let lmin(a, b) = if a < b { a } else { b }
-#let stream-keys = ("R", "L") + cfg.bottom_streams
+#let stream-keys = if cfg.tablet_mode {
+  if cfg.tablet_stream == none { () } else { (cfg.tablet_stream,) }
+} else { ("R", "L") + cfg.bottom_streams }
 
 #let elig(k, b) = {
   let p = atoms-of(k).position(at => at.a >= b)
@@ -106,6 +108,7 @@
 
 #let wm-of(mode) = if mode == "none" { w-main-solo } else { w-main }
 #let main-h(mode, a, b, extra) = hgt(wm-of(mode), render-main(MAIN.slice(a, b), extra, false))
+#let tablet-main-h(a, b) = hgt(Wbody, render-main(MAIN.slice(a, b), 0pt, false))
 
 #let advance(cur, top, rs) = {
   let c = cur
@@ -149,6 +152,26 @@
   let rs2 = take-ranges(rs, n)
   let bs = bottom-split(ranges-atoms(rs2))
   spec(MAIN.len(), MAIN.len(), "tail", 0pt, 0pt, (), rs2, bs, 0pt, cur)
+}
+
+#let plan-tablet-main(a, cur) = {
+  let lo = a
+  let hi = MAIN.len()
+  while lo < hi {
+    let mid = calc.quo(lo + hi + 1, 2)
+    if tablet-main-h(a, mid) <= Hplan { lo = mid } else { hi = mid - 1 }
+  }
+  let b = if lo == a { a + 1 } else { lo }
+  let T = tablet-main-h(a, b)
+  spec(a, b, "tablet-main", T, 0pt, (), (), (ns: (), hb: 0pt), Hplan - T, cur)
+}
+
+#let plan-tablet-comment(cur, k, end) = {
+  let c = cur.at(k)
+  let n = calc.max(1, fill-col(k, c, Hplan, Wbody, end))
+  let top = ((k: k, f: c, t: calc.min(c + n, end)),)
+  spec(MAIN.len(), MAIN.len(), "tablet-comment", Hplan, 0pt, top, (),
+    (ns: (), hb: 0pt), 0pt, cur)
 }
 
 #let plan-page(a, cur) = {
@@ -216,12 +239,38 @@
   let a = 0
   let cur = (R: 0, L: 0)
   for k in cfg.bottom_streams { cur.insert(k, 0) }
-  while a < MAIN.len() or rem(cur) > 0 {
-    let sp = plan-page(a, cur)
-    assert(sp.b > a or sp.cur != cur, message: "A tördelés nem tud továbbhaladni.")
-    pages.push(sp)
-    a = sp.b
-    cur = sp.cur
+  if cfg.tablet_mode {
+    while a < MAIN.len() {
+      let sp = plan-tablet-main(a, cur)
+      assert(sp.b > a, message: "A tablet főszöveg tördelése nem tud továbbhaladni.")
+      pages.push(sp)
+      a = sp.b
+      if cfg.tablet_stream != none {
+        let end = elig(cfg.tablet_stream, a)
+        while cur.at(cfg.tablet_stream) < end {
+          let comment = plan-tablet-comment(cur, cfg.tablet_stream, end)
+          assert(comment.cur != cur, message: "A tablet kommentár tördelése nem tud továbbhaladni.")
+          pages.push(comment)
+          cur = comment.cur
+        }
+      }
+    }
+    if cfg.tablet_stream != none {
+      while cur.at(cfg.tablet_stream) < nstream(cfg.tablet_stream) {
+        let comment = plan-tablet-comment(cur, cfg.tablet_stream, nstream(cfg.tablet_stream))
+        assert(comment.cur != cur, message: "A tablet kommentár tördelése nem tud továbbhaladni.")
+        pages.push(comment)
+        cur = comment.cur
+      }
+    }
+  } else {
+    while a < MAIN.len() or rem(cur) > 0 {
+      let sp = plan-page(a, cur)
+      assert(sp.b > a or sp.cur != cur, message: "A tördelés nem tud továbbhaladni.")
+      pages.push(sp)
+      a = sp.b
+      cur = sp.cur
+    }
   }
   [#metadata(pages) <pages>]
 }
