@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 
 import requests
 
-from pilot import fetch
+from pilot import fetch, fetch_verse_commentary
 
 
 class FetchTests(unittest.TestCase):
@@ -34,3 +34,27 @@ class FetchTests(unittest.TestCase):
             with self.assertRaises(requests.HTTPError):
                 fetch(source, cache)
             self.assertEqual(list(cache.iterdir()), [])
+
+    def test_missing_verse_commentary_requires_confirmed_parent_book(self):
+        response = Mock(status_code=404)
+        response.json.return_value = {"error": "We have no text for Rashi on Genesis 1:1-2."}
+        error = requests.HTTPError(response=response)
+        parent = {"book": "Rashi on Genesis", "sectionNames": ["Chapter", "Verse", "Comment"],
+                  "versions": [{"text": [["existing"]]}]}
+        main = {"book": "Genesis", "sections": ["1", "1"], "toSections": ["1", "2"]}
+        source = {"url": "https://www.sefaria.org/Rashi_on_Genesis.1.1-2"}
+        with patch("pilot.fetch_data", side_effect=[error, parent]) as get:
+            data, missing = fetch_verse_commentary(source, main)
+        self.assertTrue(missing)
+        self.assertEqual(data["versions"][0]["text"], [])
+        self.assertEqual(data["sections"], main["sections"])
+        self.assertEqual(get.call_args_list[1].args[0]["url"], "https://www.sefaria.org/Rashi_on_Genesis")
+
+    def test_other_404_errors_are_not_treated_as_empty_commentary(self):
+        response = Mock(status_code=404)
+        response.json.return_value = {"error": "Unknown reference"}
+        error = requests.HTTPError(response=response)
+        with patch("pilot.fetch_data", side_effect=error):
+            with self.assertRaises(requests.HTTPError):
+                fetch_verse_commentary({"url": "https://www.sefaria.org/Bad.1.1"},
+                                       {"book": "Genesis"})

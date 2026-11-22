@@ -57,11 +57,41 @@ def fetch_data(cfg, cache=Path("cache")):
     return data
 
 
+def fetch_verse_commentary(cfg, main_data, cache=Path("cache")):
+    import requests
+    try:
+        return fetch_data(cfg, cache), False
+    except requests.HTTPError as error:
+        response = error.response
+        if response is None or response.status_code != 404:
+            raise
+        try:
+            message = response.json().get("error", "")
+        except ValueError:
+            raise error
+        if not isinstance(message, str) or not message.startswith("We have no text for ") or not message.endswith("."):
+            raise
+        ref = unquote(urlparse(cfg["url"]).path).lstrip("/")
+        book_ref = re.split(r"\.(?=\d)", ref, maxsplit=1)[0]
+        book_cfg = {**cfg, "url": "https://www.sefaria.org/" + quote(book_ref, safe="._-")}
+        book_data = fetch_data(book_cfg, cache)
+        book = book_data.get("book", "")
+        base = main_data["book"]
+        if (not (book.endswith(" on " + base) or book.endswith(", " + base))
+                or book_data.get("sectionNames", [])[:2] != ["Chapter", "Verse"]):
+            raise ValueError(f"A kommentár nem a főszöveghez tartozik: {book_ref}") from error
+        empty = {**book_data, "ref": ref, "sections": main_data["sections"],
+                 "toSections": main_data["toSections"], "versions": [{"text": []}]}
+        return empty, True
+
+
 # ---------- tisztítás / normalizálás ----------
-def clean(s, corrections=False, divine=None):
+def clean(s, corrections=False, divine=None, preserve_cantillation=False):
     s = re.sub(r"<sup[^>]*>.*?</sup>|<i class=\"footnote\">.*?</i>", "", s, flags=re.S)
     s = html.unescape(re.sub(r"<[^>]+>", "", s))
-    s = CANT.sub("", s).replace("|", " ").replace("״", '"').replace("׳", "'")
+    if not preserve_cantillation:
+        s = CANT.sub("", s)
+    s = s.replace("|", " ").replace("״", '"').replace("׳", "'")
     if corrections:                                    # (eredeti) [javított] -> javított
         s = re.sub(r"\([^()]*\)\s*(?=\[)", "", s)
         s = s.replace("[", "").replace("]", "")
@@ -141,7 +171,7 @@ def verse_page(main_data, sources, unit, divine):
     main = []
     anchors = {}
     for chapter, verse, content in verse_sections(main_data):
-        words = tokens(clean(flatten(content), divine=divine))
+        words = tokens(clean(flatten(content), divine=divine, preserve_cantillation=True))
         if words:
             anchors[(chapter, verse)] = len(main)
             words[0]["verse"] = str(verse)
@@ -263,14 +293,18 @@ def main():
     if (main_data and main_data.get("primary_category") == "Tanakh"
             and main_data.get("sectionNames") == ["Chapter", "Verse"]):
         sources = {}
-        for role in ("abudraham", "rashi", "vitry"):
-            if role in cfg:
-                if "file" in cfg[role]:
-                    raise ValueError(f"A versenkénti feldolgozáshoz Sefaria-forrás szükséges: {role}")
-                data = fetch_data(cfg[role])
-                if data.get("sectionNames", [])[:2] != ["Chapter", "Verse"]:
-                    raise ValueError(f"Nem versenkénti kommentár: {data['ref']}")
-                sources[role] = (data, cfg[role])
+        commentary_sources = {role: cfg[role] for role in ("abudraham", "rashi", "vitry") if role in cfg}
+        commentary_sources.update(cfg.get("additional_commentaries") or {})
+        for role, source in commentary_sources.items():
+            if "file" in source:
+                raise ValueError(f"A versenkénti feldolgozáshoz Sefaria-forrás szükséges: {role}")
+            data, missing = fetch_verse_commentary(source, main_data)
+            if data.get("sectionNames", [])[:2] != ["Chapter", "Verse"]:
+                raise ValueError(f"Nem versenkénti kommentár: {data['ref']}")
+            if missing:
+                print(f"Figyelem: {source.get('label', role)} nem tartalmaz kommentárt a kiválasztott versekhez.",
+                      file=sys.stderr)
+            sources[role] = (data, source)
         page = verse_page(main_data, sources, cfg.get("unit", "unit"), o["divine_name"])
         (out / "page.json").write_text(json.dumps(page, ensure_ascii=False, indent=1), encoding="utf-8")
         with open(out / "matches.csv", "w", newline="", encoding="utf-8-sig") as f:
@@ -279,7 +313,7 @@ def main():
         return
 
     main_txt = clean(flatten(main_data["versions"][0]["text"]) if main_data else fetch(cfg["main"]),
-                     divine=o["divine_name"])
+                     divine=o["divine_name"], preserve_cantillation=True)
     main_toks = tokens(main_txt)
     page = {"unit": cfg.get("unit", "unit"), "main": main_toks,
             "notes": [], "unit_notes": [], "variants": [], "vitry_tail": [],
@@ -300,6 +334,11 @@ def main():
         if cut and cut in t:
             t = t[:t.index(cut)]
         page["variants"], page["vitry_tail"] = vitry_variants(main_toks, t)
+
+    page["additional_commentaries"] = {
+        role: marked_words(fetch(source), corrections=source.get("corrections", False))
+        for role, source in (cfg.get("additional_commentaries") or {}).items()
+    }
 
     (out / "page.json").write_text(json.dumps(page, ensure_ascii=False, indent=1), encoding="utf-8")
     with open(out / "matches.csv", "w", newline="", encoding="utf-8-sig") as f:

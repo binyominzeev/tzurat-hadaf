@@ -6,6 +6,29 @@ import app
 
 
 class PreviewConfigurationTests(unittest.TestCase):
+    def test_additional_sources_are_saved_separately_and_preserved_in_stack(self):
+        source = {
+            "main": {"url": "https://www.sefaria.org/Genesis.1.1"},
+            "extra_1": {"url": "https://www.sefaria.org/Rashi_on_Genesis.1.1",
+                        "label": "פירוש נוסף"},
+        }
+        with patch.object(app, "sources", source), patch.object(app, "sample_mode", False):
+            result = app.make_config()
+        self.assertEqual(result["additional_commentaries"]["extra_1"]["label"], "פירוש נוסף")
+        self.assertEqual(result["stacks"][app.active_stack]["sources"]["extra_1"]["label"], "פירוש נוסף")
+        self.assertNotIn("extra_1", result)
+
+    def test_extra_source_keys_do_not_overwrite_existing_sources(self):
+        self.assertEqual(app.extra_source_key({"extra_1": {}, "extra_3": {}}), "extra_2")
+
+    def test_main_font_is_saved_separately_from_commentary_fonts(self):
+        settings = app.initial_settings({"layout": {"main_font": "SBL Hebrew",
+                                                   "fonts": ["David Libre"]}})
+        with patch.object(app, "settings", settings):
+            result = app.make_config()
+        self.assertEqual(result["layout"]["main_font"], "SBL Hebrew")
+        self.assertEqual(result["layout"]["fonts"], ["David Libre"])
+
     def test_sample_mode_uses_matching_local_source(self):
         source = {
             "main": {

@@ -105,5 +105,61 @@ class SectionShapeTests(unittest.TestCase):
             app.validate_section_range("2b:1", "2a:14", shape)
 
 
+class SharedTorahRangeTests(unittest.TestCase):
+    def setUp(self):
+        self.shape = {"names": ["Chapter", "Verse"], "talmud": False, "counts": [31, 25]}
+        self.sources = {
+            "main": {"url": "https://www.sefaria.org/Genesis.1.1-5", "title": "Genesis"},
+            "abudraham": {"url": "https://www.sefaria.org/Chizkuni%2C_Genesis.1.1-5",
+                          "title": "Chizkuni", "section_ref": "Chizkuni, Genesis"},
+            "extra_1": {"url": "https://www.sefaria.org/Rashi_on_Genesis.1.1-5",
+                        "label": "Rashi"},
+        }
+
+    def test_all_sources_updated_across_chapters_without_mutating_original(self):
+        updated = app.shared_torah_sources(self.sources, "1:30", "2:2", self.shape)
+        self.assertEqual(updated["main"]["url"], "https://www.sefaria.org/Genesis.1.30-2.2")
+        self.assertEqual(updated["abudraham"]["url"],
+                         "https://www.sefaria.org/Chizkuni%2C_Genesis.1.30-2.2")
+        self.assertEqual(updated["extra_1"]["url"],
+                         "https://www.sefaria.org/Rashi_on_Genesis.1.30-2.2")
+        self.assertEqual(updated["extra_1"]["section_ref"], "Rashi on Genesis")
+        self.assertTrue(all(s["from"] == "1:30" and s["to"] == "2:2" for s in updated.values()))
+        self.assertNotIn("from", self.sources["main"])
+
+    def test_rejects_mismatched_book_and_invalid_ranges(self):
+        self.sources["extra_1"]["url"] = "https://www.sefaria.org/Rashi_on_Exodus.1.1"
+        with self.assertRaisesRegex(ValueError, "nem a\\(z\\) Genesis"):
+            app.shared_torah_sources(self.sources, "1:1", "1:2", self.shape)
+        self.assertNotIn("from", self.sources["main"])
+        for start, end in [("", "1:2"), ("1:3", "1:2"), ("2:26", "2:26"), ("1", "1:2")]:
+            with self.subTest(start=start, end=end), self.assertRaises(ValueError):
+                app.shared_torah_sources(self.sources, start, end, self.shape)
+
+    def test_fetch_checks_all_sources_even_if_main_is_not_first(self):
+        updated = app.shared_torah_sources(self.sources, "1:1", "1:2", self.shape)
+        reordered = {"extra_1": updated["extra_1"], "main": updated["main"],
+                     "abudraham": updated["abudraham"]}
+
+        def response(source, cache):
+            ref = app.source_ref(source)
+            return {"book": ref, "primary_category": "Tanakh",
+                    "sectionNames": ["Chapter", "Verse"],
+                    "versions": [{"text": ["א"]}]}
+
+        with patch.object(app, "fetch_data", side_effect=response), \
+             patch.object(app, "fetch_verse_commentary",
+                          side_effect=lambda source, main, cache: (response(source, cache), False)):
+            previews, missing = app.fetch_shared_torah_sources(reordered)
+        self.assertEqual(set(previews), set(updated))
+        self.assertEqual(missing, [])
+        with patch.object(app, "fetch_data", return_value=response(updated["main"], None)), \
+             patch.object(app, "fetch_verse_commentary",
+                          return_value=({"book": "Rashi on Exodus",
+                                         "sectionNames": ["Chapter", "Verse"]}, False)):
+            with self.assertRaisesRegex(ValueError, "nem a\\(z\\) Genesis"):
+                app.fetch_shared_torah_sources(reordered)
+
+
 if __name__ == "__main__":
     unittest.main()

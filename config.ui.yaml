@@ -30,6 +30,7 @@ layout:
   - David Libre
   - Noto Serif Hebrew
   - Noto Sans Hebrew
+  main_font: Taamey Frank CLM
   slots:
     right: abudraham
     left: rashi
@@ -93,10 +94,27 @@ stacks:
         title: Haamek Davar on Genesis
         from: '29:13'
         to: '29:35'
+      extra_1:
+        url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.29.13-35
+        version: hebrew
+        label: טור הארוך
+        title: Tur HaArokh
+        section_ref: Tur HaArokh, Genesis
+        from: '29:13'
+        to: '29:35'
     slots:
       right: abudraham
       left: rashi
       bottom: vitry
+additional_commentaries:
+  extra_1:
+    url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.29.13-35
+    version: hebrew
+    label: טור הארוך
+    title: Tur HaArokh
+    section_ref: Tur HaArokh, Genesis
+    from: '29:13'
+    to: '29:35'
 main:
   version: hebrew
   url: https://www.sefaria.org/Genesis.29.13-35

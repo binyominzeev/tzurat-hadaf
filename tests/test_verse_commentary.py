@@ -1,11 +1,15 @@
 import contextlib
 import io
+import json
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from layout import build_layout
-from pilot import marked_words, verse_page, verse_sections
+from layout import build_layout, check_main_font
+from pilot import clean, marked_words, tokens, verse_page, verse_sections
 
 
 def source(book, sections, ends, text):
@@ -14,6 +18,21 @@ def source(book, sections, ends, text):
 
 
 class VerseCommentaryTests(unittest.TestCase):
+    def test_main_text_preserves_cantillation_but_matching_ignores_it(self):
+        main = source("Genesis", ["1", "1"], ["1", "1"], "בְּרֵאשִׁ֖ית")
+        page = verse_page(main, {}, "test", None)
+        self.assertEqual(page["main"][0]["text"], "בְּרֵאשִׁ֖ית")
+        self.assertEqual(page["main"][0]["norm"], tokens("בראשית")[0]["norm"])
+        self.assertEqual(clean("בְּרֵאשִׁ֖ית"), "בְּרֵאשִׁית")
+
+    def test_unavailable_selected_font_is_reported(self):
+        with patch("layout.shutil.which", return_value="/usr/bin/typst"), \
+             patch("layout.subprocess.run") as run:
+            run.return_value.stdout = "SBL Hebrew\n"
+            check_main_font("SBL Hebrew")
+            with self.assertRaisesRegex(ValueError, "Taamey Ashkenaz"):
+                check_main_font("Taamey Ashkenaz")
+
     def test_source_bold_spans_and_corrections_are_preserved(self):
         self.assertEqual(
             marked_words("<b>דיבור המתחיל.</b> (שגוי) [נכון] <strong>עוד</strong> סוף",
@@ -39,6 +58,28 @@ class VerseCommentaryTests(unittest.TestCase):
             self.assertEqual([a["m"] for a in atoms if a["m"]], ["25", "27"])
             self.assertEqual([a["t"] for a in atoms if a["b"]], ["ראשון", "שני", "שלישי"])
             self.assertEqual([a["a"] for a in atoms if a["f"]], [0, 0, 2])
+
+    def test_additional_commentary_has_its_own_bottom_stream(self):
+        main = source("Genesis", ["1", "1"], ["1", "1"], "אחד")
+        commentary = source("Rashi on Genesis", ["1", "1"], ["1", "1"], ["<b>אחד</b> פירוש"])
+        extra = {"extra_1": {"label": "נוסף"}}
+        page = verse_page(main, {"extra_1": (commentary, extra["extra_1"])}, "test", None)
+        with tempfile.TemporaryDirectory() as directory:
+            data = build_layout(page, {"additional_commentaries": extra}, Path(directory))
+        self.assertEqual(data["bottom_streams"], ["B", "B1"])
+        self.assertEqual(data["streams"]["B1"]["label"], "נוסף")
+        self.assertEqual([atom["t"] for atom in data["streams"]["B1"]["atoms"]], ["אחד", "פירוש"])
+        self.assertEqual(data["streams"]["B1"]["atoms"][0]["m"], "1")
+
+    def test_unstructured_additional_commentary_flows_along_main_text(self):
+        page = {"main": [{"text": str(i), "glue": False} for i in range(10)],
+                "notes": [], "unit_notes": [], "variants": [],
+                "additional_commentaries": {"extra_1": [("first", True), ("last", False)]}}
+        with tempfile.TemporaryDirectory() as directory:
+            data = build_layout(page, {"additional_commentaries": {"extra_1": {"label": "Extra"}}},
+                                Path(directory))
+        atoms = data["streams"]["B1"]["atoms"]
+        self.assertEqual([(a["a"], a["b"]) for a in atoms], [(0, True), (5, False)])
 
     def test_multi_chapter_and_single_verse_ranges(self):
         main = source("Genesis", ["1", "30"], ["2", "2"], [["א", "ב"], ["ג", "ד"]])
@@ -68,6 +109,40 @@ class VerseCommentaryTests(unittest.TestCase):
             page = verse_page(main, {"rashi": (commentary, {})}, "test", None)
         self.assertIn("nem jelöl félkövér kezdőszót", warning.getvalue())
         self.assertEqual(page["commentary"]["rashi"][0]["words"], [("פירוש", False)])
+
+
+class PaginationTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which("typst") and shutil.which("pdftotext"),
+                         "Typst és pdftotext szükséges")
+    def test_long_additional_commentary_continues_without_ellipsis(self):
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            for name in ("lib.typ", "measure.typ", "render.typ"):
+                shutil.copy(root / name, work / name)
+            out = work / "out"
+            out.mkdir()
+            page = {"main": [{"text": "main", "glue": False}], "notes": [],
+                    "unit_notes": [], "variants": [], "commentary": {
+                        "extra_1": [{"anchor_w": 0, "number": "1",
+                                     "words": [("word", False)] * 1600}]}}
+            cfg = {"layout": {"slots": {"right": "", "left": "", "bottom": ""}},
+                   "additional_commentaries": {"extra_1": {"label": "Extra"}}}
+            build_layout(page, cfg, out)
+            result = subprocess.run(
+                ["typst", "query", "measure.typ", "<pages>", "--field", "value", "--one"],
+                cwd=work, capture_output=True, text=True, check=True,
+            )
+            pages = json.loads(result.stdout)
+            self.assertTrue(any(page["mode"] == "tail" for page in pages))
+            self.assertEqual(pages[-1]["cur"]["B1"], 1600)
+            (out / "pages.json").write_text(json.dumps(pages), encoding="utf-8")
+            subprocess.run(["typst", "compile", "render.typ", "out/page.pdf"],
+                           cwd=work, capture_output=True, check=True)
+            text = subprocess.run(["pdftotext", "out/page.pdf", "-"], cwd=work,
+                                  capture_output=True, text=True, check=True).stdout
+            self.assertEqual(text.count("word"), 1600)
+            self.assertNotIn("(…)", text)
 
 
 if __name__ == "__main__":

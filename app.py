@@ -5,17 +5,18 @@ import asyncio
 import copy
 import html
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
-from urllib.parse import quote, urlparse
+from urllib.parse import quote, unquote, urlparse
 
 import requests
 import yaml
 from nicegui import app, run, ui
 
-from pilot import clean, fetch
+from pilot import clean, fetch, fetch_data, fetch_verse_commentary, flatten
 
 
 ROOT = Path(__file__).resolve().parent
@@ -34,6 +35,7 @@ ROLE_DEFAULTS = {
     "rashi": {"label": 'רש"י', "version": "hebrew", "corrections": True},
     "vitry": {"label": "מחזור ויטרי", "version": "hebrew", "cut_before": "אהבת עולם"},
 }
+MAIN_FONTS = ["Taamey Ashkenaz", "Taamey Frank CLM", "Frank Ruehl CLM", "SBL Hebrew"]
 LAYOUT_DEFAULTS = {
     "page": {
         "width_cm": 21.0,
@@ -52,6 +54,7 @@ LAYOUT_DEFAULTS = {
     "main_leading_em": 0.55,
     "side_leading_em": 0.45,
     "fonts": ["Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Noto Sans Hebrew"],
+    "main_font": None,
     "slots": {"right": "abudraham", "left": "rashi", "bottom": "vitry"},
 }
 NUMERIC_FIELDS = {
@@ -159,6 +162,7 @@ def sample_previews() -> dict:
 
 config = load_config()
 sources = {key: copy.deepcopy(config[key]) for key in ROLE_LABELS if key in config}
+sources.update(copy.deepcopy(config.get("additional_commentaries") or {}))
 sample_config = yaml.safe_load(SAMPLE_CONFIG_PATH.read_text(encoding="utf-8"))
 sample_sources = {key: sample_config[key] for key in ROLE_LABELS if key in sample_config}
 default_sample_mode = all(
@@ -224,7 +228,15 @@ preview_pdf_version = 0
 
 
 def source_label(key: str) -> str:
-    return sources.get(key, {}).get("label", ROLE_LABELS.get(key, key))
+    source = sources.get(key, {})
+    return source.get("label") or source.get("title") or ROLE_LABELS.get(key, "További kommentár")
+
+
+def extra_source_key(existing: dict) -> str:
+    index = 1
+    while f"extra_{index}" in existing:
+        index += 1
+    return f"extra_{index}"
 
 
 def build_sefaria_url(title: str, start: str = "", end: str = "") -> str:
@@ -351,6 +363,105 @@ def validate_section_range(start: str, end: str, shape: dict) -> None:
         raise ValueError("A szakasz vége nem lehet a kezdete előtt.")
 
 
+TORAH_BOOKS = {"Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy"}
+
+
+def source_ref(source: dict) -> str:
+    path = unquote(urlparse(validate_sefaria_url(source["url"])).path).lstrip("/")
+    return re.split(r"\.(?=\d)", path, maxsplit=1)[0].replace("_", " ")
+
+
+def shared_torah_sources(current: dict, start: str, end: str, shape: dict) -> dict:
+    if not start or not end:
+        raise ValueError("Válaszd ki a kezdő és a záró verset is.")
+    if shape["names"] != ["Chapter", "Verse"] or shape["talmud"]:
+        raise ValueError("A közös szakaszválasztó csak fejezetekre és versekre bontott Tórához használható.")
+    if any(not re.fullmatch(r"\d+:\d+", value) for value in (start, end)):
+        raise ValueError("A kezdő és a záró pontot fejezet:vers formában add meg.")
+    validate_section_range(start, end, shape)
+    if "main" not in current:
+        raise ValueError("Először válassz tórai főszöveget.")
+    base = source_ref(current["main"])
+    if base not in TORAH_BOOKS:
+        raise ValueError("A közös szakaszválasztó csak a Tóra öt könyvéhez használható.")
+    updated = copy.deepcopy(current)
+    for key, source in updated.items():
+        ref = source_ref(source)
+        if key != "main" and not (ref.endswith(" on " + base) or ref.endswith(", " + base)):
+            raise ValueError(f"A(z) {source.get('label', ref)} nem a(z) {base} könyvhöz tartozik.")
+        source["url"] = build_sefaria_url(ref, start, end)
+        source["from"] = start
+        source["to"] = end
+        if not source.get("title"):
+            source["section_ref"] = ref
+    return updated
+
+
+def fetch_shared_torah_sources(updated: dict) -> tuple:
+    data = {}
+    missing = []
+    for key in ["main"] + [key for key in updated if key != "main"]:
+        source = updated[key]
+        if key == "main":
+            response = fetch_data(source, ROOT / "cache")
+            if response.get("primary_category") != "Tanakh" or response.get("book") not in TORAH_BOOKS:
+                raise ValueError("A kiválasztott főszöveg nem tórai könyv.")
+            base = response["book"]
+            main_data = response
+        else:
+            response, is_missing = fetch_verse_commentary(source, main_data, ROOT / "cache")
+            if is_missing:
+                missing.append(source.get("label") or source_ref(source))
+            book = response.get("book", "")
+            if not (book.endswith(" on " + base) or book.endswith(", " + base)):
+                raise ValueError(f"A(z) {source.get('label', book)} nem a(z) {base} könyvhöz tartozik.")
+            if response.get("sectionNames", [])[:2] != ["Chapter", "Verse"]:
+                raise ValueError(f"A(z) {source.get('label', book)} nem versenkénti kommentár.")
+        data[key] = clean(flatten(response["versions"][0]["text"]),
+                          corrections=source.get("corrections", False),
+                          preserve_cantillation=key == "main")
+    return data, missing
+
+
+def open_section_picker(shape: dict, on_select) -> None:
+    with ui.dialog() as picker, ui.card().classes("w-[min(90vw,600px)]"):
+        heading = ui.label().classes("text-lg font-bold")
+        tiles = ui.column().classes("w-full max-h-[60vh] overflow-auto")
+
+        def select_chapter(index: int) -> None:
+            chapter = section_label(index, shape["talmud"])
+            if len(shape["names"]) == 1:
+                on_select(chapter)
+                picker.close()
+                return
+            heading.text = f"{shape['names'][1]} · {chapter}"
+            tiles.clear()
+            with tiles:
+                with ui.row().classes("w-full gap-1"):
+                    for number in range(1, shape["counts"][index] + 1):
+                        ui.button(str(number), on_click=lambda n=number: select_verse(chapter, n)
+                                  ).props("outline dense").classes("min-w-10")
+                ui.button("Vissza", on_click=show_chapters).props("flat")
+
+        def select_verse(chapter: str, number: int) -> None:
+            on_select(f"{chapter}:{number}")
+            picker.close()
+
+        def show_chapters() -> None:
+            heading.text = shape["names"][0]
+            tiles.clear()
+            with tiles, ui.row().classes("w-full gap-1"):
+                for index, count in enumerate(shape["counts"]):
+                    if count:
+                        ui.button(section_label(index, shape["talmud"]),
+                                  on_click=lambda i=index: select_chapter(i)
+                                  ).props("outline dense").classes("min-w-10")
+
+        show_chapters()
+        ui.button("Mégse", on_click=picker.close).props("flat")
+    picker.open()
+
+
 def load_sefaria_titles() -> list:
     path = ROOT / "sefaria_titles.json"
     try:
@@ -390,16 +501,18 @@ def make_config() -> dict:
     result = copy.deepcopy(config)
     for key in ROLE_LABELS:
         result.pop(key, None)
+    result["additional_commentaries"] = {}
     for key, source in sources.items():
-        result[key] = copy.deepcopy(source)
-        result[key].pop("file", None)
-        result[key]["url"] = validate_sefaria_url(result[key]["url"])
-        result[key].setdefault("version", "hebrew")
+        target = result if key in ROLE_LABELS else result["additional_commentaries"]
+        target[key] = copy.deepcopy(source)
+        target[key].pop("file", None)
+        target[key]["url"] = validate_sefaria_url(target[key]["url"])
+        target[key].setdefault("version", "hebrew")
         if sample_mode:
             sample = sample_sources.get(key, {})
             if source.get("url") != sample.get("url") or "file" not in sample:
-                raise ValueError(f"Nincs minta a(z) {ROLE_LABELS[key]} kiválasztott URL-jéhez.")
-            result[key]["file"] = sample["file"]
+                raise ValueError(f"Nincs minta a(z) {source_label(key)} kiválasztott URL-jéhez.")
+            target[key]["file"] = sample["file"]
 
     layout = copy.deepcopy(settings)
     layout["page"] = {
@@ -445,7 +558,8 @@ def persist_config() -> None:
 
 
 def refresh_slot_options() -> None:
-    options = {"": "— nincs —", **{key: source_label(key) for key in sources if key != "main"}}
+    options = {"": "— nincs —", **{key: source_label(key) for key in sources
+                                      if key != "main" and key in ROLE_LABELS}}
     for slot, control in slot_controls.items():
         control.options = options
         if control.value not in options:
@@ -523,8 +637,7 @@ def page_preview_content(index: int) -> dict:
         "main": main,
         "right": stream_text(top_ranges, "R"),
         "left": stream_text(top_ranges, "L"),
-        "bottom": stream_text(bottom_ranges, "R") + " " + stream_text(bottom_ranges, "L")
-                  + " " + stream_text(bottom_ranges, "B"),
+        "bottom": " ".join(stream_text(bottom_ranges, key) for key in streams),
         **labels,
     }
 
@@ -562,9 +675,11 @@ def render_preview() -> None:
             f'line-height:{side_line_height:g}"><b>{html.escape(label)}</b>'
             f'<p>{html.escape(" ".join(text.split())[:520]) or "—"}</p></section>'
         )
+    main_font = html.escape(f'"{settings["main_font"]}"', quote=True) if settings["main_font"] else "inherit"
     main_column = (
         f'<section class="preview-main" style="font-size:clamp(9px, '
         f'{1.35 * float(settings["main_size_pt"]) / 13:g}vw, 14px);'
+        f'font-family:{main_font};'
         f'line-height:{1.8 * float(settings["main_leading_em"]) / 0.55:g}"><b>פנים · '
         f'{html.escape(source_label("main")) if "main" in sources else "ראשי"}</b>'
         f"<p>{main}</p></section>"
@@ -656,6 +771,7 @@ async def reflow_preview(revision: int) -> None:
             with preview_area:
                 ui.notify("Az oldalbeosztás újraszámítása hibával leállt.", type="negative", timeout=7000)
             return
+        build_log.text = result.stdout[-6000:]
         load_preview_pages()
         preview_page_index = 0
         render_preview()
@@ -697,11 +813,11 @@ def refresh_sources() -> None:
             with ui.card().classes("w-full bg-white"):
                 with ui.row().classes("w-full items-center justify-between"):
                     with ui.column().classes("gap-0"):
-                        ui.label(ROLE_LABELS[key]).classes("text-xs text-gray-500")
-                        ui.label(source.get("label", ROLE_LABELS[key])).classes("text-lg font-semibold")
-                        if source.get("title"):
+                        ui.label(ROLE_LABELS.get(key, "További kommentár · alsó sáv")).classes("text-xs text-gray-500")
+                        ui.label(source_label(key)).classes("text-lg font-semibold")
+                        if source.get("title") or source.get("section_ref"):
                             span = f"{source.get('from', '')}–{source.get('to', '')}" if source.get("from") else "teljes"
-                            ui.label(f"{source.get('section_ref', source['title'])} · {span}").classes("text-sm")
+                            ui.label(f"{source.get('section_ref') or source['title']} · {span}").classes("text-sm")
                         ui.label(source.get("url", "")).classes("text-xs text-gray-500 break-all")
                         if key != "main":
                             assignment_label = ui.label().classes("text-xs text-amber-800")
@@ -734,6 +850,10 @@ def available_slot(key: str, slots: dict) -> Optional[str]:
 
 def refresh_source_assignments() -> None:
     for key, (label, button) in source_assignment_controls.items():
+        if key not in ROLE_LABELS:
+            label.text = "Elhelyezve: Alsó sáv"
+            button.set_visibility(False)
+            continue
         assigned = [SLOT_LABELS[slot] for slot, selected in slot_values.items()
                     if selected == key and slot in SLOT_LABELS]
         if assigned:
@@ -831,14 +951,104 @@ def delete_stack() -> None:
 
 
 def delete_source(key: str) -> None:
+    label = source_label(key)
     sources.pop(key, None)
     previews.pop(key, None)
     for slot, selected in list(slot_values.items()):
         if selected == key:
             slot_values[slot] = ""
     refresh_sources()
-    ui.notify(f"{ROLE_LABELS[key]} törölve. A véglegesítéshez mentsd a konfigurációt.", type="warning")
+    ui.notify(f"{label} törölve. A véglegesítéshez mentsd a konfigurációt.", type="warning")
     schedule_preview_reflow()
+
+
+def edit_shared_torah_range() -> None:
+    snapshot = copy.deepcopy(sources)
+    stack = active_stack
+    try:
+        main = snapshot["main"]
+        ref = source_ref(main)
+        if ref not in TORAH_BOOKS:
+            raise ValueError("A közös szakaszválasztó csak a Tóra öt könyvéhez használható.")
+    except (KeyError, ValueError) as error:
+        ui.notify(f"Nem nyitható meg a közös szakaszválasztó: {error}", type="negative", timeout=7000)
+        return
+
+    shape_state = {"shape": None}
+    start = main.get("from", "")
+    end = main.get("to") or start
+    with ui.dialog().props("persistent") as dialog, ui.card().classes("w-[min(90vw,600px)]"):
+        ui.label("Közös tórai szakasz").classes("text-xl font-bold")
+        ui.label(f"{ref}: a főszöveg és az összes kommentár ugyanazt a szakaszt kapja.")
+        status = ui.label("A fejezetek és versek betöltése…").classes("text-xs text-gray-500")
+        with ui.row().classes("w-full"):
+            from_button = ui.button(f"Kezdet: {start or 'nincs'}").props("outline")
+            to_button = ui.button(f"Vég: {end or 'nincs'}").props("outline")
+        values = {"start": start, "end": end}
+
+        def choose(which: str) -> None:
+            def select(value: str) -> None:
+                values[which] = value
+                button = from_button if which == "start" else to_button
+                button.text = f"{'Kezdet' if which == 'start' else 'Vég'}: {value}"
+            open_section_picker(shape_state["shape"], select)
+
+        from_button.on_click(lambda: choose("start"))
+        to_button.on_click(lambda: choose("end"))
+        from_button.disable()
+        to_button.disable()
+
+        async def apply_range() -> None:
+            apply_button.disable()
+            cancel_button.disable()
+            status.text = "A kiválasztott szakaszok lekérése…"
+            try:
+                updated = shared_torah_sources(snapshot, values["start"], values["end"], shape_state["shape"])
+                new_previews, missing = await run.io_bound(fetch_shared_torah_sources, updated)
+                if active_stack != stack or sources != snapshot:
+                    raise ValueError("A források időközben megváltoztak; nyisd meg újra a szakaszválasztót.")
+                sources.clear()
+                sources.update(updated)
+                previews.clear()
+                previews.update(new_previews)
+                if sample_mode:
+                    sample_switch.value = False
+                refresh_sources()
+                dialog.close()
+                schedule_preview_reflow()
+                if missing:
+                    ui.notify("A közös szakasz frissült. Nincs kommentár ezekhez a versekhez: "
+                              + ", ".join(missing), type="warning", timeout=10000)
+                else:
+                    ui.notify("A közös szakasz minden forráson frissült.", type="positive")
+            except (requests.RequestException, OSError, ValueError, KeyError, TypeError, SystemExit) as error:
+                status.text = f"A szakaszok nem módosultak: {error}"
+                ui.notify("A közös szakasz nem alkalmazható; a részletek fent olvashatók.",
+                          type="negative", timeout=7000)
+            finally:
+                apply_button.enable()
+                cancel_button.enable()
+
+        with ui.row().classes("w-full justify-end"):
+            cancel_button = ui.button("Mégse", on_click=dialog.close).props("flat")
+            apply_button = ui.button("Alkalmazás minden forrásra", on_click=apply_range)
+            apply_button.disable()
+
+        async def load_shape() -> None:
+            try:
+                shape = await run.io_bound(load_section_shape, ref, main.get("version", "hebrew"))
+                if shape["names"] != ["Chapter", "Verse"] or shape["talmud"]:
+                    raise ValueError("A főszöveg nem fejezetekre és versekre bontott Tóra.")
+                shape_state["shape"] = shape
+                status.text = "Válaszd ki a kezdő és a záró verset."
+                from_button.enable()
+                to_button.enable()
+                apply_button.enable()
+            except (requests.RequestException, OSError, ValueError, KeyError, TypeError) as error:
+                status.text = f"A szakaszválasztó nem tölthető be: {error}"
+
+        ui.timer(0.1, load_shape, once=True)
+    dialog.open()
 
 
 def edit_source(key: Optional[str] = None) -> None:
@@ -851,9 +1061,10 @@ def edit_source(key: Optional[str] = None) -> None:
         role = key
         if role is None:
             role_select = ui.select(
-                {item: ROLE_LABELS[item] for item in available},
+                {**{item: ROLE_LABELS[item] for item in available},
+                 "additional": "További kommentár · alsó sáv"},
                 label="Szerep",
-                value=available[0] if available else None,
+                value=available[0] if available else "additional",
             ).classes("w-full")
         label_input = ui.input(
             "Megjelenített név",
@@ -901,47 +1112,10 @@ def edit_source(key: Optional[str] = None) -> None:
             if not shape:
                 ui.notify("A szakaszlista még nem érhető el.", type="warning")
                 return
-            with ui.dialog() as picker, ui.card().classes("w-[min(90vw,600px)]"):
-                heading = ui.label().classes("text-lg font-bold")
-                tiles = ui.column().classes("w-full max-h-[60vh] overflow-auto")
-
-                def select_chapter(index: int) -> None:
-                    chapter = section_label(index, shape["talmud"])
-                    if len(shape["names"]) == 1:
-                        target.value = chapter
-                        update_range_buttons()
-                        picker.close()
-                        return
-                    heading.text = f"{shape['names'][1]} · {chapter}"
-                    tiles.clear()
-                    with tiles:
-                        with ui.row().classes("w-full gap-1"):
-                            for number in range(1, shape["counts"][index] + 1):
-                                ui.button(
-                                    str(number),
-                                    on_click=lambda n=number: select_verse(chapter, n),
-                                ).props("outline dense").classes("min-w-10")
-                        ui.button("Vissza", on_click=show_chapters).props("flat")
-
-                def select_verse(chapter: str, number: int) -> None:
-                    target.value = f"{chapter}:{number}"
-                    update_range_buttons()
-                    picker.close()
-
-                def show_chapters() -> None:
-                    heading.text = shape["names"][0]
-                    tiles.clear()
-                    with tiles, ui.row().classes("w-full gap-1"):
-                        for index, count in enumerate(shape["counts"]):
-                            if count:
-                                ui.button(
-                                    section_label(index, shape["talmud"]),
-                                    on_click=lambda i=index: select_chapter(i),
-                                ).props("outline dense").classes("min-w-10")
-
-                show_chapters()
-                ui.button("Mégse", on_click=picker.close).props("flat")
-            picker.open()
+            def select(value: str) -> None:
+                target.value = value
+                update_range_buttons()
+            open_section_picker(shape, select)
 
         from_button.on_click(lambda: choose_section(from_input))
         to_button.on_click(lambda: choose_section(to_input))
@@ -1068,6 +1242,8 @@ def edit_source(key: Optional[str] = None) -> None:
             async def save_source() -> None:
                 nonlocal role
                 role = role or role_select.value
+                if role == "additional":
+                    role = extra_source_key(sources)
                 try:
                     title = (title_input.value or "").strip()
                     if title:
@@ -1107,6 +1283,8 @@ def edit_source(key: Optional[str] = None) -> None:
                                 source["to"] = to_input.value.strip()
                     if label_input.value and label_input.value.strip():
                         source["label"] = label_input.value.strip()
+                    elif role not in ROLE_LABELS:
+                        source["label"] = title or unquote(urlparse(url).path.strip("/")).replace("_", " ")
                     else:
                         source.pop("label", None)
                     if role == "rashi":
@@ -1116,16 +1294,31 @@ def edit_source(key: Optional[str] = None) -> None:
                             source["cut_before"] = cut_input.value.strip()
                         else:
                             source.pop("cut_before", None)
-                    text = await run.io_bound(fetch, source, ROOT / "cache")
+                    try:
+                        text = await run.io_bound(fetch, source, ROOT / "cache")
+                    except requests.HTTPError as error:
+                        main_source = sources.get("main")
+                        if role == "main" or not main_source or "file" in main_source:
+                            raise
+                        main_data = await run.io_bound(fetch_data, main_source, ROOT / "cache")
+                        if main_data.get("primary_category") != "Tanakh":
+                            raise error
+                        data, missing = await run.io_bound(fetch_verse_commentary, source, main_data,
+                                                           ROOT / "cache")
+                        text = flatten(data["versions"][0]["text"])
+                        if missing:
+                            ui.notify("A kommentár nem tartalmaz szöveget a kiválasztott versekhez.",
+                                      type="warning", timeout=7000)
                     sources[role] = source
                     previews[role] = clean(
                         text,
                         corrections=source.get("corrections", False),
+                        preserve_cantillation=role == "main",
                     )
                     if sample_mode:
                         sample_switch.value = False
                     refresh_sources()
-                    if key is None and role != "main":
+                    if key is None and role != "main" and role in ROLE_LABELS:
                         place_source(role)
                     dialog.close()
                     ui.notify("A Sefaria-szöveg lekérve; az oldalbeosztás újraszámolódik.", type="positive")
@@ -1143,9 +1336,6 @@ def edit_source(key: Optional[str] = None) -> None:
             ui.button("Lekérés és hozzáadás", icon="download", on_click=save_source).props(
                 "color=primary"
             )
-    if not key and not available:
-        ui.notify("Minden támogatott forrásszerep használatban van.", type="warning")
-        return
     dialog.open()
 
 
@@ -1184,6 +1374,12 @@ def set_option(key: str, value) -> None:
 def set_fonts(value) -> None:
     if value:
         settings["fonts"] = list(value)
+    render_preview()
+    schedule_preview_reflow()
+
+
+def set_main_font(value) -> None:
+    settings["main_font"] = value
     render_preview()
     schedule_preview_reflow()
 
@@ -1288,8 +1484,10 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 with ui.row().classes("w-full items-center justify-between"):
                     ui.label("Szövegforrások").classes("text-xl font-bold")
                     ui.button("Új szöveg", icon="add", on_click=lambda: edit_source()).props("color=primary")
-                ui.label("Szerepként egy-egy főszöveg és három kommentár adható meg.")
+                ui.label("Egy főszöveg és több kommentár adható meg; a továbbiak az alsó sávba kerülnek.")
                 stack_area = ui.column().classes("w-full")
+                ui.button("Közös tórai szakasz", icon="format_list_numbered",
+                          on_click=edit_shared_torah_range).props("outline")
                 sample_switch = ui.switch(
                     "Helyi mintaszövegek használata (API nélkül)",
                     value=sample_mode,
@@ -1321,7 +1519,8 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 with ui.row().classes("w-full"):
                     for slot, label in SLOT_LABELS.items():
                         control = ui.select(
-                            {"": "— nincs —", **{key: source_label(key) for key in sources if key != "main"}},
+                            {"": "— nincs —", **{key: source_label(key) for key in sources
+                                                  if key != "main" and key in ROLE_LABELS}},
                             label=label,
                             value=slot_values.get(slot, ""),
                         ).classes("flex-1").on_value_change(
@@ -1329,8 +1528,18 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                         )
                         slot_controls[slot] = control
                 ui.select(
+                    MAIN_FONTS,
+                    label="Főszöveg betűtípusa",
+                    value=settings["main_font"],
+                ).classes("w-full").props("clearable").on_value_change(
+                    lambda event: set_main_font(event.value)
+                )
+                ui.label(
+                    "A kiválasztott betűtípust telepíteni kell; üresen a közös betűcsaládok érvényesek."
+                ).classes("text-xs text-stone-500")
+                ui.select(
                     list(dict.fromkeys(LAYOUT_DEFAULTS["fonts"] + settings["fonts"])),
-                    label="Betűcsaládok (elsőként megadott az elsődleges)",
+                    label="Kommentárok és alapértelmezett betűcsaládok",
                     value=settings["fonts"],
                     multiple=True,
                 ).classes("w-full").on_value_change(

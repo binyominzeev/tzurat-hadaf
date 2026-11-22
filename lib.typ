@@ -19,7 +19,7 @@
 #let mark-color = rgb("#a02020")
 
 #let main-style(lead, body) = {
-  set text(lang: "he", font: cfg.fonts, size: G.main_size * 1pt)
+  set text(lang: "he", font: if cfg.main_font == none { cfg.fonts } else { (cfg.main_font,) }, size: G.main_size * 1pt)
   set par(justify: true, leading: lead, spacing: 0pt)
   set block(spacing: 0pt)
   body
@@ -51,7 +51,7 @@
     if cur == none or (labels and at.s != prev) {
       if cur != none { items.push(cur.join([ ])) }
       if labels and at.s != prev {
-        items.push(block(sticky: true, below: 0.35em, text(weight: "bold", fill: rgb("#555"), size: 0.95em)[#cfg.labels.at(at.s)#if not at.f [ (…)]]))
+        items.push(block(sticky: true, below: 0.35em, text(weight: "bold", fill: rgb("#555"), size: 0.95em)[#cfg.labels.at(at.s)]))
         prev = at.s
       }
       cur = ()

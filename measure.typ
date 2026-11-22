@@ -6,6 +6,7 @@
 #let atoms-of(k) = S.at(k).atoms
 #let nstream(k) = S.at(k).atoms.len()
 #let lmin(a, b) = if a < b { a } else { b }
+#let stream-keys = ("R", "L") + cfg.bottom_streams
 
 #let elig(k, b) = {
   let p = atoms-of(k).position(at => at.a >= b)
@@ -45,10 +46,10 @@
 }
 
 #let bottom-ranges(top, cur, b) = {
-  let ends = (R: cur.R, L: cur.L, B: cur.B)
+  let ends = cur
   for e in top { ends.insert(e.k, e.t) }
   let rs = ()
-  for k in ("R", "L", "B") {
+  for k in stream-keys {
     let s = ends.at(k)
     let e = elig(k, b)
     if e > s { rs.push((k: k, f: s, t: e)) }
@@ -107,7 +108,7 @@
 #let main-h(mode, a, b, extra) = hgt(wm-of(mode), render-main(MAIN.slice(a, b), extra, false))
 
 #let advance(cur, top, rs) = {
-  let c = (R: cur.R, L: cur.L, B: cur.B)
+  let c = cur
   for e in top { c.insert(e.k, e.t) }
   for r in rs { c.insert(r.k, r.t) }
   c
@@ -143,7 +144,7 @@
 
 #let plan-tail(cur) = {
   let rs = ()
-  for k in ("R", "L", "B") { if cur.at(k) < nstream(k) { rs.push((k: k, f: cur.at(k), t: nstream(k))) } }
+  for k in stream-keys { if cur.at(k) < nstream(k) { rs.push((k: k, f: cur.at(k), t: nstream(k))) } }
   let n = fit-bottom(ranges-atoms(rs), Hplan)
   let rs2 = take-ranges(rs, n)
   let bs = bottom-split(ranges-atoms(rs2))
@@ -206,18 +207,18 @@
 
 #let rem(cur) = {
   let r = 0
-  for k in ("R", "L", "B") { r += nstream(k) - cur.at(k) }
+  for k in stream-keys { r += nstream(k) - cur.at(k) }
   r
 }
 
 #context {
   let pages = ()
   let a = 0
-  let cur = (R: 0, L: 0, B: 0)
-  let guard = 0
-  while (a < MAIN.len() or rem(cur) > 0) and guard < 80 {
-    guard += 1
+  let cur = (R: 0, L: 0)
+  for k in cfg.bottom_streams { cur.insert(k, 0) }
+  while a < MAIN.len() or rem(cur) > 0 {
     let sp = plan-page(a, cur)
+    assert(sp.b > a or sp.cur != cur, message: "A tördelés nem tud továbbhaladni.")
     pages.push(sp)
     a = sp.b
     cur = sp.cur

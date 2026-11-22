@@ -17,6 +17,7 @@ DEFAULTS = {
     "bottom_cols": 3,
     "max_stretch": 0.30,             # a főszöveg legfeljebb ennyivel nyúlhat (a magasság arányában)
     "fonts": ["Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Noto Sans Hebrew"],
+    "main_font": None,
 }
 
 
@@ -71,6 +72,12 @@ def atoms_commentary(entries, role):
     return out
 
 
+def atoms_additional(words, role, n_main):
+    return [atom(word, int(i * max(n_main, 1) / max(len(words), 1)),
+                 i == 0, "", bold, role)
+            for i, (word, bold) in enumerate(words)]
+
+
 def build_layout(page, cfg, out):
     L = json.loads(json.dumps(DEFAULTS))
     for k, v in (cfg.get("layout") or {}).items():
@@ -79,6 +86,8 @@ def build_layout(page, cfg, out):
         else:
             L[k] = v
     labels = {k: cfg[k].get("label", k) for k in ("abudraham", "rashi", "vitry") if k in cfg}
+    additional = cfg.get("additional_commentaries") or {}
+    labels.update({k: source.get("label", k) for k, source in additional.items()})
     if "commentary" in page:
         src = {role: atoms_commentary(entries, role)
                for role, entries in page["commentary"].items()}
@@ -86,12 +95,21 @@ def build_layout(page, cfg, out):
         src = {"abudraham": atoms_abudraham(page["notes"]),
                "rashi": atoms_rashi(page["unit_notes"], len(page["main"])),
                "vitry": atoms_vitry(page["variants"])}
+        src.update({role: atoms_additional(words, role, len(page["main"]))
+                    for role, words in page.get("additional_commentaries", {}).items()})
     slotkey = {"right": "R", "left": "L", "bottom": "B"}
     streams = {}
     for slot, key in slotkey.items():
         sid = L["slots"].get(slot)
         atoms = sorted(src.get(sid, []), key=lambda x: x["a"])      # stabil: eredeti sorrend marad
         streams[key] = {"label": labels.get(sid, ""), "atoms": atoms}
+    bottom_streams = ["B"]
+    for i, role in enumerate(additional, 1):
+        if role not in src:
+            raise ValueError(f"A további kommentár hiányzik a feldolgozott szövegből: {role}")
+        key = f"B{i}"
+        bottom_streams.append(key)
+        streams[key] = {"label": labels[role], "atoms": src[role]}
     # főszöveg + jegyzetszám-jelek (az Abudraham-pontok horgonyán)
     marks = {}
     for n, note in enumerate(page["notes"], 1):
@@ -108,7 +126,9 @@ def build_layout(page, cfg, out):
         "side_size": L["side_size_pt"], "side_leading": L["side_leading_em"],
         "bottom_cols": L["bottom_cols"], "max_stretch": L["max_stretch"],
     }
-    data = {"geometry": geometry, "fonts": L["fonts"], "labels": labels, "main": main, "streams": streams}
+    data = {"geometry": geometry, "fonts": L["fonts"], "main_font": L["main_font"],
+            "bottom_streams": bottom_streams,
+            "labels": labels, "main": main, "streams": streams}
     (out / "layout.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     return data
 
@@ -116,6 +136,17 @@ def build_layout(page, cfg, out):
 # ---------- Typst futtatás: CLI, ennek hiányában a Python-csomag ----------
 def font_args():
     return ["--font-path", "fonts"] if Path("fonts").is_dir() else []
+
+def check_main_font(font):
+    if not font:
+        return
+    if not shutil.which("typst"):
+        print(f"Figyelem: a(z) {font} betűcsalád elérhetősége Typst CLI nélkül nem ellenőrizhető.",
+              file=sys.stderr)
+        return
+    result = subprocess.run(["typst", "fonts"] + font_args(), capture_output=True, text=True, check=True)
+    if font not in result.stdout.splitlines():
+        raise ValueError(f"A főszöveg betűcsaládja nincs telepítve vagy a Typst nem látja: {font}")
 
 def typst_query(inp, selector):
     if shutil.which("typst"):
@@ -144,6 +175,7 @@ def main():
     cfg = yaml.safe_load(Path(cfgfile).read_text(encoding="utf-8"))
     out = Path("out")
     page = json.loads((out / "page.json").read_text(encoding="utf-8"))
+    check_main_font((cfg.get("layout") or {}).get("main_font"))
     build_layout(page, cfg, out)
 
     t0 = time.time()

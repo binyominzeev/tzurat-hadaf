@@ -29,7 +29,7 @@ Kimenet: `out/page.pdf`, valamint `out/matches.csv` (az illesztések ellenőrző
 
 ### Webes kezelőfelület
 
-A NiceGUI felület a főszöveg és a három kommentár Sefaria URL-jének felvételét,
+A NiceGUI felület a főszöveg és a kommentárok Sefaria URL-jének felvételét,
 módosítását és törlését, az álló/fekvő tájolás váltását, a lapméret és hasábok,
 margók, betűméretek, térközök, alsó hasábok, valamint az illesztési küszöb
 beállítását támogatja. A tájolásváltó felcseréli az oldal szélességét és magasságát.
@@ -58,6 +58,11 @@ Az új kommentár automatikusan szabad hasábba vagy az alsó sávba kerül, ha 
 szabad hely. Az elhelyezetlen forrás nem szerepel a PDF-ben; ezt a felület jelzi,
 és szabad hely esetén az „Elhelyezés szabad helyre” gombbal helyezhető el.
 A hely az oldalbeállításoknál bármikor módosítható.
+A három eredeti szerep mellett az „Új szöveg” ablakban további kommentárok is
+felvehetők a „További kommentár · alsó sáv” szereppel. Ezek az alsó sávban,
+külön folyamként jelennek meg, és szükség esetén következő oldalon folytatódnak.
+Versenként szervezett Tanach-forrásoknál a megfelelő vershez igazodnak; más
+főszövegeknél a szövegük a főszöveg haladásával arányosan oszlik el.
 
 A forrásszerkesztőben a mű kiválasztása után a Sefaria szakaszszerkezete alapján
 csempéken választható ki a kezdő és a záró fejezet és vers, külön a főszöveghez
@@ -67,7 +72,24 @@ kiválasztandó a Sefaria indexe alapján (például Chizkuni → Genesis).
 Ha a szerkezet nem érhető el vagy nem támogatott, kézi szakaszmegadás használható;
 ha az index sem tölthető be, a műválasztást törölve közvetlen Sefaria URL is megadható.
 
-Betűtípusok: a sablon a `Frank Ruhl Libre`, `David Libre`, `Noto Serif Hebrew`, `Noto Sans Hebrew` családokat keresi. Ha egy `fonts/` mappa létezik a projektben, a Typst automatikusan onnan is tölt (`--font-path fonts`). Ha a betű hiányzik, a Typst figyelmeztet, és tartalék betűre vált, a kimenet ettől még elkészül. **A mérés és a renderelés ugyanazt a betűkészletet látja, ezért az oldalbeosztás betűfüggő.**
+A „Közös tórai szakasz” gombbal a főszöveg és az aktuális készlet összes
+kommentárja egyszerre állítható ugyanarra a kezdő és záró versre. A választó
+a már kiválasztott tórai könyvön belül működik. Alkalmazás előtt ellenőrzi és
+lekéri az összes forrást; hiba esetén egyiket sem módosítja. Ha valamelyik
+kommentárhoz nincs szöveg a kiválasztott versekben, ezt külön jelzi.
+
+Betűtípusok: a főszöveghez külön választható a Taamey Ashkenaz, Taamey Frank
+CLM, Frank Ruehl CLM vagy SBL Hebrew. A választás nem változtatja meg a
+kommentárok betűtípusát. Üres választásnál a korábbi közös betűcsaládlista
+érvényes. A kiválasztott fontnak telepítve kell lennie, vagy a projekt `fonts/`
+mappájába kell kerülnie. A Typst CLI ellenőrzi az elérhetőségét; a csak Python
+Typst-csomagot használó futtatásnál ez nem ellenőrizhető, ezért figyelmeztetés
+jelenik meg a naplóban. **A mérés és a renderelés ugyanazt a betűkészletet látja,
+ezért az oldalbeosztás betűfüggő.**
+
+A főszöveg megőrzi a forrásszövegben található táámimot. A tényleges jelek a
+kiválasztott Sefaria-verziótól függenek; nem minden szöveg vagy verzió tartalmazza
+őket. Megjelenítésükhöz megfelelő font is szükséges.
 
 ---
 
@@ -112,7 +134,7 @@ Sefaria API / samples/*.txt
 
 ### 1. `pilot.py` – forrás → `out/page.json`
 
-Tisztítás (`clean`): HTML-címkék és lábjegyzetek törlése, ta'amim és a hozzájuk tartozó extra jelek (U+0591–U+05AF) eltávolítása, a nikud megmarad, a `|` jel törlése. A Rashi-szövegnél a szerkesztői `(eredeti) [javított]` párokból a **javított** alak marad, a zárójeles hivatkozások (`(דברים ו' ז')`) érintetlenek. A nikudos Tetragrammaton cserélhető (`options.divine_name`).
+Tisztítás (`clean`): HTML-címkék és lábjegyzetek törlése, a kommentárokban a ta'amim és a hozzájuk tartozó extra jelek (U+0591–U+05AF) eltávolítása; a főszövegben ezek és a nikud megmaradnak, a `|` jel törlődik. A Rashi-szövegnél a szerkesztői `(eredeti) [javított]` párokból a **javított** alak marad, a zárójeles hivatkozások (`(דברים ו' ז')`) érintetlenek. A nikudos Tetragrammaton cserélhető (`options.divine_name`).
 
 Versenként strukturált Tanach-főszövegnél a program megőrzi a Sefaria
 fejezet- és vershatárait, illetve a kommentárok `<b>`/`<strong>` jelöléseit.
@@ -146,7 +168,9 @@ Kézi javítás: `config.yaml` → `overrides: {abudraham: {<szegmens_index>: <f
 
 ### 2. `layout.py` – `out/layout.json`
 
-A kommentárok **atomokra** (szavakra) bontva, három folyamba (stream) rendezve a `layout.slots` szerint: `R` (jobb oszlop), `L` (bal oszlop), `B` (alsó sáv).
+A kommentárok **atomokra** (szavakra) bontva folyamokba (stream) rendeződnek:
+`R` (jobb oszlop), `L` (bal oszlop), `B` (alsó sáv), a további alsó
+kommentárok pedig `B1`, `B2`, … jelű külön folyamokba.
 
 ```jsonc
 {
@@ -196,7 +220,7 @@ Oldalanként egy elem:
 - A Typst blokkok között alapból 1,2 em távolság van. Ezt `set block(spacing: 0pt)` nullázza (`lib.typ` stílusfüggvényei és `render.typ`), különben a mérés és a renderelés eltér, és az alsó sáv kicsúszik.
 - `Hplan = Hbody − 3pt` biztonsági tartalék a kerekítési eltérések ellen.
 - A bisectionök felső korlátja 400 atom (hasábonként). Hosszabb oszlopoknál emelni kell.
-- A megszakadó szöveg utolsó sora `linebreak(justify: true)`-val sorkizárt, a folytatás nem kap külön jelölést a hasábban, az alsó sávban `(…)` kerül a címke mellé.
+- A megszakadó szöveg utolsó sora `linebreak(justify: true)`-val sorkizárt; a folytatás nem kap külön jelölést a hasábban.
 - A mérés hosszabb szövegnél lassú (oldalszámmal és szöveghosszal nő): 3 oldal ≈ 1–3 mp, több tucat oldalnál percek lehetnek.
 
 ---
@@ -222,6 +246,7 @@ layout:                                    # minden mező elhagyható
   bottom_cols: 3
   max_stretch: 0.30
   # fonts: ["Frank Ruhl Libre", …]
+  # main_font: "Taamey Frank CLM"  # csak a főszöveghez; elhagyva a fonts lista érvényes
 ```
 
 A `url` mezőből a script a Sefaria-hivatkozást nyeri ki (URL-dekódolt útvonal), és a `https://www.sefaria.org/api/v3/texts/<ref>?version=<version>` végpontot hívja. A válaszok a `cache/` mappába kerülnek.
