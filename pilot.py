@@ -31,6 +31,9 @@ def flatten(t):
 def fetch(cfg, cache=Path("cache")):
     if "file" in cfg:                                  # kézzel bemásolt szöveg
         return Path(cfg["file"]).read_text(encoding="utf-8")
+    return flatten(fetch_data(cfg, cache)["versions"][0]["text"])
+
+def fetch_data(cfg, cache=Path("cache")):
     import requests
     ref = unquote(urlparse(cfg["url"]).path).lstrip("/")
     version = cfg.get("version", "hebrew")
@@ -51,7 +54,7 @@ def fetch(cfg, cache=Path("cache")):
     vs = data.get("versions") or []
     if not vs:
         sys.exit(f"Nincs verzió a válaszban: {ref} ({version}). Nyers válasz: {cf}")
-    return flatten(vs[0]["text"])
+    return data
 
 
 # ---------- tisztítás / normalizálás ----------
@@ -84,6 +87,101 @@ def tokens(text):
             continue
         out.append({"text": raw, "norm": k, "glue": raw.endswith("־")})
     return out
+
+
+def verse_sections(data):
+    """Return (chapter, verse, content) from a two-level chapter/verse range."""
+    sections = [int(x) for x in data["sections"]]
+    ends = [int(x) for x in data["toSections"]]
+    if len(sections) > 2 or len(ends) != len(sections):
+        raise ValueError(f"Nem támogatott versszakasz: {data['ref']}")
+    text = data["versions"][0]["text"]
+    start_chapter = sections[0] if sections else 1
+    start_verse = sections[1] if len(sections) == 2 else 1
+    if not sections or ends[0] != start_chapter:
+        chapters = text
+    else:
+        chapters = [text]
+    result = []
+    for ci, chapter in enumerate(chapters):
+        chapter_number = start_chapter + ci
+        verse_start = start_verse if ci == 0 else 1
+        single_verse = len(sections) == 2 and sections == ends
+        verses = [chapter] if single_verse else chapter
+        for vi, content in enumerate(verses):
+            result.append((chapter_number, verse_start + vi, content))
+    return result
+
+
+def marked_words(text, corrections=False):
+    """Keep the source's bold spans while applying the usual text cleaning."""
+    text = re.sub(r"<\s*(?:b|strong)\b[^>]*>", "\ue000", text, flags=re.I)
+    text = re.sub(r"<\s*/\s*(?:b|strong)\s*>", "\ue001", text, flags=re.I)
+    text = clean(text, corrections=corrections)
+    bold = False
+    words = []
+    for raw in text.split():
+        parts = re.split("([\ue000\ue001])", raw)
+        word = ""
+        is_bold = False
+        for part in parts:
+            if part == "\ue000":
+                bold = True
+            elif part == "\ue001":
+                bold = False
+            else:
+                word += part
+                is_bold |= bool(part) and bold
+        if word:
+            words.append((word, is_bold))
+    return words
+
+
+def verse_page(main_data, sources, unit, divine):
+    main = []
+    anchors = {}
+    for chapter, verse, content in verse_sections(main_data):
+        words = tokens(clean(flatten(content), divine=divine))
+        if words:
+            anchors[(chapter, verse)] = len(main)
+            words[0]["verse"] = str(verse)
+            main.extend(words)
+    if not main:
+        raise ValueError(f"Üres főszöveg: {main_data['ref']}")
+    commentary = {}
+    for role, (data, config) in sources.items():
+        book = data.get("book", "")
+        base = main_data.get("book", "")
+        if book != base and not (book.endswith(" on " + base) or book.endswith(", " + base)):
+            raise ValueError(f"A kommentár nem a főszöveghez tartozik: {data['ref']}")
+        entries = []
+        omitted = 0
+        unmarked = 0
+        for chapter, verse, content in verse_sections(data):
+            if (chapter, verse) not in anchors:
+                if flatten(content).strip():
+                    omitted += 1
+                continue
+            segments = [content] if isinstance(content, str) else content
+            first = True
+            for segment in segments:
+                words = marked_words(segment, corrections=config.get("corrections", False))
+                if words:
+                    if not any(bold for _, bold in words):
+                        unmarked += 1
+                    entries.append({"anchor_w": anchors[(chapter, verse)],
+                                    "number": str(verse) if first else "", "words": words})
+                    first = False
+        if omitted:
+            print(f"Figyelem: {data['ref']} – {omitted} vers kommentárja a főszövegtartományon kívül esik.",
+                  file=sys.stderr)
+        if unmarked:
+            print(f"Figyelem: {data['ref']} – {unmarked} kommentárban a forrás nem jelöl félkövér kezdőszót.",
+                  file=sys.stderr)
+        commentary[role] = entries
+    return {"unit": unit, "main": main, "commentary": commentary,
+            "notes": [], "unit_notes": [], "variants": [], "vitry_tail": [],
+            "labels": {role: config.get("label", role) for role, (_, config) in sources.items()}}
 
 
 # ---------- Abudraham: sorrendtartó fuzzy illesztés ----------
@@ -161,7 +259,27 @@ def main():
     o.update(cfg.get("options") or {})
     out = Path(args.out); out.mkdir(exist_ok=True)
 
-    main_txt = clean(fetch(cfg["main"]), divine=o["divine_name"])
+    main_data = None if "file" in cfg["main"] else fetch_data(cfg["main"])
+    if (main_data and main_data.get("primary_category") == "Tanakh"
+            and main_data.get("sectionNames") == ["Chapter", "Verse"]):
+        sources = {}
+        for role in ("abudraham", "rashi", "vitry"):
+            if role in cfg:
+                if "file" in cfg[role]:
+                    raise ValueError(f"A versenkénti feldolgozáshoz Sefaria-forrás szükséges: {role}")
+                data = fetch_data(cfg[role])
+                if data.get("sectionNames", [])[:2] != ["Chapter", "Verse"]:
+                    raise ValueError(f"Nem versenkénti kommentár: {data['ref']}")
+                sources[role] = (data, cfg[role])
+        page = verse_page(main_data, sources, cfg.get("unit", "unit"), o["divine_name"])
+        (out / "page.json").write_text(json.dumps(page, ensure_ascii=False, indent=1), encoding="utf-8")
+        with open(out / "matches.csv", "w", newline="", encoding="utf-8-sig") as f:
+            csv.writer(f).writerow(["seg", "status", "score", "anchor_w", "lemma", "text_start"])
+        print(f"main: {len(page['main'])} szó | versenkénti kommentárok: {len(sources)}")
+        return
+
+    main_txt = clean(flatten(main_data["versions"][0]["text"]) if main_data else fetch(cfg["main"]),
+                     divine=o["divine_name"])
     main_toks = tokens(main_txt)
     page = {"unit": cfg.get("unit", "unit"), "main": main_toks,
             "notes": [], "unit_notes": [], "variants": [], "vitry_tail": [],

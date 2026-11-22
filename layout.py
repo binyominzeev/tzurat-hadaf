@@ -62,6 +62,15 @@ def atoms_vitry(variants):
     return out
 
 
+def atoms_commentary(entries, role):
+    out = []
+    for entry in entries:
+        for i, (word, bold) in enumerate(entry["words"]):
+            out.append(atom(word, entry["anchor_w"], i == 0,
+                            entry["number"] if i == 0 else "", bold, role))
+    return out
+
+
 def build_layout(page, cfg, out):
     L = json.loads(json.dumps(DEFAULTS))
     for k, v in (cfg.get("layout") or {}).items():
@@ -70,9 +79,13 @@ def build_layout(page, cfg, out):
         else:
             L[k] = v
     labels = {k: cfg[k].get("label", k) for k in ("abudraham", "rashi", "vitry") if k in cfg}
-    src = {"abudraham": atoms_abudraham(page["notes"]),
-           "rashi": atoms_rashi(page["unit_notes"], len(page["main"])),
-           "vitry": atoms_vitry(page["variants"])}
+    if "commentary" in page:
+        src = {role: atoms_commentary(entries, role)
+               for role, entries in page["commentary"].items()}
+    else:
+        src = {"abudraham": atoms_abudraham(page["notes"]),
+               "rashi": atoms_rashi(page["unit_notes"], len(page["main"])),
+               "vitry": atoms_vitry(page["variants"])}
     slotkey = {"right": "R", "left": "L", "bottom": "B"}
     streams = {}
     for slot, key in slotkey.items():
@@ -83,7 +96,8 @@ def build_layout(page, cfg, out):
     marks = {}
     for n, note in enumerate(page["notes"], 1):
         marks.setdefault(note["anchor_w"][0], []).append(str(n))
-    main = [{"t": w["text"], "glue": w["glue"], "k": ",".join(marks.get(i, []))}
+    main = [{"t": w["text"], "glue": w["glue"], "k": ",".join(marks.get(i, [])),
+             "v": w.get("verse", "")}
             for i, w in enumerate(page["main"])]
     P = L["page"]
     geometry = {

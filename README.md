@@ -46,6 +46,14 @@ A „Mentés és PDF készítése” ezt a konfigurációt
 használja, és az elkészült PDF letölthető a felületről. Az előnézet tájékoztató
 jellege miatt az újratördelés alatt még az előző PDF-oldalt mutatja.
 
+Tanach-főszöveg és versenként szervezett kommentárok esetén a főszöveg és a
+kommentárok az eredeti versszámokat mutatják. A kommentárokban a Sefaria által
+félkövérrel jelölt kezdőszavak maradnak félkövérek, a kommentárok pedig
+bekezdésenkénti sortörés nélkül folynak. A főszövegtartományon kívüli
+kommentárversek kimaradnak, erről a generálás figyelmeztet.
+Figyelmeztetést ad akkor is, ha a forrás egy kommentárban nem jelöl
+félkövér kezdőszót; ilyen esetben azt nem találgatja.
+
 Az új kommentár automatikusan szabad hasábba vagy az alsó sávba kerül, ha van
 szabad hely. Az elhelyezetlen forrás nem szerepel a PDF-ben; ezt a felület jelzi,
 és szabad hely esetén az „Elhelyezés szabad helyre” gombbal helyezhető el.
@@ -105,6 +113,13 @@ Sefaria API / samples/*.txt
 ### 1. `pilot.py` – forrás → `out/page.json`
 
 Tisztítás (`clean`): HTML-címkék és lábjegyzetek törlése, ta'amim és a hozzájuk tartozó extra jelek (U+0591–U+05AF) eltávolítása, a nikud megmarad, a `|` jel törlése. A Rashi-szövegnél a szerkesztői `(eredeti) [javított]` párokból a **javított** alak marad, a zárójeles hivatkozások (`(דברים ו' ז')`) érintetlenek. A nikudos Tetragrammaton cserélhető (`options.divine_name`).
+
+Versenként strukturált Tanach-főszövegnél a program megőrzi a Sefaria
+fejezet- és vershatárait, illetve a kommentárok `<b>`/`<strong>` jelöléseit.
+Ilyenkor mindhárom kommentárhely ugyanígy működik: a szövegek a megfelelő
+versekhez horgonyzódnak, nem az alábbi szidur-specifikus algoritmusokhoz.
+Más könyvhöz tartozó vagy nem versenként strukturált kommentár esetén a
+generálás hibát jelez.
 
 Normalizálás (`key`): nikud le, írásjelek ki, szó végi betűk egységesítése, `י"י`/`ה'`/`יהוה` → `ה`, `אלק…` → `אלה…`, és a **váz-kulcs** (yod/vav nélkül), hogy a teljes/hiányos írásmód ne zavarjon.
 
@@ -181,7 +196,7 @@ Oldalanként egy elem:
 - A Typst blokkok között alapból 1,2 em távolság van. Ezt `set block(spacing: 0pt)` nullázza (`lib.typ` stílusfüggvényei és `render.typ`), különben a mérés és a renderelés eltér, és az alsó sáv kicsúszik.
 - `Hplan = Hbody − 3pt` biztonsági tartalék a kerekítési eltérések ellen.
 - A bisectionök felső korlátja 400 atom (hasábonként). Hosszabb oszlopoknál emelni kell.
-- A megszakadó bekezdés utolsó sora `linebreak(justify: true)`-val sorkizárt, a folytatás nem kap külön jelölést a hasábban, az alsó sávban `(…)` kerül a címke mellé.
+- A megszakadó szöveg utolsó sora `linebreak(justify: true)`-val sorkizárt, a folytatás nem kap külön jelölést a hasábban, az alsó sávban `(…)` kerül a címke mellé.
 - A mérés hosszabb szövegnél lassú (oldalszámmal és szöveghosszal nő): 3 oldal ≈ 1–3 mp, több tucat oldalnál percek lehetnek.
 
 ---

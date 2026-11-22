@@ -13,10 +13,10 @@
 }
 
 // legtöbb atom, ami még belefér egy cap magas, w széles oszlopba
-#let fill-col(k, c, cap, w) = {
+#let fill-col(k, c, cap, w, end) = {
   let atoms = atoms-of(k)
   let lo = 0
-  let hi = calc.min(400, atoms.len() - c)
+  let hi = calc.min(400, calc.max(0, end - c))
   while lo < hi {
     let mid = calc.quo(lo + hi + 1, 2)
     if hgt(w, col-body(S.at(k).label, atoms.slice(c, c + mid), false)) <= cap { lo = mid } else { hi = mid - 1 }
@@ -24,16 +24,16 @@
   lo
 }
 
-#let top-fill(mode, cur, T) = {
+#let top-fill(mode, cur, T, b) = {
   if mode == "3" {
-    let nr = fill-col("R", cur.R, T, w-right)
-    let nl = fill-col("L", cur.L, T, w-left)
+    let nr = fill-col("R", cur.R, T, w-right, elig("R", b))
+    let nl = fill-col("L", cur.L, T, w-left, elig("L", b))
     ((k: "R", f: cur.R, t: cur.R + nr), (k: "L", f: cur.L, t: cur.L + nl))
   } else if mode == "flow" {
     let k = if cur.R < nstream("R") { "R" } else { "L" }
     let c = cur.at(k)
-    let n1 = fill-col(k, c, T, w-right)
-    let n2 = fill-col(k, c + n1, T, w-left)
+    let n1 = fill-col(k, c, T, w-right, elig(k, b))
+    let n2 = fill-col(k, c + n1, T, w-left, elig(k, b))
     ((k: k, f: c, t: c + n1), (k: k, f: c + n1, t: c + n1 + n2))
   } else { () }
 }
@@ -96,7 +96,7 @@
 }
 
 #let evaluate(mode, cur, b, T) = {
-  let top = top-fill(mode, cur, T)
+  let top = top-fill(mode, cur, T, b)
   let rs = bottom-ranges(top, cur, b)
   let bs = bottom-split(ranges-atoms(rs))
   let extra = if rs.len() > 0 { gap + bs.hb } else { 0pt }

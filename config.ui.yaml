@@ -65,65 +65,65 @@ stacks:
     sources:
       main:
         version: hebrew
-        url: https://www.sefaria.org/Genesis.1.1-3.6
+        url: https://www.sefaria.org/Genesis.29.13-35
         label: תורה
         title: Genesis
-        from: '1:1'
-        to: '3:6'
+        from: '29:13'
+        to: '29:35'
       abudraham:
         label: חזקוני
         version: hebrew
-        url: https://www.sefaria.org/Chizkuni%2C_Genesis.1.1-2.1
+        url: https://www.sefaria.org/Chizkuni%2C_Genesis.29.13-35
         title: Chizkuni
         section_ref: Chizkuni, Genesis
-        from: '1:1'
-        to: '2:1'
+        from: '29:13'
+        to: '29:35'
       rashi:
         label: רש"י
         version: hebrew
         corrections: true
-        url: https://www.sefaria.org/Rashi_on_Genesis.1.1-3.6
+        url: https://www.sefaria.org/Rashi_on_Genesis.29.13-35
         title: Rashi on Genesis
-        from: '1:1'
-        to: '3:6'
+        from: '29:13'
+        to: '29:35'
       vitry:
         label: העמק דבר
         version: hebrew
-        url: https://www.sefaria.org/Haamek_Davar_on_Genesis.1.1-2.1
+        url: https://www.sefaria.org/Haamek_Davar_on_Genesis.29.13-35
         title: Haamek Davar on Genesis
-        from: '1:1'
-        to: '2:1'
+        from: '29:13'
+        to: '29:35'
     slots:
       right: abudraham
       left: rashi
       bottom: vitry
 main:
   version: hebrew
-  url: https://www.sefaria.org/Genesis.1.1-3.6
+  url: https://www.sefaria.org/Genesis.29.13-35
   label: תורה
   title: Genesis
-  from: '1:1'
-  to: '3:6'
+  from: '29:13'
+  to: '29:35'
 abudraham:
   label: חזקוני
   version: hebrew
-  url: https://www.sefaria.org/Chizkuni%2C_Genesis.1.1-2.1
+  url: https://www.sefaria.org/Chizkuni%2C_Genesis.29.13-35
   title: Chizkuni
   section_ref: Chizkuni, Genesis
-  from: '1:1'
-  to: '2:1'
+  from: '29:13'
+  to: '29:35'
 rashi:
   label: רש"י
   version: hebrew
   corrections: true
-  url: https://www.sefaria.org/Rashi_on_Genesis.1.1-3.6
+  url: https://www.sefaria.org/Rashi_on_Genesis.29.13-35
   title: Rashi on Genesis
-  from: '1:1'
-  to: '3:6'
+  from: '29:13'
+  to: '29:35'
 vitry:
   label: העמק דבר
   version: hebrew
-  url: https://www.sefaria.org/Haamek_Davar_on_Genesis.1.1-2.1
+  url: https://www.sefaria.org/Haamek_Davar_on_Genesis.29.13-35
   title: Haamek Davar on Genesis
-  from: '1:1'
-  to: '2:1'
+  from: '29:13'
+  to: '29:35'

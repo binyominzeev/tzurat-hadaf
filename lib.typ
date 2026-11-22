@@ -34,6 +34,7 @@
 // főszöveg-részlet; extra = pluszsortávolság (a magasság kitöltéséhez)
 #let render-main(words, extra, cont) = main-style(G.main_leading * 1em + extra, {
   for (i, w) in words.enumerate() {
+    if w.v != "" { text(fill: mark-color, weight: "bold", size: 0.7em)[#w.v ] }
     w.t
     if w.k != "" { super(text(size: 0.55em, fill: mark-color, weight: "bold", w.k)) }
     if not w.glue and i < words.len() - 1 { [ ] }
@@ -47,15 +48,15 @@
   let cur = none
   let prev = none
   for at in atoms {
-    if cur == none or at.f {
+    if cur == none or (labels and at.s != prev) {
       if cur != none { items.push(cur.join([ ])) }
       if labels and at.s != prev {
         items.push(block(sticky: true, below: 0.35em, text(weight: "bold", fill: rgb("#555"), size: 0.95em)[#cfg.labels.at(at.s)#if not at.f [ (…)]]))
         prev = at.s
       }
       cur = ()
-      if at.m != "" { cur.push(text(fill: mark-color, weight: "bold")[#at.m]) }
     }
+    if at.m != "" { cur.push(text(fill: mark-color, weight: "bold")[#at.m]) }
     cur.push(if at.b { strong(at.t) } else { at.t })
   }
   if cur != none { items.push(cur.join([ ])) }
