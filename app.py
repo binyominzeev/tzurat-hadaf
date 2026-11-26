@@ -160,22 +160,6 @@ def sample_previews() -> dict:
         path = ROOT / "samples" / f"{sample}.txt"
         if path.exists():
             previews[key] = path.read_text(encoding="utf-8")
-    generated = ROOT / "out" / "page.json"
-    if generated.exists():
-        try:
-            page = json.loads(generated.read_text(encoding="utf-8"))
-            previews["main"] = " ".join(word["text"] for word in page.get("main", []))
-            if page.get("notes"):
-                previews["abudraham"] = " ".join(note["text"] for note in page["notes"])
-            if page.get("unit_notes"):
-                previews["rashi"] = " ".join(note["text"] for note in page["unit_notes"])
-            if page.get("variants") or page.get("vitry_tail"):
-                variants = page.get("variants", [])
-                previews["vitry"] = " ".join(
-                    " ".join(variant.get("vitry", [])) for variant in variants
-                ) + " " + " ".join(page.get("vitry_tail", []))
-        except (json.JSONDecodeError, OSError, KeyError, TypeError) as error:
-            print(f"Az előző előnézeti adat nem olvasható: {error}")
     return previews
 
 
@@ -200,7 +184,10 @@ settings["tablet_commentary"] = (
     or settings["slots"].get("right")
     or settings["slots"].get("bottom")
 )
-previews = sample_previews()
+previews = ({key: text for key, text in sample_previews().items()
+             if key in sources and key in sample_sources
+             and sources[key].get("url") == sample_sources[key].get("url")}
+            if sample_mode else {})
 slot_values = copy.deepcopy(settings["slots"])
 DEFAULT_STACK = "Szidur"
 TORAH_STACK = {
@@ -254,6 +241,10 @@ preview_revision = 0
 preview_debounce_task = None
 preview_worker_tasks = set()
 preview_pdf_version = 0
+preview_tab = "html"
+preview_slots = {}
+preview_sources = {}
+updating_slots = False
 
 
 def source_label(key: str) -> str:
@@ -597,8 +588,8 @@ def refresh_slot_options() -> None:
         control.update()
 
 
-def load_preview_pages() -> None:
-    global preview_pages, preview_layout, preview_page_index, preview_pdf_version
+def load_preview_pages() -> bool:
+    global preview_pages, preview_layout, preview_page_index, preview_slots, preview_sources
     pages_path = ROOT / "out" / "pages.json"
     layout_path = ROOT / "out" / "layout.json"
     try:
@@ -606,10 +597,16 @@ def load_preview_pages() -> None:
         layout = json.loads(layout_path.read_text(encoding="utf-8"))
         if not isinstance(pages, list) or not isinstance(layout.get("main"), list):
             raise ValueError("Az előnézeti fájlok szerkezete nem megfelelő.")
+        expected_sources = {key: {"version": "hebrew", **{k: v for k, v in source.items() if k != "file"}}
+                            for key, source in sources.items()}
+        if layout.get("source_config") != expected_sources or layout.get("slots") != slot_values:
+            raise ValueError("Az előnézeti adatok más forrásokhoz vagy elhelyezéshez tartoznak.")
         preview_pages = pages
         preview_layout = layout
         preview_page_index = min(preview_page_index, max(len(preview_pages) - 1, 0))
-        preview_pdf_version += 1
+        preview_slots = copy.deepcopy(slot_values)
+        preview_sources = copy.deepcopy(sources)
+        return True
     except FileNotFoundError:
         preview_pages = []
         preview_layout = {}
@@ -619,6 +616,7 @@ def load_preview_pages() -> None:
         preview_pages = []
         preview_layout = {}
         preview_page_index = 0
+    return False
 
 
 def page_preview_content(index: int) -> dict:
@@ -654,21 +652,60 @@ def page_preview_content(index: int) -> dict:
 
     top_ranges = page.get("top", [])
     bottom_ranges = page.get("rs", [])
-    labels = {
-        "right_label": streams.get("R", {}).get("label", "—"),
-        "left_label": streams.get("L", {}).get("label", "—"),
-        "bottom_label": " · ".join(
-            dict.fromkeys(streams.get(segment.get("k"), {}).get("label", "")
-                          for segment in bottom_ranges)
-        ) or "—",
-    }
-    return {
-        "main": main,
-        "right": stream_text(top_ranges, "R"),
-        "left": stream_text(top_ranges, "L"),
-        "bottom": " ".join(stream_text(bottom_ranges, key) for key in streams),
-        **labels,
-    }
+    content = {"main": main if sources.get("main") == preview_sources.get("main")
+               else html.escape(previews.get("main", ""))}
+    for slot in SLOT_LABELS:
+        role = slot_values.get(slot, "")
+        old_slot = next((name for name, value in preview_slots.items()
+                         if role and value == role), None)
+        if old_slot and sources.get(role) == preview_sources.get(role):
+            stream_key = {"right": "R", "left": "L", "bottom": "B"}[old_slot]
+            text = stream_text(top_ranges if old_slot != "bottom" else bottom_ranges, stream_key)
+        else:
+            text = previews.get(role, "") if role else ""
+        content[slot] = text
+        content[f"{slot}_label"] = source_label(role) if role else "—"
+    extra_keys = [key for key in streams if key.startswith("B") and key != "B"]
+    if sources == preview_sources:
+        extra_text = " ".join(stream_text(bottom_ranges, key) for key in extra_keys)
+        content["bottom"] = " ".join(filter(None, (content["bottom"], extra_text)))
+    return content
+
+
+def preview_slot_heading(slot: str, label: str) -> str:
+    occupied = bool(slot_values.get(slot))
+    draggable = ' draggable="true"' if occupied else ""
+    hint = "⋮⋮ " if occupied else "+ "
+    return (f'<b class="preview-slot-heading" data-slot="{slot}"{draggable} '
+            f'title="{"Húzd át egy másik helyre" if occupied else "Ide húzható egy kommentár"}">'
+            f'{hint}{html.escape(label if occupied else SLOT_LABELS[slot])}</b>')
+
+
+def move_preview_slot(args) -> None:
+    global updating_slots
+    if not isinstance(args, dict):
+        return
+    source, target = args.get("source"), args.get("target")
+    if source not in SLOT_LABELS or target not in SLOT_LABELS or source == target or not slot_values.get(source):
+        return
+    slot_values[source], slot_values[target] = slot_values.get(target, ""), slot_values[source]
+    updating_slots = True
+    try:
+        for slot in (source, target):
+            slot_controls[slot].value = slot_values[slot]
+            slot_controls[slot].update()
+    finally:
+        updating_slots = False
+    refresh_source_assignments()
+    render_preview()
+    schedule_preview_reflow()
+
+
+def set_preview_tab(value: str) -> None:
+    global preview_tab
+    if value in ("html", "pdf"):
+        preview_tab = value
+        render_preview()
 
 
 def render_preview() -> None:
@@ -676,75 +713,113 @@ def render_preview() -> None:
         return
     has_pages = bool(preview_pages)
     page_index = min(preview_page_index, len(preview_pages) - 1) if has_pages else 0
-    if has_pages and (ROOT / "out" / "page.pdf").is_file():
+    if preview_tab == "pdf":
         preview_area.clear()
         with preview_area:
-            ui.html(
-                f'<iframe title="PDF-oldal előnézete" '
-                f'src="/preview.pdf?v={preview_pdf_version}#page={page_index + 1}&toolbar=0&navpanes=0" '
-                'style="width:100%;height:80vh;border:1px solid #d6cec4"></iframe>'
-            ).classes("w-full")
+            if (ROOT / "out" / "page.pdf").is_file():
+                ui.html(
+                    f'<iframe title="Renderelt PDF" src="/preview.pdf?v={preview_pdf_version}" '
+                    'style="width:100%;height:80vh;border:1px solid #d6cec4"></iframe>'
+                ).classes("w-full")
+            else:
+                ui.label("Még nincs renderelt PDF. Indítsd el a PDF-generálást.")
         if page_nav_label is not None:
-            page_nav_label.text = f"{page_index + 1} / {len(preview_pages)} oldal"
-            previous_page_button.set_enabled(page_index > 0)
-            next_page_button.set_enabled(page_index < len(preview_pages) - 1)
+            page_nav_label.text = "A PDF lapozása a PDF-nézőben"
+            previous_page_button.set_enabled(False)
+            next_page_button.set_enabled(False)
         return
     page_content = page_preview_content(page_index) if has_pages else page_preview_content(0)
     main = page_content["main"]
     if not has_pages:
         main = html.escape(" ".join(main.split())[:850])
     columns = []
-    side_line_height = 1.55 * float(settings["side_leading_em"]) / 0.45
+    page_w = max(float(settings["page_width"]), 1)
+    page_h = max(float(settings["page_height"]), 1)
+    side_line_height = 1 + float(settings["side_leading_em"])
+    side_size = 3.52778 * float(settings["side_size_pt"]) / page_w
+    main_size = 3.52778 * float(settings["main_size_pt"]) / page_w
+    gutter = 3.52778 * float(settings["gutter_pt"]) / page_w
     for slot in ("right", "left"):
         label = page_content[f"{slot}_label"]
         text = page_content[slot]
         columns.append(
-            f'<section class="preview-column" style="font-size:clamp('
-            f'{7 * float(settings["side_size_pt"]) / 8:g}px, '
-            f'{1.1 * float(settings["side_size_pt"]) / 8:g}vw, '
-            f'{11 * float(settings["side_size_pt"]) / 8:g}px);'
-            f'line-height:{side_line_height:g}"><b>{html.escape(label)}</b>'
-            f'<p>{html.escape(" ".join(text.split())[:520]) or "—"}</p></section>'
+            f'<section class="preview-column preview-drop" data-slot="{slot}" '
+            f'style="font-size:{side_size:g}cqw;line-height:{side_line_height:g}">'
+            f'{preview_slot_heading(slot, label)}'
+            f'<p>{html.escape(" ".join(text.split())) or "—"}</p></section>'
         )
     main_font = html.escape(f'"{settings["main_font"]}"', quote=True) if settings["main_font"] else "inherit"
     main_column = (
-        f'<section class="preview-main" style="font-size:clamp('
-        f'{9 * float(settings["main_size_pt"]) / 13:g}px, '
-        f'{1.35 * float(settings["main_size_pt"]) / 13:g}vw, '
-        f'{14 * float(settings["main_size_pt"]) / 13:g}px);'
+        f'<section class="preview-main" style="font-size:{main_size:g}cqw;'
         f'font-family:{main_font};'
-        f'line-height:{1.8 * float(settings["main_leading_em"]) / 0.55:g}"><b>פנים · '
-        f'{html.escape(source_label("main")) if "main" in sources else "ראשי"}</b>'
+        f'line-height:{1 + float(settings["main_leading_em"]):g}">'
         f"<p>{main}</p></section>"
     )
     bottom_label = page_content["bottom_label"]
     bottom_text = page_content["bottom"]
     ratio = [max(float(settings[f"ratio_{name}"]), 0.1) for name in ("right", "main", "left")]
-    page_w = max(float(settings["page_width"]), 1)
-    page_h = max(float(settings["page_height"]), 1)
     padding_x = float(settings["margin_x"]) / page_w * 100
-    padding_top = float(settings["margin_top"]) / page_h * 100
-    padding_bottom = float(settings["margin_bottom"]) / page_h * 100
+    padding_top = float(settings["margin_top"]) / page_w * 100
+    padding_bottom = float(settings["margin_bottom"]) / page_w * 100
     font_family = html.escape(", ".join(f'"{name}"' for name in settings["fonts"]), quote=True)
+    if has_pages:
+        page = preview_pages[page_index]
+        top_height = max(float(page.get("T", 0)), 0)
+        bottom_height = max(float(page.get("hb", 0)), 0)
+        bottom_percent = max(8, min(80, 100 * bottom_height / max(top_height + bottom_height, 1)))
+    else:
+        bottom_percent = 24
+    gap = 3.52778 * float(settings["gap_pt"]) / page_w
     page_html = f"""
     <div class="preview-paper" style="aspect-ratio:{page_w:g}/{page_h:g};
       padding-left:{padding_x:g}%;padding-right:{padding_x:g}%;
-      padding-top:{padding_top:g}cqh;padding-bottom:{padding_bottom:g}cqh;
+      padding-top:{padding_top:g}%;padding-bottom:{padding_bottom:g}%;
       font-family:{font_family},serif">
-      <div class="preview-header"><span>צורת הדף · {f'{page_index + 1} / {len(preview_pages)}' if has_pages else 'minta'}</span><span>{page_w:g} × {page_h:g} cm</span></div>
-      <div class="preview-columns" style="grid-template-columns:{ratio[0]}fr {ratio[1]}fr {ratio[2]}fr">
+      <div class="preview-columns" style="grid-template-columns:{ratio[0]}fr {ratio[1]}fr {ratio[2]}fr;gap:{gutter:g}cqw">
         {columns[0]}{main_column}{columns[1]}
       </div>
-      <div class="preview-bottom"><b>{html.escape(bottom_label)}</b>
-        <p>{html.escape(" ".join(bottom_text.split())[:480]) or "—"}</p>
+      <div class="preview-bottom preview-drop" data-slot="bottom"
+        style="height:{bottom_percent:g}%;margin-top:{gap:g}cqw;font-size:{side_size:g}cqw;line-height:{side_line_height:g}">
+        {preview_slot_heading("bottom", bottom_label)}
+        <p style="column-count:{int(settings['bottom_cols'])};column-gap:{gutter:g}cqw">{html.escape(" ".join(bottom_text.split())) or "—"}</p>
       </div>
-      <div class="preview-footer">Főszöveg {settings['main_size_pt']:g} pt · kommentár
-        {settings['side_size_pt']:g} pt · {settings['bottom_cols']} alsó hasáb ·
-        {float(settings['max_stretch']) * 100:g}% nyújtási keret</div>
     </div>"""
+    if settings["tablet_mode"]:
+        is_comment = (has_pages and preview_pages[page_index].get("mode") == "tablet-comment"
+                      and preview_layout.get("tablet_commentary") == settings["tablet_commentary"])
+        if is_comment:
+            role = settings["tablet_commentary"]
+            stream_key = preview_layout.get("tablet_stream")
+            page = preview_pages[page_index]
+            atoms = preview_layout.get("streams", {}).get(stream_key, {}).get("atoms", [])
+            text = " ".join(atom["t"] for segment in page.get("top", [])
+                            if segment.get("k") == stream_key
+                            for atom in atoms[segment["f"]:segment["t"]])
+            tablet_content = (f'<section class="preview-main" style="font-size:{side_size:g}cqw;'
+                              f'line-height:{side_line_height:g}"><b>{html.escape(source_label(role))}</b>'
+                              f'<p>{html.escape(text)}</p></section>')
+        else:
+            tablet_content = main_column
+        page_html = f"""<div class="preview-paper preview-tablet" style="aspect-ratio:{page_w:g}/{page_h:g};
+          padding-left:{padding_x:g}%;padding-right:{padding_x:g}%;
+          padding-top:{padding_top:g}%;padding-bottom:{padding_bottom:g}%;
+          font-family:{font_family},serif">{tablet_content}</div>"""
     preview_area.clear()
     with preview_area:
-        ui.html(page_html).classes("w-full")
+        element = ui.html(f'<div class="preview-sheet-wrap">{page_html}</div>').classes("w-full")
+        element.on("dragstart", js_handler="""(event) => {
+            const heading = event.target.closest('[draggable="true"]');
+            if (heading) event.dataTransfer.setData('text/plain', heading.dataset.slot);
+        }""")
+        element.on("dragover", js_handler="""(event) => {
+            if (event.target.closest('.preview-drop')) event.preventDefault();
+        }""")
+        element.on("drop", lambda event: move_preview_slot(event.args), js_handler="""(event) => {
+            const target = event.target.closest('.preview-drop');
+            if (!target) return;
+            event.preventDefault();
+            emit({source: event.dataTransfer.getData('text/plain'), target: target.dataset.slot});
+        }""")
     if page_nav_label is not None:
         count = len(preview_pages) if preview_pages else 1
         page_nav_label.text = f"{page_index + 1} / {count} oldal"
@@ -765,7 +840,7 @@ def generate_preview_layout() -> subprocess.CompletedProcess:
     output = []
     for script in ("pilot.py", "layout.py"):
         result = subprocess.run(
-            [sys.executable, script, CONFIG_PATH.name],
+            [sys.executable, script, CONFIG_PATH.name] + (["--preview-only"] if script == "layout.py" else []),
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -805,9 +880,14 @@ async def reflow_preview(revision: int) -> None:
                 ui.notify("Az oldalbeosztás újraszámítása hibával leállt.", type="negative", timeout=7000)
             return
         build_log.text = result.stdout[-6000:]
-        load_preview_pages()
+        if not load_preview_pages():
+            preview_status_label.text = "Az új oldalbeosztás nem olvasható; ellenőrizd a generálási naplót."
+            with preview_area:
+                ui.notify("Az új előnézeti adatok nem olvashatók.", type="negative", timeout=7000)
+            return
         preview_page_index = 0
-        render_preview()
+        if preview_tab == "html":
+            render_preview()
         preview_status_label.text = (
             f"Előnézet frissült ({len(preview_pages)} oldal); PDF-hez indítsd el a generálást."
         )
@@ -830,7 +910,7 @@ def schedule_preview_reflow() -> None:
     preview_revision += 1
     if preview_debounce_task and not preview_debounce_task.done():
         preview_debounce_task.cancel()
-    preview_status_label.text = "Az oldalbeosztás újraszámítása folyamatban…"
+    preview_status_label.text = "A HTML azonnal frissült; az oldalbeosztás újraszámítása folyamatban. A PDF korábbi lehet."
     previous_page_button.set_enabled(False)
     next_page_button.set_enabled(False)
     if download_button is not None:
@@ -1441,6 +1521,7 @@ def set_layout_preset(preset: str | None) -> None:
 
 def set_tablet_commentary(key: str | None) -> None:
     settings["tablet_commentary"] = key
+    render_preview()
     schedule_preview_reflow()
 
 
@@ -1464,6 +1545,8 @@ def set_main_font(value) -> None:
 
 
 def set_slot(slot: str, value) -> None:
+    if updating_slots:
+        return
     slot_values[slot] = value or ""
     refresh_source_assignments()
     render_preview()
@@ -1529,7 +1612,7 @@ async def run_build_process() -> int:
 
 
 async def save_and_build() -> None:
-    global preview_page_index
+    global preview_page_index, preview_pdf_version
     status_label.text = "PDF-generálás indítása…"
     status_label.update()
     build_log.text = ""
@@ -1550,15 +1633,19 @@ async def save_and_build() -> None:
                 status_label.update()
                 ui.notify("A PDF nem készült el; a részletek a naplóban olvashatók.", type="negative")
             else:
-                load_preview_pages()
-                preview_page_index = 0
-                render_preview()
+                preview_pdf_version += 1
                 if build_revision == preview_revision:
+                    loaded = load_preview_pages()
+                    preview_page_index = 0
+                    render_preview()
                     status_label.text = f"Elkészült: out/page.pdf · konfiguráció: {CONFIG_PATH.name}"
-                    preview_status_label.text = "Az előnézet és a PDF naprakész."
+                    preview_status_label.text = ("Az előnézet és a PDF naprakész." if loaded else
+                                                 "A PDF elkészült, de az előnézeti adatok nem olvashatók.")
                     download_button.set_visibility(True)
                     ui.notify("A PDF elkészült.", type="positive")
                 else:
+                    if preview_tab == "pdf":
+                        render_preview()
                     status_label.text = "Azóta változtak a beállítások; az előnézet újratördelése folyamatban."
                     download_button.set_visibility(False)
     except asyncio.TimeoutError:
@@ -1580,21 +1667,24 @@ ui.add_head_html(
     """
     <style>
       body { background: #f4f1ed; }
+      .preview-sheet-wrap { width:100%; max-width:640px; }
       .preview-paper { background: #fffdf8; color: #25211e; border: 1px solid #d6cec4;
         box-shadow: 0 12px 30px #4433221a; display:flex; flex-direction:column;
         width:100%; max-width:640px; box-sizing:border-box; container-type:size;
         overflow:hidden; font-family:serif; }
-      .preview-header, .preview-footer { display:flex; justify-content:space-between; color:#766c62;
-        font: 11px sans-serif; border-bottom:1px solid #ded8d0; padding-bottom:7px; }
-      .preview-columns { direction:rtl; display:grid; gap:3%; flex:1; padding:5% 0; overflow:hidden; }
+      .preview-columns { direction:rtl; display:grid; flex:1; min-height:0; overflow:hidden; }
       .preview-column, .preview-main { min-width:0; overflow:hidden; line-height:1.55; }
       .preview-main { line-height:1.8; text-align:justify; }
       .preview-column b, .preview-main b, .preview-bottom b { display:block; text-align:center;
         border-bottom:1px solid #ddd4c9; margin-bottom:5px; padding-bottom:3px; }
       .preview-column p, .preview-main p, .preview-bottom p { margin:0; }
-      .preview-bottom { border-top:1px solid #c9bdae; padding:3% 0; max-height:24%; overflow:hidden;
-        font-size:clamp(7px, 1vw, 10px); line-height:1.45; }
-      .preview-footer { border:0; border-top:1px solid #ded8d0; padding:6px 0 0; }
+      .preview-bottom { direction:rtl; border-top:1px solid #c9bdae; padding:1% 0;
+        height:24%; overflow:hidden; }
+      .preview-drop { outline:1px dashed #b49b84; outline-offset:-1px; }
+      .preview-drop:hover { background:#eee2d5; outline:2px dashed #8d6e63; }
+      .preview-slot-heading[draggable=true] { cursor:grab; }
+      .preview-slot-heading { font:600 10px sans-serif; min-height:18px; }
+      .preview-tablet .preview-main { direction:rtl; width:100%; overflow:hidden; }
       .break-all { overflow-wrap:anywhere; }
       .preview-panel .preview-restore { display: none; }
       .preview-panel.preview-maximized {
@@ -1607,6 +1697,7 @@ ui.add_head_html(
       .preview-panel.preview-maximized .preview-area > div { height: 100%; }
       .preview-panel.preview-maximized .preview-area iframe { height: 100% !important; }
       .preview-panel.preview-maximized .preview-paper { max-width: none; }
+      .preview-panel.preview-maximized .preview-sheet-wrap { max-width: none; }
     </style>
     """
 )
@@ -1772,6 +1863,9 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                             panel.classList.remove('preview-maximized');
                             panel.querySelector('.preview-expand').focus();
                         }""")
+                with ui.tabs(value="html", on_change=lambda event: set_preview_tab(event.value)).classes("w-full"):
+                    ui.tab("html", label="HTML · Preview")
+                    ui.tab("pdf", label="PDF · Rendered")
                 with ui.row().classes("w-full items-center justify-center"):
                     previous_page_button = ui.button(
                         "Előző oldal", icon="chevron_right", on_click=lambda: change_preview_page(-1)
@@ -1787,8 +1881,10 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 ).classes("text-xs text-stone-500")
                 preview_area = ui.column().classes("w-full items-center preview-area")
                 ui.label(
-                    "A tördelést befolyásoló módosítások után az oldalbeosztás automatikusan újraszámolódik. "
-                    "A PDF letöltéséhez indítsd el a teljes generálást."
+                    "HTML: a szaggatott keretű helyek között a kommentár címét áthúzhatod; "
+                    "foglalt helyre húzva a két kommentár helyet cserél. Tablet módban a hasábok nem láthatók. "
+                    "A HTML tájékoztató jellegű, az oldalak újratördelése időt vehet igénybe. "
+                    "A PDF fül a legutóbb renderelt PDF-et mutatja."
                 ).classes("text-xs text-stone-500")
 
 
@@ -1810,6 +1906,7 @@ load_preview_pages()
 render_stack_tabs()
 refresh_sources()
 app.on_startup(lambda: asyncio.create_task(_init_titles()))
+app.on_startup(lambda: schedule_preview_reflow() if not preview_pages else None)
 
 if __name__ == "__main__":
     ui.run(title="Tzurat HaDaf", host="127.0.0.1", port=8080, reload=False, show=False)

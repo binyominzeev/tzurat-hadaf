@@ -142,6 +142,11 @@ def build_layout(page, cfg, out):
     data = {"geometry": geometry, "fonts": L["fonts"], "main_font": L["main_font"],
             "bottom_streams": bottom_streams,
             "labels": labels, "main": main, "streams": streams,
+            "source_config": {key: {k: v for k, v in source.items() if k != "file"}
+                              for key, source in
+                              [(role, cfg[role]) for role in ("main", "abudraham", "rashi", "vitry")
+                               if role in cfg] + list(additional.items())},
+            "slots": L["slots"],
             "tablet_mode": bool(L["tablet_mode"]),
             "tablet_commentary": tablet_commentary,
             "tablet_stream": role_stream.get(tablet_commentary)}
@@ -187,7 +192,8 @@ def typst_compile(inp, outp):
 
 
 def main():
-    cfgfile = sys.argv[1] if len(sys.argv) > 1 else "config.yaml"
+    args = [arg for arg in sys.argv[1:] if arg != "--preview-only"]
+    cfgfile = args[0] if args else "config.yaml"
     cfg = yaml.safe_load(Path(cfgfile).read_text(encoding="utf-8"))
     out = Path("out")
     page = json.loads((out / "page.json").read_text(encoding="utf-8"))
@@ -202,8 +208,9 @@ def main():
     for i, p in enumerate(pages, 1):
         print(f"    {i}. oldal: mód={p['mode']:<5} főszöveg {p['a']}–{p['b']}  "
               f"hasáb-magasság {p['T']:.0f}pt  alsó sáv {p['hb']:.0f}pt  maradék rés {p['slack']:.1f}pt")
-    print("==> PDF renderelése")
-    typst_compile("render.typ", "out/page.pdf")
+    if "--preview-only" not in sys.argv[1:]:
+        print("==> PDF renderelése")
+        typst_compile("render.typ", "out/page.pdf")
 
 
 if __name__ == "__main__":

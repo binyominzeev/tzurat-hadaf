@@ -1,5 +1,8 @@
 import subprocess
+import json
+import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import app
@@ -118,6 +121,90 @@ class SourcePlacementTests(unittest.TestCase):
             self.assertEqual(app.place_source("abudraham"), "right")
         self.assertEqual(control.value, "abudraham")
         self.assertEqual(slots["left"], "rashi")
+
+
+class LivePreviewTests(unittest.TestCase):
+    def test_drag_swaps_occupied_slots_and_updates_controls(self):
+        slots = {"right": "abudraham", "left": "rashi", "bottom": ""}
+        controls = {slot: MagicMock() for slot in slots}
+        with (
+            patch.object(app, "slot_values", slots),
+            patch.object(app, "slot_controls", controls),
+            patch.object(app, "refresh_source_assignments") as refresh,
+            patch.object(app, "render_preview") as render,
+            patch.object(app, "schedule_preview_reflow") as reflow,
+        ):
+            app.move_preview_slot({"source": "right", "target": "left"})
+        self.assertEqual(slots, {"right": "rashi", "left": "abudraham", "bottom": ""})
+        self.assertEqual(controls["right"].value, "rashi")
+        self.assertEqual(controls["left"].value, "abudraham")
+        refresh.assert_called_once()
+        render.assert_called_once()
+        reflow.assert_called_once()
+
+    def test_drag_to_empty_slot_and_invalid_drag(self):
+        slots = {"right": "abudraham", "left": "", "bottom": ""}
+        controls = {slot: MagicMock() for slot in slots}
+        with (
+            patch.object(app, "slot_values", slots),
+            patch.object(app, "slot_controls", controls),
+            patch.object(app, "refresh_source_assignments"),
+            patch.object(app, "render_preview"),
+            patch.object(app, "schedule_preview_reflow") as reflow,
+        ):
+            app.move_preview_slot({"source": "right", "target": "bottom"})
+            app.move_preview_slot({"source": "right", "target": "left"})
+            app.move_preview_slot({"source": "invalid", "target": "left"})
+        self.assertEqual(slots, {"right": "", "left": "", "bottom": "abudraham"})
+        reflow.assert_called_once()
+
+    def test_reflow_requests_layout_without_rendering_pdf(self):
+        completed = subprocess.CompletedProcess([], 0, "", "")
+        with patch.object(app.subprocess, "run", return_value=completed) as run:
+            app.generate_preview_layout()
+        self.assertEqual(run.call_count, 2)
+        self.assertEqual(run.call_args_list[1].args[0][-1], "--preview-only")
+
+    def test_preview_uses_source_content_after_moving_slots(self):
+        pages = [{"a": 0, "b": 1, "top": [{"k": "R", "f": 0, "t": 1},
+                                               {"k": "L", "f": 0, "t": 1}], "rs": []}]
+        layout = {"main": [{"t": "main"}], "streams": {
+            "R": {"atoms": [{"t": "right text"}]},
+            "L": {"atoms": [{"t": "left text"}]},
+        }}
+        sources = {"main": {}, "abudraham": {}, "rashi": {}}
+        with (
+            patch.object(app, "preview_pages", pages),
+            patch.object(app, "preview_layout", layout),
+            patch.object(app, "preview_sources", sources),
+            patch.object(app, "sources", sources),
+            patch.object(app, "preview_slots", {"right": "abudraham", "left": "rashi", "bottom": ""}),
+            patch.object(app, "slot_values", {"right": "rashi", "left": "abudraham", "bottom": ""}),
+        ):
+            content = app.page_preview_content(0)
+        self.assertEqual(content["right"], "left text")
+        self.assertEqual(content["left"], "right text")
+
+    def test_preview_rejects_cached_pages_for_other_sources(self):
+        slots = {"right": "", "left": "", "bottom": ""}
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory) / "out"
+            out.mkdir()
+            (out / "pages.json").write_text(json.dumps([{"a": 0, "b": 1}]))
+            (out / "layout.json").write_text(json.dumps({
+                "main": [{"t": "old"}], "slots": slots,
+                "source_config": {"main": {"url": "old", "version": "hebrew"}},
+            }))
+            with (
+                patch.object(app, "ROOT", Path(directory)),
+                patch.object(app, "sources", {"main": {"url": "new"}}),
+                patch.object(app, "slot_values", slots),
+                patch.object(app, "preview_pages", []),
+                patch.object(app, "preview_layout", {}),
+                patch.object(app, "preview_page_index", 0),
+            ):
+                self.assertFalse(app.load_preview_pages())
+                self.assertEqual(app.preview_pages, [])
 
 
 class PreviewErrorTests(unittest.IsolatedAsyncioTestCase):

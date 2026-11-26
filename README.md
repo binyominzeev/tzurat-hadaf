@@ -37,16 +37,21 @@ A „Helyi mintaszövegek használata” kapcsolóval a `samples/` tartalma hasz
 az alapértelmezett forrásokhoz API-hozzáférés nélkül; a kapcsoló kikapcsolásával
 a Sefaria URL-ek lépnek érvénybe. A kiválasztás a PDF-generálásra is vonatkozik.
 A Sefaria hivatkozás mentésekor a felület lekéri a szöveget. A tördelést
-befolyásoló változtatások után a felület automatikusan újraszámolja az
-oldalhatárokat, és a tényleges PDF-oldalak között az „Előző oldal” és
+befolyásoló változtatások azonnal láthatók a „HTML · Preview” fülön; ez az
+elrendezés közelítése, nem a PDF pontos mása. Az oldalhatárokat a felület
+automatikusan újraszámolja, a HTML-oldalak között az „Előző oldal” és
 „Következő oldal” gombokkal lehet lapozni. A hosszabb szövegek tördelése időigényes.
+A szaggatott keretű helyek között a kommentár címét egérrel át lehet húzni;
+foglalt cél esetén a két kommentár helyet cserél. A hasábbeállítások is
+frissülnek. Tablet módban az elhelyezés a beállításoknál módosítható.
 Az előnézetnél a „Teljes ablak” gomb nagyítja ki a nézetet, a
 „Visszaállítás” gomb pedig visszavisz a szerkesztőhöz.
 A frissített tördelési beállításokat az automatikus újraszámolás a
 `config.ui.yaml` fájlba menti. A „Konfiguráció mentése” külön is használható.
 A „Mentés és PDF készítése” ezt a konfigurációt
-használja, és az elkészült PDF letölthető a felületről. Az előnézet tájékoztató
-jellege miatt az újratördelés alatt még az előző PDF-oldalt mutatja.
+használja, és az elkészült PDF letölthető a felületről. A „PDF · Rendered”
+fül a legutóbb renderelt PDF-et mutatja, amely a beállítások változtatása után
+elavulhat; a HTML újratördelése nem írja felül.
 
 Tanach-főszöveg és versenként szervezett kommentárok esetén a főszöveg és a
 kommentárok az eredeti versszámokat mutatják. A kommentárokban a Sefaria által
