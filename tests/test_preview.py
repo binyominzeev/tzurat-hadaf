@@ -82,7 +82,7 @@ class LayoutPresetTests(unittest.TestCase):
             self.assertEqual(
                 (settings["main_size_pt"], settings["side_size_pt"]), (30, 20)
             )
-            self.assertTrue(settings["tablet_mode"])
+            self.assertFalse(settings["tablet_mode"])
             app.set_layout_preset("print")
 
         self.assertEqual(
@@ -124,6 +124,34 @@ class SourcePlacementTests(unittest.TestCase):
 
 
 class LivePreviewTests(unittest.TestCase):
+    def test_font_buttons_use_shared_settings_and_respect_limits(self):
+        settings = app.initial_settings({})
+        class Control:
+            @property
+            def value(self):
+                return settings["main_size_pt"]
+
+            @value.setter
+            def value(self, value):
+                app.set_numeric("main_size_pt", value)
+
+            def update(self):
+                pass
+
+        with (
+            patch.object(app, "settings", settings),
+            patch.object(app, "layout_controls", {"main_size_pt": Control()}),
+            patch.object(app, "render_preview") as render,
+            patch.object(app, "schedule_preview_reflow") as reflow,
+        ):
+            app.adjust_preview_font({"key": "main_size_pt", "delta": 1})
+            self.assertEqual(settings["main_size_pt"], 14)
+            settings["main_size_pt"] = 32
+            app.adjust_preview_font({"key": "main_size_pt", "delta": 1})
+            app.adjust_preview_font({"key": "invalid", "delta": 1})
+        render.assert_called_once()
+        reflow.assert_called_once()
+
     def test_drag_swaps_occupied_slots_and_updates_controls(self):
         slots = {"right": "abudraham", "left": "rashi", "bottom": ""}
         controls = {slot: MagicMock() for slot in slots}
@@ -185,6 +213,25 @@ class LivePreviewTests(unittest.TestCase):
         self.assertEqual(content["right"], "left text")
         self.assertEqual(content["left"], "right text")
 
+    def test_flow_preview_shows_each_segment_in_its_physical_column(self):
+        pages = [{"a": 0, "b": 1, "mode": "flow",
+                  "top": [{"k": "R", "f": 0, "t": 1}, {"k": "R", "f": 1, "t": 2}], "rs": []}]
+        layout = {"main": [{"t": "main"}], "streams": {
+            "R": {"atoms": [{"t": "first"}, {"t": "second"}]},
+        }}
+        sources = {"main": {}, "abudraham": {}}
+        slots = {"right": "abudraham", "left": "", "bottom": ""}
+        with (
+            patch.object(app, "preview_pages", pages),
+            patch.object(app, "preview_layout", layout),
+            patch.object(app, "preview_sources", sources),
+            patch.object(app, "sources", sources),
+            patch.object(app, "preview_slots", slots),
+            patch.object(app, "slot_values", slots),
+        ):
+            content = app.page_preview_content(0)
+        self.assertEqual((content["right"], content["left"]), ("first", "second"))
+
     def test_preview_rejects_cached_pages_for_other_sources(self):
         slots = {"right": "", "left": "", "bottom": ""}
         with tempfile.TemporaryDirectory() as directory:
@@ -205,6 +252,28 @@ class LivePreviewTests(unittest.TestCase):
             ):
                 self.assertFalse(app.load_preview_pages())
                 self.assertEqual(app.preview_pages, [])
+
+    def test_stale_startup_cache_is_reported_as_reflow_not_error(self):
+        slots = {"right": "", "left": "", "bottom": ""}
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory) / "out"
+            out.mkdir()
+            (out / "pages.json").write_text(json.dumps([{"a": 0, "b": 1}]))
+            (out / "layout.json").write_text(json.dumps({
+                "main": [{"t": "old"}], "slots": slots,
+                "source_config": {"main": {"url": "old", "version": "hebrew"}},
+            }))
+            with (
+                patch.object(app, "ROOT", Path(directory)),
+                patch.object(app, "sources", {"main": {"url": "new"}}),
+                patch.object(app, "slot_values", slots),
+                patch.object(app, "preview_pages", []),
+                patch.object(app, "preview_layout", {}),
+                patch.object(app, "preview_page_index", 0),
+                patch("builtins.print") as log,
+            ):
+                self.assertFalse(app.load_preview_pages(startup=True))
+            self.assertIn("újraszámolódik", log.call_args.args[0])
 
 
 class PreviewErrorTests(unittest.IsolatedAsyncioTestCase):

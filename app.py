@@ -93,7 +93,7 @@ LAYOUT_PRESETS = {
         "page_height": 21.0,
         "main_size_pt": 30,
         "side_size_pt": 20,
-        "tablet_mode": True,
+        "tablet_mode": False,
     },
 }
 SLOT_LABELS = {"right": "Jobb hasáb", "left": "Bal hasáb", "bottom": "Alsó sáv"}
@@ -178,6 +178,7 @@ default_sample_mode = all(
 )
 sample_mode = (config.get("ui") or {}).get("sample_mode", default_sample_mode)
 settings = initial_settings(config)
+settings["tablet_mode"] = False
 settings["tablet_commentary"] = (
     settings["tablet_commentary"]
     or settings["slots"].get("left")
@@ -227,7 +228,6 @@ download_button = None
 build_progress = None
 orientation_switch = None
 preset_control = None
-tablet_commentary_control = None
 sample_switch = None
 page_nav_label = None
 previous_page_button = None
@@ -588,7 +588,7 @@ def refresh_slot_options() -> None:
         control.update()
 
 
-def load_preview_pages() -> bool:
+def load_preview_pages(*, startup: bool = False) -> bool:
     global preview_pages, preview_layout, preview_page_index, preview_slots, preview_sources
     pages_path = ROOT / "out" / "pages.json"
     layout_path = ROOT / "out" / "layout.json"
@@ -599,7 +599,14 @@ def load_preview_pages() -> bool:
             raise ValueError("Az előnézeti fájlok szerkezete nem megfelelő.")
         expected_sources = {key: {"version": "hebrew", **{k: v for k, v in source.items() if k != "file"}}
                             for key, source in sources.items()}
-        if layout.get("source_config") != expected_sources or layout.get("slots") != slot_values:
+        if (layout.get("source_config") != expected_sources or layout.get("slots") != slot_values
+                or bool(layout.get("tablet_mode")) != settings["tablet_mode"]):
+            if startup:
+                print("A korábbi előnézet eltér a beállításoktól; az oldalbeosztás újraszámolódik.")
+                preview_pages = []
+                preview_layout = {}
+                preview_page_index = 0
+                return False
             raise ValueError("Az előnézeti adatok más forrásokhoz vagy elhelyezéshez tartoznak.")
         preview_pages = pages
         preview_layout = layout
@@ -665,6 +672,11 @@ def page_preview_content(index: int) -> dict:
             text = previews.get(role, "") if role else ""
         content[slot] = text
         content[f"{slot}_label"] = source_label(role) if role else "—"
+    if (page.get("mode") == "flow" and len(top_ranges) == 2
+            and slot_values == preview_slots and sources == preview_sources):
+        for slot, segment in zip(("right", "left"), top_ranges):
+            atoms = streams.get(segment["k"], {}).get("atoms", [])
+            content[slot] = " ".join(atom["t"] for atom in atoms[segment["f"]:segment["t"]])
     extra_keys = [key for key in streams if key.startswith("B") and key != "B"]
     if sources == preview_sources:
         extra_text = " ".join(stream_text(bottom_ranges, key) for key in extra_keys)
@@ -708,6 +720,37 @@ def set_preview_tab(value: str) -> None:
         render_preview()
 
 
+def preview_font_toolbar(key: str, section: str) -> str:
+    label = "Főszöveg" if key == "main_size_pt" else "Kommentárok"
+    size = settings[key]
+    return (f'<div class="preview-font-toolbar" data-section="{section}" aria-label="{label} betűmérete">'
+            f'<button type="button" data-font-key="{key}" data-delta="-1" '
+            f'aria-label="{label} betűméretének csökkentése">−</button>'
+            f'<span>{size:g} pt</span>'
+            f'<button type="button" data-font-key="{key}" data-delta="1" '
+            f'aria-label="{label} betűméretének növelése">+</button></div>')
+
+
+def adjust_preview_font(args) -> None:
+    if not isinstance(args, dict):
+        return
+    key, delta = args.get("key"), args.get("delta")
+    if key not in ("main_size_pt", "side_size_pt") or delta not in (-1, 1):
+        return
+    minimum, maximum, step, _ = LAYOUT_FIELDS[key]
+    value = max(minimum, min(maximum, settings[key] + delta * step))
+    if value != settings[key]:
+        layout_controls[key].value = value
+        layout_controls[key].update()
+        section = args.get("section")
+        if args.get("keyboard") and section in ("main", "right", "left", "bottom"):
+            preview_area.client.run_javascript(
+                f'requestAnimationFrame(() => document.querySelector('
+                f'\'.preview-font-toolbar[data-section="{section}"] '
+                f'[data-font-key="{key}"][data-delta="{delta}"]\')?.focus())'
+            )
+
+
 def render_preview() -> None:
     if preview_area is None:
         return
@@ -745,6 +788,7 @@ def render_preview() -> None:
         columns.append(
             f'<section class="preview-column preview-drop" data-slot="{slot}" '
             f'style="font-size:{side_size:g}cqw;line-height:{side_line_height:g}">'
+            f'{preview_font_toolbar("side_size_pt", slot)}'
             f'{preview_slot_heading(slot, label)}'
             f'<p>{html.escape(" ".join(text.split())) or "—"}</p></section>'
         )
@@ -753,6 +797,7 @@ def render_preview() -> None:
         f'<section class="preview-main" style="font-size:{main_size:g}cqw;'
         f'font-family:{main_font};'
         f'line-height:{1 + float(settings["main_leading_em"]):g}">'
+        f'{preview_font_toolbar("main_size_pt", "main")}'
         f"<p>{main}</p></section>"
     )
     bottom_label = page_content["bottom_label"]
@@ -780,30 +825,11 @@ def render_preview() -> None:
       </div>
       <div class="preview-bottom preview-drop" data-slot="bottom"
         style="height:{bottom_percent:g}%;margin-top:{gap:g}cqw;font-size:{side_size:g}cqw;line-height:{side_line_height:g}">
+        {preview_font_toolbar("side_size_pt", "bottom")}
         {preview_slot_heading("bottom", bottom_label)}
         <p style="column-count:{int(settings['bottom_cols'])};column-gap:{gutter:g}cqw">{html.escape(" ".join(bottom_text.split())) or "—"}</p>
       </div>
     </div>"""
-    if settings["tablet_mode"]:
-        is_comment = (has_pages and preview_pages[page_index].get("mode") == "tablet-comment"
-                      and preview_layout.get("tablet_commentary") == settings["tablet_commentary"])
-        if is_comment:
-            role = settings["tablet_commentary"]
-            stream_key = preview_layout.get("tablet_stream")
-            page = preview_pages[page_index]
-            atoms = preview_layout.get("streams", {}).get(stream_key, {}).get("atoms", [])
-            text = " ".join(atom["t"] for segment in page.get("top", [])
-                            if segment.get("k") == stream_key
-                            for atom in atoms[segment["f"]:segment["t"]])
-            tablet_content = (f'<section class="preview-main" style="font-size:{side_size:g}cqw;'
-                              f'line-height:{side_line_height:g}"><b>{html.escape(source_label(role))}</b>'
-                              f'<p>{html.escape(text)}</p></section>')
-        else:
-            tablet_content = main_column
-        page_html = f"""<div class="preview-paper preview-tablet" style="aspect-ratio:{page_w:g}/{page_h:g};
-          padding-left:{padding_x:g}%;padding-right:{padding_x:g}%;
-          padding-top:{padding_top:g}%;padding-bottom:{padding_bottom:g}%;
-          font-family:{font_family},serif">{tablet_content}</div>"""
     preview_area.clear()
     with preview_area:
         element = ui.html(f'<div class="preview-sheet-wrap">{page_html}</div>').classes("w-full")
@@ -819,6 +845,11 @@ def render_preview() -> None:
             if (!target) return;
             event.preventDefault();
             emit({source: event.dataTransfer.getData('text/plain'), target: target.dataset.slot});
+        }""")
+        element.on("click", lambda event: adjust_preview_font(event.args), js_handler="""(event) => {
+            const button = event.target.closest('button[data-font-key]');
+            if (button) emit({key: button.dataset.fontKey, delta: Number(button.dataset.delta),
+                              section: button.parentElement.dataset.section, keyboard: event.detail === 0});
         }""")
     if page_nav_label is not None:
         count = len(preview_pages) if preview_pages else 1
@@ -918,27 +949,6 @@ def schedule_preview_reflow() -> None:
     preview_debounce_task = asyncio.create_task(debounce_preview_reflow(preview_revision))
 
 
-def refresh_tablet_commentary_options() -> None:
-    if tablet_commentary_control is None:
-        return
-    options = {
-        key: source_label(key)
-        for key in sources
-        if key != "main"
-    }
-    selected = settings.get("tablet_commentary")
-    if selected not in options:
-        selected = next(
-            (slot_values.get(slot) for slot in ("left", "right", "bottom")
-             if slot_values.get(slot) in options),
-            next(iter(options), None),
-        )
-        settings["tablet_commentary"] = selected
-    tablet_commentary_control.options = options
-    tablet_commentary_control.value = selected
-    tablet_commentary_control.update()
-
-
 def refresh_sources() -> None:
     source_area.clear()
     source_assignment_controls.clear()
@@ -970,7 +980,6 @@ def refresh_sources() -> None:
                             source_assignment_controls[key] = (assignment_label, place_button)
     refresh_slot_options()
     refresh_source_assignments()
-    refresh_tablet_commentary_options()
     render_preview()
 
 
@@ -1519,12 +1528,6 @@ def set_layout_preset(preset: str | None) -> None:
     preset_control.update()
 
 
-def set_tablet_commentary(key: str | None) -> None:
-    settings["tablet_commentary"] = key
-    render_preview()
-    schedule_preview_reflow()
-
-
 def set_option(key: str, value) -> None:
     if value is not None:
         settings["options"][key] = int(value)
@@ -1674,17 +1677,31 @@ ui.add_head_html(
         overflow:hidden; font-family:serif; }
       .preview-columns { direction:rtl; display:grid; flex:1; min-height:0; overflow:hidden; }
       .preview-column, .preview-main { min-width:0; overflow:hidden; line-height:1.55; }
+      .preview-column, .preview-main, .preview-bottom { position:relative; }
       .preview-main { line-height:1.8; text-align:justify; }
       .preview-column b, .preview-main b, .preview-bottom b { display:block; text-align:center;
         border-bottom:1px solid #ddd4c9; margin-bottom:5px; padding-bottom:3px; }
       .preview-column p, .preview-main p, .preview-bottom p { margin:0; }
       .preview-bottom { direction:rtl; border-top:1px solid #c9bdae; padding:1% 0;
-        height:24%; overflow:hidden; }
+        height:24%; overflow:visible; }
+      .preview-bottom p { height:calc(100% - 25px); overflow:hidden; }
       .preview-drop { outline:1px dashed #b49b84; outline-offset:-1px; }
       .preview-drop:hover { background:#eee2d5; outline:2px dashed #8d6e63; }
       .preview-slot-heading[draggable=true] { cursor:grab; }
       .preview-slot-heading { font:600 10px sans-serif; min-height:18px; }
-      .preview-tablet .preview-main { direction:rtl; width:100%; overflow:hidden; }
+      .preview-font-toolbar { position:absolute; top:0; left:0; z-index:2;
+        display:flex; align-items:center; gap:4px; padding:3px; border:1px solid #b49b84;
+        border-radius:4px; background:#fffdf8; color:#25211e; font:12px sans-serif;
+        opacity:0; pointer-events:none; }
+      .preview-font-toolbar button { min-width:24px; min-height:24px; background:#eee2d5;
+        border:0; border-radius:3px; cursor:pointer; font:18px sans-serif; }
+      .preview-column .preview-font-toolbar, .preview-bottom .preview-font-toolbar { top:22px; }
+      .preview-column:hover .preview-font-toolbar, .preview-main:hover .preview-font-toolbar,
+      .preview-bottom:hover .preview-font-toolbar, .preview-column:focus-within .preview-font-toolbar,
+      .preview-main:focus-within .preview-font-toolbar, .preview-bottom:focus-within .preview-font-toolbar {
+        opacity:1; pointer-events:auto;
+      }
+      @media (hover:none) { .preview-font-toolbar { opacity:1; pointer-events:auto; } }
       .break-all { overflow-wrap:anywhere; }
       .preview-panel .preview-restore { display: none; }
       .preview-panel.preview-maximized {
@@ -1771,20 +1788,6 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                             lambda event, s=slot: set_slot(s, event.value)
                         )
                         slot_controls[slot] = control
-                tablet_commentary_control = ui.select(
-                    {
-                        key: source_label(key)
-                        for key in sources
-                        if key != "main"
-                    },
-                    label="Tablet nézet kommentárja",
-                    value=settings["tablet_commentary"],
-                ).classes("w-full").on_value_change(
-                    lambda event: set_tablet_commentary(event.value)
-                )
-                ui.label(
-                    "Tablet nézetben csak ez a kommentár jelenik meg; külön oldalakon folytatódhat."
-                ).classes("text-xs text-stone-500")
                 ui.select(
                     MAIN_FONTS,
                     label="Főszöveg betűtípusa",
@@ -1882,7 +1885,8 @@ with ui.column().classes("w-full max-w-[1500px] mx-auto p-4 md:p-8 gap-5"):
                 preview_area = ui.column().classes("w-full items-center preview-area")
                 ui.label(
                     "HTML: a szaggatott keretű helyek között a kommentár címét áthúzhatod; "
-                    "foglalt helyre húzva a két kommentár helyet cserél. Tablet módban a hasábok nem láthatók. "
+                    "foglalt helyre húzva a két kommentár helyet cserél. A szöveg fölé mutatva a +/− gombokkal "
+                    "állíthatod a főszöveg vagy az összes kommentár betűméretét. "
                     "A HTML tájékoztató jellegű, az oldalak újratördelése időt vehet igénybe. "
                     "A PDF fül a legutóbb renderelt PDF-et mutatja."
                 ).classes("text-xs text-stone-500")
@@ -1902,7 +1906,7 @@ def save_config_action() -> None:
     ui.notify("A konfiguráció elmentve.", type="positive")
 
 
-load_preview_pages()
+load_preview_pages(startup=True)
 render_stack_tabs()
 refresh_sources()
 app.on_startup(lambda: asyncio.create_task(_init_titles()))

@@ -43,7 +43,12 @@ automatikusan újraszámolja, a HTML-oldalak között az „Előző oldal” és
 „Következő oldal” gombokkal lehet lapozni. A hosszabb szövegek tördelése időigényes.
 A szaggatott keretű helyek között a kommentár címét egérrel át lehet húzni;
 foglalt cél esetén a két kommentár helyet cserél. A hasábbeállítások is
-frissülnek. Tablet módban az elhelyezés a beállításoknál módosítható.
+frissülnek. A főszöveg vagy egy kommentár fölé mutatva megjelenő +/− gombokkal
+a főszöveg, illetve az összes kommentár betűmérete állítható, a beállításokkal
+összhangban. A webes tablet-előbeállítás fekvő oldalt és nagy betűket használ,
+de továbbra is egymás mellett jeleníti meg a hasábokat. A korábbi, külön
+kommentároldalakat használó `tablet_mode` csak a parancssori konfigurációban
+marad elérhető; a webes felület a régi beállítást is hasábos módra váltja.
 Az előnézetnél a „Teljes ablak” gomb nagyítja ki a nézetet, a
 „Visszaállítás” gomb pedig visszavisz a szerkesztőhöz.
 A frissített tördelési beállításokat az automatikus újraszámolás a

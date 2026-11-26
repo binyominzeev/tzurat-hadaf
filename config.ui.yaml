@@ -8,8 +8,8 @@ overrides:
   abudraham: {}
 layout:
   page:
-    width_cm: 29.7
-    height_cm: 21.0
+    width_cm: 21.0
+    height_cm: 29.7
     margin_x_cm: 1.4
     margin_top_cm: 1.4
     margin_bottom_cm: 1.7
@@ -19,8 +19,8 @@ layout:
   - 1.0
   gutter_pt: 9
   gap_pt: 8
-  main_size_pt: 30
-  side_size_pt: 20
+  main_size_pt: 13
+  side_size_pt: 8
   bottom_cols: 3
   max_stretch: 0.3
   main_leading_em: 0.55
@@ -31,7 +31,7 @@ layout:
   - Noto Serif Hebrew
   - Noto Sans Hebrew
   main_font: Taamey Frank CLM
-  tablet_mode: true
+  tablet_mode: false
   tablet_commentary: rashi
   slots:
     right: abudraham
