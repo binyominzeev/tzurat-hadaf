@@ -19,8 +19,8 @@ layout:
   - 1.0
   gutter_pt: 9
   gap_pt: 8
-  main_size_pt: 13
-  side_size_pt: 8
+  main_size_pt: 17
+  side_size_pt: 13
   bottom_cols: 3
   max_stretch: 0.3
   main_leading_em: 0.55
@@ -34,12 +34,12 @@ layout:
   tablet_mode: false
   tablet_commentary: rashi
   slots:
-    right: abudraham
-    left: rashi
+    right: ''
+    left: ''
     bottom: vitry
 ui:
   sample_mode: false
-  active_stack: Tóra
+  active_stack: Kindle
 stacks:
   Szidur:
     sources:
@@ -108,42 +108,34 @@ stacks:
       right: abudraham
       left: rashi
       bottom: vitry
-additional_commentaries:
-  extra_1:
-    url: https://www.sefaria.org/Tur_HaArokh%2C_Genesis.32.4-36.43
-    version: hebrew
-    label: טור הארוך
-    title: Tur HaArokh
-    section_ref: Tur HaArokh, Genesis
-    from: '32:4'
-    to: '36:43'
+  Kindle:
+    sources:
+      main:
+        version: hebrew
+        url: https://www.sefaria.org/Genesis.1.1-2.1
+        title: Genesis
+        from: '1:1'
+        to: '2:1'
+      vitry:
+        version: hebrew
+        url: https://www.sefaria.org/Rashi_on_Genesis.1.1-2.1
+        title: Rashi on Genesis
+        from: '1:1'
+        to: '2:1'
+    slots:
+      right: ''
+      left: ''
+      bottom: vitry
+additional_commentaries: {}
 main:
   version: hebrew
-  url: https://www.sefaria.org/Genesis.32.4-36.43
-  label: תורה
+  url: https://www.sefaria.org/Genesis.1.1-2.1
   title: Genesis
-  from: '32:4'
-  to: '36:43'
-abudraham:
-  label: חזקוני
-  version: hebrew
-  url: https://www.sefaria.org/Chizkuni%2C_Genesis.32.4-36.43
-  title: Chizkuni
-  section_ref: Chizkuni, Genesis
-  from: '32:4'
-  to: '36:43'
-rashi:
-  label: רש"י
-  version: hebrew
-  corrections: true
-  url: https://www.sefaria.org/Rashi_on_Genesis.32.4-36.43
-  title: Rashi on Genesis
-  from: '32:4'
-  to: '36:43'
+  from: '1:1'
+  to: '2:1'
 vitry:
-  label: העמק דבר
   version: hebrew
-  url: https://www.sefaria.org/Haamek_Davar_on_Genesis.32.4-36.43
-  title: Haamek Davar on Genesis
-  from: '32:4'
-  to: '36:43'
+  url: https://www.sefaria.org/Rashi_on_Genesis.1.1-2.1
+  title: Rashi on Genesis
+  from: '1:1'
+  to: '2:1'
